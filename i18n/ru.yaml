@@ -1,0 +1,24 @@
+- id: search_placeholder
+  translation: "Поиск"
+- id: all_categories
+  translation: "Все"
+- id: categories
+  translation: "Категории"
+- id: no_results
+  translation: "Статьи не найдены"
+- id: back
+  translation: "Назад"
+- id: toggle_theme
+  translation: "Переключить светлую/тёмную тему"
+- id: contact_us
+  translation: "Связаться с нами"
+- id: email
+  translation: "Эл. почта"
+- id: reactions_title
+  translation: "Ваша реакция"
+- id: comments
+  translation: "Комментарии"
+- id: comments_note
+  translation: "Комментарии — из нашего Telegram-канала. Чтобы присоединиться к обсуждению, войдите через Telegram."
+- id: comments_open
+  translation: "Открыть обсуждение в Telegram"

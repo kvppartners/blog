@@ -1,0 +1,7 @@
+{{- with .GetTerms "categories" }}
+<ul class="entry-cats">
+    {{- range . }}
+    <li><a class="entry-cat" href="{{ .RelPermalink }}" data-category="{{ .Data.Term }}">{{ .LinkTitle }}</a></li>
+    {{- end }}
+</ul>
+{{- end }}

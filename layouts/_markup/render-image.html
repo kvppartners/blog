@@ -1,0 +1,10 @@
+{{- /* PaperMod's image hook, with large photos scaled down via image_url.html. */ -}}
+{{- $src := partial "image_url.html" (dict "page" .PageInner "src" .Destination "resize" true) -}}
+{{- $attributes := merge .Attributes (dict "alt" .Text "src" $src "title" (.Title | transform.HTMLEscape) "loading" "lazy") -}}
+<img
+  {{- range $k, $v := $attributes -}}
+    {{- if $v -}}
+      {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
+    {{- end -}}
+  {{- end -}}>
+{{- /**/ -}}

@@ -1,0 +1,20 @@
+{{- /*
+  Emoji reactions under an article (emojis from params.reactions in hugo.toml).
+  Counts come from the Worker at /api/reactions (worker/index.js); the box stays
+  hidden until they load, so it doesn't show where the Worker isn't running
+  (for example under plain `hugo server`).
+  data-key is the article path without language prefix: all translations share counts.
+*/ -}}
+{{- with site.Params.reactions }}
+<section class="reactions" data-reactions data-path="{{ $.RelPermalink }}" data-key="{{ $.Path }}" hidden>
+    <p class="reactions-title">{{ i18n "reactions_title" }}</p>
+    <div class="reactions-list">
+        {{- range . }}
+        <button type="button" class="reaction" data-reaction="{{ . }}" aria-pressed="false">
+            <span class="reaction-emoji">{{ . }}</span>
+            <span class="reaction-count"></span>
+        </button>
+        {{- end }}
+    </div>
+</section>
+{{- end }}

@@ -1,0 +1,24 @@
+- id: search_placeholder
+  translation: "Search"
+- id: all_categories
+  translation: "All"
+- id: categories
+  translation: "Categories"
+- id: no_results
+  translation: "No articles found"
+- id: back
+  translation: "Back"
+- id: toggle_theme
+  translation: "Toggle light/dark mode"
+- id: contact_us
+  translation: "Contact us"
+- id: email
+  translation: "Email"
+- id: reactions_title
+  translation: "Your reaction"
+- id: comments
+  translation: "Comments"
+- id: comments_note
+  translation: "Comments come from our Telegram channel. Sign in with Telegram to join the discussion."
+- id: comments_open
+  translation: "Open the discussion in Telegram"

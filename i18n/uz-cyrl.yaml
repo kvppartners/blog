@@ -1,0 +1,50 @@
+- id: search_placeholder
+  translation: "Қидириш"
+- id: all_categories
+  translation: "Барчаси"
+- id: categories
+  translation: "Категориялар"
+- id: no_results
+  translation: "Мақолалар топилмади"
+- id: back
+  translation: "Орқага"
+- id: toggle_theme
+  translation: "Ёруғ/қоронғи режимни алмаштириш"
+
+# PaperMod's own strings (the theme has no Uzbek Cyrillic file).
+- id: prev_page
+  translation: "Олдинги саҳифа"
+- id: next_page
+  translation: "Кейинги саҳифа"
+- id: read_time
+  translation:
+    one: "Бир дақиқа"
+    other: "{{ .Count }} дақиқа"
+- id: words
+  translation:
+    one: "сўз"
+    other: "{{ .Count }} сўз"
+- id: toc
+  translation: "Мундарижа"
+- id: translations
+  translation: "Таржималар"
+- id: home
+  translation: "Бош саҳифа"
+- id: edit_post
+  translation: "Таҳрирлаш"
+- id: code_copy
+  translation: "нусха олиш"
+- id: code_copied
+  translation: "нусха олинди!"
+- id: contact_us
+  translation: "Биз билан боғланинг"
+- id: email
+  translation: "Электрон почта"
+- id: reactions_title
+  translation: "Муносабатингиз"
+- id: comments
+  translation: "Изоҳлар"
+- id: comments_note
+  translation: "Изоҳлар Telegram каналимиздан олинади. Муҳокамага қўшилиш учун Telegram орқали киринг."
+- id: comments_open
+  translation: "Муҳокамани Telegram’да очиш"

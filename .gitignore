@@ -1,0 +1,21 @@
+# Hugo build output and caches (recreated by `hugo` / `hugo server`)
+/public/
+/resources/_gen/
+/.hugo_build.lock
+/hugo_stats.json
+
+# Sample articles kept for local reference only: any guide-* folder in content/
+/content/**/guide-*/
+
+# Cloudflare Wrangler local state and secrets
+/.wrangler/
+/node_modules/
+.dev.vars
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/

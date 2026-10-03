@@ -1,0 +1,85 @@
+Copyright (c) 2026 KVP Partners. All rights reserved.
+
+This repository contains the source of the Korean Visa Planner blog
+(https://kvppartners.com): its articles, images, logo, design and code.
+Except for the third-party components listed below, all of it belongs to
+KVP Partners.
+
+No license is granted. You may not copy, modify, publish, distribute,
+sublicense or sell any part of this repository, or use it to build or run
+another website, whether commercially or not, without prior written
+permission from KVP Partners.
+
+This repository is public so that it can be viewed. Viewing it, and forking
+it on GitHub to the extent required by GitHub's Terms of Service, does not
+give you any other right to use its contents.
+
+The names "KVP Partners" and "Korean Visa Planner" and the KVP Partners logo
+may not be used in a way that suggests endorsement by or affiliation with
+KVP Partners.
+
+To request permission, contact KVP Partners through https://kvppartners.com.
+
+
+===========================================================================
+Third-party components
+===========================================================================
+
+The following are not owned by KVP Partners and remain under their own
+licenses.
+
+1. Hugo (https://gohugo.io)
+   Used to build the site; not included in this repository.
+   License: Apache License 2.0.
+
+2. PaperMod theme (https://github.com/adityatelange/hugo-PaperMod)
+   Included as a git submodule in themes/PaperMod/, with its own LICENSE.
+
+   These files in this repository contain code from PaperMod. That code
+   remains under PaperMod's MIT License, reproduced below; the rest of each
+   file is covered by the terms above.
+
+     layouts/baseof.html
+     layouts/single.html
+     layouts/_markup/render-image.html
+     layouts/_shortcodes/figure.html
+     layouts/_partials/footer.html
+     layouts/_partials/header.html
+     layouts/_partials/post_list.html
+
+3. Feather icons (https://github.com/feathericons/feather)
+   The search, moon, sun, back-arrow, chat, close and mail icons in
+   layouts/_partials/header.html, layouts/_partials/back_link.html and
+   layouts/_partials/contact.html. License: MIT, Copyright (c) Cole Bemis.
+
+4. Simple Icons (https://simpleicons.org)
+   The Telegram and Instagram logos in layouts/_partials/contact.html.
+   License: CC0 1.0 (public domain). The logos themselves are trademarks of
+   their respective owners and are used only to link to KVP Partners' pages.
+
+---------------------------------------------------------------------------
+PaperMod license
+---------------------------------------------------------------------------
+
+MIT License
+
+Copyright (c) 2020 nanxiaobei and adityatelange
+Copyright (c) 2021-2026 adityatelange
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

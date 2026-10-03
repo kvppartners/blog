@@ -1,0 +1,62 @@
+{{- /*
+  Category buttons followed by the article list (newest first).
+
+  Params:
+    pages      - pages to list
+    active     - the current category term page, or false for "All"
+    filterable - true on the home page: blog.js then filters the list in place
+                 when a category is clicked instead of following the link.
+*/ -}}
+{{- $activeURL := "" }}
+{{- with .active }}{{ $activeURL = .RelPermalink }}{{ end }}
+
+{{- with site.Taxonomies.categories }}
+<nav class="category-bar" aria-label="{{ i18n "categories" }}">
+    <a class="cat-btn{{ if not $activeURL }} active{{ end }}" href="{{ site.Home.RelPermalink }}" data-category=""
+        {{- if not $activeURL }} aria-current="true"{{ end }}>{{ i18n "all_categories" }}</a>
+    {{- range .Alphabetical }}
+    {{- with .Page }}
+    {{- $isActive := eq .RelPermalink $activeURL }}
+    <a class="cat-btn{{ if $isActive }} active{{ end }}" href="{{ .RelPermalink }}" data-category="{{ .Data.Term }}"
+        {{- if $isActive }} aria-current="true"{{ end }}>{{ .LinkTitle }}</a>
+    {{- end }}
+    {{- end }}
+</nav>
+{{- end }}
+
+<div id="post-list" class="post-list"{{ if .filterable }} data-filterable{{ end }}>
+    {{- range .pages.ByDate.Reverse }}
+    {{- $cats := slice }}
+    {{- range .GetTerms "categories" }}{{ $cats = $cats | append .Data.Term }}{{ end }}
+    <article class="post-entry" data-title="{{ .Title }}" data-categories="{{ $cats | jsonify }}">
+        {{- $coverHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+        {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $coverHidden) }}
+        <header class="entry-header">
+            <h2 class="entry-hint-parent">
+                {{- .Title }}
+                {{- if .Draft }}
+                <span class="entry-hint" title="Draft">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+                        <path
+                            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+                    </svg>
+                </span>
+                {{- end }}
+            </h2>
+        </header>
+        {{- if and .Summary (ne (.Param "hideSummary") true) }}
+        <div class="entry-content">
+            <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+        </div>
+        {{- end }}
+        <footer class="entry-footer">
+            {{- if not (.Param "hideMeta") }}
+            <span class="entry-meta">{{ partial "post_meta.html" . }}</span>
+            {{- end }}
+            {{- partial "post_categories.html" . }}
+        </footer>
+        <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </article>
+    {{- end }}
+</div>
+<p id="post-list-empty" class="post-list-empty"{{ if .pages }} hidden{{ end }}>{{ i18n "no_results" }}</p>

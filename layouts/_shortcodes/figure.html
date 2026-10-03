@@ -1,0 +1,36 @@
+{{- /* PaperMod's figure shortcode, with src and link resolved from the article
+       folder so they work in every language (see image_url.html). */ -}}
+{{- $src := partial "image_url.html" (dict "page" .Page "src" (.Get "src") "resize" true) }}
+{{- $link := "" }}
+{{- with .Get "link" }}{{ $link = partial "image_url.html" (dict "page" $.Page "src" . "resize" false) }}{{ end }}
+<figure{{ if or (.Get "class") (eq (.Get "align") "center") }} class="
+           {{- if eq (.Get "align") "center" }}align-center {{ end }}
+           {{- with .Get "class" }}{{ . }}{{- end }}"
+{{- end -}}>
+    {{- if $link -}}
+        <a href="{{ $link }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
+    {{- end }}
+    <img loading="lazy" src="{{ $src }}{{- if eq (.Get "align") "center" }}#center{{- end }}"
+         {{- if or (.Get "alt") (.Get "caption") }}
+         alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
+         {{- end -}}
+         {{- with .Get "width" }} width="{{ . }}"{{ end -}}
+         {{- with .Get "height" }} height="{{ . }}"{{ end -}}
+    />
+    {{- if $link }}</a>{{ end -}}
+    {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
+        <figcaption>
+            {{ with (.Get "title") -}}
+                {{ . }}
+            {{- end -}}
+            {{- if or (.Get "caption") (.Get "attr") -}}<p>
+                {{- .Get "caption" | markdownify -}}
+                {{- with .Get "attrlink" }}
+                    <a href="{{ . }}">
+                {{- end -}}
+                {{- .Get "attr" | markdownify -}}
+                {{- if .Get "attrlink" }}</a>{{ end }}</p>
+            {{- end }}
+        </figcaption>
+    {{- end }}
+</figure>

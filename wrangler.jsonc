@@ -1,0 +1,28 @@
+// Cloudflare Workers configuration (used by `npx wrangler dev` and by Cloudflare's
+// Git deployment). Setup steps are in README.md.
+{
+  "name": "kvp-blog",
+  "compatibility_date": "2026-09-01",
+
+  // Small Worker for the reactions API (worker/index.js). It only runs for
+  // requests that are not a file in ./public.
+  "main": "worker/index.js",
+
+  // The site built by Hugo (`hugo` writes it to ./public).
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+  },
+
+  // Database for reaction counts. Replace database_id with the id printed by
+  // `npx wrangler d1 create kvp-blog`.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "kvp-blog",
+      "database_id": "REPLACE_WITH_YOUR_DATABASE_ID",
+      "migrations_dir": "worker/migrations"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{{- /*
+  Returns the URL for an image or file referenced from an article.
+
+  Files in the article folder (or in assets/) are resolved to their published
+  address, so a plain "photo.jpg" works on every language version. With
+  resize=true, photos larger than 1600px are rotated upright (phone photos
+  store rotation separately) and scaled down to fit 1600x1600.
+  Anything else, e.g. a full web address, is returned unchanged.
+
+  Params: page, src, resize
+*/ -}}
+{{- $u := urls.Parse .src }}
+{{- $url := .src }}
+{{- if not $u.IsAbs }}
+  {{- $path := strings.TrimPrefix "./" $u.Path }}
+  {{- with or (.page.Resources.Get $path) (resources.Get $path) }}
+    {{- $res := . }}
+    {{- if and $.resize (eq .MediaType.MainType "image") (in (slice "jpeg" "png" "webp") .MediaType.SubType) }}
+      {{- if or (gt .Width 1600) (gt .Height 1600) }}
+        {{- $res = (.Filter images.AutoOrient).Fit "1600x1600" }}
+      {{- end }}
+    {{- end }}
+    {{- $url = $res.RelPermalink }}
+    {{- with $u.RawQuery }}{{ $url = printf "%s?%s" $url . }}{{ end }}
+    {{- with $u.Fragment }}{{ $url = printf "%s#%s" $url . }}{{ end }}
+  {{- end }}
+{{- end }}
+{{- return $url }}

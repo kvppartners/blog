@@ -1,0 +1,7 @@
+{{- define "main" }}
+{{- /* Every article is rendered (no pagination) so blog.js can search and
+       filter by category without reloading the page. */}}
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" true }}
+{{- partial "post_list.html" (dict "pages" $pages "active" false "filterable" true) }}
+{{- end }}

@@ -1,0 +1,10 @@
+{{- /* Title index for the header search on non-home pages (one per language). */ -}}
+{{- $index := slice -}}
+{{- range (where site.RegularPages "Type" "in" site.Params.mainSections).ByDate.Reverse -}}
+  {{- if not .Params.searchHidden -}}
+    {{- $date := "" -}}
+    {{- if not .Date.IsZero }}{{ $date = .Date | time.Format ":date_medium" }}{{ end -}}
+    {{- $index = $index | append (dict "title" .Title "permalink" .RelPermalink "date" $date) -}}
+  {{- end -}}
+{{- end -}}
+{{- $index | jsonify -}}

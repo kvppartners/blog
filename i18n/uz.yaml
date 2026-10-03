@@ -1,0 +1,24 @@
+- id: search_placeholder
+  translation: "Qidirish"
+- id: all_categories
+  translation: "Barchasi"
+- id: categories
+  translation: "Kategoriyalar"
+- id: no_results
+  translation: "Maqolalar topilmadi"
+- id: back
+  translation: "Orqaga"
+- id: toggle_theme
+  translation: "Yorug‘/qorong‘i rejimni almashtirish"
+- id: contact_us
+  translation: "Biz bilan bog‘laning"
+- id: email
+  translation: "Elektron pochta"
+- id: reactions_title
+  translation: "Munosabatingiz"
+- id: comments
+  translation: "Izohlar"
+- id: comments_note
+  translation: "Izohlar Telegram kanalimizdan olinadi. Muhokamaga qo‘shilish uchun Telegram orqali kiring."
+- id: comments_open
+  translation: "Muhokamani Telegramda ochish"

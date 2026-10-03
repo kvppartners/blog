@@ -1,0 +1,6 @@
+{{- define "main" }}
+{{- /* Same view as the home page with this category pre-selected. Reached from
+       the category links on an article, or from the category buttons when
+       JavaScript is unavailable. */}}
+{{- partial "post_list.html" (dict "pages" .Pages "active" . "filterable" false) }}
+{{- end }}

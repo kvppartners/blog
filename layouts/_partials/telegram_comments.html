@@ -1,0 +1,20 @@
+{{- /*
+  Comments from the Telegram channel post given in the article's front matter:
+    telegram: "https://t.me/kvp_partners/123"
+  Telegram's discussion widget shows that post's comments from the linked
+  discussion group; replies posted here appear there too. blog.js loads the
+  widget (and reloads it in the right colours when the theme changes).
+*/ -}}
+{{- with .Params.telegram }}
+{{- $post := . | replaceRE `^(?:https?://)?(?:www\.)?(?:t|telegram)\.me/(?:s/)?` "" | replaceRE `[?#].*$` "" | strings.TrimSuffix "/" }}
+{{- if findRE `^[A-Za-z0-9_]{5,32}/[0-9]+$` $post }}
+<section class="comments">
+    <h2 class="comments-title">{{ i18n "comments" }}</h2>
+    <p class="comments-note">{{ i18n "comments_note" }}</p>
+    <div class="telegram-comments" data-telegram-comments="{{ $post }}" data-comments-limit="5"></div>
+    <a class="comments-open" href="https://t.me/{{ $post }}" target="_blank" rel="noopener">{{ i18n "comments_open" }}</a>
+</section>
+{{- else }}
+{{- warnf "%s: 'telegram' must be a public channel post link like https://t.me/kvp_partners/123 (got %q)" $.File.Path . }}
+{{- end }}
+{{- end }}

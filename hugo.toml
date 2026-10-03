@@ -1,0 +1,80 @@
+baseURL = "https://kvppartners.com/"
+title = "Korean Visa Planner"
+# Copyright owner, shown in the footer ("© <year> · KVP Partners") and the RSS feed.
+copyright = "KVP Partners"
+theme = "PaperMod"
+defaultContentLanguage = "uz"
+# Show category names exactly as written ("Mening hikoyam", not "Mening Hikoyam").
+capitalizeListTitles = false
+
+[languages.en]
+  label = "English"
+  weight = 1
+[languages.ru]
+  label = "Русский"
+  weight = 2
+[languages.uz]
+  label = "O‘zbekcha"
+  weight = 3
+# Uzbek in Cyrillic script: files are named index.uz-cyrl.md, pages live under /uz-cyrl/.
+[languages.uz-cyrl]
+  label = "Ўзбекча"
+  weight = 4
+  [languages.uz-cyrl.params]
+    # Shown in the language switch instead of the code ("UZ-CYRL").
+    shortLabel = "ЎЗ"
+
+[params]
+  # "auto" follows the visitor's OS setting until they use the toggle.
+  defaultTheme = "auto"
+  mainSections = ["posts"]
+  # Reaction buttons under each article. Counts are stored by the Cloudflare
+  # Worker (worker/index.js), so they only appear where it runs (see README.md).
+  reactions = ["👍", "❤️", "🔥", "🙏", "🤔"]
+  # Logo next to the site title in the header (file in assets/).
+  [params.label]
+    icon = "images/logo.png"
+    iconHeight = 44
+  # Shown by the "Contact us" button in the bottom-right corner.
+  # Remove a line to hide that option.
+  [params.contact]
+    telegram = "kvp_partners"     # t.me/kvp_partners
+    instagram = "kvp_partners"    # instagram.com/kvp_partners
+    email = "help@kvppartners.com"
+
+# The JSON index powers the header search on pages other than the home page.
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# Photos and files in an article folder belong to every language version.
+# Without this, Hugo gives them only to the default language (uz), and an
+# article with no Uzbek file would lose its photos in the other languages.
+[[module.mounts]]
+  source = "content"
+  target = "content"
+  [module.mounts.sites.matrix]
+    languages = ["**"]
+
+[markup]
+  [markup.highlight]
+    # Use PaperMod's code colours, which follow light/dark mode.
+    noClasses = false
+  [markup.goldmark.extensions]
+    # Replaced by extras.delete below, which handles ~~strikethrough~~
+    # without clashing with H~2~O subscript.
+    strikethrough = false
+  # Extra text styles: ==highlight==, ++underline++, H~2~O, m^2^
+  [markup.goldmark.extensions.extras]
+    [markup.goldmark.extensions.extras.delete]
+      enable = true
+    [markup.goldmark.extensions.extras.mark]
+      enable = true
+    [markup.goldmark.extensions.extras.insert]
+      enable = true
+    [markup.goldmark.extensions.extras.subscript]
+      enable = true
+    [markup.goldmark.extensions.extras.superscript]
+      enable = true
+
+[caches.images]
+  dir = ":cacheDir/images"
