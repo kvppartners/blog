@@ -1,7 +1,7 @@
 ---
 title: "From D-2 to F-5, or the story of a permanent residence card (영주증) received in 21 days"
 date: 2026-09-21T12:48:22+09:00
-draft: true
+draft: false
 categories: ["My story", "F-5"]
 description: "Nine years after first coming to Korea as a student, I received the F-5 visa, which grants permanent residency. Here are the three problems I ran into along the way and how I solved them."
 cover:

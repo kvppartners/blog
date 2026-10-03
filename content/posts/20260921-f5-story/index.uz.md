@@ -1,7 +1,7 @@
 ---
 title: "D-2 dan F-5 gacha yo‘l yoxud 21 kunda olingan 영주증 hikoyasi"
 date: 2026-09-21T12:48:22+09:00
-draft: true
+draft: false
 categories: ["Mening hikoyam", "F-5"]
 description: "Koreyaga talaba bo‘lib kelganimdan 9 yil o‘tib, doimiy yashash huquqini beruvchi F-5 visasini oldim. Yo‘lda duch kelgan uchta muammo va ularni qanday hal qilganim haqida."
 cover:
