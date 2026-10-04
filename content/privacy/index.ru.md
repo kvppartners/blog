@@ -1,7 +1,7 @@
 ---
 title: "Политика конфиденциальности"
 description: "Какие персональные данные обрабатывает сайт, зачем, как долго и как с нами связаться."
-draft: true
+draft: false
 hideBackLink: true
 hideMeta: true
 hideReactions: true

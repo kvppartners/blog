@@ -1,7 +1,7 @@
 ---
 title: "Махфийлик сиёсати"
 description: "Сайт қандай шахсий маълумотларни, нима учун ва қанча муддат ишлатади ҳамда биз билан қандай боғланиш мумкин."
-draft: true
+draft: false
 hideBackLink: true
 hideMeta: true
 hideReactions: true

@@ -24,7 +24,7 @@ Where there is one, a link takes you to the official form or the online service 
 
 ## Important
 
-The lists are copied from the Korea Immigration Service manuals (September 2026 edition); the source is shown under each list. For a few visas the manual names only part of the documents, and the page says so. The immigration office or the embassy can ask for more documents in your case, and the rules change, so check with [HiKorea](https://www.hikorea.go.kr) or the immigration call centre **1345** before you apply. This page is general information, not advice on your own case. For questions about the page itself, contact us.
+The lists are copied from the Korea Immigration Service manuals (September 2026 edition); the source is shown under each list. For a few visas the manual names only part of the documents, and the page says so. The immigration office or the embassy can ask for more documents in your case, and the rules change, so check with [HiKorea](https://www.hikorea.go.kr) or the immigration call centre **1345** before you apply. This page is general information, not advice on your own case.
 
 ## Sources
 

@@ -1,7 +1,7 @@
 ---
 title: "Privacy policy"
 description: "What personal information this site handles, why, for how long, and how to reach us."
-draft: true
+draft: false
 hideBackLink: true
 hideMeta: true
 hideReactions: true

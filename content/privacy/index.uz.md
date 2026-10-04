@@ -1,7 +1,7 @@
 ---
 title: "Maxfiylik siyosati"
 description: "Sayt qanday shaxsiy ma’lumotlarni, nima uchun va qancha muddat ishlatadi hamda biz bilan qanday bog‘lanish mumkin."
-draft: true
+draft: false
 hideBackLink: true
 hideMeta: true
 hideReactions: true
