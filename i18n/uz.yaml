@@ -22,3 +22,275 @@
   translation: "Izohlar Telegram kanalimizdan olinadi. Muhokamaga qo‘shilish uchun Telegram orqali kiring."
 - id: comments_open
   translation: "Muhokamani Telegramda ochish"
+
+# Menu and Visa map page
+- id: menu
+  translation: "Menyu"
+- id: vm_gender
+  translation: "Jins"
+- id: vm_male
+  translation: "Erkak"
+- id: vm_female
+  translation: "Ayol"
+- id: vm_age
+  translation: "Yosh"
+- id: vm_current_visa
+  translation: "Hozirgi viza"
+- id: vm_visa_placeholder
+  translation: "masalan, D-2-2 yoki talaba"
+- id: vm_visa_hint
+  translation: "D-2 kabi kod yoki so‘z yozing va aniq viza turini tanlang. Koreya vizangiz hali bo‘lmasa, bo‘sh qoldiring."
+- id: vm_draw
+  translation: "Xaritani chizish"
+- id: vm_restart
+  translation: "Qaytadan boshlash"
+- id: vm_legend_path
+  translation: "Sizning yo‘lingiz"
+- id: vm_goal
+  translation: "Maqsad: F-5"
+- id: vm_abroad
+  translation: "Chet eldan topshiriladi"
+- id: vm_done_title
+  translation: "Doimiy yashash huquqigacha yo‘lingiz tayyor"
+- id: vm_download
+  translation: "PNG yuklab olish"
+- id: vm_share
+  translation: "Ulashish"
+- id: vm_consult
+  translation: "Bepul maslahat uchun biz bilan bog‘laning"
+- id: vm_is_goal
+  translation: "F-5 — doimiy yashash huquqi, bu xaritaning maqsadi."
+- id: vm_err_age
+  translation: "Yoshingizni kiriting (14–99)."
+- id: vm_err_visa
+  translation: "Viza turini ro‘yxatdan tanlang."
+- id: vm_start
+  translation: "Hozirgi vizangiz"
+- id: vm_choose
+  translation: "Keyingi qadamni tanlang"
+- id: vm_age_only
+  translation: "Faqat {range} yoshdagilar uchun"
+- id: vm_how
+  translation: "Qanday olinadi"
+- id: vm_image_title
+  translation: "Koreyada doimiy yashash huquqiga yo‘lim"
+- id: vm_disclaimer
+  translation: "Koreya immigratsiya xizmatining ochiq qoidalariga asoslangan umumiy ma’lumot. Talablar o‘zgarib turadi, topshirishdan oldin tekshiring."
+- id: vm_dead_end
+  translation: "Xaritamizda bu yerdan keyingi qadamlar yo‘q. Imkoniyatlarni muhokama qilish uchun biz bilan bog‘laning."
+- id: vm_nationality
+  translation: "Fuqarolik"
+- id: vm_choose_country
+  translation: "Davlatni tanlang"
+- id: vm_err_nationality
+  translation: "Fuqaroligingizni tanlang."
+- id: vm_not_for_nationality
+  translation: "Fuqaroligingiz uchun mavjud emas"
+- id: vm_koreans_only
+  translation: "Faqat etnik koreyslar uchun"
+- id: vm_consult_button
+  translation: "Bepul maslahat"
+- id: vm_no_visa
+  translation: "Hali viza yo‘q"
+- id: vm_start_none
+  translation: "Boshlang‘ich nuqta"
+- id: vm_details
+  translation: "Xaritani shaxsiylashtirish"
+- id: vm_details_hint
+  translation: "Ixtiyoriy. O‘zingizga tegishli savollarga javob bering — xarita mos variantlarni ko‘rsatadi. Bo‘sh maydonlar hech narsani yashirmaydi."
+- id: vm_about_you
+  translation: "Siz haqingizda"
+- id: vm_korean_roots
+  translation: "Koreys kelib chiqishi"
+- id: vm_korean_roots_hint
+  translation: "Siz, ota-onangiz yoki bobo-buvingiz Koreya fuqarosi bo‘lgan."
+- id: vm_yes
+  translation: "Ha"
+- id: vm_no
+  translation: "Yo‘q"
+- id: vm_family
+  translation: "Oila"
+- id: vm_spouse
+  translation: "Oilaviy holat"
+- id: vm_not_set
+  translation: "Ko‘rsatilmagan"
+- id: vm_spouse_none
+  translation: "Turmush qurmagan"
+- id: vm_spouse_korean
+  translation: "Koreya fuqarosi bilan turmush qurgan"
+- id: vm_spouse_f5
+  translation: "Doimiy yashovchi (F-5) bilan turmush qurgan"
+- id: vm_spouse_foreigner
+  translation: "Koreyaning boshqa vizasidagi chet ellik bilan turmush qurgan"
+- id: vm_spouse_abroad
+  translation: "Turmush qurgan, turmush o‘rtog‘ida Koreya vizasi yo‘q"
+- id: vm_spouse_exkorean
+  translation: "Koreya fuqarosi bilan nikoh ajralish yoki beva qolish bilan tugagan"
+- id: vm_korean_child
+  translation: "Koreya fuqarosi bo‘lgan farzandni tarbiyalayapsizmi"
+- id: vm_korean_child_short
+  translation: "Koreya fuqarosi bo‘lgan farzandni tarbiyalaydi"
+- id: vm_parent
+  translation: "Ota-ona (19 yoshgacha)"
+- id: vm_parent_none
+  translation: "Ota-onada Koreya maqomi yo‘q"
+- id: vm_parent_korean
+  translation: "Ota yoki ona Koreya fuqarosi"
+- id: vm_parent_f5
+  translation: "Ota yoki ona doimiy yashovchi (F-5)"
+- id: vm_parent_foreigner
+  translation: "Ota yoki ona Koreyada boshqa viza bilan yashaydi"
+- id: vm_education
+  translation: "Ta’lim"
+- id: vm_edu
+  translation: "Tugallangan eng yuqori ta’lim"
+- id: vm_edu_0
+  translation: "O‘rta maktabdan past"
+- id: vm_edu_1
+  translation: "O‘rta maktab"
+- id: vm_edu_2
+  translation: "Kollej (2–3 yil)"
+- id: vm_edu_3
+  translation: "Bakalavr"
+- id: vm_edu_4
+  translation: "Magistratura"
+- id: vm_edu_5
+  translation: "Doktorlik (PhD)"
+- id: vm_edu_korea
+  translation: "Koreya universitetida"
+- id: vm_edu_stem
+  translation: "Fan, muhandislik yoki IT"
+- id: vm_language
+  translation: "Koreys tili"
+- id: vm_topik_none
+  translation: "TOPIK yo‘q"
+- id: vm_kiip
+  translation: "KIIP (integratsiya dasturi)"
+- id: vm_kiip_none
+  translation: "KIIP yo‘q"
+- id: vm_kiip_level
+  translation: "KIIP {n}-bosqich"
+- id: vm_work
+  translation: "Ish va investitsiya"
+- id: vm_experience
+  translation: "Mutaxassislik bo‘yicha ish tajribasi"
+- id: vm_experience_short
+  translation: "Tajriba"
+- id: vm_exp_0
+  translation: "1 yildan kam"
+- id: vm_exp_1
+  translation: "1–2 yil"
+- id: vm_exp_3
+  translation: "3–4 yil"
+- id: vm_exp_5
+  translation: "5–7 yil"
+- id: vm_exp_8
+  translation: "8+ yil"
+- id: vm_invest
+  translation: "Koreyaga kirita oladigan mablag‘"
+- id: vm_invest_short
+  translation: "Investitsiya"
+- id: vm_invest_0
+  translation: "Yo‘q"
+- id: vm_invest_1
+  translation: "₩100 mln+ (taxminan 70 ming USD)"
+- id: vm_invest_2
+  translation: "₩300 mln+ (taxminan 220 ming USD)"
+- id: vm_invest_3
+  translation: "₩700 mln+ (taxminan 500 ming USD)"
+- id: vm_invest_4
+  translation: "₩1 mlrd+ (taxminan 720 ming USD)"
+- id: vm_invest_5
+  translation: "₩1,5 mlrd+ (taxminan 1,1 mln USD)"
+- id: vm_invest_6
+  translation: "₩3 mlrd+ (taxminan 2,2 mln USD)"
+- id: vm_matches
+  translation: "Ma’lumotlaringizga mos"
+- id: vm_show_closed
+  translation: "Sizga mos kelmaydigan variantlarni ko‘rsatish ({n})"
+- id: vm_hide_closed
+  translation: "Mos kelmaydigan variantlarni yashirish"
+- id: vm_none_fit
+  translation: "Keyingi qadamlarning hech biri ma’lumotlaringizga mos emas."
+- id: vm_why_family
+  translation: "Oilaviy holat mos emas"
+- id: vm_why_education
+  translation: "Ta’lim mos emas"
+- id: vm_why_experience
+  translation: "Ko‘proq ish tajribasi kerak"
+- id: vm_why_invest
+  translation: "Kattaroq investitsiya kerak"
+- id: vm_lang_need
+  translation: "Koreys tili kerak: {req}"
+- id: vm_lang_ok
+  translation: "Koreys tilingiz yetarli: {req}"
+- id: vm_cat_study
+  translation: "O‘qish"
+- id: vm_cat_work
+  translation: "Ish"
+- id: vm_cat_family
+  translation: "Oila va koreys ildizlari"
+- id: vm_cat_business
+  translation: "Biznes va investitsiya"
+- id: vm_cat_residence
+  translation: "Rezidentlik"
+- id: vm_cat_pr
+  translation: "Doimiy yashash"
+- id: vm_cat_visit
+  translation: "Tashriflar"
+- id: vm_cat_other
+  translation: "Boshqa"
+- id: vm_rank
+  translation: "Universitet reytingi"
+- id: vm_rank_0
+  translation: "QS top-500 dan tashqarida"
+- id: vm_rank_1
+  translation: "QS top-500"
+- id: vm_rank_2
+  translation: "QS top-200"
+- id: vm_rank_3
+  translation: "QS top-100"
+- id: vm_why_age
+  translation: "Yosh mos emas"
+- id: vm_why_previous
+  translation: "Oldingi vizangizdan keyin darhol mumkin emas"
+- id: vm_report
+  translation: "Xato haqida xabar berish"
+- id: vm_report_ask
+  translation: "Xaritada nimadir noto‘g‘rimi?"
+- id: vm_report_text
+  translation: "Nima noto‘g‘ri ekanini yozing: ortiqcha yoki yetishmayotgan viza, noto‘g‘ri shart, rasmdagi muammo…"
+- id: vm_report_open
+  translation: "Telegramni ochish"
+- id: vm_report_download
+  translation: "Rasmni yuklab olish"
+- id: vm_report_close
+  translation: "Yopish"
+- id: vm_report_msg
+  translation: "Viza xaritasi: xato haqida xabar"
+- id: vm_report_path
+  translation: "Yo‘l"
+- id: vm_report_map
+  translation: "Xarita"
+- id: vm_report_problem
+  translation: "Nima noto‘g‘ri:"
+- id: vm_report_placeholder
+  translation: "Nima noto‘g‘ri bo‘ldi?"
+- id: vm_report_contact
+  translation: "Telegram yoki e-mail (ixtiyoriy)"
+- id: vm_report_privacy
+  translation: "Xabaringiz, ismingiz va aloqa manzilingiz (agar yozilgan bo‘lsa, sizga javob berish uchun), ushbu sahifadagi javoblaringiz va xarita rasmi KVP Partners jamoasiga yuboriladi."
+- id: vm_report_send
+  translation: "Yuborish"
+- id: vm_report_sending
+  translation: "Yuborilmoqda…"
+- id: vm_report_sent
+  translation: "Rahmat! Xabaringiz yuborildi."
+- id: vm_report_failed
+  translation: "Hozir yuborib bo‘lmadi. Uni Telegram orqali yuborishingiz mumkin."
+- id: vm_report_busy
+  translation: "Siz hozirgina bir nechta xabar yubordingiz. Bir soatdan keyin urinib ko‘ring."
+- id: vm_report_empty
+  translation: "Iltimos, muammoni yozing."
+- id: vm_report_name
+  translation: "Ismingiz (ixtiyoriy)"

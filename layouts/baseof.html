@@ -23,7 +23,8 @@
 {{- end }}
     {{ partialCached "header.html" . .Page -}}
     <main class="main">
-        {{- if not .IsHome }}
+        {{- /* Pages in the main menu (e.g. Visa map) set hideBackLink: the menu already leads home. */}}
+        {{- if not (or .IsHome (.Param "hideBackLink")) }}
         {{- partial "back_link.html" . }}
         {{- end }}
         {{- block "main" . }}{{ end }}

@@ -73,4 +73,42 @@
             </button>
         </div>
     </nav>
+
+    {{- /* Main menu: Home (the blog) plus every page that sets `menus: main`
+           in its front matter, e.g. the Visa map. Home stays active on all
+           blog pages (articles, categories). */}}
+    {{- $inMenu := false }}
+    {{- range site.Menus.main }}{{ if $page.IsMenuCurrent "main" . }}{{ $inMenu = true }}{{ end }}{{ end }}
+    <nav class="site-menu" aria-label="{{ i18n "menu" }}">
+        <ul class="site-menu-list">
+            <li>
+                <a class="site-menu-item{{ if not $inMenu }} active{{ end }}" href="{{ site.Home.RelPermalink }}"
+                    {{- if not $inMenu }} aria-current="page"{{ end }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    {{- i18n "home" -}}
+                </a>
+            </li>
+            {{- range site.Menus.main }}
+            {{- $current := $page.IsMenuCurrent "main" . }}
+            <li>
+                <a class="site-menu-item{{ if $current }} active{{ end }}" href="{{ .URL }}"
+                    {{- if $current }} aria-current="page"{{ end }}>
+                    {{- if eq .Identifier "visa-map" }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                        <line x1="8" y1="2" x2="8" y2="18"></line>
+                        <line x1="16" y1="6" x2="16" y2="22"></line>
+                    </svg>
+                    {{- end }}
+                    {{- .Name -}}
+                </a>
+            </li>
+            {{- end }}
+        </ul>
+    </nav>
 </header>

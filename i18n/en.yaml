@@ -22,3 +22,275 @@
   translation: "Comments come from our Telegram channel. Sign in with Telegram to join the discussion."
 - id: comments_open
   translation: "Open the discussion in Telegram"
+
+# Menu and Visa map page
+- id: menu
+  translation: "Menu"
+- id: vm_gender
+  translation: "Gender"
+- id: vm_male
+  translation: "Male"
+- id: vm_female
+  translation: "Female"
+- id: vm_age
+  translation: "Age"
+- id: vm_current_visa
+  translation: "Current visa"
+- id: vm_visa_placeholder
+  translation: "e.g. D-2-2 or student"
+- id: vm_visa_hint
+  translation: "Type a code such as D-2 or a word, then pick your exact visa type. Leave empty if you don't have a Korean visa yet."
+- id: vm_draw
+  translation: "Draw my map"
+- id: vm_restart
+  translation: "Start over"
+- id: vm_legend_path
+  translation: "Your path"
+- id: vm_goal
+  translation: "Goal: F-5"
+- id: vm_abroad
+  translation: "Apply from abroad"
+- id: vm_done_title
+  translation: "Your path to permanent residence is ready"
+- id: vm_download
+  translation: "Download PNG"
+- id: vm_share
+  translation: "Share"
+- id: vm_consult
+  translation: "Contact us for a free consultation"
+- id: vm_is_goal
+  translation: "F-5 is permanent residence, the goal of this map."
+- id: vm_err_age
+  translation: "Enter your age (14–99)."
+- id: vm_err_visa
+  translation: "Choose your visa type from the list."
+- id: vm_start
+  translation: "Your visa now"
+- id: vm_choose
+  translation: "Choose your next step"
+- id: vm_age_only
+  translation: "Ages {range} only"
+- id: vm_how
+  translation: "How to get it"
+- id: vm_image_title
+  translation: "My path to permanent residence in Korea"
+- id: vm_disclaimer
+  translation: "General guidance based on public rules of the Korea Immigration Service. Requirements change, so check them before applying."
+- id: vm_dead_end
+  translation: "Our map has no further steps from here. Contact us to discuss your options."
+- id: vm_nationality
+  translation: "Nationality"
+- id: vm_choose_country
+  translation: "Choose your country"
+- id: vm_err_nationality
+  translation: "Choose your nationality."
+- id: vm_not_for_nationality
+  translation: "Not for your nationality"
+- id: vm_koreans_only
+  translation: "Ethnic Koreans only"
+- id: vm_consult_button
+  translation: "Free consultation"
+- id: vm_no_visa
+  translation: "No visa yet"
+- id: vm_start_none
+  translation: "Starting point"
+- id: vm_details
+  translation: "Personalize your map"
+- id: vm_details_hint
+  translation: "Optional. Answer what applies to you and the map shows what fits. Anything left empty keeps all options open."
+- id: vm_about_you
+  translation: "About you"
+- id: vm_korean_roots
+  translation: "Korean descent"
+- id: vm_korean_roots_hint
+  translation: "You, a parent or a grandparent held Korean citizenship."
+- id: vm_yes
+  translation: "Yes"
+- id: vm_no
+  translation: "No"
+- id: vm_family
+  translation: "Family"
+- id: vm_spouse
+  translation: "Marital status"
+- id: vm_not_set
+  translation: "Not specified"
+- id: vm_spouse_none
+  translation: "Not married"
+- id: vm_spouse_korean
+  translation: "Married to a Korean citizen"
+- id: vm_spouse_f5
+  translation: "Married to a permanent resident (F-5)"
+- id: vm_spouse_foreigner
+  translation: "Married to a foreigner on another Korean visa"
+- id: vm_spouse_abroad
+  translation: "Married, spouse has no Korean visa"
+- id: vm_spouse_exkorean
+  translation: "Divorced or widowed from a Korean citizen"
+- id: vm_korean_child
+  translation: "Raising a child who is a Korean citizen"
+- id: vm_korean_child_short
+  translation: "Raising a Korean child"
+- id: vm_parent
+  translation: "Parents (under 19)"
+- id: vm_parent_none
+  translation: "Parents have no Korean status"
+- id: vm_parent_korean
+  translation: "A parent is a Korean citizen"
+- id: vm_parent_f5
+  translation: "A parent is a permanent resident (F-5)"
+- id: vm_parent_foreigner
+  translation: "A parent lives in Korea on another visa"
+- id: vm_education
+  translation: "Education"
+- id: vm_edu
+  translation: "Highest completed education"
+- id: vm_edu_0
+  translation: "Below high school"
+- id: vm_edu_1
+  translation: "High school"
+- id: vm_edu_2
+  translation: "College (2–3 years)"
+- id: vm_edu_3
+  translation: "Bachelor's degree"
+- id: vm_edu_4
+  translation: "Master's degree"
+- id: vm_edu_5
+  translation: "Doctorate (PhD)"
+- id: vm_edu_korea
+  translation: "From a Korean university"
+- id: vm_edu_stem
+  translation: "Science, engineering or IT"
+- id: vm_language
+  translation: "Korean language"
+- id: vm_topik_none
+  translation: "No TOPIK"
+- id: vm_kiip
+  translation: "KIIP (integration program)"
+- id: vm_kiip_none
+  translation: "No KIIP"
+- id: vm_kiip_level
+  translation: "KIIP level {n}"
+- id: vm_work
+  translation: "Work and investment"
+- id: vm_experience
+  translation: "Work experience in your field"
+- id: vm_experience_short
+  translation: "Experience"
+- id: vm_exp_0
+  translation: "Less than 1 year"
+- id: vm_exp_1
+  translation: "1–2 years"
+- id: vm_exp_3
+  translation: "3–4 years"
+- id: vm_exp_5
+  translation: "5–7 years"
+- id: vm_exp_8
+  translation: "8+ years"
+- id: vm_invest
+  translation: "Money you can invest in Korea"
+- id: vm_invest_short
+  translation: "Investment"
+- id: vm_invest_0
+  translation: "None"
+- id: vm_invest_1
+  translation: "₩100M+ (about US$70K)"
+- id: vm_invest_2
+  translation: "₩300M+ (about US$220K)"
+- id: vm_invest_3
+  translation: "₩700M+ (about US$500K)"
+- id: vm_invest_4
+  translation: "₩1B+ (about US$720K)"
+- id: vm_invest_5
+  translation: "₩1.5B+ (about US$1.1M)"
+- id: vm_invest_6
+  translation: "₩3B+ (about US$2.2M)"
+- id: vm_matches
+  translation: "Matches your details"
+- id: vm_show_closed
+  translation: "Show options that don't fit you ({n})"
+- id: vm_hide_closed
+  translation: "Hide options that don't fit you"
+- id: vm_none_fit
+  translation: "None of the next steps fit your details."
+- id: vm_why_family
+  translation: "Family situation doesn't match"
+- id: vm_why_education
+  translation: "Education doesn't match"
+- id: vm_why_experience
+  translation: "Needs more work experience"
+- id: vm_why_invest
+  translation: "Needs a larger investment"
+- id: vm_lang_need
+  translation: "Korean needed: {req}"
+- id: vm_lang_ok
+  translation: "Your Korean is enough: {req}"
+- id: vm_cat_study
+  translation: "Study"
+- id: vm_cat_work
+  translation: "Work"
+- id: vm_cat_family
+  translation: "Family and Korean roots"
+- id: vm_cat_business
+  translation: "Business and investment"
+- id: vm_cat_residence
+  translation: "Residence"
+- id: vm_cat_pr
+  translation: "Permanent residence"
+- id: vm_cat_visit
+  translation: "Visits"
+- id: vm_cat_other
+  translation: "Other"
+- id: vm_rank
+  translation: "University ranking"
+- id: vm_rank_0
+  translation: "Not in QS top 500"
+- id: vm_rank_1
+  translation: "QS top 500"
+- id: vm_rank_2
+  translation: "QS top 200"
+- id: vm_rank_3
+  translation: "QS top 100"
+- id: vm_why_age
+  translation: "Age doesn't match"
+- id: vm_why_previous
+  translation: "Not possible right after your previous visa"
+- id: vm_report
+  translation: "Report a problem"
+- id: vm_report_ask
+  translation: "Something wrong in this map?"
+- id: vm_report_text
+  translation: "Tell us what went wrong: a visa that should or shouldn't be offered, a wrong condition, a problem with the picture…"
+- id: vm_report_open
+  translation: "Open Telegram"
+- id: vm_report_download
+  translation: "Download picture"
+- id: vm_report_close
+  translation: "Close"
+- id: vm_report_msg
+  translation: "Visa map: problem report"
+- id: vm_report_path
+  translation: "Path"
+- id: vm_report_map
+  translation: "Map"
+- id: vm_report_problem
+  translation: "What's wrong:"
+- id: vm_report_placeholder
+  translation: "What went wrong?"
+- id: vm_report_contact
+  translation: "Telegram or email (optional)"
+- id: vm_report_privacy
+  translation: "We'll send your message, name and contact if given (so we can reply), your answers on this page and a picture of your map to the KVP Partners team."
+- id: vm_report_send
+  translation: "Send report"
+- id: vm_report_sending
+  translation: "Sending…"
+- id: vm_report_sent
+  translation: "Thank you! Your report was sent."
+- id: vm_report_failed
+  translation: "We couldn't send it right now. You can send it on Telegram instead."
+- id: vm_report_busy
+  translation: "You've sent several reports just now. Please try again in an hour."
+- id: vm_report_empty
+  translation: "Please describe the problem."
+- id: vm_report_name
+  translation: "Your name (optional)"

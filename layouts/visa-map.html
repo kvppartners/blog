@@ -1,0 +1,359 @@
+{{- define "main" }}
+{{- /*
+  Visa map: the reader gives nationality, age, their current visa (or none yet) and
+  optional details, then steps through possible next visas until they reach
+  permanent residence (F-5). Everything runs in the browser (assets/js/visamap.js);
+  the visa data comes from data/visamap.yaml.
+*/}}
+{{- /* Check data/visamap.yaml once per build: unknown next visas, missing translations. */}}
+{{- if eq .Lang "en" }}
+{{- $visas := hugo.Data.visamap.visas }}
+{{- range $code, $v := $visas }}
+{{- range $v.next }}
+{{- $to := . }}{{ if reflect.IsMap . }}{{ $to = .to }}{{ end }}
+{{- if not (index $visas $to) }}{{ warnf "data/visamap.yaml: %s lists unknown next visa %q" $code $to }}{{ end }}
+{{- end }}
+{{- range slice "en" "ru" "uz" "uz-cyrl" }}
+{{- if not (index ($v.name | default dict) .) }}{{ warnf "data/visamap.yaml: %s has no %s name" $code . }}{{ end }}
+{{- if not (index ($v.how | default dict) .) }}{{ warnf "data/visamap.yaml: %s has no %s 'how' note" $code . }}{{ end }}
+{{- end }}
+{{- end }}
+{{- /* Every nationality needs a name in each language, and the visa rules may only name known countries or groups. */}}
+{{- $names := hugo.Data.countries }}
+{{- range $c, $_ := $names.en }}{{ range slice "ru" "uz" "uz-cyrl" }}{{ if not (index (index $names .) $c) }}{{ warnf "data/countries.yaml: %s has no %s name" $c . }}{{ end }}{{ end }}{{ end }}
+{{- $groups := hugo.Data.visamap.groups }}
+{{- $refs := slice }}
+{{- range $groups }}{{ $refs = $refs | append . }}{{ end }}
+{{- range $visas }}
+{{- with .countries }}{{ $refs = $refs | append . }}{{ end }}
+{{- range $c, $_ := .ageByCountry }}{{ $refs = $refs | append $c }}{{ end }}
+{{- range .notes }}{{ $refs = $refs | append .countries }}{{ end }}
+{{- range .next }}{{ if reflect.IsMap . }}{{ with .abroadFor }}{{ $refs = $refs | append . }}{{ end }}{{ end }}{{ end }}
+{{- end }}
+{{- range $refs | uniq }}{{ if not (or (index $groups .) (index $names.en .)) }}{{ warnf "data/visamap.yaml: unknown country or group %q" . }}{{ end }}{{ end }}
+{{- /* Requirements (needs, gives, lang) may only use the facts visamap.js knows. */}}
+{{- $facts := slice "korean" "spouse" "koreanChild" "parent" "edu" "koreanEdu" "stem" "rank" "experience" "invest" "ageUnder" "countries" "notAfter" }}
+{{- range $code, $v := $visas }}
+{{- $rules := slice }}
+{{- with $v.needs }}{{ $rules = $rules | append . }}{{ end }}
+{{- with $v.gives }}{{ $rules = $rules | append . }}{{ end }}
+{{- range $v.next }}{{ if reflect.IsMap . }}{{ with .needs }}{{ $rules = $rules | append . }}{{ end }}{{ end }}{{ end }}
+{{- range $rules }}{{ range $k, $_ := . }}{{ if not (in $facts $k) }}{{ warnf "data/visamap.yaml: %s uses unknown fact %q" $code $k }}{{ end }}{{ end }}{{ end }}
+{{- end }}
+{{- end }}
+{{- /* Keep only this page's language from data/visamap.yaml to make the page lighter. */}}
+{{- $lang := .Lang }}
+{{- $vm := hugo.Data.visamap }}
+{{- $statuses := dict }}
+{{- range $k, $v := $vm.statuses }}{{ $statuses = merge $statuses (dict $k (index $v $lang | default $v.en)) }}{{ end }}
+{{- $visas := dict }}
+{{- range $code, $v := $vm.visas }}
+{{- $next := slice }}
+{{- range $v.next }}
+{{- if reflect.IsMap . }}
+{{- $m := dict "to" .to }}
+{{- with .abroad }}{{ $m = merge $m (dict "abroad" .) }}{{ end }}
+{{- with .abroadFor }}{{ $m = merge $m (dict "abroadFor" .) }}{{ end }}
+{{- with .note }}{{ $m = merge $m (dict "note" (index . $lang | default .en)) }}{{ end }}
+{{- with .again }}{{ $m = merge $m (dict "again" (index . $lang | default .en)) }}{{ end }}
+{{- /* An empty 'needs' on a move is kept: it lifts the visa's own requirements for that move. */}}
+{{- if isset . "needs" }}{{ $m = merge $m (dict "needs" .needs) }}{{ end }}
+{{- with .lang }}{{ $m = merge $m (dict "lang" .) }}{{ end }}
+{{- $next = $next | append $m }}
+{{- else }}
+{{- $next = $next | append (dict "to" .) }}
+{{- end }}
+{{- end }}
+{{- $e := dict "name" (index $v.name $lang | default $v.name.en) "how" (index $v.how $lang | default $v.how.en) "next" $next }}
+{{- with $v.age }}{{ $e = merge $e (dict "age" .) }}{{ end }}
+{{- with $v.ageByCountry }}{{ $e = merge $e (dict "ageByCountry" .) }}{{ end }}
+{{- with $v.countries }}{{ $e = merge $e (dict "countries" .) }}{{ end }}
+{{- with $v.needs }}{{ $e = merge $e (dict "needs" .) }}{{ end }}
+{{- with $v.gives }}{{ $e = merge $e (dict "gives" .) }}{{ end }}
+{{- with $v.lang }}{{ $e = merge $e (dict "lang" .) }}{{ end }}
+{{- with $v.notes }}
+{{- $notes := slice }}
+{{- range . }}
+{{- $n := dict "countries" .countries "text" (index .text $lang | default .text.en) }}
+{{- with .abroad }}{{ $n = merge $n (dict "abroad" .) }}{{ end }}
+{{- $notes = $notes | append $n }}
+{{- end }}
+{{- $e = merge $e (dict "notes" $notes) }}
+{{- end }}
+{{- $visas = merge $visas (dict $code $e) }}
+{{- end }}
+{{- $countries := index hugo.Data.countries $lang | default hugo.Data.countries.en }}
+{{- $pageData := dict "updated" $vm.updated "groups" $vm.groups "statuses" $statuses "visas" $visas "countries" $countries }}
+{{- $logo := "" }}
+{{- with site.Params.label.icon }}{{ with resources.Get . }}{{ $logo = (.Resize "256x").RelPermalink }}{{ end }}{{ end }}
+{{- $contact := site.Params.contact | default dict }}
+{{- $categories := dict }}
+{{- range slice "study" "work" "family" "business" "residence" "pr" "visit" "other" }}
+{{- $categories = merge $categories (dict . (i18n (printf "vm_cat_%s" .))) }}
+{{- end }}
+{{- $strings := dict
+    "gender" (i18n "vm_gender") "male" (i18n "vm_male") "female" (i18n "vm_female")
+    "age" (i18n "vm_age") "noMatch" (i18n "no_results") "isGoal" (i18n "vm_is_goal")
+    "nationality" (i18n "vm_nationality") "errNationality" (i18n "vm_err_nationality")
+    "notForNationality" (i18n "vm_not_for_nationality") "koreansOnly" (i18n "vm_koreans_only")
+    "errAge" (i18n "vm_err_age") "errVisa" (i18n "vm_err_visa")
+    "noVisa" (i18n "vm_no_visa") "startNone" (i18n "vm_start_none")
+    "start" (i18n "vm_start") "choose" (i18n "vm_choose") "goal" (i18n "vm_goal")
+    "abroad" (i18n "vm_abroad") "ageOnly" (i18n "vm_age_only") "how" (i18n "vm_how")
+    "koreanRoots" (i18n "vm_korean_roots") "koreanChild" (i18n "vm_korean_child_short")
+    "education" (i18n "vm_education") "eduKorea" (i18n "vm_edu_korea") "stem" (i18n "vm_edu_stem") "whyAge" (i18n "vm_why_age")
+    "experience" (i18n "vm_experience_short") "invest" (i18n "vm_invest_short")
+    "matches" (i18n "vm_matches") "showClosed" (i18n "vm_show_closed") "hideClosed" (i18n "vm_hide_closed")
+    "noneFit" (i18n "vm_none_fit") "whyFamily" (i18n "vm_why_family") "whyEducation" (i18n "vm_why_education")
+    "whyExperience" (i18n "vm_why_experience") "whyInvest" (i18n "vm_why_invest") "whyPrevious" (i18n "vm_why_previous")
+    "langNeed" (i18n "vm_lang_need") "langOk" (i18n "vm_lang_ok") "categories" $categories
+    "doneTitle" (i18n "vm_done_title") "imageTitle" (i18n "vm_image_title")
+    "consult" (i18n "vm_consult") "disclaimer" (i18n "vm_disclaimer") "deadEnd" (i18n "vm_dead_end")
+    "site" site.Title "url" ($contact.website | default (replaceRE `^https?://|/$` "" site.BaseURL))
+    "telegram" ($contact.telegram | default "") "instagram" ($contact.instagram | default "")
+    "email" ($contact.email | default "") "telegramAdmin" ($contact.telegramAdmin | default "")
+    "reportSending" (i18n "vm_report_sending") "reportSent" (i18n "vm_report_sent")
+    "reportFailed" (i18n "vm_report_failed") "reportBusy" (i18n "vm_report_busy") "reportEmpty" (i18n "vm_report_empty")
+    "reportMsg" (i18n "vm_report_msg") "reportPath" (i18n "vm_report_path")
+    "reportMap" (i18n "vm_report_map") "reportProblem" (i18n "vm_report_problem") }}
+
+<article class="visa-map" id="visa-map" data-lang="{{ .Lang }}" data-logo="{{ $logo }}">
+    <header class="vm-header">
+        <h1 class="vm-title">{{ .Title }}</h1>
+        {{- with .Description }}
+        <p class="vm-lead">{{ . }}</p>
+        {{- end }}
+    </header>
+
+    <form class="vm-card vm-start" id="vm-start" novalidate>
+        <div class="vm-row vm-row-inputs">
+            <div class="vm-field">
+                <label class="vm-label" for="vm-nationality">{{ i18n "vm_nationality" }} <span class="vm-req" aria-hidden="true">*</span></label>
+                <select class="vm-input" id="vm-nationality" name="nationality" aria-required="true">
+                    <option value="">{{ i18n "vm_choose_country" }}</option>
+                </select>
+            </div>
+            <div class="vm-field">
+                <label class="vm-label" for="vm-age">{{ i18n "vm_age" }} <span class="vm-req" aria-hidden="true">*</span></label>
+                <input class="vm-input vm-age" id="vm-age" name="age" type="number" inputmode="numeric" min="14" max="99"
+                    placeholder="25" aria-required="true">
+            </div>
+        </div>
+        <div class="vm-field vm-field-visa">
+            <label class="vm-label" for="vm-visa">{{ i18n "vm_current_visa" }}</label>
+            <div class="vm-combo">
+                <input class="vm-input" id="vm-visa" name="visa" type="text" autocomplete="off" spellcheck="false"
+                    placeholder="{{ i18n "vm_visa_placeholder" }}" role="combobox" aria-autocomplete="list"
+                    aria-expanded="false" aria-controls="vm-visa-list">
+                <ul class="vm-options" id="vm-visa-list" role="listbox" hidden></ul>
+            </div>
+            <p class="vm-hint">{{ i18n "vm_visa_hint" }}</p>
+        </div>
+
+        <details class="vm-details" id="vm-details">
+            <summary class="vm-details-summary">
+                <span class="vm-details-title">{{ i18n "vm_details" }}</span>
+                <span class="vm-details-hint">{{ i18n "vm_details_hint" }}</span>
+            </summary>
+            <div class="vm-details-body">
+                <fieldset class="vm-group-fields">
+                    <legend class="vm-group-legend">{{ i18n "vm_about_you" }}</legend>
+                    <div class="vm-row">
+                        <fieldset class="vm-field">
+                            <legend class="vm-label">{{ i18n "vm_gender" }}</legend>
+                            <div class="vm-segment">
+                                <label><input type="radio" name="gender" value="male"><span>{{ i18n "vm_male" }}</span></label>
+                                <label><input type="radio" name="gender" value="female"><span>{{ i18n "vm_female" }}</span></label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="vm-field">
+                            <legend class="vm-label">{{ i18n "vm_korean_roots" }}</legend>
+                            <div class="vm-segment">
+                                <label><input type="radio" name="korean" value="yes"><span>{{ i18n "vm_yes" }}</span></label>
+                                <label><input type="radio" name="korean" value="no"><span>{{ i18n "vm_no" }}</span></label>
+                            </div>
+                            <p class="vm-hint">{{ i18n "vm_korean_roots_hint" }}</p>
+                        </fieldset>
+                    </div>
+                </fieldset>
+
+                <fieldset class="vm-group-fields">
+                    <legend class="vm-group-legend">{{ i18n "vm_family" }}</legend>
+                    <div class="vm-field">
+                        <label class="vm-label" for="vm-spouse">{{ i18n "vm_spouse" }}</label>
+                        <select class="vm-input" id="vm-spouse" name="spouse">
+                            <option value="">{{ i18n "vm_not_set" }}</option>
+                            {{- range slice "none" "korean" "f5" "foreigner" "abroad" "exKorean" }}
+                            <option value="{{ . }}">{{ i18n (printf "vm_spouse_%s" (. | lower)) }}</option>
+                            {{- end }}
+                        </select>
+                    </div>
+                    <fieldset class="vm-field">
+                        <legend class="vm-label">{{ i18n "vm_korean_child" }}</legend>
+                        <div class="vm-segment">
+                            <label><input type="radio" name="koreanChild" value="yes"><span>{{ i18n "vm_yes" }}</span></label>
+                            <label><input type="radio" name="koreanChild" value="no"><span>{{ i18n "vm_no" }}</span></label>
+                        </div>
+                    </fieldset>
+                    <div class="vm-field" id="vm-parent-field" hidden>
+                        <label class="vm-label" for="vm-parent">{{ i18n "vm_parent" }}</label>
+                        <select class="vm-input" id="vm-parent" name="parent">
+                            <option value="">{{ i18n "vm_not_set" }}</option>
+                            {{- range slice "none" "korean" "f5" "foreigner" }}
+                            <option value="{{ . }}">{{ i18n (printf "vm_parent_%s" .) }}</option>
+                            {{- end }}
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset class="vm-group-fields">
+                    <legend class="vm-group-legend">{{ i18n "vm_education" }}</legend>
+                    <div class="vm-field">
+                        <label class="vm-label" for="vm-edu">{{ i18n "vm_edu" }}</label>
+                        <select class="vm-input" id="vm-edu" name="edu">
+                            <option value="">{{ i18n "vm_not_set" }}</option>
+                            {{- range seq 0 5 }}
+                            <option value="{{ . }}">{{ i18n (printf "vm_edu_%d" .) }}</option>
+                            {{- end }}
+                        </select>
+                    </div>
+                    <fieldset class="vm-checks" id="vm-edu-extras">
+                        <label><input type="checkbox" name="eduKorea"> {{ i18n "vm_edu_korea" }}</label>
+                        <label><input type="checkbox" name="stem"> {{ i18n "vm_edu_stem" }}</label>
+                        <div class="vm-field vm-field-rank">
+                            <label class="vm-label" for="vm-rank">{{ i18n "vm_rank" }}</label>
+                            <select class="vm-input" id="vm-rank" name="rank">
+                                <option value="">{{ i18n "vm_not_set" }}</option>
+                                {{- range seq 0 3 }}
+                                <option value="{{ . }}">{{ i18n (printf "vm_rank_%d" .) }}</option>
+                                {{- end }}
+                            </select>
+                        </div>
+                    </fieldset>
+                </fieldset>
+
+                <fieldset class="vm-group-fields">
+                    <legend class="vm-group-legend">{{ i18n "vm_language" }}</legend>
+                    <div class="vm-row vm-row-inputs">
+                        <div class="vm-field">
+                            <label class="vm-label" for="vm-topik">TOPIK</label>
+                            <select class="vm-input" id="vm-topik" name="topik">
+                                <option value="">{{ i18n "vm_not_set" }}</option>
+                                <option value="0">{{ i18n "vm_topik_none" }}</option>
+                                {{- range seq 6 }}
+                                <option value="{{ . }}">TOPIK {{ . }}</option>
+                                {{- end }}
+                            </select>
+                        </div>
+                        <div class="vm-field">
+                            <label class="vm-label" for="vm-kiip">{{ i18n "vm_kiip" }}</label>
+                            <select class="vm-input" id="vm-kiip" name="kiip">
+                                <option value="">{{ i18n "vm_not_set" }}</option>
+                                <option value="0">{{ i18n "vm_kiip_none" }}</option>
+                                {{- range seq 5 }}
+                                <option value="{{ . }}">{{ replace (i18n "vm_kiip_level") "{n}" (string .) }}</option>
+                                {{- end }}
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="vm-group-fields">
+                    <legend class="vm-group-legend">{{ i18n "vm_work" }}</legend>
+                    <div class="vm-row vm-row-inputs">
+                        <div class="vm-field">
+                            <label class="vm-label" for="vm-experience">{{ i18n "vm_experience" }}</label>
+                            <select class="vm-input" id="vm-experience" name="experience">
+                                <option value="">{{ i18n "vm_not_set" }}</option>
+                                {{- range slice 0 1 3 5 8 }}
+                                <option value="{{ . }}">{{ i18n (printf "vm_exp_%d" .) }}</option>
+                                {{- end }}
+                            </select>
+                        </div>
+                        <div class="vm-field">
+                            <label class="vm-label" for="vm-invest">{{ i18n "vm_invest" }}</label>
+                            <select class="vm-input" id="vm-invest" name="invest">
+                                <option value="">{{ i18n "vm_not_set" }}</option>
+                                {{- range seq 0 6 }}
+                                <option value="{{ . }}">{{ i18n (printf "vm_invest_%d" .) }}</option>
+                                {{- end }}
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </details>
+
+        <p class="vm-error" id="vm-error" role="alert" hidden></p>
+        <button type="submit" class="vm-btn vm-btn-primary">{{ i18n "vm_draw" }}</button>
+    </form>
+
+    <section class="vm-board" id="vm-board" hidden>
+        <div class="vm-board-head">
+            <p class="vm-profile" id="vm-profile"></p>
+            <div class="vm-board-tools">
+                {{- if $contact.telegramAdmin }}
+                <button type="button" class="vm-btn vm-btn-ghost" data-report><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>{{ i18n "vm_report" }}</button>
+                {{- end }}
+                <button type="button" class="vm-btn vm-btn-ghost" id="vm-restart">{{ i18n "vm_restart" }}</button>
+            </div>
+        </div>
+        <div class="vm-legend" aria-hidden="true">
+            <span><i class="vm-dot vm-dot-path"></i>{{ i18n "vm_legend_path" }}</span>
+            <span><i class="vm-dot vm-dot-goal"></i>{{ i18n "vm_goal" }}</span>
+            <span><i class="vm-plane">✈</i>{{ i18n "vm_abroad" }}</span>
+            <span><i class="vm-check">✓</i>{{ i18n "vm_matches" }}</span>
+        </div>
+        <div class="vm-tree" id="vm-tree">
+            <svg class="vm-links" id="vm-links" aria-hidden="true"></svg>
+            <div class="vm-levels" id="vm-levels"></div>
+        </div>
+
+        <div class="vm-card vm-done" id="vm-done" hidden tabindex="-1">
+            <h2 class="vm-done-title">🎉 {{ i18n "vm_done_title" }}</h2>
+            <ol class="vm-steps" id="vm-steps"></ol>
+            <div class="vm-actions">
+                <button type="button" class="vm-btn vm-btn-primary" id="vm-download">{{ i18n "vm_download" }}</button>
+                <button type="button" class="vm-btn vm-btn-ghost" id="vm-share" hidden>{{ i18n "vm_share" }}</button>
+                <button type="button" class="vm-btn vm-btn-ghost" popovertarget="contact-card">{{ i18n "vm_consult_button" }}</button>
+            </div>
+            {{- if $contact.telegramAdmin }}
+            <p class="vm-report-line">{{ i18n "vm_report_ask" }}
+                <button type="button" class="vm-link-button" data-report>{{ i18n "vm_report" }}</button></p>
+            {{- end }}
+        </div>
+    </section>
+
+    {{- with $contact.telegramAdmin }}
+    {{- /* Problem reports: sent to the admin by the Telegram bot behind /api/report (worker/index.js),
+        with a bug-report picture and the map as text; a Telegram link is the fallback. */}}
+    <dialog class="vm-report" id="vm-report" aria-labelledby="vm-report-title">
+        <form class="vm-report-form" id="vm-report-form" novalidate>
+            <h2 class="vm-report-title" id="vm-report-title">{{ i18n "vm_report" }}</h2>
+            <p>{{ i18n "vm_report_text" }}</p>
+            <textarea class="vm-input vm-report-message" name="message" rows="5" maxlength="2000"
+                placeholder="{{ i18n "vm_report_placeholder" }}" aria-label="{{ i18n "vm_report_placeholder" }}"></textarea>
+            <input class="vm-input" name="name" type="text" maxlength="100" autocomplete="name"
+                placeholder="{{ i18n "vm_report_name" }}" aria-label="{{ i18n "vm_report_name" }}">
+            <input class="vm-input" name="contact" type="text" maxlength="200" autocomplete="email"
+                placeholder="{{ i18n "vm_report_contact" }}" aria-label="{{ i18n "vm_report_contact" }}">
+            <p class="vm-report-note">{{ i18n "vm_report_privacy" }}</p>
+            <p class="vm-report-status" id="vm-report-status" role="status"></p>
+            <div class="vm-actions">
+                <button type="submit" class="vm-btn vm-btn-primary" id="vm-report-send">{{ i18n "vm_report_send" }}</button>
+                <a class="vm-btn vm-btn-primary" id="vm-report-telegram" href="https://t.me/{{ . }}" target="_blank" rel="noopener" hidden>{{ i18n "vm_report_open" }}</a>
+                <button type="button" class="vm-btn vm-btn-ghost" id="vm-report-download" hidden>{{ i18n "vm_report_download" }}</button>
+                <button type="button" class="vm-btn vm-btn-ghost" id="vm-report-close">{{ i18n "vm_report_close" }}</button>
+            </div>
+        </form>
+    </dialog>
+    {{- end }}
+
+    {{- with .Content }}
+    <div class="vm-about md-content">{{ . }}</div>
+    {{- end }}
+
+    <script type="application/json" id="vm-data">{{ $pageData | jsonify | safeJS }}</script>
+    <script type="application/json" id="vm-i18n">{{ $strings | jsonify | safeJS }}</script>
+</article>
+{{- end }}

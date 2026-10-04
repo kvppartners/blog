@@ -45,6 +45,35 @@ One-time setup:
 After that, every push to the main branch rebuilds and publishes the site.
 If a new file is added to `worker/migrations/`, run step 3 again.
 
+## Visa map problem reports (Telegram bot)
+
+**Report a problem** on the Visa map sends the reader's message, a bug-report picture
+and the map as text to you through a Telegram bot, without opening Telegram. The
+bot's token stays in Cloudflare (`worker/index.js`, `/api/report`); browsers never see it.
+
+One-time setup:
+
+1. In Telegram, open **@BotFather**, send `/newbot`, choose a name and a username
+   ending in `bot`, and copy the token it gives you.
+2. From the account that should receive reports (@kvp_partners_admin), open the new
+   bot and press **Start**: a bot can only write to people who started it. (Or add the
+   bot to a private group for the team.)
+3. Find the chat id: open `https://api.telegram.org/bot<TOKEN>/getUpdates` in a
+   browser; the number after `"chat":{"id":` is it (negative for a group).
+4. Save both as secrets of the Worker:
+   ```bash
+   npx wrangler secret put TELEGRAM_BOT_TOKEN
+   npx wrangler secret put TELEGRAM_CHAT_ID
+   ```
+   or in the dashboard: **Workers & Pages → kvp-blog → Settings → Variables and
+   Secrets → Add**, type *Secret*.
+5. Create the flood-protection table: `npx wrangler d1 migrations apply kvp-blog --remote`
+
+Each reader can send 5 reports an hour, and the site at most 100 a day. Until the
+secrets are set (and under `hugo server`, which has no Worker), the dialog offers a
+Telegram link with the report filled in instead. To try the bot locally, put the two
+values in `.dev.vars` (ignored by git) and run `npx wrangler dev`.
+
 ## Comments from Telegram
 
 Comments under an article come from its post in the Telegram channel, through
@@ -59,6 +88,34 @@ telegram: "https://t.me/kvp_partners/123"
 ```
 
 Articles without this line simply show no comments section.
+
+## Visa map
+
+The **Visa map** page (`content/visa-map/`, menu item next to Home) lets readers draw
+their path to permanent residence (F-5), from their current visa or from no visa yet
+(`NONE`), and download it as a PNG image. Nationality and age are required; family,
+Korean descent, education, Korean level, work experience and investment are optional
+and only hide options that clearly don't fit. It runs entirely in the browser.
+
+- Visa types, the moves between them, and who they are for live in
+  `data/visamap.yaml`. Edit that file to update the map; each visa has names and
+  "how to get it" notes in all four languages. The comments at the top of the file
+  explain the rules (`age`, `countries`, `needs`, `gives`, `lang`).
+- The nationality list and its names in each language live in `data/countries.yaml`.
+- `hugo` warns about missing translations, unknown next visas, unknown countries and
+  unknown rule names in these files, so check the build output after editing them.
+- The page address keeps the current map (answers and path after `#`), so a copied
+  address opens the same map.
+- **Report a problem** sends the reader's message to you through a Telegram bot; see
+  [Visa map problem reports](#visa-map-problem-reports-telegram-bot). Remove
+  `telegramAdmin` from `hugo.toml` to hide the button.
+- Page layout: `layouts/visa-map.html`; logic and PNG drawing: `assets/js/visamap.js`.
+- Add more pages to the menu by putting this in their front matter:
+  ```yaml
+  menus:
+    main:
+      weight: 20
+  ```
 
 ## License
 

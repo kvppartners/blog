@@ -22,3 +22,275 @@
   translation: "Комментарии — из нашего Telegram-канала. Чтобы присоединиться к обсуждению, войдите через Telegram."
 - id: comments_open
   translation: "Открыть обсуждение в Telegram"
+
+# Menu and Visa map page
+- id: menu
+  translation: "Меню"
+- id: vm_gender
+  translation: "Пол"
+- id: vm_male
+  translation: "Мужской"
+- id: vm_female
+  translation: "Женский"
+- id: vm_age
+  translation: "Возраст"
+- id: vm_current_visa
+  translation: "Текущая виза"
+- id: vm_visa_placeholder
+  translation: "например, D-2-2 или студент"
+- id: vm_visa_hint
+  translation: "Введите код, например D-2, или слово и выберите точный тип визы. Оставьте пустым, если корейской визы у вас пока нет."
+- id: vm_draw
+  translation: "Построить карту"
+- id: vm_restart
+  translation: "Начать заново"
+- id: vm_legend_path
+  translation: "Ваш путь"
+- id: vm_goal
+  translation: "Цель: F-5"
+- id: vm_abroad
+  translation: "Подача из-за рубежа"
+- id: vm_done_title
+  translation: "Ваш путь к постоянному проживанию готов"
+- id: vm_download
+  translation: "Скачать PNG"
+- id: vm_share
+  translation: "Поделиться"
+- id: vm_consult
+  translation: "Свяжитесь с нами для бесплатной консультации"
+- id: vm_is_goal
+  translation: "F-5 — это постоянное проживание, цель этой карты."
+- id: vm_err_age
+  translation: "Укажите возраст (14–99)."
+- id: vm_err_visa
+  translation: "Выберите тип визы из списка."
+- id: vm_start
+  translation: "Ваша виза сейчас"
+- id: vm_choose
+  translation: "Выберите следующий шаг"
+- id: vm_age_only
+  translation: "Только для возраста {range}"
+- id: vm_how
+  translation: "Как получить"
+- id: vm_image_title
+  translation: "Мой путь к постоянному проживанию в Корее"
+- id: vm_disclaimer
+  translation: "Общие сведения на основе открытых правил иммиграционной службы Кореи. Требования меняются — проверяйте их перед подачей."
+- id: vm_dead_end
+  translation: "Дальше на нашей карте шагов нет. Свяжитесь с нами, чтобы обсудить варианты."
+- id: vm_nationality
+  translation: "Гражданство"
+- id: vm_choose_country
+  translation: "Выберите страну"
+- id: vm_err_nationality
+  translation: "Укажите гражданство."
+- id: vm_not_for_nationality
+  translation: "Недоступно для вашего гражданства"
+- id: vm_koreans_only
+  translation: "Только для этнических корейцев"
+- id: vm_consult_button
+  translation: "Бесплатная консультация"
+- id: vm_no_visa
+  translation: "Визы пока нет"
+- id: vm_start_none
+  translation: "Отправная точка"
+- id: vm_details
+  translation: "Сделать карту персональной"
+- id: vm_details_hint
+  translation: "Необязательно. Ответьте на то, что относится к вам, и карта покажет подходящее. Пустые поля ничего не скрывают."
+- id: vm_about_you
+  translation: "О вас"
+- id: vm_korean_roots
+  translation: "Корейское происхождение"
+- id: vm_korean_roots_hint
+  translation: "Вы, ваш родитель или дедушка/бабушка имели гражданство Кореи."
+- id: vm_yes
+  translation: "Да"
+- id: vm_no
+  translation: "Нет"
+- id: vm_family
+  translation: "Семья"
+- id: vm_spouse
+  translation: "Семейное положение"
+- id: vm_not_set
+  translation: "Не указано"
+- id: vm_spouse_none
+  translation: "Не в браке"
+- id: vm_spouse_korean
+  translation: "В браке с гражданином Кореи"
+- id: vm_spouse_f5
+  translation: "В браке с обладателем ПМЖ (F-5)"
+- id: vm_spouse_foreigner
+  translation: "В браке с иностранцем с другой корейской визой"
+- id: vm_spouse_abroad
+  translation: "В браке, у супруга нет корейской визы"
+- id: vm_spouse_exkorean
+  translation: "В разводе или вдовство после брака с гражданином Кореи"
+- id: vm_korean_child
+  translation: "Воспитываете ребёнка — гражданина Кореи"
+- id: vm_korean_child_short
+  translation: "Воспитывает ребёнка — гражданина Кореи"
+- id: vm_parent
+  translation: "Родители (до 19 лет)"
+- id: vm_parent_none
+  translation: "У родителей нет корейского статуса"
+- id: vm_parent_korean
+  translation: "Родитель — гражданин Кореи"
+- id: vm_parent_f5
+  translation: "Родитель — обладатель ПМЖ (F-5)"
+- id: vm_parent_foreigner
+  translation: "Родитель живёт в Корее по другой визе"
+- id: vm_education
+  translation: "Образование"
+- id: vm_edu
+  translation: "Наивысшее законченное образование"
+- id: vm_edu_0
+  translation: "Ниже среднего"
+- id: vm_edu_1
+  translation: "Среднее (школа)"
+- id: vm_edu_2
+  translation: "Колледж (2–3 года)"
+- id: vm_edu_3
+  translation: "Бакалавриат"
+- id: vm_edu_4
+  translation: "Магистратура"
+- id: vm_edu_5
+  translation: "Докторская степень (PhD)"
+- id: vm_edu_korea
+  translation: "В корейском вузе"
+- id: vm_edu_stem
+  translation: "Наука, инженерия или IT"
+- id: vm_language
+  translation: "Корейский язык"
+- id: vm_topik_none
+  translation: "Нет TOPIK"
+- id: vm_kiip
+  translation: "KIIP (программа интеграции)"
+- id: vm_kiip_none
+  translation: "Нет KIIP"
+- id: vm_kiip_level
+  translation: "KIIP, уровень {n}"
+- id: vm_work
+  translation: "Работа и инвестиции"
+- id: vm_experience
+  translation: "Опыт работы по специальности"
+- id: vm_experience_short
+  translation: "Опыт"
+- id: vm_exp_0
+  translation: "Меньше 1 года"
+- id: vm_exp_1
+  translation: "1–2 года"
+- id: vm_exp_3
+  translation: "3–4 года"
+- id: vm_exp_5
+  translation: "5–7 лет"
+- id: vm_exp_8
+  translation: "8+ лет"
+- id: vm_invest
+  translation: "Сколько можете инвестировать в Корее"
+- id: vm_invest_short
+  translation: "Инвестиции"
+- id: vm_invest_0
+  translation: "Нисколько"
+- id: vm_invest_1
+  translation: "₩100 млн+ (около 70 тыс. USD)"
+- id: vm_invest_2
+  translation: "₩300 млн+ (около 220 тыс. USD)"
+- id: vm_invest_3
+  translation: "₩700 млн+ (около 500 тыс. USD)"
+- id: vm_invest_4
+  translation: "₩1 млрд+ (около 720 тыс. USD)"
+- id: vm_invest_5
+  translation: "₩1,5 млрд+ (около 1,1 млн USD)"
+- id: vm_invest_6
+  translation: "₩3 млрд+ (около 2,2 млн USD)"
+- id: vm_matches
+  translation: "Подходит по вашим данным"
+- id: vm_show_closed
+  translation: "Показать неподходящие варианты ({n})"
+- id: vm_hide_closed
+  translation: "Скрыть неподходящие варианты"
+- id: vm_none_fit
+  translation: "Ни один следующий шаг не подходит по вашим данным."
+- id: vm_why_family
+  translation: "Не подходит семейное положение"
+- id: vm_why_education
+  translation: "Не подходит образование"
+- id: vm_why_experience
+  translation: "Нужно больше опыта работы"
+- id: vm_why_invest
+  translation: "Нужна большая сумма инвестиций"
+- id: vm_lang_need
+  translation: "Нужен корейский: {req}"
+- id: vm_lang_ok
+  translation: "Вашего корейского достаточно: {req}"
+- id: vm_cat_study
+  translation: "Учёба"
+- id: vm_cat_work
+  translation: "Работа"
+- id: vm_cat_family
+  translation: "Семья и корейские корни"
+- id: vm_cat_business
+  translation: "Бизнес и инвестиции"
+- id: vm_cat_residence
+  translation: "Резидентство"
+- id: vm_cat_pr
+  translation: "ПМЖ"
+- id: vm_cat_visit
+  translation: "Поездки"
+- id: vm_cat_other
+  translation: "Другое"
+- id: vm_rank
+  translation: "Рейтинг вуза"
+- id: vm_rank_0
+  translation: "Не в топ-500 QS"
+- id: vm_rank_1
+  translation: "Топ-500 QS"
+- id: vm_rank_2
+  translation: "Топ-200 QS"
+- id: vm_rank_3
+  translation: "Топ-100 QS"
+- id: vm_why_age
+  translation: "Не подходит возраст"
+- id: vm_why_previous
+  translation: "Невозможно сразу после вашей предыдущей визы"
+- id: vm_report
+  translation: "Сообщить об ошибке"
+- id: vm_report_ask
+  translation: "Что-то не так с картой?"
+- id: vm_report_text
+  translation: "Расскажите, что не так: лишняя или недостающая виза, неверное условие, проблема с картинкой…"
+- id: vm_report_open
+  translation: "Открыть Telegram"
+- id: vm_report_download
+  translation: "Скачать картинку"
+- id: vm_report_close
+  translation: "Закрыть"
+- id: vm_report_msg
+  translation: "Визовая карта: сообщение об ошибке"
+- id: vm_report_path
+  translation: "Путь"
+- id: vm_report_map
+  translation: "Карта"
+- id: vm_report_problem
+  translation: "Что не так:"
+- id: vm_report_placeholder
+  translation: "Что пошло не так?"
+- id: vm_report_contact
+  translation: "Telegram или e-mail (необязательно)"
+- id: vm_report_privacy
+  translation: "Мы отправим ваше сообщение, имя и контакт, если указаны (чтобы ответить вам), ответы на этой странице и картинку карты команде KVP Partners."
+- id: vm_report_send
+  translation: "Отправить"
+- id: vm_report_sending
+  translation: "Отправляем…"
+- id: vm_report_sent
+  translation: "Спасибо! Сообщение отправлено."
+- id: vm_report_failed
+  translation: "Сейчас не удалось отправить. Можно отправить через Telegram."
+- id: vm_report_busy
+  translation: "Вы только что отправили несколько сообщений. Попробуйте через час."
+- id: vm_report_empty
+  translation: "Опишите, пожалуйста, проблему."
+- id: vm_report_name
+  translation: "Ваше имя (необязательно)"

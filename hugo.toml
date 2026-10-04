@@ -41,6 +41,8 @@ capitalizeListTitles = false
     telegram = "kvp_partners"     # t.me/kvp_partners
     instagram = "kvp_partners"    # instagram.com/kvp_partners
     email = "help@kvppartners.com"
+    website = "kvppartners.com"   # shown on Visa map images
+    telegramAdmin = "kvp_partners_admin"   # Visa map problem reports go to t.me/kvp_partners_admin
 
 # The JSON index powers the header search on pages other than the home page.
 [outputs]

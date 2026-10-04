@@ -1,0 +1,1546 @@
+# Visa map data: visa types, the moves between them, and who they are open to.
+# Generated from research of the Korea Immigration Service manuals (2026.9), the
+# Immigration Act decree tables, MOJ notices and embassy guidance; see the Visa map
+# page for sources. Each visa has a name and a 'how to get it' note per language.
+#   next:        possible next visas; 'abroad: true' = apply for a new visa from abroad;
+#                'abroadFor: <group>' = from abroad only for that group's nationalities
+#   age:         [min] or [min, max];  ageByCountry: per-nationality age limits
+#   countries:   nationalities allowed (a group name from 'groups' or a list of ISO codes)
+#   notes:       extra notes for specific nationalities ('abroad: true' = only when applying from abroad)
+#   needs:       who can get it, from the reader's optional details: {fact: value} (all must hold)
+#                or a list of those (any one is enough); a move's own 'needs' replaces the visa's.
+#                Facts: korean (true = ethnic Korean); spouse (none, korean, f5, foreigner, abroad,
+#                exKorean); koreanChild (true); parent (none, korean, f5, foreigner; under 19 only);
+#                edu / koreanEdu (minimum level: 1 high school, 2 college, 3 bachelor, 4 master,
+#                5 doctorate; koreanEdu = from a Korean school); stem (true); rank (minimum QS
+#                ranking of the university: 1 = top 500, 2 = top 200, 3 = top 100);
+#                experience (minimum years); invest (minimum level: 1 = ₩100M, 2 = ₩300M,
+#                3 = ₩700M ≈ US$500K, 4 = ₩1B, 5 = ₩1.5B, 6 = ₩3B); ageUnder (age below N);
+#                countries (a group name or list of ISO codes); notAfter (visas that may not come
+#                right before the visa this move leaves from, e.g. [D-4, E-9])
+#   again:       on a move, the note to show instead when the reader held that visa before
+#   gives:       facts the visa implies for later steps (e.g. D-2-2 gives a Korean bachelor's)
+#   lang:        Korean level needed: {topik: N, kiip: N} (either is enough); a hint, never blocks
+#   NONE:        the starting point for readers without a Korean visa; its moves are first visas
+updated: 2026-10
+groups:
+  notified: [CN, PH, ID, BD, VN, MN, TH, PK, LK, IN, MM, NP, NG, GH, EG, PE, IR, UZ, KZ, KG, UA]
+  eps: [TH, PH, LK, VN, ID, MN, PK, UZ, KH, CN, BD, NP, MM, KG, TL, LA, TJ]
+  h1: [AD, AR, AU, AT, BE, BR, CA, CL, CZ, DK, FR, DE, HK, HU, IE, IL, IT, JP, LV, LU, NL, NZ, PL, PT, ES, SE, TW, GB, US]
+  h1NoChange: [GB, FR, IE, DK, CL, IT, IL, BE]
+  asiaPilot: [VN, CN, TH, JP, IN, ID, MY, SG, PH]
+  marriageProgram: [CN, VN, PH, KH, MN, UZ, TH]
+  visaWaiver: [AE, AG, AT, BB, BG, BR, BS, CL, CO, CR, CZ, DE, DK, DM, DO, EE, ES, FI, FR, GB, GD, GT, HT, HU, IE, IL, IS, IT, JM, KN, LC, LT, LV, MA, MT, NI, 'NO', PA, PE, PL, PT, QA, RO, SE, SG, SK, SV, TH, TR, TT, UY, VC, VE, BE, CH, GR, LI, LU, MX, MY, NL, NZ, SR, RU, LS, KZ, TN]
+  visaFree: [CA, AU, BW, EC, HK, HR, JP, KW, MO, RS, SI, TW, US, AD, AL, AR, BA, BH, BN, CY, FJ, FM, GY, HN, KI, MC, ME, MH, MU, NR, OM, PW, PY, SA, SB, SC, SM, SZ, TO, TV, VA, WS, ZA]
+  tb: [NP, TL, RU, MY, MN, MM, BD, VN, TH, LK, UZ, IN, ID, CN, KH, KG, PK, PH, LA, KZ, TJ, UA, AZ, BY, MD, NG, ZA, ET, KE, CD, MZ, ZW, AO, PE, PG]
+statuses:
+  B-1: {en: Visa-free entry, ru: Безвизовый въезд, uz: Vizasiz kirish, uz-cyrl: Визасиз кириш}
+  B-2: {en: Tourism / transit, ru: Туризм / транзит, uz: Turizm / tranzit, uz-cyrl: Туризм / транзит}
+  C-3: {en: Short-term visit, ru: Краткосрочный визит, uz: Qisqa muddatli tashrif, uz-cyrl: Қисқа муддатли ташриф}
+  C-4: {en: Short-term work, ru: Краткосрочная работа, uz: Qisqa muddatli ish, uz-cyrl: Қисқа муддатли иш}
+  D-1: {en: Arts and culture, ru: Искусство и культура, uz: San’at va madaniyat, uz-cyrl: Санъат ва маданият}
+  D-2: {en: Student, ru: Студент, uz: Talaba, uz-cyrl: Талаба}
+  D-3: {en: Industrial trainee, ru: Производственный стажёр, uz: Ishlab chiqarish stajyori, uz-cyrl: Ишлаб чиқариш стажёри}
+  D-4: {en: Trainee / language student, ru: Стажёр / изучение языка, uz: Stajyor / til o‘rganuvchi, uz-cyrl: Стажёр / тил ўрганувчи}
+  D-5: {en: Journalist, ru: Журналист, uz: Jurnalist, uz-cyrl: Журналист}
+  D-6: {en: Religious worker, ru: Религиозная деятельность, uz: Diniy faoliyat, uz-cyrl: Диний фаолият}
+  D-7: {en: Intra-company transferee, ru: Перевод внутри компании, uz: Kompaniya ichida o‘tkazilgan xodim, uz-cyrl: Компания ичида ўтказилган ходим}
+  D-8: {en: Investor / founder, ru: Инвестор / основатель, uz: Investor / asoschi, uz-cyrl: Инвестор / асосчи}
+  D-9: {en: Trade and business, ru: Торговля и бизнес, uz: Savdo va biznes, uz-cyrl: Савдо ва бизнес}
+  D-10: {en: Job seeker, ru: Поиск работы, uz: Ish qidiruvchi, uz-cyrl: Иш қидирувчи}
+  E-1: {en: Professor, ru: Преподаватель вуза, uz: Professor, uz-cyrl: Профессор}
+  E-2: {en: Language instructor, ru: Преподаватель языка, uz: Til o‘qituvchisi, uz-cyrl: Тил ўқитувчиси}
+  E-3: {en: Researcher, ru: Исследователь, uz: Tadqiqotchi, uz-cyrl: Тадқиқотчи}
+  E-4: {en: Technical instructor, ru: Технический специалист, uz: Texnik mutaxassis, uz-cyrl: Техник мутахассис}
+  E-5: {en: Licensed professional, ru: Лицензированный специалист, uz: Litsenziyali mutaxassis, uz-cyrl: Лицензияли мутахассис}
+  E-6: {en: 'Arts, entertainment, sport', ru: 'Искусство, развлечения, спорт', uz: 'San’at, ko‘ngilochar, sport', uz-cyrl: 'Санъат, кўнгилочар, спорт'}
+  E-7: {en: Work visa (designated jobs), ru: Рабочая виза (определённые профессии), uz: Ish vizasi (belgilangan kasblar), uz-cyrl: Иш визаси (белгиланган касблар)}
+  E-8: {en: Seasonal work, ru: Сезонная работа, uz: Mavsumiy ish, uz-cyrl: Мавсумий иш}
+  E-9: {en: Non-professional work (EPS), ru: Неквалифицированная работа (EPS), uz: Malakasiz ish (EPS), uz-cyrl: Малакасиз иш (EPS)}
+  E-10: {en: Seafarer, ru: Моряк, uz: Dengizchi, uz-cyrl: Денгизчи}
+  F-1: {en: Family visit, ru: Визит к семье, uz: Oilaviy tashrif, uz-cyrl: Оилавий ташриф}
+  F-2: {en: Resident, ru: Резидент, uz: Rezident, uz-cyrl: Резидент}
+  F-3: {en: Dependent family, ru: Член семьи, uz: Oila a’zosi, uz-cyrl: Оила аъзоси}
+  F-4: {en: Overseas Korean, ru: Этнический кореец, uz: Xorijdagi koreys, uz-cyrl: Хориждаги корейс}
+  F-5: {en: Permanent residence, ru: ПМЖ, uz: Doimiy yashash, uz-cyrl: Доимий яшаш}
+  F-6: {en: Marriage migrant, ru: Брачная иммиграция, uz: Nikoh migranti, uz-cyrl: Никоҳ мигранти}
+  G-1: {en: Humanitarian / other, ru: Гуманитарный / прочее, uz: Insonparvarlik / boshqa, uz-cyrl: Инсонпарварлик / бошқа}
+  H-1: {en: Working holiday, ru: Рабочий отпуск, uz: Ishchi ta’til, uz-cyrl: Ишчи таътил}
+  H-2: {en: Work and visit (closed), ru: Работа и визит (закрыт), uz: Ish va tashrif (yopilgan), uz-cyrl: Иш ва ташриф (ёпилган)}
+visas:
+  B-1:
+    name: {en: Visa-free entry, ru: Безвизовый въезд, uz: Vizasiz kirish, uz-cyrl: Визасиз кириш}
+    how: {en: Visa-free stay of 30–90 days under a visa-waiver agreement; most visitors need a K-ETA. Long-term statuses usually need a new visa from abroad., ru: Безвизовое пребывание на 30–90 дней по соглашению; большинству нужна K-ETA. Для долгосрочных статусов обычно нужна новая виза из-за рубежа., uz: Vizasiz kelishuv bo‘yicha 30–90 kungacha bo‘lish; ko‘pchilikka K-ETA kerak. Uzoq muddatli maqomlar uchun odatda chet eldan yangi viza kerak., uz-cyrl: Визасиз келишув бўйича 30–90 кунгача бўлиш; кўпчиликка K-ETA керак. Узоқ муддатли мақомлар учун одатда чет элдан янги виза керак.}
+    next:
+    - {to: D-4-1, abroad: true}
+    - to: D-2-1
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-2
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-3
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-4
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - {to: E-7-1, abroad: true}
+    - {to: E-2, abroad: true}
+    - {to: E-9, abroad: true}
+    - {to: H-1, abroad: true}
+    - {to: F-6-1, abroad: true}
+    - {to: F-4, abroad: true}
+    - F-2-8
+    - F-2-12
+    - F-5-25
+    - {to: F-2-3, abroad: true}
+    countries: visaWaiver
+    notes:
+    - countries: [KZ]
+      text: {en: 'Kazakh citizens: up to 30 days per visit and 60 days in any 180; a K-ETA is needed.', ru: 'Граждане Казахстана: до 30 дней за въезд и 60 дней за любые 180; нужна K-ETA.', uz: 'Qozog‘iston fuqarolari: har safar 30 kungacha va har 180 kunda 60 kungacha; K-ETA kerak.', uz-cyrl: 'Қозоғистон фуқаролари: ҳар сафар 30 кунгача ва ҳар 180 кунда 60 кунгача; K-ETA керак.'}
+    - countries: [RU]
+      text: {en: 'Russian citizens: up to 60 days per visit and 90 days in any 180, with no study or work; a K-ETA is needed.', ru: 'Граждане России: до 60 дней за въезд и 90 дней за любые 180, без учёбы и работы; нужна K-ETA.', uz: 'Rossiya fuqarolari: har safar 60 kungacha va har 180 kunda 90 kungacha, o‘qish va ishlashsiz; K-ETA kerak.', uz-cyrl: 'Россия фуқаролари: ҳар сафар 60 кунгача ва ҳар 180 кунда 90 кунгача, ўқиш ва ишлашсиз; K-ETA керак.'}
+  B-2:
+    name: {en: Visa-free tourism / transit, ru: Безвизовый туризм / транзит, uz: Vizasiz turizm / tranzit, uz-cyrl: Визасиз туризм / транзит}
+    how: {en: 'Visa-free entry for tourism or transit, 30–90 days (6 months for Canadians); most visitors need a K-ETA. Changing status inside Korea is generally not possible.', ru: Безвизовый въезд для туризма или транзита на 30–90 дней (для граждан Канады — 6 месяцев); большинству нужна K-ETA. Сменить статус в Корее обычно нельзя., uz: Turizm yoki tranzit uchun 30–90 kunga vizasiz kirish (Kanada fuqarolari uchun 6 oy); ko‘pchilikka K-ETA kerak. Koreya ichida maqomni o‘zgartirish odatda mumkin emas., uz-cyrl: Туризм ёки транзит учун 30–90 кунга визасиз кириш (Канада фуқаролари учун 6 ой); кўпчиликка K-ETA керак. Корея ичида мақомни ўзгартириш одатда мумкин эмас.}
+    next:
+    - {to: D-4-1, abroad: true}
+    - to: D-2-1
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-2
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-3
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-4
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - {to: E-7-1, abroad: true}
+    - {to: E-2, abroad: true}
+    - {to: E-9, abroad: true}
+    - {to: H-1, abroad: true}
+    - {to: F-6-1, abroad: true}
+    - {to: F-4, abroad: true}
+    - F-2-8
+    - F-2-12
+    - F-5-25
+    - {to: F-2-3, abroad: true}
+    countries: visaFree
+  C-3-1:
+    name: {en: Short-term visit (general), ru: Краткосрочный визит (общий), uz: Qisqa muddatli tashrif (umumiy), uz-cyrl: Қисқа муддатли ташриф (умумий)}
+    how: {en: 'Up to 90 days for visiting relatives, events or short courses. No paid work.', ru: 'До 90 дней: визит к родственникам, мероприятия, короткие курсы. Без оплачиваемой работы.', uz: '90 kungacha: qarindoshlarni ko‘rish, tadbirlar, qisqa kurslar. Haq to‘lanadigan ish yo‘q.', uz-cyrl: '90 кунгача: қариндошларни кўриш, тадбирлар, қисқа курслар. Ҳақ тўланадиган иш йўқ.'}
+    next:
+    - {to: D-4-1, abroad: true}
+    - to: D-2-1
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-2
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-3
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-4
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - {to: E-7-1, abroad: true}
+    - {to: E-2, abroad: true}
+    - {to: E-9, abroad: true}
+    - {to: H-1, abroad: true}
+    - {to: F-6-1, abroad: true}
+    - {to: F-4, abroad: true}
+    - F-2-8
+    - F-2-12
+    - F-5-25
+    - {to: F-2-3, abroad: true}
+  C-3-4:
+    name: {en: Business visitor, ru: Деловой визит, uz: Ishbilarmonlik tashrifi, uz-cyrl: Ишбилармонлик ташрифи}
+    how: {en: 'Up to 90 days for meetings, market research and contracts. No paid work.', ru: 'До 90 дней: встречи, изучение рынка, контракты. Без оплачиваемой работы.', uz: '90 kungacha: uchrashuvlar, bozorni o‘rganish, shartnomalar. Haq to‘lanadigan ish yo‘q.', uz-cyrl: '90 кунгача: учрашувлар, бозорни ўрганиш, шартномалар. Ҳақ тўланадиган иш йўқ.'}
+    next:
+    - {to: D-4-1, abroad: true}
+    - to: D-2-1
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-2
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-3
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-2-4
+      abroadFor: notified
+      note: {en: In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad., ru: В Корее — только для граждан некоторых стран и если учёба начинается до окончания пребывания; иначе — подача из-за рубежа., uz: Koreyada faqat ayrim davlatlar fuqarolari uchun va o‘qish qolish muddati tugashidan oldin boshlansa; aks holda chet eldan topshiriladi., uz-cyrl: Кореяда фақат айрим давлатлар фуқаролари учун ва ўқиш қолиш муддати тугашидан олдин бошланса; акс ҳолда чет элдан топширилади.}
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - {to: E-7-1, abroad: true}
+    - {to: E-2, abroad: true}
+    - {to: E-9, abroad: true}
+    - {to: H-1, abroad: true}
+    - {to: F-6-1, abroad: true}
+    - {to: F-4, abroad: true}
+    - F-2-8
+    - F-2-12
+    - F-5-25
+    - D-9-1
+    - D-9-4
+    - {to: F-2-3, abroad: true}
+  C-3-8:
+    name: {en: Overseas Korean visit, ru: Визит этнического корейца, uz: Xorijdagi koreys tashrifi, uz-cyrl: Хориждаги корейс ташрифи}
+    how: {en: 'Multiple-entry visit visa for ethnic Koreans of any nationality; up to 90 days per stay, no work.', ru: 'Многократная виза для этнических корейцев любого гражданства; до 90 дней за въезд, без работы.', uz: 'Har qanday fuqarolikdagi etnik koreyslar uchun ko‘p martalik viza; har safar 90 kungacha, ishlash mumkin emas.', uz-cyrl: 'Ҳар қандай фуқароликдаги этник корейслар учун кўп марталик виза; ҳар сафар 90 кунгача, ишлаш мумкин эмас.'}
+    next:
+    - F-4
+    - D-2-1
+    - D-2-2
+    - D-2-3
+    - D-2-4
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - {to: D-4-1, abroad: true}
+    - {to: F-6-1, abroad: true}
+    - {to: F-2-3, abroad: true}
+    needs: &id001 {korean: true}
+    gives: *id001
+  C-3-9:
+    name: {en: Tourist, ru: Турист, uz: Turist, uz-cyrl: Турист}
+    how: {en: Individual tourist visa for up to 90 days., ru: Индивидуальная туристическая виза до 90 дней., uz: 90 kungacha individual turistik viza., uz-cyrl: 90 кунгача индивидуал туристик виза.}
+    next:
+    - {to: D-4-1, abroad: true}
+    - {to: D-2-1, abroad: true}
+    - {to: D-2-2, abroad: true}
+    - {to: D-2-3, abroad: true}
+    - {to: D-2-4, abroad: true}
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - {to: E-7-1, abroad: true}
+    - {to: E-2, abroad: true}
+    - {to: E-9, abroad: true}
+    - {to: H-1, abroad: true}
+    - {to: F-6-1, abroad: true}
+    - {to: F-4, abroad: true}
+    - F-2-8
+    - F-2-12
+    - F-5-25
+    - {to: F-2-3, abroad: true}
+  C-4:
+    name: {en: Short-term employment, ru: Краткосрочная работа, uz: Qisqa muddatli ish, uz-cyrl: Қисқа муддатли иш}
+    how: {en: 'Paid work of up to 90 days, such as lectures, performances or technical guidance.', ru: 'Оплачиваемая работа до 90 дней: лекции, выступления, техническое консультирование.', uz: '90 kungacha haq to‘lanadigan ish: ma’ruzalar, chiqishlar, texnik maslahat.', uz-cyrl: '90 кунгача ҳақ тўланадиган иш: маърузалар, чиқишлар, техник маслаҳат.'}
+    next:
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - {to: D-4-1, abroad: true}
+    - {to: D-2-2, abroad: true}
+    - {to: E-7-1, abroad: true}
+    - {to: E-9, abroad: true}
+    - {to: F-6-1, abroad: true}
+    - {to: F-2-3, abroad: true}
+  D-3:
+    name: {en: Industrial trainee, ru: Производственный стажёр, uz: Ishlab chiqarish stajyori, uz-cyrl: Ишлаб чиқариш стажёри}
+    how: {en: Training at a Korean company that invests or exports technology abroad; age 18–40., ru: 'Стажировка в корейской компании, инвестирующей за рубеж или экспортирующей технологии; возраст 18–40.', uz: Chet elga investitsiya kiritgan yoki texnologiya eksport qiluvchi Koreya kompaniyasida amaliyot; yosh 18–40., uz-cyrl: Чет элга инвестиция киритган ёки технология экспорт қилувчи Корея компаниясида амалиёт; ёш 18–40.}
+    next:
+    - to: D-10-1
+      note: {en: 'Rare exception: degree holders only, with 60+ points (80+ for notified countries).', ru: 'Редкое исключение: только при наличии диплома и 60+ баллов (80+ для стран из особого списка).', uz: 'Kamdan-kam istisno: faqat diplom bilan va 60+ ball (maxsus ro‘yxatdagi davlatlar uchun 80+).', uz-cyrl: 'Камдан-кам истисно: фақат диплом билан ва 60+ балл (махсус рўйхатдаги давлатлар учун 80+).'}
+    - {to: D-2-2, abroad: true}
+    - {to: E-7-1, abroad: true}
+    - {to: E-9, abroad: true}
+    age: [18, 40]
+  D-4-1:
+    name: {en: Korean language student, ru: Изучение корейского языка, uz: Koreys tili o‘quvchisi, uz-cyrl: Корейс тили ўқувчиси}
+    how: {en: Korean-language course at a university language institute., ru: Курс корейского языка при языковом институте университета., uz: Universitet qoshidagi til markazida koreys tili kursi., uz-cyrl: Университет қошидаги тил марказида корейс тили курси.}
+    next:
+    - D-2-1
+    - D-2-2
+    - D-2-3
+    - D-2-4
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - E-7-1
+    - E-2
+    - F-6-1
+    - F-2-3
+    needs: {edu: 1}
+    notes:
+    - countries: [UZ]
+      text: {en: 'For Uzbek citizens (Korean Embassy in Tashkent, 2026): TOPIK 1 and USD 7,800 (Seoul area) or 6,300 (elsewhere) in a KDB account for 3+ months.', ru: 'Для граждан Узбекистана (посольство Кореи в Ташкенте, 2026): TOPIK 1 и 7 800 USD (столичный регион) или 6 300 USD (другие регионы) на счёте KDB от 3 месяцев.', uz: 'O‘zbekiston fuqarolari uchun (Koreyaning Toshkentdagi elchixonasi, 2026): TOPIK 1 va KDB hisobida 3+ oy davomida 7 800 USD (poytaxt hududi) yoki 6 300 USD (boshqa hududlar).', uz-cyrl: 'Ўзбекистон фуқаролари учун (Кореянинг Тошкентдаги элчихонаси, 2026): TOPIK 1 ва KDB ҳисобида 3+ ой давомида 7 800 USD (пойтахт ҳудуди) ёки 6 300 USD (бошқа ҳудудлар).'}
+      abroad: true
+  D-4-2:
+    name: {en: General trainee, ru: Стажёр (общий), uz: Umumiy stajyor, uz-cyrl: Умумий стажёр}
+    how: {en: 'Training or research at a public institute, company or international organisation.', ru: 'Обучение или исследования в госучреждении, компании или международной организации.', uz: 'Davlat muassasasi, kompaniya yoki xalqaro tashkilotda o‘qish yoki tadqiqot.', uz-cyrl: 'Давлат муассасаси, компания ёки халқаро ташкилотда ўқиш ёки тадқиқот.'}
+    next:
+    - D-2-2
+    - D-2-3
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - E-7-1
+    - F-6-1
+    - F-2-3
+  D-4-3:
+    name: {en: School student (K-12), ru: Школьник, uz: Maktab o‘quvchisi, uz-cyrl: Мактаб ўқувчиси}
+    how: {en: 'Enrolment at a Korean elementary, middle or high school.', ru: 'Учёба в корейской начальной, средней или старшей школе.', uz: 'Koreyadagi boshlang‘ich, o‘rta yoki yuqori maktabda o‘qish.', uz-cyrl: 'Кореядаги бошланғич, ўрта ёки юқори мактабда ўқиш.'}
+    next: [D-2-1, D-2-2]
+    age: [0, 19]
+  D-4-6:
+    name: {en: Private-institute trainee, ru: Стажёр частного учебного центра, uz: Xususiy o‘quv markazi stajyori, uz-cyrl: Хусусий ўқув маркази стажёри}
+    how: {en: Vocational training at a rated private institute; age 18–30 with high-school education., ru: 'Профобучение в аккредитованном частном центре; возраст 18–30, полное среднее образование.', uz: 'Reytingli xususiy markazda kasbiy ta’lim; yosh 18–30, o‘rta ma’lumot.', uz-cyrl: 'Рейтингли хусусий марказда касбий таълим; ёш 18–30, ўрта маълумот.'}
+    next:
+    - E-7-3
+    - E-7-2
+    - E-7-1
+    - D-2-1
+    - D-2-2
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    age: [18, 30]
+    needs: {edu: 1}
+    lang: {topik: 2, kiip: 2}
+  D-4-7:
+    name: {en: Foreign language student, ru: Изучение иностранного языка, uz: Chet tili o‘quvchisi, uz-cyrl: Чет тили ўқувчиси}
+    how: {en: Foreign-language course at a university language institute., ru: Курс иностранного языка при языковом институте университета., uz: Universitet qoshidagi til markazida chet tili kursi., uz-cyrl: Университет қошидаги тил марказида чет тили курси.}
+    next:
+    - D-2-1
+    - D-2-2
+    - D-2-3
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - F-6-1
+    - F-2-3
+  D-2-1:
+    name: {en: Associate degree student, ru: Студент колледжа, uz: Kollej talabasi, uz-cyrl: Коллеж талабаси}
+    how: {en: Admission to a 2–3-year associate degree program at a Korean college., ru: Поступление в корейский колледж на 2–3-летнюю программу., uz: Koreya kollejida 2–3 yillik dasturga qabul., uz-cyrl: Корея коллежида 2–3 йиллик дастурга қабул.}
+    next:
+    - D-2-2
+    - to: D-10-1
+      note: {en: 'After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.', ru: 'После окончания корейского колледжа или вуза: первый год — без балльной оценки; продление по баллам, всего до 3 лет.', uz: 'Koreya kolleji yoki universitetini tamomlagach: birinchi yil ball talab qilinmaydi; uzaytirish ball bo‘yicha, jami 3 yilgacha.', uz-cyrl: 'Корея коллежи ёки университетини тамомлагач: биринчи йил балл талаб қилинмайди; узайтириш балл бўйича, жами 3 йилгача.'}
+      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3
+          йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
+    - to: E-7-1
+      note: {en: Korean graduates are exempt from the work-experience rule; salary floor applies., ru: Выпускники корейских вузов освобождены от требования об опыте работы; действует минимальная зарплата., uz: Koreya bitiruvchilari ish tajribasi talabidan ozod; eng kam ish haqi talabi amal qiladi., uz-cyrl: Корея битирувчилари иш тажрибаси талабидан озод; энг кам иш ҳақи талаби амал қилади.}
+    - E-7-2
+    - E-7-3
+    - D-8-4
+    - F-2-R
+    - F-6-1
+    - F-2-3
+    - to: F-2-7
+      note: {en: With a job at a listed company or in a promising industry (income of 1.5× GNI or more); 80+ points., ru: 'С работой в компании на бирже или в перспективной отрасли (доход от 1,5× ВНД); 80+ баллов.', uz: 'Birjadagi kompaniyada yoki istiqbolli sohada ish bilan (daromad 1,5× GNI dan kam emas); 80+ ball.', uz-cyrl: 'Биржадаги компанияда ёки истиқболли соҳада иш билан (даромад 1,5× GNI дан кам эмас); 80+ балл.'}
+    - E-4
+    - E-5
+    - E-6-1
+    needs: {edu: 1}
+    gives: {edu: 2, koreanEdu: 2}
+    notes:
+    - countries: [UZ]
+      text: {en: 'For Uzbek citizens (Korean Embassy in Tashkent, 2026): TOPIK 2 and USD 15,500 (Seoul area) or 12,500 (elsewhere) in a KDB account for 1+ month.', ru: 'Для граждан Узбекистана (посольство Кореи в Ташкенте, 2026): TOPIK 2 и 15 500 USD (столичный регион) или 12 500 USD (другие регионы) на счёте KDB от 1 месяца.', uz: 'O‘zbekiston fuqarolari uchun (Koreyaning Toshkentdagi elchixonasi, 2026): TOPIK 2 va KDB hisobida 1+ oy davomida 15 500 USD (poytaxt hududi) yoki 12 500 USD (boshqa hududlar).', uz-cyrl: 'Ўзбекистон фуқаролари учун (Кореянинг Тошкентдаги элчихонаси, 2026): TOPIK 2 ва KDB ҳисобида 1+ ой давомида 15 500 USD (пойтахт ҳудуди) ёки 12 500 USD (бошқа ҳудудлар).'}
+      abroad: true
+  D-2-2:
+    name: {en: Bachelor's student, ru: Студент бакалавриата, uz: Bakalavr talabasi, uz-cyrl: Бакалавр талабаси}
+    how: {en: Admission to a bachelor's program at a Korean university., ru: Поступление на бакалавриат в корейский вуз., uz: Koreya universitetida bakalavriatga qabul., uz-cyrl: Корея университетида бакалавриатга қабул.}
+    next:
+    - D-2-3
+    - to: D-10-1
+      note: {en: 'After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.', ru: 'После окончания корейского колледжа или вуза: первый год — без балльной оценки; продление по баллам, всего до 3 лет.', uz: 'Koreya kolleji yoki universitetini tamomlagach: birinchi yil ball talab qilinmaydi; uzaytirish ball bo‘yicha, jami 3 yilgacha.', uz-cyrl: 'Корея коллежи ёки университетини тамомлагач: биринчи йил балл талаб қилинмайди; узайтириш балл бўйича, жами 3 йилгача.'}
+      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3
+          йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
+    - D-10-2
+    - to: E-7-1
+      note: {en: Korean graduates are exempt from the work-experience rule; salary floor applies., ru: Выпускники корейских вузов освобождены от требования об опыте работы; действует минимальная зарплата., uz: Koreya bitiruvchilari ish tajribasi talabidan ozod; eng kam ish haqi talabi amal qiladi., uz-cyrl: Корея битирувчилари иш тажрибаси талабидан озод; энг кам иш ҳақи талаби амал қилади.}
+    - E-7-2
+    - E-7-3
+    - E-2
+    - D-8-4
+    - F-2-R
+    - F-6-1
+    - F-2-3
+    - to: F-2-7
+      note: {en: With a job at a listed company or in a promising industry (income of 1.5× GNI or more); 80+ points., ru: 'С работой в компании на бирже или в перспективной отрасли (доход от 1,5× ВНД); 80+ баллов.', uz: 'Birjadagi kompaniyada yoki istiqbolli sohada ish bilan (daromad 1,5× GNI dan kam emas); 80+ ball.', uz-cyrl: 'Биржадаги компанияда ёки истиқболли соҳада иш билан (даромад 1,5× GNI дан кам эмас); 80+ балл.'}
+    - E-4
+    - E-5
+    - E-6-1
+    needs: {edu: 1}
+    gives: {edu: 3, koreanEdu: 3}
+    notes:
+    - countries: [UZ]
+      text: {en: 'For Uzbek citizens (Korean Embassy in Tashkent, 2026): TOPIK 3 and USD 15,500 (Seoul area) or 12,500 (elsewhere) in a KDB account for 1+ month.', ru: 'Для граждан Узбекистана (посольство Кореи в Ташкенте, 2026): TOPIK 3 и 15 500 USD (столичный регион) или 12 500 USD (другие регионы) на счёте KDB от 1 месяца.', uz: 'O‘zbekiston fuqarolari uchun (Koreyaning Toshkentdagi elchixonasi, 2026): TOPIK 3 va KDB hisobida 1+ oy davomida 15 500 USD (poytaxt hududi) yoki 12 500 USD (boshqa hududlar).', uz-cyrl: 'Ўзбекистон фуқаролари учун (Кореянинг Тошкентдаги элчихонаси, 2026): TOPIK 3 ва KDB ҳисобида 1+ ой давомида 15 500 USD (пойтахт ҳудуди) ёки 12 500 USD (бошқа ҳудудлар).'}
+      abroad: true
+  D-2-3:
+    name: {en: Master's student, ru: Студент магистратуры, uz: Magistrant, uz-cyrl: Магистрант}
+    how: {en: Admission to a master's program at a Korean university., ru: Поступление в магистратуру корейского вуза., uz: Koreya universitetida magistraturaga qabul., uz-cyrl: Корея университетида магистратурага қабул.}
+    next:
+    - D-2-4
+    - to: D-10-1
+      note: {en: 'After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.', ru: 'После окончания корейского колледжа или вуза: первый год — без балльной оценки; продление по баллам, всего до 3 лет.', uz: 'Koreya kolleji yoki universitetini tamomlagach: birinchi yil ball talab qilinmaydi; uzaytirish ball bo‘yicha, jami 3 yilgacha.', uz-cyrl: 'Корея коллежи ёки университетини тамомлагач: биринчи йил балл талаб қилинмайди; узайтириш балл бўйича, жами 3 йилгача.'}
+      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3
+          йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
+    - D-10-2
+    - to: E-7-1
+      note: {en: Korean graduates are exempt from the work-experience rule; salary floor applies., ru: Выпускники корейских вузов освобождены от требования об опыте работы; действует минимальная зарплата., uz: Koreya bitiruvchilari ish tajribasi talabidan ozod; eng kam ish haqi talabi amal qiladi., uz-cyrl: Корея битирувчилари иш тажрибаси талабидан озод; энг кам иш ҳақи талаби амал қилади.}
+    - E-3
+    - to: F-2-7
+      note: {en: Korean master's degree or higher within 5 years and a confirmed job; 80+ points., ru: Корейская магистратура или выше в течение последних 5 лет и подтверждённая работа; 80+ баллов., uz: So‘nggi 5 yil ichida Koreyada magistr yoki undan yuqori daraja va tasdiqlangan ish; 80+ ball., uz-cyrl: Сўнгги 5 йил ичида Кореяда магистр ёки ундан юқори даража ва тасдиқланган иш; 80+ балл.}
+    - to: F-2-7S
+      note: {en: 'STEM master''s or PhD at a K-STAR or science-specialised university, with the president''s recommendation.', ru: 'Магистратура или PhD по STEM в вузе K-STAR или научном институте, по рекомендации ректора.', uz: 'K-STAR yoki ilmiy ixtisoslashgan universitetda STEM bo‘yicha magistr yoki PhD, rektor tavsiyasi bilan.', uz-cyrl: 'K-STAR ёки илмий ихтисослашган университетда STEM бўйича магистр ёки PhD, ректор тавсияси билан.'}
+    - to: D-10-T
+      note: {en: Only if your master's or doctorate is from a world top-100 university., ru: Только если магистратура или докторантура — в вузе из мирового топ-100., uz: Faqat magistr yoki doktorlik darajangiz dunyo top-100 universitetidan bo‘lsa., uz-cyrl: Фақат магистр ёки докторлик даражангиз дунё top-100 университетидан бўлса.}
+    - D-8-4
+    - D-9-5
+    - F-2-R
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: 'After graduating, this is a new admission, so the lower-level rule for students doesn''t apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program''s time limit.', ru: 'После окончания это новое поступление, и правило о переходе на уровень ниже не действует. До окончания переход ниже — исключение: только некоторые специальности (например, STEM), TOPIK 3+ и окончание в пределах срока текущей программы.', uz: 'O‘qishni tamomlagach bu yangi qabul hisoblanadi, shuning uchun pastroq darajaga o‘tish qoidasi qo‘llanmaydi. Tamomlashdan oldin pastga o‘tish — istisno: faqat ayrim mutaxassisliklar (masalan, STEM), TOPIK 3+ va joriy dastur muddati ichida tamomlash sharti bilan.', uz-cyrl: 'Ўқишни тамомлагач бу янги қабул ҳисобланади, шунинг учун пастроқ даражага ўтиш қоидаси қўлланмайди. Тамомлашдан олдин пастга ўтиш — истисно: фақат айрим мутахассисликлар (масалан, STEM), TOPIK 3+ ва жорий дастур муддати
+          ичида тамомлаш шарти билан.'}
+    - to: E-1
+      note: {en: As an assistant professor or higher at a college or university., ru: На должность от доцента (assistant professor) и выше в колледже или вузе., uz: Kollej yoki universitetda assistent-professor yoki undan yuqori lavozimga., uz-cyrl: Коллеж ёки университетда ассистент-профессор ёки ундан юқори лавозимга.}
+    - E-2
+    - E-4
+    - E-5
+    - E-6-1
+    needs: {edu: 3}
+    gives: {edu: 4, koreanEdu: 4}
+    notes:
+    - countries: [UZ]
+      text: {en: 'For Uzbek citizens (Korean Embassy in Tashkent, 2026): TOPIK 4 and USD 15,500 (Seoul area) or 12,500 (elsewhere) in a KDB account for 1+ month.', ru: 'Для граждан Узбекистана (посольство Кореи в Ташкенте, 2026): TOPIK 4 и 15 500 USD (столичный регион) или 12 500 USD (другие регионы) на счёте KDB от 1 месяца.', uz: 'O‘zbekiston fuqarolari uchun (Koreyaning Toshkentdagi elchixonasi, 2026): TOPIK 4 va KDB hisobida 1+ oy davomida 15 500 USD (poytaxt hududi) yoki 12 500 USD (boshqa hududlar).', uz-cyrl: 'Ўзбекистон фуқаролари учун (Кореянинг Тошкентдаги элчихонаси, 2026): TOPIK 4 ва KDB ҳисобида 1+ ой давомида 15 500 USD (пойтахт ҳудуди) ёки 12 500 USD (бошқа ҳудудлар).'}
+      abroad: true
+  D-2-4:
+    name: {en: Doctoral student, ru: Докторант, uz: Doktorant, uz-cyrl: Докторант}
+    how: {en: Admission to a doctoral program at a Korean university., ru: Поступление в докторантуру корейского вуза., uz: Koreya universitetida doktoranturaga qabul., uz-cyrl: Корея университетида докторантурага қабул.}
+    next:
+    - to: E-1
+      note: {en: As an assistant professor or higher at a college or university., ru: На должность от доцента (assistant professor) и выше в колледже или вузе., uz: Kollej yoki universitetda assistent-professor yoki undan yuqori lavozimga., uz-cyrl: Коллеж ёки университетда ассистент-профессор ёки ундан юқори лавозимга.}
+    - E-3
+    - to: E-7-1
+      note: {en: Korean graduates are exempt from the work-experience rule; salary floor applies., ru: Выпускники корейских вузов освобождены от требования об опыте работы; действует минимальная зарплата., uz: Koreya bitiruvchilari ish tajribasi talabidan ozod; eng kam ish haqi talabi amal qiladi., uz-cyrl: Корея битирувчилари иш тажрибаси талабидан озод; энг кам иш ҳақи талаби амал қилади.}
+    - to: D-10-1
+      note: {en: 'After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.', ru: 'После окончания корейского колледжа или вуза: первый год — без балльной оценки; продление по баллам, всего до 3 лет.', uz: 'Koreya kolleji yoki universitetini tamomlagach: birinchi yil ball talab qilinmaydi; uzaytirish ball bo‘yicha, jami 3 yilgacha.', uz-cyrl: 'Корея коллежи ёки университетини тамомлагач: биринчи йил балл талаб қилинмайди; узайтириш балл бўйича, жами 3 йилгача.'}
+      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3
+          йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
+    - to: F-2-7
+      note: {en: Korean master's degree or higher within 5 years and a confirmed job; 80+ points., ru: Корейская магистратура или выше в течение последних 5 лет и подтверждённая работа; 80+ баллов., uz: So‘nggi 5 yil ichida Koreyada magistr yoki undan yuqori daraja va tasdiqlangan ish; 80+ ball., uz-cyrl: Сўнгги 5 йил ичида Кореяда магистр ёки ундан юқори даража ва тасдиқланган иш; 80+ балл.}
+    - to: F-2-7S
+      note: {en: 'STEM master''s or PhD at a K-STAR or science-specialised university, with the president''s recommendation.', ru: 'Магистратура или PhD по STEM в вузе K-STAR или научном институте, по рекомендации ректора.', uz: 'K-STAR yoki ilmiy ixtisoslashgan universitetda STEM bo‘yicha magistr yoki PhD, rektor tavsiyasi bilan.', uz-cyrl: 'K-STAR ёки илмий ихтисослашган университетда STEM бўйича магистр ёки PhD, ректор тавсияси билан.'}
+    - to: D-10-T
+      note: {en: Only if your master's or doctorate is from a world top-100 university., ru: Только если магистратура или докторантура — в вузе из мирового топ-100., uz: Faqat magistr yoki doktorlik darajangiz dunyo top-100 universitetidan bo‘lsa., uz-cyrl: Фақат магистр ёки докторлик даражангиз дунё top-100 университетидан бўлса.}
+    - F-2-R
+    - F-6-1
+    - F-2-3
+    - to: D-2-3
+      note: {en: 'After graduating, this is a new admission, so the lower-level rule for students doesn''t apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program''s time limit.', ru: 'После окончания это новое поступление, и правило о переходе на уровень ниже не действует. До окончания переход ниже — исключение: только некоторые специальности (например, STEM), TOPIK 3+ и окончание в пределах срока текущей программы.', uz: 'O‘qishni tamomlagach bu yangi qabul hisoblanadi, shuning uchun pastroq darajaga o‘tish qoidasi qo‘llanmaydi. Tamomlashdan oldin pastga o‘tish — istisno: faqat ayrim mutaxassisliklar (masalan, STEM), TOPIK 3+ va joriy dastur muddati ichida tamomlash sharti bilan.', uz-cyrl: 'Ўқишни тамомлагач бу янги қабул ҳисобланади, шунинг учун пастроқ даражага ўтиш қоидаси қўлланмайди. Тамомлашдан олдин пастга ўтиш — истисно: фақат айрим мутахассисликлар (масалан, STEM), TOPIK 3+ ва жорий дастур муддати
+          ичида тамомлаш шарти билан.'}
+    - to: D-2-2
+      note: {en: 'After graduating, this is a new admission, so the lower-level rule for students doesn''t apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program''s time limit.', ru: 'После окончания это новое поступление, и правило о переходе на уровень ниже не действует. До окончания переход ниже — исключение: только некоторые специальности (например, STEM), TOPIK 3+ и окончание в пределах срока текущей программы.', uz: 'O‘qishni tamomlagach bu yangi qabul hisoblanadi, shuning uchun pastroq darajaga o‘tish qoidasi qo‘llanmaydi. Tamomlashdan oldin pastga o‘tish — istisno: faqat ayrim mutaxassisliklar (masalan, STEM), TOPIK 3+ va joriy dastur muddati ichida tamomlash sharti bilan.', uz-cyrl: 'Ўқишни тамомлагач бу янги қабул ҳисобланади, шунинг учун пастроқ даражага ўтиш қоидаси қўлланмайди. Тамомлашдан олдин пастга ўтиш — истисно: фақат айрим мутахассисликлар (масалан, STEM), TOPIK 3+ ва жорий дастур муддати
+          ичида тамомлаш шарти билан.'}
+    - E-2
+    - E-4
+    - E-5
+    - E-6-1
+    needs: {edu: 4}
+    gives: {edu: 5, koreanEdu: 5}
+    notes:
+    - countries: [UZ]
+      text: {en: 'For Uzbek citizens (Korean Embassy in Tashkent, 2026): TOPIK 4 and USD 15,500 (Seoul area) or 12,500 (elsewhere) in a KDB account for 1+ month.', ru: 'Для граждан Узбекистана (посольство Кореи в Ташкенте, 2026): TOPIK 4 и 15 500 USD (столичный регион) или 12 500 USD (другие регионы) на счёте KDB от 1 месяца.', uz: 'O‘zbekiston fuqarolari uchun (Koreyaning Toshkentdagi elchixonasi, 2026): TOPIK 4 va KDB hisobida 1+ oy davomida 15 500 USD (poytaxt hududi) yoki 12 500 USD (boshqa hududlar).', uz-cyrl: 'Ўзбекистон фуқаролари учун (Кореянинг Тошкентдаги элчихонаси, 2026): TOPIK 4 ва KDB ҳисобида 1+ ой давомида 15 500 USD (пойтахт ҳудуди) ёки 12 500 USD (бошқа ҳудудлар).'}
+      abroad: true
+  D-2-5:
+    name: {en: Research student, ru: Стажёр-исследователь, uz: Tadqiqotchi talaba, uz-cyrl: Тадқиқотчи талаба}
+    how: {en: Non-degree research at a Korean university., ru: Исследовательская стажировка в корейском вузе без получения степени., uz: Koreya universitetida daraja berilmaydigan tadqiqot., uz-cyrl: Корея университетида даража берилмайдиган тадқиқот.}
+    next:
+    - E-3
+    - E-7-1
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - F-6-1
+    - F-2-3
+    needs:
+    - {edu: 4}
+    - {stem: true}
+  D-2-6:
+    name: {en: Exchange student, ru: Студент по обмену, uz: Almashinuv talabasi, uz-cyrl: Алмашинув талабаси}
+    how: {en: Exchange study under an agreement between your university and a Korean one., ru: Обучение по обмену по соглашению между вашим и корейским вузом., uz: Universitetingiz va Koreya universiteti o‘rtasidagi kelishuv bo‘yicha almashinuv., uz-cyrl: Университетингиз ва Корея университети ўртасидаги келишув бўйича алмашинув.}
+    next:
+    - to: D-2-2
+      abroad: true
+      note: {en: 'Usually after the exchange ends: apply anew for a degree program.', ru: 'Обычно после окончания обмена: новая подача на программу с получением степени.', uz: 'Odatda almashinuv tugagach: daraja beruvchi dasturga qaytadan topshiriladi.', uz-cyrl: 'Одатда алмашинув тугагач: даража берувчи дастурга қайтадан топширилади.'}
+    - to: D-2-3
+      abroad: true
+      note: {en: 'Usually after the exchange ends: apply anew for a degree program.', ru: 'Обычно после окончания обмена: новая подача на программу с получением степени.', uz: 'Odatda almashinuv tugagach: daraja beruvchi dasturga qaytadan topshiriladi.', uz-cyrl: 'Одатда алмашинув тугагач: даража берувчи дастурга қайтадан топширилади.'}
+    - F-6-1
+    - F-2-3
+    needs: {edu: 1}
+    notes:
+    - countries: [UZ]
+      text: {en: 'For Uzbek citizens (Korean Embassy in Tashkent, 2026): TOPIK 2 and USD 7,800 (Seoul area) or 6,300 (elsewhere) in a KDB account for 1+ month.', ru: 'Для граждан Узбекистана (посольство Кореи в Ташкенте, 2026): TOPIK 2 и 7 800 USD (столичный регион) или 6 300 USD (другие регионы) на счёте KDB от 1 месяца.', uz: 'O‘zbekiston fuqarolari uchun (Koreyaning Toshkentdagi elchixonasi, 2026): TOPIK 2 va KDB hisobida 1+ oy davomida 7 800 USD (poytaxt hududi) yoki 6 300 USD (boshqa hududlar).', uz-cyrl: 'Ўзбекистон фуқаролари учун (Кореянинг Тошкентдаги элчихонаси, 2026): TOPIK 2 ва KDB ҳисобида 1+ ой давомида 7 800 USD (пойтахт ҳудуди) ёки 6 300 USD (бошқа ҳудудлар).'}
+      abroad: true
+  D-2-7:
+    name: {en: Work-study student, ru: Студент программы «учёба и работа», uz: O‘qish va ish dasturi talabasi, uz-cyrl: Ўқиш ва иш дастури талабаси}
+    how: {en: 'Degree program linked with work in Korea, including government scholarship (GKS) students.', ru: 'Программа с получением степени, связанная с работой в Корее; включая стипендиатов GKS.', uz: 'Koreyada ish bilan bog‘liq daraja dasturi, jumladan GKS stipendiyachilari.', uz-cyrl: 'Кореяда иш билан боғлиқ даража дастури, жумладан GKS стипендиячилари.'}
+    next:
+    - to: E-7-1
+      note: {en: Korean graduates are exempt from the work-experience rule; salary floor applies., ru: Выпускники корейских вузов освобождены от требования об опыте работы; действует минимальная зарплата., uz: Koreya bitiruvchilari ish tajribasi talabidan ozod; eng kam ish haqi talabi amal qiladi., uz-cyrl: Корея битирувчилари иш тажрибаси талабидан озод; энг кам иш ҳақи талаби амал қилади.}
+    - E-7-2
+    - E-7-3
+    - to: D-10-1
+      note: {en: 'After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.', ru: 'После окончания корейского колледжа или вуза: первый год — без балльной оценки; продление по баллам, всего до 3 лет.', uz: 'Koreya kolleji yoki universitetini tamomlagach: birinchi yil ball talab qilinmaydi; uzaytirish ball bo‘yicha, jami 3 yilgacha.', uz-cyrl: 'Корея коллежи ёки университетини тамомлагач: биринчи йил балл талаб қилинмайди; узайтириш балл бўйича, жами 3 йилгача.'}
+      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3
+          йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
+    - F-2-R
+    - F-6-1
+    - F-2-3
+  D-2-8:
+    name: {en: Visiting student, ru: Студент по краткой программе, uz: Tashrif buyuruvchi talaba, uz-cyrl: Ташриф буюрувчи талаба}
+    how: {en: Courses of under 1 year in Korea while enrolled at a foreign university., ru: Курсы в Корее менее 1 года при обучении в зарубежном вузе., uz: Xorijiy universitetda o‘qigan holda Koreyada 1 yildan kam kurslar., uz-cyrl: Хорижий университетда ўқиган ҳолда Кореяда 1 йилдан кам курслар.}
+    next:
+    - to: D-2-2
+      abroad: true
+      note: {en: 'Usually after the exchange ends: apply anew for a degree program.', ru: 'Обычно после окончания обмена: новая подача на программу с получением степени.', uz: 'Odatda almashinuv tugagach: daraja beruvchi dasturga qaytadan topshiriladi.', uz-cyrl: 'Одатда алмашинув тугагач: даража берувчи дастурга қайтадан топширилади.'}
+    - to: D-2-3
+      abroad: true
+      note: {en: 'Usually after the exchange ends: apply anew for a degree program.', ru: 'Обычно после окончания обмена: новая подача на программу с получением степени.', uz: 'Odatda almashinuv tugagach: daraja beruvchi dasturga qaytadan topshiriladi.', uz-cyrl: 'Одатда алмашинув тугагач: даража берувчи дастурга қайтадан топширилади.'}
+    - F-6-1
+    - F-2-3
+    needs: {edu: 1}
+  D-10-1:
+    name: {en: Job seeker, ru: Поиск работы, uz: Ish qidiruvchi, uz-cyrl: Иш қидирувчи}
+    how: {en: 'Job search after graduating in Korea (first year points-exempt), or bachelor''s degree and 60+ points.', ru: Поиск работы после выпуска из корейского вуза (первый год без баллов) или диплом бакалавра и 60+ баллов., uz: Koreyada o‘qishni tamomlagach ish qidirish (birinchi yil ballsiz) yoki bakalavr diplomi va 60+ ball., uz-cyrl: Кореяда ўқишни тамомлагач иш қидириш (биринчи йил баллсиз) ёки бакалавр дипломи ва 60+ балл.}
+    next:
+    - E-7-1
+    - E-7-2
+    - E-7-3
+    - E-1
+    - E-2
+    - E-3
+    - E-4
+    - E-5
+    - E-6-1
+    - D-8-4
+    - D-9-5
+    - to: F-2-7
+      note: {en: 'With a Korean master''s or higher (within 5 years) and a job offer, or a job at a listed company or in a promising industry; 80+ points.', ru: С корейской магистратурой или выше (за последние 5 лет) и предложением работы либо с работой в компании на бирже или в перспективной отрасли; 80+ баллов., uz: Koreya magistraturasi yoki undan yuqori daraja (so‘nggi 5 yilda) va ish taklifi bilan yoki birjadagi kompaniyada yoxud istiqbolli sohada ish bilan; 80+ ball., uz-cyrl: Корея магистратураси ёки ундан юқори даража (сўнгги 5 йилда) ва иш таклифи билан ёки биржадаги компанияда ёхуд истиқболли соҳада иш билан; 80+ балл.}
+    - to: F-2-R
+      note: {en: 'Local-government recommendation, a Korean associate degree or regional-wage income, KIIP 3 or TOPIK 3 and 5 years in a depopulating area. Not possible if your visa before D-10 was D-3, D-4, E-6-2, E-8, E-9, E-10, G-1 or H-1.', ru: 'Рекомендация местных властей, корейский диплом колледжа или доход на уровне региона, KIIP 3 или TOPIK 3 и 5 лет в депопулирующем районе. Невозможно, если до D-10 у вас была виза D-3, D-4, E-6-2, E-8, E-9, E-10, G-1 или H-1.', uz: 'Mahalliy hokimiyat tavsiyasi, Koreya kolleji diplomi yoki hududiy darajadagi daromad, KIIP 3 yoki TOPIK 3 va aholisi kamayayotgan hududda 5 yil. D-10 dan oldin D-3, D-4, E-6-2, E-8, E-9, E-10, G-1 yoki H-1 vizasi bo‘lgan bo‘lsa, mumkin emas.', uz-cyrl: 'Маҳаллий ҳокимият тавсияси, Корея коллежи дипломи ёки ҳудудий даражадаги даромад, KIIP 3 ёки TOPIK 3 ва аҳолиси камаяётган ҳудудда 5 йил. D-10 дан олдин D-3, D-4, E-6-2, E-8, E-9, E-10, G-1 ёки H-1 визаси бўлган бўлса, мумкин эмас.'}
+      needs:
+        notAfter: [D-3, D-4, E-6-2, E-8, E-9, E-10, G-1, H-1]
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - D-10-2
+    - D-10-T
+    - to: F-2-7S
+      note: {en: 'Within 1 year of your STEM master''s or PhD at a K-STAR or science-specialised university, with the president''s recommendation.', ru: 'В течение 1 года после магистратуры или PhD по STEM в вузе K-STAR или научном институте, по рекомендации ректора.', uz: 'K-STAR yoki ilmiy ixtisoslashgan universitetda STEM bo‘yicha magistr yoki PhD olganingizdan keyin 1 yil ichida, rektor tavsiyasi bilan.', uz-cyrl: 'K-STAR ёки илмий ихтисослашган университетда STEM бўйича магистр ёки PhD олганингиздан кейин 1 йил ичида, ректор тавсияси билан.'}
+    needs:
+    - {edu: 3}
+    - {koreanEdu: 2}
+    - {koreanEdu: 1, ageUnder: 25}
+  D-10-2:
+    name: {en: Start-up preparation, ru: Подготовка стартапа, uz: Startapga tayyorgarlik, uz-cyrl: Стартапга тайёргарлик}
+    how: {en: 'Bachelor''s degree plus a Korean patent or design right, OASIS start-up training or a K-Startup recommendation.', ru: 'Диплом бакалавра и корейский патент или право на дизайн, обучение OASIS или рекомендация K-Startup.', uz: 'Bakalavr diplomi va Koreya patenti yoki dizayn huquqi, OASIS o‘quvi yoki K-Startup tavsiyasi.', uz-cyrl: 'Бакалавр дипломи ва Корея патенти ёки дизайн ҳуқуқи, OASIS ўқуви ёки K-Startup тавсияси.'}
+    next:
+    - D-8-4
+    - E-7-1
+    - D-10-1
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    needs:
+    - {edu: 3}
+    - {koreanEdu: 2}
+  D-10-3:
+    name: {en: High-tech intern, ru: Стажёр в высоких технологиях, uz: Yuqori texnologiyalar stajyori, uz-cyrl: Юқори технологиялар стажёри}
+    how: {en: Student or recent graduate of a top foreign university interning in a high-tech field; under 30 (under 35 with a master's)., ru: Студент или недавний выпускник ведущего зарубежного вуза на стажировке в hi-tech; до 30 лет (до 35 с магистратурой)., uz: 'Nufuzli xorijiy universitet talabasi yoki yaqinda bitirgan, yuqori texnologiyalarda amaliyot; 30 yoshgacha (magistr bilan 35 gacha).', uz-cyrl: 'Нуфузли хорижий университет талабаси ёки яқинда битирган, юқори технологияларда амалиёт; 30 ёшгача (магистр билан 35 гача).'}
+    next:
+    - to: E-7-1
+      note: {en: 'After 1+ year of internship: education and experience requirements are waived.', ru: 'После 1+ года стажировки: требования к образованию и опыту не применяются.', uz: '1+ yillik amaliyotdan keyin: ta’lim va tajriba talablari qo‘llanmaydi.', uz-cyrl: '1+ йиллик амалиётдан кейин: таълим ва тажриба талаблари қўлланмайди.'}
+    - D-8-4
+    age: [18, 34]
+    needs: {stem: true, rank: 1}
+  D-10-T:
+    name: {en: Pre-Top-Tier job seeker, ru: Поиск работы (Top-Tier), uz: Ish qidiruvchi (Top-Tier), uz-cyrl: Иш қидирувчи (Top-Tier)}
+    how: {en: 'Master''s or doctorate from a world top-100 university within 5 years, still looking for a job.', ru: Магистратура или докторантура вуза мирового топ-100 за последние 5 лет; работа ещё не найдена., uz: So‘nggi 5 yilda dunyo top-100 universitetida magistr yoki doktorlik; hali ish topilmagan., uz-cyrl: Сўнгги 5 йилда дунё top-100 университетида магистр ёки докторлик; ҳали иш топилмаган.}
+    next: [E-7-T, F-2-T]
+    needs: {edu: 4, rank: 3}
+  E-1:
+    name: {en: Professor, ru: Преподаватель вуза, uz: Professor, uz-cyrl: Профессор}
+    how: {en: Teaching or research post at a Korean college or university., ru: Преподавательская или исследовательская должность в корейском колледже или вузе., uz: Koreya kolleji yoki universitetida o‘qituvchilik yoki tadqiqot lavozimi., uz-cyrl: Корея коллежи ёки университетида ўқитувчилик ёки тадқиқот лавозими.}
+    next:
+    - E-3
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - to: F-2-T
+      note: {en: If you meet the Top-Tier criteria., ru: Если вы соответствуете критериям Top-Tier., uz: Top-Tier mezonlariga javob bersangiz., uz-cyrl: Top-Tier мезонларига жавоб берсангиз.}
+    - to: F-5-9
+      note: {en: 'If you hold a foreign doctorate in a high-tech field: after 1+ year at a Korean company in that field.', ru: 'При иностранной докторской степени в высокотехнологичной области: после 1+ года работы в этой области в корейской компании.', uz: 'Yuqori texnologiyalar sohasida xorijiy doktorlik darajasi bo‘lsa: shu sohada Koreya kompaniyasida 1+ yil ishlagandan keyin.', uz-cyrl: 'Юқори технологиялар соҳасида хорижий докторлик даражаси бўлса: шу соҳада Корея компаниясида 1+ йил ишлагандан кейин.'}
+    - F-5-10
+    - to: F-5-15
+      note: {en: 'If you earned a doctorate at a Korean university: after 1+ year of full-time work at a Korean company.', ru: 'Если вы получили докторскую степень в корейском вузе: после 1+ года работы на полную ставку в корейской компании.', uz: 'Koreya universitetida doktorlik darajasini olgan bo‘lsangiz: Koreya kompaniyasida 1+ yil to‘liq ishlagandan keyin.', uz-cyrl: 'Корея университетида докторлик даражасини олган бўлсангиз: Корея компаниясида 1+ йил тўлиқ ишлагандан кейин.'}
+    - F-5-11
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+    needs:
+    - {edu: 3, experience: 2}
+    - {edu: 2, experience: 3}
+    - {edu: 5, stem: true}
+    - {edu: 4, stem: true, experience: 3}
+  E-2:
+    name: {en: Language instructor, ru: Преподаватель языка, uz: Til o‘qituvchisi, uz-cyrl: Тил ўқитувчиси}
+    how: {en: 'Native-speaker conversation teacher at an institute, school or public program (EPIK, TaLK). English teachers: citizens of the US, UK, Canada, South Africa, New Zealand, Australia or Ireland.', ru: 'Преподаватель-носитель языка в школе, институте или госпрограмме (EPIK, TaLK). Английский: граждане США, Великобритании, Канады, ЮАР, Новой Зеландии, Австралии или Ирландии.', uz: 'Til markazi, maktab yoki davlat dasturida (EPIK, TaLK) ona tili sohibi o‘qituvchi. Ingliz tili: AQSh, Buyuk Britaniya, Kanada, JAR, Yangi Zelandiya, Avstraliya yoki Irlandiya fuqarolari.', uz-cyrl: 'Тил маркази, мактаб ёки давлат дастурида (EPIK, TaLK) она тили соҳиби ўқитувчи. Инглиз тили: AQSh, Буюк Британия, Канада, JAR, Янги Зеландия, Австралия ёки Ирландия фуқаролари.'}
+    next:
+    - E-7-1
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - F-5-10
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+    needs: {edu: 3}
+  E-3:
+    name: {en: Researcher, ru: Исследователь, uz: Tadqiqotchi, uz-cyrl: Тадқиқотчи}
+    how: {en: 'Research post at a Korean institute or company; doctorate, or master''s plus 3 years'' experience.', ru: Исследовательская должность в корейском институте или компании; докторская степень или магистратура и 3 года опыта., uz: Koreya instituti yoki kompaniyasida tadqiqot lavozimi; doktorlik yoki magistr va 3 yil tajriba., uz-cyrl: Корея институти ёки компаниясида тадқиқот лавозими; докторлик ёки магистр ва 3 йил тажриба.}
+    next:
+    - E-1
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - to: F-2-T
+      note: {en: If you meet the Top-Tier criteria., ru: Если вы соответствуете критериям Top-Tier., uz: Top-Tier mezonlariga javob bersangiz., uz-cyrl: Top-Tier мезонларига жавоб берсангиз.}
+    - to: F-5-9
+      note: {en: 'If you hold a foreign doctorate in a high-tech field: after 1+ year at a Korean company in that field.', ru: 'При иностранной докторской степени в высокотехнологичной области: после 1+ года работы в этой области в корейской компании.', uz: 'Yuqori texnologiyalar sohasida xorijiy doktorlik darajasi bo‘lsa: shu sohada Koreya kompaniyasida 1+ yil ishlagandan keyin.', uz-cyrl: 'Юқори технологиялар соҳасида хорижий докторлик даражаси бўлса: шу соҳада Корея компаниясида 1+ йил ишлагандан кейин.'}
+    - F-5-10
+    - to: F-5-15
+      note: {en: 'If you earned a doctorate at a Korean university: after 1+ year of full-time work at a Korean company.', ru: 'Если вы получили докторскую степень в корейском вузе: после 1+ года работы на полную ставку в корейской компании.', uz: 'Koreya universitetida doktorlik darajasini olgan bo‘lsangiz: Koreya kompaniyasida 1+ yil to‘liq ishlagandan keyin.', uz-cyrl: 'Корея университетида докторлик даражасини олган бўлсангиз: Корея компаниясида 1+ йил тўлиқ ишлагандан кейин.'}
+    - F-5-11
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+    needs: {edu: 4}
+  E-4:
+    name: {en: Technical instructor, ru: Технический специалист, uz: Texnik mutaxassis, uz-cyrl: Техник мутахассис}
+    how: {en: Providing specialised industrial technology at the invitation of a Korean organisation., ru: Передача специализированных промышленных технологий по приглашению корейской организации., uz: Koreya tashkiloti taklifi bilan maxsus sanoat texnologiyalarini o‘rgatish., uz-cyrl: Корея ташкилоти таклифи билан махсус саноат технологияларини ўргатиш.}
+    next:
+    - E-7-1
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+  E-5:
+    name: {en: Licensed professional, ru: Лицензированный специалист, uz: Litsenziyali mutaxassis, uz-cyrl: Лицензияли мутахассис}
+    how: {en: 'Foreign lawyer, accountant, doctor or other professional licensed under Korean law.', ru: 'Иностранный юрист, бухгалтер, врач или другой специалист с лицензией по корейскому закону.', uz: 'Koreya qonuni bo‘yicha litsenziyaga ega xorijiy yurist, buxgalter, shifokor yoki boshqa mutaxassis.', uz-cyrl: 'Корея қонуни бўйича лицензияга эга хорижий юрист, бухгалтер, шифокор ёки бошқа мутахассис.'}
+    next:
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - F-5-10
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+  E-6-1:
+    name: {en: Artist / entertainer, ru: Артист / деятель искусства, uz: Artist / san’atkor, uz-cyrl: Артист / санъаткор}
+    how: {en: 'Paid work in art, broadcasting or entertainment.', ru: 'Оплачиваемая работа в искусстве, на телевидении или в индустрии развлечений.', uz: 'San’at, teleradio yoki ko‘ngilochar sohada haq to‘lanadigan ish.', uz-cyrl: 'Санъат, телерадио ёки кўнгилочар соҳада ҳақ тўланадиган иш.'}
+    next:
+    - E-7-1
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - F-5-11
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+  E-6-2:
+    name: {en: Hotel / venue performer, ru: Артист отелей / заведений, uz: Mehmonxona / ko‘ngilochar maskan artisti, uz-cyrl: Меҳмонхона / кўнгилочар маскан артисти}
+    how: {en: Performer at tourist hotels or entertainment venues. Most routes to residence are closed to this status., ru: Выступления в туристических отелях и развлекательных заведениях. Большинство путей к ПМЖ для этого статуса закрыты., uz: Turistik mehmonxona yoki ko‘ngilochar joylarda chiqish. Bu maqom uchun doimiy yashashga ko‘p yo‘llar yopiq., uz-cyrl: Туристик меҳмонхона ёки кўнгилочар жойларда чиқиш. Бу мақом учун доимий яшашга кўп йўллар ёпиқ.}
+    next: [F-6-1, F-2-3]
+  E-6-3:
+    name: {en: Professional athlete, ru: Профессиональный спортсмен, uz: Professional sportchi, uz-cyrl: Профессионал спортчи}
+    how: {en: 'Contract as a professional athlete, coach or manager.', ru: 'Контракт профессионального спортсмена, тренера или менеджера.', uz: 'Professional sportchi, murabbiy yoki menejer sifatida shartnoma.', uz-cyrl: 'Профессионал спортчи, мураббий ёки менежер сифатида шартнома.'}
+    next:
+    - E-7-1
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - F-5-11
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+  E-7-1:
+    name: {en: Professional, ru: Специалист, uz: Mutaxassis, uz-cyrl: Мутахассис}
+    how: {en: 'Job offer in one of about 67 professional occupations, usually with a related degree; salary of at least ₩31.1M (2026).', ru: 'Предложение работы по одной из ~67 профессий, обычно с профильным дипломом; зарплата от ₩31,1 млн (2026).', uz: 'Taxminan 67 ta kasbdan biri bo‘yicha ish taklifi, odatda tegishli diplom bilan; ish haqi kamida ₩31,1 mln (2026).', uz-cyrl: 'Тахминан 67 та касбдан бири бўйича иш таклифи, одатда тегишли диплом билан; иш ҳақи камида ₩31,1 млн (2026).'}
+    next:
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+      needs: {edu: 3}
+    - to: F-2-T
+      note: {en: If you meet the Top-Tier criteria., ru: Если вы соответствуете критериям Top-Tier., uz: Top-Tier mezonlariga javob bersangiz., uz-cyrl: Top-Tier мезонларига жавоб берсангиз.}
+    - to: F-5-9
+      note: {en: 'If you hold a foreign doctorate in a high-tech field: after 1+ year at a Korean company in that field.', ru: 'При иностранной докторской степени в высокотехнологичной области: после 1+ года работы в этой области в корейской компании.', uz: 'Yuqori texnologiyalar sohasida xorijiy doktorlik darajasi bo‘lsa: shu sohada Koreya kompaniyasida 1+ yil ishlagandan keyin.', uz-cyrl: 'Юқори технологиялар соҳасида хорижий докторлик даражаси бўлса: шу соҳада Корея компаниясида 1+ йил ишлагандан кейин.'}
+    - F-5-10
+    - to: F-5-15
+      note: {en: 'If you earned a doctorate at a Korean university: after 1+ year of full-time work at a Korean company.', ru: 'Если вы получили докторскую степень в корейском вузе: после 1+ года работы на полную ставку в корейской компании.', uz: 'Koreya universitetida doktorlik darajasini olgan bo‘lsangiz: Koreya kompaniyasida 1+ yil to‘liq ishlagandan keyin.', uz-cyrl: 'Корея университетида докторлик даражасини олган бўлсангиз: Корея компаниясида 1+ йил тўлиқ ишлагандан кейин.'}
+    - F-5-11
+    - D-8-4
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    needs:
+    - {edu: 4}
+    - {edu: 3, experience: 1}
+    - {experience: 5}
+    - {koreanEdu: 2}
+    - {edu: 3, rank: 1}
+    - {edu: 3, stem: true, ageUnder: 30, countries: asiaPilot}
+  E-7-2:
+    name: {en: Semi-professional, ru: Полуквалифицированный специалист, uz: Yarim malakali mutaxassis, uz-cyrl: Ярим малакали мутахассис}
+    how: {en: Job offer in a designated clerical or service occupation; salary of at least ₩25.9M (2026)., ru: 'Предложение работы по определённой офисной или сервисной профессии; зарплата от ₩25,9 млн (2026).', uz: 'Belgilangan ofis yoki xizmat ko‘rsatish kasbi bo‘yicha ish taklifi; ish haqi kamida ₩25,9 mln (2026).', uz-cyrl: 'Белгиланган офис ёки хизмат кўрсатиш касби бўйича иш таклифи; иш ҳақи камида ₩25,9 млн (2026).'}
+    next:
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: E-7 holders need a bachelor's degree for this; the usual route is via F-2-99., ru: Обладателям E-7 для этого нужен диплом бакалавра; обычно путь лежит через F-2-99., uz: E-7 egalariga buning uchun bakalavr diplomi kerak; odatda F-2-99 orqali o‘tiladi., uz-cyrl: E-7 эгаларига бунинг учун бакалавр дипломи керак; одатда F-2-99 орқали ўтилади.}
+      needs: {edu: 3}
+    - F-5-10
+    - E-7-1
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+  E-7-3:
+    name: {en: General skilled worker, ru: Квалифицированный рабочий, uz: Malakali ishchi, uz-cyrl: Малакали ишчи}
+    how: {en: Job offer in a designated skilled trade (for example welder or aquaculture technician); salary of at least ₩25.9M., ru: 'Предложение работы по определённой рабочей специальности (например, сварщик, техник аквакультуры); зарплата от ₩25,9 млн.', uz: 'Belgilangan ishchi kasbi bo‘yicha ish taklifi (masalan, payvandchi, akvakultura texnigi); ish haqi kamida ₩25,9 mln.', uz-cyrl: 'Белгиланган ишчи касби бўйича иш таклифи (масалан, пайвандчи, аквакультура техниги); иш ҳақи камида ₩25,9 млн.'}
+    next:
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: E-7 holders need a bachelor's degree for this; the usual route is via F-2-99., ru: Обладателям E-7 для этого нужен диплом бакалавра; обычно путь лежит через F-2-99., uz: E-7 egalariga buning uchun bakalavr diplomi kerak; odatda F-2-99 orqali o‘tiladi., uz-cyrl: E-7 эгаларига бунинг учун бакалавр дипломи керак; одатда F-2-99 орқали ўтилади.}
+      needs: {edu: 3}
+    - F-5-10
+    - E-7-1
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+    needs:
+    - {edu: 3}
+    - {koreanEdu: 2}
+    - {experience: 1}
+  E-7-4:
+    name: {en: Skilled worker (points), ru: Квалифицированный рабочий (баллы), uz: Malakali ishchi (ball tizimi), uz-cyrl: Малакали ишчи (балл тизими)}
+    how: {en: '4+ years on E-9, E-10 or H-2 in the last 10 years, employer recommendation and 200/300 points; granted inside Korea only.', ru: '4+ года на E-9, E-10 или H-2 за последние 10 лет, рекомендация работодателя и 200/300 баллов; только внутри Кореи.', uz: 'So‘nggi 10 yilda E-9, E-10 yoki H-2 da 4+ yil, ish beruvchi tavsiyasi va 200/300 ball; faqat Koreya ichida beriladi.', uz-cyrl: 'Сўнгги 10 йилда E-9, E-10 ёки H-2 да 4+ йил, иш берувчи тавсияси ва 200/300 балл; фақат Корея ичида берилади.'}
+    next:
+    - to: F-2-R
+      note: {en: 'After 2+ years on E-7-4, with a regional recommendation.', ru: 'После 2+ лет на E-7-4, по рекомендации региона.', uz: 'E-7-4 da 2+ yildan keyin, hudud tavsiyasi bilan.', uz-cyrl: 'E-7-4 да 2+ йилдан кейин, ҳудуд тавсияси билан.'}
+    - to: F-2-99
+      note: {en: After 5 years on E-7 (E-9 years do not count)., ru: После 5 лет на E-7 (годы на E-9 не считаются)., uz: E-7 da 5 yildan keyin (E-9 dagi yillar hisoblanmaydi)., uz-cyrl: E-7 да 5 йилдан кейин (E-9 даги йиллар ҳисобланмайди).}
+    - to: E-7-4R
+      note: {en: If your workplace is in a depopulating area., ru: Если место работы находится в депопулирующем районе., uz: Ish joyingiz aholisi kamayayotgan hududda bo‘lsa., uz-cyrl: Иш жойингиз аҳолиси камаяётган ҳудудда бўлса.}
+    - to: F-5-1
+      note: {en: E-7 holders need a bachelor's degree for this; the usual route is via F-2-99., ru: Обладателям E-7 для этого нужен диплом бакалавра; обычно путь лежит через F-2-99., uz: E-7 egalariga buning uchun bakalavr diplomi kerak; odatda F-2-99 orqali o‘tiladi., uz-cyrl: E-7 эгаларига бунинг учун бакалавр дипломи керак; одатда F-2-99 орқали ўтилади.}
+      needs: {edu: 3}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    lang: {topik: 2, kiip: 2}
+  E-7-4R:
+    name: {en: Regional skilled worker, ru: Квалифицированный рабочий (регион), uz: Hududiy malakali ishchi, uz-cyrl: Ҳудудий малакали ишчи}
+    how: {en: '2+ years on E-9, E-10 or H-2, a local-government recommendation and a 3-year commitment to a depopulating area; 200/300 points.', ru: '2+ года на E-9, E-10 или H-2, рекомендация местных властей и обязательство на 3 года в депопулирующем районе; 200/300 баллов.', uz: 'E-9, E-10 yoki H-2 da 2+ yil, mahalliy hokimiyat tavsiyasi va aholisi kamayayotgan hududda 3 yil majburiyat; 200/300 ball.', uz-cyrl: 'E-9, E-10 ёки H-2 да 2+ йил, маҳаллий ҳокимият тавсияси ва аҳолиси камаяётган ҳудудда 3 йил мажбурият; 200/300 балл.'}
+    next:
+    - F-2-R
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+    lang: {topik: 2, kiip: 2}
+  E-7-S1:
+    name: {en: High-income professional, ru: Специалист с высоким доходом, uz: Yuqori daromadli mutaxassis, uz-cyrl: Юқори даромадли мутахассис}
+    how: {en: 'A job with a very high income, regardless of degree, experience or occupation.', ru: 'Работа с очень высоким доходом — независимо от диплома, опыта и профессии.', uz: 'Juda yuqori daromadli ish — diplom, tajriba va kasbdan qat’i nazar.', uz-cyrl: 'Жуда юқори даромадли иш — диплом, тажриба ва касбдан қатъи назар.'}
+    next:
+    - to: F-2-7
+      note: {en: 'After 1+ year of work: points waived, KIIP level 3 needed.', ru: 'После 1+ года работы: без балльной оценки, нужен KIIP 3.', uz: '1+ yil ishlagandan keyin: ball talab qilinmaydi, KIIP 3 kerak.', uz-cyrl: '1+ йил ишлагандан кейин: балл талаб қилинмайди, KIIP 3 керак.'}
+      lang: {kiip: 3}
+    - F-2-99
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+      needs: {edu: 3}
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+  E-7-S2:
+    name: {en: High-tech professional, ru: Специалист высоких технологий, uz: Yuqori texnologiyalar mutaxassisi, uz-cyrl: Юқори технологиялар мутахассиси}
+    how: {en: 'Work in a high-tech industry, even outside the listed E-7 occupations; 60+ points.', ru: 'Работа в высокотехнологичной отрасли, даже вне списка профессий E-7; 60+ баллов.', uz: 'Yuqori texnologiyalar sohasida ish, hatto E-7 ro‘yxatidan tashqarida ham; 60+ ball.', uz-cyrl: 'Юқори технологиялар соҳасида иш, ҳатто E-7 рўйхатидан ташқарида ҳам; 60+ балл.'}
+    next:
+    - to: F-2-7
+      note: {en: 'After 1+ year of work: points waived, KIIP level 3 needed.', ru: 'После 1+ года работы: без балльной оценки, нужен KIIP 3.', uz: '1+ yil ishlagandan keyin: ball talab qilinmaydi, KIIP 3 kerak.', uz-cyrl: '1+ йил ишлагандан кейин: балл талаб қилинмайди, KIIP 3 керак.'}
+      lang: {kiip: 3}
+    - F-2-99
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+      needs: {edu: 3}
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+  E-7-T:
+    name: {en: Promising Top-Tier, ru: Перспективный Top-Tier, uz: Istiqbolli Top-Tier, uz-cyrl: Истиқболли Top-Tier}
+    how: {en: 'High-tech talent close to the Top-Tier criteria, with a ministry recommendation.', ru: 'Специалист высоких технологий, близкий к критериям Top-Tier, с рекомендацией министерства.', uz: 'Top-Tier mezonlariga yaqin yuqori texnologiyalar mutaxassisi, vazirlik tavsiyasi bilan.', uz-cyrl: 'Top-Tier мезонларига яқин юқори технологиялар мутахассиси, вазирлик тавсияси билан.'}
+    next:
+    - to: F-2-T
+      note: {en: After 1+ year in a high-tech field with income of at least 2× GNI., ru: После 1+ года работы в высокотехнологичной сфере с доходом от 2× ВНД., uz: 'Yuqori texnologiyalar sohasida 1+ yil, daromad kamida 2× GNI bo‘lganda.', uz-cyrl: 'Юқори технологиялар соҳасида 1+ йил, даромад камида 2× GNI бўлганда.'}
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+      needs: {edu: 3}
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-10-1
+      note: {en: 'After your job ends: up to 1 year to look for a new one, without the points test.', ru: 'После окончания работы: до 1 года на поиск новой, без балльной оценки.', uz: 'Ishingiz tugagach: yangi ish qidirish uchun 1 yilgacha, ball tizimisiz.', uz-cyrl: 'Ишингиз тугагач: янги иш қидириш учун 1 йилгача, балл тизимисиз.'}
+      needs: {}
+    needs:
+    - {edu: 4, rank: 3, experience: 8}
+    - {edu: 5, rank: 3, experience: 5}
+  E-7-Y:
+    name: {en: Korea-raised youth worker, ru: 'Работающая молодёжь, выросшая в Корее', uz: Koreyada ulg‘aygan yosh ishchi, uz-cyrl: Кореяда улғайган ёш ишчи}
+    how: {en: 'Aged 18–24, grew up in Korea and finished Korean school, now starting a job.', ru: 'Возраст 18–24, вырос(ла) в Корее и окончил(а) корейскую школу, начинает работать.', uz: 'Yosh 18–24, Koreyada ulg‘aygan va Koreya maktabini tamomlagan, ish boshlayotgan.', uz-cyrl: 'Ёш 18–24, Кореяда улғайган ва Корея мактабини тамомлаган, иш бошлаётган.'}
+    next:
+    - F-2-R
+    - D-10-1
+    - F-6-1
+    - F-2-3
+    - to: D-2-2
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    age: [18, 24]
+    needs: {koreanEdu: 1}
+  E-8:
+    name: {en: Seasonal worker, ru: Сезонный работник, uz: Mavsumiy ishchi, uz-cyrl: Мавсумий ишчи}
+    how: {en: 'Seasonal farm or fishery work of up to 8 months, arranged through a Korean local government.', ru: Сезонная работа в сельском или рыбном хозяйстве до 8 месяцев через корейские местные власти., uz: Koreya mahalliy hokimiyati orqali qishloq yoki baliq xo‘jaligida 8 oygacha mavsumiy ish., uz-cyrl: Корея маҳаллий ҳокимияти орқали қишлоқ ёки балиқ хўжалигида 8 ойгача мавсумий иш.}
+    next:
+    - {to: E-9, abroad: true}
+  E-9:
+    name: {en: Non-professional worker (EPS), ru: Неквалифицированный работник (EPS), uz: Malakasiz ishchi (EPS), uz-cyrl: Малакасиз ишчи (EPS)}
+    how: {en: 'Pass EPS-TOPIK and get hired through the Employment Permit System; age 18–39, citizens of 17 partner countries.', ru: 'Сдать EPS-TOPIK и трудоустроиться по системе разрешений на работу; возраст 18–39, граждане 17 стран-партнёров.', uz: 'EPS-TOPIK imtihonidan o‘tib, ish ruxsatnomasi tizimi orqali ishga joylashish; yosh 18–39, 17 hamkor davlat fuqarolari.', uz-cyrl: 'EPS-TOPIK имтиҳонидан ўтиб, иш рухсатномаси тизими орқали ишга жойлашиш; ёш 18–39, 17 ҳамкор давлат фуқаролари.'}
+    next:
+    - E-7-4
+    - E-7-4R
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - F-6-1
+    - {to: D-2-2, abroad: true}
+    - {to: E-7-1, abroad: true}
+    - F-2-3
+    age: [18, 39]
+    countries: eps
+    notes:
+    - countries: [KZ]
+      text: {en: Kazakhstan was named an EPS partner in August 2026; workers are expected from about 2028., ru: Казахстан включён в EPS в августе 2026 года; набор работников ожидается примерно с 2028 года., uz: Qozog‘iston 2026-yil avgustida EPS hamkoriga aylandi; ishchilar taxminan 2028-yildan kutilmoqda., uz-cyrl: Қозоғистон 2026-йил августида EPS ҳамкорига айланди; ишчилар тахминан 2028-йилдан кутилмоқда.}
+  E-10:
+    name: {en: Seafarer, ru: Моряк, uz: Dengizchi, uz-cyrl: Денгизчи}
+    how: {en: 'Crew contract of 6+ months on a Korean coastal, fishing or cruise ship.', ru: 'Контракт члена экипажа от 6 месяцев на корейском каботажном, рыболовном или круизном судне.', uz: 'Koreya qirg‘oq, baliq ovlash yoki kruiz kemasida 6+ oylik ekipaj shartnomasi.', uz-cyrl: 'Корея қирғоқ, балиқ овлаш ёки круиз кемасида 6+ ойлик экипаж шартномаси.'}
+    next:
+    - E-7-4
+    - E-7-4R
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - F-6-1
+    - {to: E-7-1, abroad: true}
+    - F-2-3
+  H-1:
+    name: {en: Working holiday, ru: Рабочий отпуск, uz: Ishchi ta’til, uz-cyrl: Ишчи таътил}
+    how: {en: 'Citizens of partner countries, usually aged 18–30; up to 1 year of travel with permitted work.', ru: 'Граждане стран-партнёров, обычно 18–30 лет; до 1 года путешествия с разрешённой работой.', uz: 'Hamkor davlatlar fuqarolari, odatda 18–30 yosh; ruxsat etilgan ish bilan 1 yilgacha sayohat.', uz-cyrl: 'Ҳамкор давлатлар фуқаролари, одатда 18–30 ёш; рухсат этилган иш билан 1 йилгача саёҳат.'}
+    next:
+    - to: E-1
+      abroadFor: h1NoChange
+      note: {en: 'In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.', ru: 'В Корее — кроме граждан Великобритании, Франции, Ирландии, Дании, Чили, Италии, Израиля и Бельгии.', uz: 'Koreyada — Buyuk Britaniya, Fransiya, Irlandiya, Daniya, Chili, Italiya, Isroil va Belgiya fuqarolaridan tashqari.', uz-cyrl: 'Кореяда — Буюк Британия, Франция, Ирландия, Дания, Чили, Италия, Исроил ва Бельгия фуқароларидан ташқари.'}
+    - to: E-2
+      abroadFor: h1NoChange
+      note: {en: 'In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.', ru: 'В Корее — кроме граждан Великобритании, Франции, Ирландии, Дании, Чили, Италии, Израиля и Бельгии.', uz: 'Koreyada — Buyuk Britaniya, Fransiya, Irlandiya, Daniya, Chili, Italiya, Isroil va Belgiya fuqarolaridan tashqari.', uz-cyrl: 'Кореяда — Буюк Британия, Франция, Ирландия, Дания, Чили, Италия, Исроил ва Бельгия фуқароларидан ташқари.'}
+    - to: E-3
+      abroadFor: h1NoChange
+      note: {en: 'In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.', ru: 'В Корее — кроме граждан Великобритании, Франции, Ирландии, Дании, Чили, Италии, Израиля и Бельгии.', uz: 'Koreyada — Buyuk Britaniya, Fransiya, Irlandiya, Daniya, Chili, Italiya, Isroil va Belgiya fuqarolaridan tashqari.', uz-cyrl: 'Кореяда — Буюк Британия, Франция, Ирландия, Дания, Чили, Италия, Исроил ва Бельгия фуқароларидан ташқари.'}
+    - to: E-4
+      abroadFor: h1NoChange
+      note: {en: 'In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.', ru: 'В Корее — кроме граждан Великобритании, Франции, Ирландии, Дании, Чили, Италии, Израиля и Бельгии.', uz: 'Koreyada — Buyuk Britaniya, Fransiya, Irlandiya, Daniya, Chili, Italiya, Isroil va Belgiya fuqarolaridan tashqari.', uz-cyrl: 'Кореяда — Буюк Британия, Франция, Ирландия, Дания, Чили, Италия, Исроил ва Бельгия фуқароларидан ташқари.'}
+    - to: E-5
+      abroadFor: h1NoChange
+      note: {en: 'In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.', ru: 'В Корее — кроме граждан Великобритании, Франции, Ирландии, Дании, Чили, Италии, Израиля и Бельгии.', uz: 'Koreyada — Buyuk Britaniya, Fransiya, Irlandiya, Daniya, Chili, Italiya, Isroil va Belgiya fuqarolaridan tashqari.', uz-cyrl: 'Кореяда — Буюк Британия, Франция, Ирландия, Дания, Чили, Италия, Исроил ва Бельгия фуқароларидан ташқари.'}
+    - to: E-7-1
+      abroadFor: h1NoChange
+      note: {en: 'In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.', ru: 'В Корее — кроме граждан Великобритании, Франции, Ирландии, Дании, Чили, Италии, Израиля и Бельгии.', uz: 'Koreyada — Buyuk Britaniya, Fransiya, Irlandiya, Daniya, Chili, Italiya, Isroil va Belgiya fuqarolaridan tashqari.', uz-cyrl: 'Кореяда — Буюк Британия, Франция, Ирландия, Дания, Чили, Италия, Исроил ва Бельгия фуқароларидан ташқари.'}
+    - {to: D-2-2, abroad: true}
+    - {to: D-4-1, abroad: true}
+    - {to: D-10-1, abroad: true}
+    - {to: F-6-1, abroad: true}
+    - {to: F-2-3, abroad: true}
+    age: [18, 30]
+    ageByCountry:
+      AR: [18, 34]
+      BR: [18, 34]
+      CL: [18, 34]
+      DK: [18, 34]
+      DE: [18, 34]
+      IE: [18, 34]
+      LV: [18, 34]
+      PT: [18, 34]
+      TW: [18, 34]
+      CA: [18, 35]
+      LU: [18, 35]
+      GB: [18, 35]
+      US: [18]
+    countries: h1
+  H-2:
+    name: {en: Work and visit (closed), ru: Работа и визит (закрыт), uz: Ish va tashrif (yopilgan), uz-cyrl: Иш ва ташриф (ёпилган)}
+    how: {en: Former work visa for ethnic Koreans from China and CIS countries. No new H-2 visas since 2026.02.12; holders can switch to F-4., ru: Бывшая рабочая виза для этнических корейцев из Китая и СНГ. Новые H-2 не выдаются с 12.02.2026; обладатели могут перейти на F-4., uz: Xitoy va MDH dagi etnik koreyslar uchun avvalgi ish vizasi. 2026.02.12 dan yangi H-2 berilmaydi; egalari F-4 ga o‘tishi mumkin., uz-cyrl: Хитой ва MDH даги этник корейслар учун аввалги иш визаси. 2026.02.12 дан янги H-2 берилмайди; эгалари F-4 га ўтиши мумкин.}
+    next:
+    - to: F-4
+      note: {en: In Korea at any time since 2026.02.12; change fee waived until the end of 2027., ru: В Корее в любое время с 12.02.2026; сбор за смену не взимается до конца 2027 года., uz: 2026.02.12 dan boshlab Koreyada istalgan vaqtda; o‘zgartirish to‘lovi 2027-yil oxirigacha olinmaydi., uz-cyrl: 2026.02.12 дан бошлаб Кореяда исталган вақтда; ўзгартириш тўлови 2027-йил охиригача олинмайди.}
+    - F-5-14
+    - E-7-4
+    - E-7-4R
+    needs: *id001
+    gives: *id001
+  D-1:
+    name: {en: Arts and culture, ru: Искусство и культура, uz: San’at va madaniyat, uz-cyrl: Санъат ва маданият}
+    how: {en: 'Non-profit cultural or artistic activity, including study of Korean traditional arts.', ru: 'Некоммерческая культурная или художественная деятельность, включая изучение традиционного корейского искусства.', uz: 'Notijorat madaniy yoki badiiy faoliyat, jumladan koreys an’anaviy san’atini o‘rganish.', uz-cyrl: 'Нотижорат маданий ёки бадиий фаолият, жумладан корейс анъанавий санъатини ўрганиш.'}
+    next: [E-7-1, F-2-99, F-6-1, F-2-3]
+  D-5:
+    name: {en: Foreign correspondent, ru: Иностранный корреспондент, uz: Xorijiy muxbir, uz-cyrl: Хорижий мухбир}
+    how: {en: Correspondent of a foreign media outlet stationed in Korea., ru: 'Корреспондент иностранного СМИ, аккредитованный в Корее.', uz: Koreyada faoliyat yurituvchi xorijiy OAV muxbiri., uz-cyrl: Кореяда фаолият юритувчи хорижий OAV мухбири.}
+    next:
+    - E-7-1
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-6-1
+    - F-2-3
+  D-6:
+    name: {en: Religious worker, ru: Религиозный работник, uz: Diniy xodim, uz-cyrl: Диний ходим}
+    how: {en: Religious or social-welfare work for a religious organisation., ru: Религиозная или социальная работа в религиозной организации., uz: Diniy tashkilotda diniy yoki ijtimoiy ish., uz-cyrl: Диний ташкилотда диний ёки ижтимоий иш.}
+    next:
+    - E-7-1
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-6-1
+    - F-2-3
+  D-7:
+    name: {en: Intra-company transferee, ru: Перевод внутри компании, uz: Kompaniya ichida o‘tkazilgan xodim, uz-cyrl: Компания ичида ўтказилган ходим}
+    how: {en: '1+ year with a company abroad, then sent to its branch, affiliate or head office in Korea.', ru: '1+ год работы в компании за рубежом, затем перевод в её филиал или головной офис в Корее.', uz: 'Chet eldagi kompaniyada 1+ yil ishlab, uning Koreyadagi filiali yoki bosh ofisiga yuborilgan.', uz-cyrl: 'Чет элдаги компанияда 1+ йил ишлаб, унинг Кореядаги филиали ёки бош офисига юборилган.'}
+    next:
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-2-R
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - E-7-1
+    - D-8-1
+    - F-6-1
+    - F-2-3
+  D-8-1:
+    name: {en: Corporate investor, ru: Корпоративный инвестор, uz: Korporativ investor, uz-cyrl: Корпоратив инвестор}
+    how: {en: '₩100M+ investment with a 10%+ stake in a Korean corporation, or essential staff of such a company.', ru: Инвестиции от ₩100 млн с долей от 10% в корейской компании или ключевой сотрудник такой компании., uz: Koreya kompaniyasiga ₩100 mln+ investitsiya va 10%+ ulush yoki shunday kompaniyaning asosiy xodimi., uz-cyrl: Корея компаниясига ₩100 млн+ инвестиция ва 10%+ улуш ёки шундай компаниянинг асосий ходими.}
+    next:
+    - F-2-5
+    - F-5-5
+    - F-5-26
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - D-7
+    - F-5-25
+    needs: {invest: 1}
+  D-8-2:
+    name: {en: Venture founder, ru: Основатель венчурной компании, uz: Venchur kompaniya asoschisi, uz-cyrl: Венчур компания асосчиси}
+    how: {en: Founder or representative of a certified venture company., ru: Основатель или руководитель сертифицированной венчурной компании., uz: Sertifikatlangan venchur kompaniya asoschisi yoki rahbari., uz-cyrl: Сертификатланган венчур компания асосчиси ёки раҳбари.}
+    next:
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - F-5-5
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+  D-8-3:
+    name: {en: Individual-business investor, ru: Инвестор в ИП, uz: Yakka tadbirkorlikka investor, uz-cyrl: Якка тадбиркорликка инвестор}
+    how: {en: Investment in a business run as a Korean individual's enterprise., ru: 'Инвестиции в бизнес, оформленный как индивидуальное предприятие в Корее.', uz: Koreyada yakka tadbirkorlik sifatida yuritiladigan biznesga investitsiya., uz-cyrl: Кореяда якка тадбиркорлик сифатида юритиладиган бизнесга инвестиция.}
+    next:
+    - F-2-5
+    - F-5-5
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - F-5-25
+    needs: {invest: 1}
+  D-8-4:
+    name: {en: Tech start-up founder, ru: Основатель техностартапа, uz: Texnologik startap asoschisi, uz-cyrl: Технологик стартап асосчиси}
+    how: {en: 'Degree plus intellectual property or technology, 60+ start-up points and your own Korean corporation.', ru: 'Диплом, интеллектуальная собственность или технология, 60+ баллов и своя корейская компания.', uz: 'Diplom va intellektual mulk yoki texnologiya, 60+ ball va o‘z Koreya kompaniyangiz.', uz-cyrl: 'Диплом ва интеллектуал мулк ёки технология, 60+ балл ва ўз Корея компаниянгиз.'}
+    next:
+    - F-5-24
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    needs:
+    - {edu: 3}
+    - {koreanEdu: 2}
+  D-9-1:
+    name: {en: Trader, ru: Внешнеторговая деятельность, uz: Tashqi savdo, uz-cyrl: Ташқи савдо}
+    how: {en: Trade business with a KITA trade number (points-based)., ru: Торговый бизнес с номером KITA (по баллам)., uz: KITA savdo raqami bilan savdo biznesi (ball tizimi)., uz-cyrl: KITA савдо рақами билан савдо бизнеси (балл тизими).}
+    next:
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+  D-9-4:
+    name: {en: Business owner, ru: Владелец бизнеса, uz: Biznes egasi, uz-cyrl: Бизнес эгаси}
+    how: {en: Running a business in Korea with ₩300M+ of imported foreign capital., ru: Ведение бизнеса в Корее с ввезённым иностранным капиталом от ₩300 млн., uz: Koreyaga kiritilgan ₩300 mln+ xorijiy kapital bilan biznes yuritish., uz-cyrl: Кореяга киритилган ₩300 млн+ хорижий капитал билан бизнес юритиш.}
+    next:
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    needs: {invest: 2}
+  D-9-5:
+    name: {en: Graduate entrepreneur, ru: Предприниматель-выпускник, uz: Bitiruvchi tadbirkor, uz-cyrl: Битирувчи тадбиркор}
+    how: {en: Korean master's degree or higher and ₩100M+ invested in your own business., ru: Корейская магистратура или выше и ₩100 млн+ в собственный бизнес., uz: Koreyada magistr yoki undan yuqori daraja va o‘z biznesingizga ₩100 mln+., uz-cyrl: Кореяда магистр ёки ундан юқори даража ва ўз бизнесингизга ₩100 млн+.}
+    next:
+    - to: F-2-7
+      note: {en: After 3+ years in this status (waived with income of ₩40M+); 80+ points., ru: После 3+ лет в этом статусе (не нужно при доходе от ₩40 млн); 80+ баллов., uz: Bu maqomda 3+ yildan keyin (daromad ₩40 mln dan oshsa talab qilinmaydi); 80+ ball., uz-cyrl: Бу мақомда 3+ йилдан кейин (даромад ₩40 млн дан ошса талаб қилинмайди); 80+ балл.}
+    - F-2-99
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    needs: {koreanEdu: 3, invest: 1}
+  F-2-2:
+    name: {en: Minor child of a Korean citizen, ru: Ребёнок гражданина Кореи, uz: Koreya fuqarosining farzandi, uz-cyrl: Корея фуқаросининг фарзанди}
+    how: {en: Foreign minor child of a Korean citizen., ru: Несовершеннолетний ребёнок-иностранец гражданина Кореи., uz: Koreya fuqarosining voyaga yetmagan chet ellik farzandi., uz-cyrl: Корея фуқаросининг вояга етмаган чет эллик фарзанди.}
+    next: [F-5-3]
+    age: [0, 18]
+    needs: {parent: korean}
+  F-2-3:
+    name: {en: Family of a permanent resident, ru: Семья обладателя ПМЖ, uz: Doimiy yashovchining oilasi, uz-cyrl: Доимий яшовчининг оиласи}
+    how: {en: 'Spouse or minor child of an F-5 holder, whose household earns at least 1× GNI (70% for up to 3 people).', ru: 'Супруг(а) или несовершеннолетний ребёнок обладателя F-5, чья семья зарабатывает не менее 1× ВНД (70% для семьи до 3 человек).', uz: F-5 egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi; oilaning daromadi kamida 1× GNI (3 kishigacha bo‘lgan oila uchun 70%)., uz-cyrl: F-5 эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди; оиланинг даромади камида 1× GNI (3 кишигача бўлган оила учун 70%).}
+    next: [F-5-4]
+    needs:
+    - {spouse: f5}
+    - {parent: f5}
+  F-2-4:
+    name: {en: Recognised refugee, ru: Признанный беженец, uz: Tan olingan qochqin, uz-cyrl: Тан олинган қочқин}
+    how: {en: Granted refugee status in Korea., ru: Получен статус беженца в Корее., uz: Koreyada qochqin maqomi berilgan., uz-cyrl: Кореяда қочқин мақоми берилган.}
+    next: [F-5-27]
+  F-2-5:
+    name: {en: High-amount investor, ru: Крупный инвестор, uz: Yirik investor, uz-cyrl: Йирик инвестор}
+    how: {en: 'US$500K+ invested and 3+ years on D-8, or US$300K and 2 Korean employees.', ru: Инвестиции от 500 тыс. USD и 3+ года на D-8 или 300 тыс. USD и 2 корейских сотрудника., uz: 500 ming USD+ investitsiya va D-8 da 3+ yil yoki 300 ming USD va 2 koreys xodim., uz-cyrl: 500 минг USD+ инвестиция ва D-8 да 3+ йил ёки 300 минг USD ва 2 корейс ходим.}
+    next:
+    - F-5-5
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    needs: {invest: 2}
+  F-2-7:
+    name: {en: Points-based resident, ru: Резидент по баллам, uz: Ball tizimi bo‘yicha rezident, uz-cyrl: Балл тизими бўйича резидент}
+    how: {en: '80+ points (age, education, Korean, income) on an eligible track, for example 3 years of professional work or a Korean master''s plus a job.', ru: '80+ баллов (возраст, образование, корейский, доход) по одному из треков, например 3 года работы специалистом или корейская магистратура и работа.', uz: 'Belgilangan yo‘nalishda 80+ ball (yosh, ta’lim, koreys tili, daromad), masalan 3 yil mutaxassis bo‘lib ishlash yoki Koreya magistraturasi va ish.', uz-cyrl: 'Белгиланган йўналишда 80+ балл (ёш, таълим, корейс тили, даромад), масалан 3 йил мутахассис бўлиб ишлаш ёки Корея магистратураси ва иш.'}
+    next:
+    - F-5-16
+    - to: F-5-S1
+      note: {en: If you graduated from a K-STAR university., ru: Если вы окончили вуз программы K-STAR., uz: K-STAR universitetini tamomlagan bo‘lsangiz., uz-cyrl: K-STAR университетини тамомлаган бўлсангиз.}
+    - to: F-2-T
+      note: {en: If you meet the Top-Tier criteria., ru: Если вы соответствуете критериям Top-Tier., uz: Top-Tier mezonlariga javob bersangiz., uz-cyrl: Top-Tier мезонларига жавоб берсангиз.}
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - F-5-11
+  F-2-7S:
+    name: {en: K-STAR resident, ru: Резидент K-STAR, uz: K-STAR rezidenti, uz-cyrl: K-STAR резиденти}
+    how: {en: 'Science or technology master''s or PhD from a K-STAR university, with the president''s recommendation; points waived.', ru: 'Магистратура или PhD по науке и технологиям в вузе K-STAR, по рекомендации ректора; без баллов.', uz: 'K-STAR universitetida fan yoki texnologiya bo‘yicha magistr yoki PhD, rektor tavsiyasi bilan; ballsiz.', uz-cyrl: 'K-STAR университетида фан ёки технология бўйича магистр ёки PhD, ректор тавсияси билан; баллсиз.'}
+    next:
+    - F-5-S1
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    needs: {koreanEdu: 4, stem: true}
+  F-2-71:
+    name: {en: Family of a points-based resident, ru: Семья резидента по баллам, uz: Ball tizimidagi rezident oilasi, uz-cyrl: Балл тизимидаги резидент оиласи}
+    how: {en: Spouse or minor child of an F-2-7 or F-2-7S holder who earns at least 1× GNI., ru: Супруг(а) или несовершеннолетний ребёнок обладателя F-2-7 или F-2-7S с доходом от 1× ВНД., uz: Kamida 1× GNI daromadga ega F-2-7 yoki F-2-7S egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi., uz-cyrl: Камида 1× GNI даромадга эга F-2-7 ёки F-2-7S эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди.}
+    next: [F-5-18, F-5-S2]
+    needs: &id002
+    - {spouse: foreigner}
+    - {parent: foreigner}
+  F-2-8:
+    name: {en: Tourism/resort investor, ru: Инвестор в туризм/курорты, uz: Turizm/kurort investori, uz-cyrl: Туризм/курорт инвестори}
+    how: {en: ₩1bn+ invested in designated tourism or resort property in specified regions., ru: Инвестиции от ₩1 млрд в определённую туристическую или курортную недвижимость в указанных регионах., uz: Belgilangan hududlardagi turistik yoki kurort mulkiga ₩1 mlrd+ investitsiya., uz-cyrl: Белгиланган ҳудудлардаги туристик ёки курорт мулкига ₩1 млрд+ инвестиция.}
+    next: [F-5-17]
+    needs: {invest: 4}
+  F-2-81:
+    name: {en: Child of a tourism/resort investor, ru: Ребёнок инвестора в туризм, uz: Turizm investori farzandi, uz-cyrl: Туризм инвестори фарзанди}
+    how: {en: Unmarried child of an F-2-8 investor., ru: 'Ребёнок инвестора F-2-8, не состоящий в браке.', uz: F-2-8 investorining turmush qurmagan farzandi., uz-cyrl: F-2-8 инвесторининг турмуш қурмаган фарзанди.}
+    next: [F-5-19]
+  F-2-12:
+    name: {en: Public-interest investor, ru: Инвестор в общественные проекты, uz: Jamoat loyihalari investori, uz-cyrl: Жамоат лойиҳалари инвестори}
+    how: {en: ₩1.5bn+ in a designated public-interest fund or development project., ru: 'От ₩1,5 млрд в определённый общественный фонд или проект развития.', uz: 'Belgilangan jamoat fondi yoki rivojlanish loyihasiga ₩1,5 mlrd+.', uz-cyrl: 'Белгиланган жамоат фонди ёки ривожланиш лойиҳасига ₩1,5 млрд+.'}
+    next: [F-5-21]
+    needs: {invest: 5}
+  F-2-13:
+    name: {en: Family of a public-interest investor, ru: Семья инвестора в общественные проекты, uz: Jamoat loyihalari investori oilasi, uz-cyrl: Жамоат лойиҳалари инвестори оиласи}
+    how: {en: Spouse or unmarried child of an F-2-12 investor., ru: 'Супруг(а) или ребёнок инвестора F-2-12, не состоящий в браке.', uz: F-2-12 investorining turmush o‘rtog‘i yoki turmush qurmagan farzandi., uz-cyrl: F-2-12 инвесторининг турмуш ўртоғи ёки турмуш қурмаган фарзанди.}
+    next: [F-5-22]
+    needs: *id002
+  F-2-16:
+    name: {en: Special contributor, ru: Особый вклад, uz: Alohida hissa qo‘shgan shaxs, uz-cyrl: Алоҳида ҳисса қўшган шахс}
+    how: {en: Recognised by the Ministry of Justice for a special contribution to Korea or the public interest; family included., ru: Признан(а) Минюстом за особый вклад в Корею или общественное благо; включая семью., uz: Adliya vazirligi tomonidan Koreya yoki jamoat manfaatiga alohida hissasi uchun tan olingan; oilasi bilan., uz-cyrl: Адлия вазирлиги томонидан Корея ёки жамоат манфаатига алоҳида ҳиссаси учун тан олинган; оиласи билан.}
+    next:
+    - F-5-28
+    - to: F-5-29
+      note: {en: For the spouse or minor child., ru: Для супруга(и) или несовершеннолетнего ребёнка., uz: Turmush o‘rtog‘i yoki voyaga yetmagan farzand uchun., uz-cyrl: Турмуш ўртоғи ёки вояга етмаган фарзанд учун.}
+  F-2-99:
+    name: {en: Long-term resident, ru: Долгосрочный резидент, uz: Uzoq muddatli rezident, uz-cyrl: Узоқ муддатли резидент}
+    how: {en: '5+ years on eligible work or business statuses, own income of ₩40M+, assets of ₩20M+ and KIIP level 4.', ru: '5+ лет в подходящих рабочих или бизнес-статусах, собственный доход от ₩40 млн, активы от ₩20 млн и KIIP 4.', uz: 'Mos ish yoki biznes maqomlarida 5+ yil, shaxsiy daromad ₩40 mln+, aktivlar ₩20 mln+ va KIIP 4.', uz-cyrl: 'Мос иш ёки бизнес мақомларида 5+ йил, шахсий даромад ₩40 млн+, активлар ₩20 млн+ ва KIIP 4.'}
+    next:
+    - to: F-5-1
+      note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - F-5-13
+    lang: {kiip: 4}
+  F-2-R:
+    name: {en: Regional talent, ru: Региональный специалист, uz: Hududiy mutaxassis, uz-cyrl: Ҳудудий мутахассис}
+    how: {en: 'Local-government recommendation, a Korean associate degree or regional-wage income, KIIP 3 or TOPIK 3, and 5 years in a depopulating area.', ru: 'Рекомендация местных властей, корейский диплом колледжа или доход на уровне региона, KIIP 3 или TOPIK 3 и 5 лет в депопулирующем районе.', uz: 'Mahalliy hokimiyat tavsiyasi, Koreya kolleji diplomi yoki hududiy darajadagi daromad, KIIP 3 yoki TOPIK 3 va aholisi kamayayotgan hududda 5 yil.', uz-cyrl: 'Маҳаллий ҳокимият тавсияси, Корея коллежи дипломи ёки ҳудудий даражадаги даромад, KIIP 3 ёки TOPIK 3 ва аҳолиси камаяётган ҳудудда 5 йил.'}
+    next:
+    - to: F-5-1
+      note: {en: 'No dedicated route: F-2 years count toward F-5-1 (5 years, income, KIIP 5). Confirm with immigration (1345).', ru: 'Отдельного пути нет: годы на F-2 засчитываются для F-5-1 (5 лет, доход, KIIP 5). Уточните в иммиграционной службе (1345).', uz: 'Alohida yo‘l yo‘q: F-2 dagi yillar F-5-1 uchun hisoblanadi (5 yil, daromad, KIIP 5). Immigratsiya xizmatidan aniqlang (1345).', uz-cyrl: 'Алоҳида йўл йўқ: F-2 даги йиллар F-5-1 учун ҳисобланади (5 йил, даромад, KIIP 5). Иммиграция хизматидан аниқланг (1345).'}
+    lang: {topik: 3, kiip: 3}
+  F-2-T:
+    name: {en: Top-Tier resident, ru: Резидент Top-Tier, uz: Top-Tier rezidenti, uz-cyrl: Top-Tier резиденти}
+    how: {en: 'World-class high-tech or science talent: top-100 university degree, long experience, income of at least 3× GNI and a ministry recommendation.', ru: 'Специалист мирового уровня в hi-tech или науке: диплом вуза топ-100, большой опыт, доход от 3× ВНД и рекомендация министерства.', uz: 'Yuqori texnologiyalar yoki fan sohasida jahon darajasidagi mutaxassis: top-100 universitet diplomi, katta tajriba, kamida 3× GNI daromad va vazirlik tavsiyasi.', uz-cyrl: 'Юқори технологиялар ёки фан соҳасида жаҳон даражасидаги мутахассис: top-100 университет дипломи, катта тажриба, камида 3× GNI даромад ва вазирлик тавсияси.'}
+    next: [F-5-T]
+    needs:
+    - {edu: 4, rank: 3}
+    - {experience: 5}
+  F-2-T1:
+    name: {en: Top-Tier family, ru: Семья Top-Tier, uz: Top-Tier oilasi, uz-cyrl: Top-Tier оиласи}
+    how: {en: Spouse or minor child of an F-2-T holder., ru: Супруг(а) или несовершеннолетний ребёнок обладателя F-2-T., uz: F-2-T egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi., uz-cyrl: F-2-T эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди.}
+    next: [F-5-T1]
+    needs: *id002
+  F-1:
+    name: {en: Family visitor, ru: Визит к семье, uz: Oilaviy tashrif, uz-cyrl: Оилавий ташриф}
+    how: {en: Visiting or living with family members in Korea in various cases; generally no work., ru: 'Посещение или проживание с семьёй в Корее в разных случаях; как правило, без работы.', uz: Turli holatlarda Koreyadagi oila a’zolarini ziyorat qilish yoki ular bilan yashash; odatda ishlash mumkin emas., uz-cyrl: Турли ҳолатларда Кореядаги оила аъзоларини зиёрат қилиш ёки улар билан яшаш; одатда ишлаш мумкин эмас.}
+    next:
+    - to: F-2-2
+      note: {en: For a minor foreign child of a Korean citizen., ru: Для несовершеннолетнего ребёнка-иностранца гражданина Кореи., uz: Koreya fuqarosining voyaga yetmagan chet ellik farzandi uchun., uz-cyrl: Корея фуқаросининг вояга етмаган чет эллик фарзанди учун.}
+    - to: F-2-71
+      note: {en: Once the F-2-7 family member earns at least 1× GNI., ru: Когда член семьи с F-2-7 зарабатывает не менее 1× ВНД., uz: F-2-7 dagi oila a’zosi kamida 1× GNI ishlaganda., uz-cyrl: F-2-7 даги оила аъзоси камида 1× GNI ишлаганда.}
+    - F-6-1
+    - D-2-2
+    - F-5-13
+    - F-2-3
+  F-3:
+    name: {en: Dependent family, ru: Член семьи, uz: Oila a’zosi, uz-cyrl: Оила аъзоси}
+    how: {en: 'Spouse or minor child of a D, E or F-2 status holder.', ru: 'Супруг(а) или несовершеннолетний ребёнок обладателя статуса D, E или F-2.', uz: 'D, E yoki F-2 maqomi egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi.', uz-cyrl: 'D, E ёки F-2 мақоми эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди.'}
+    next:
+    - E-7-1
+    - E-2
+    - D-2-2
+    - to: D-10-1
+      note: {en: 'Bachelor''s degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов (80+ для граждан 21 страны из особого списка, включая Узбекистан); всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball (maxsus ro‘yxatdagi 21 davlat, jumladan O‘zbekiston fuqarolari uchun 80+); jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл (махсус рўйхатдаги 21 давлат, жумладан Ўзбекистон фуқаролари учун 80+); жами 1 йил, 80+ балл билан 3 йил.'}
+    - to: F-2-99
+      note: {en: For the spouse of an F-2-99 holder (via F-3-18)., ru: Для супруга(и) обладателя F-2-99 (через F-3-18)., uz: F-2-99 egasining turmush o‘rtog‘i uchun (F-3-18 orqali)., uz-cyrl: F-2-99 эгасининг турмуш ўртоғи учун (F-3-18 орқали).}
+    - to: F-2-71
+      note: {en: Once the F-2-7 family member earns at least 1× GNI., ru: Когда член семьи с F-2-7 зарабатывает не менее 1× ВНД., uz: F-2-7 dagi oila a’zosi kamida 1× GNI ishlaganda., uz-cyrl: F-2-7 даги оила аъзоси камида 1× GNI ишлаганда.}
+    - F-6-1
+    - F-5-13
+    - F-2-3
+    - to: D-2-3
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    - to: D-2-4
+      note: {en: Change of status in Korea with a university admission letter and proof of funds; your work or job-search status ends., ru: Смена статуса в Корее по письму о зачислении в вуз и с подтверждением средств; рабочий статус или статус поиска работы прекращается., uz: Universitetning qabul xati va mablag‘ni tasdiqlovchi hujjatlar bilan Koreyada maqomni o‘zgartirish; ish yoki ish qidirish maqomingiz tugaydi., uz-cyrl: Университетнинг қабул хати ва маблағни тасдиқловчи ҳужжатлар билан Кореяда мақомни ўзгартириш; иш ёки иш қидириш мақомингиз тугайди.}
+    needs: *id002
+  F-6-1:
+    name: {en: Spouse of a Korean citizen, ru: Супруг(а) гражданина Кореи, uz: Koreya fuqarosining turmush o‘rtog‘i, uz-cyrl: Корея фуқаросининг турмуш ўртоғи}
+    how: {en: 'Legal marriage to a Korean citizen. The Korean spouse needs a yearly income of about ₩25.2M for a couple (2026; not needed if you have a child together), you need basic Korean (TOPIK 1) or a shared language, and a real home.', ru: 'Законный брак с гражданином Кореи. Супругу-корейцу нужен годовой доход около ₩25,2 млн на семью из двух человек (2026; не нужен при общем ребёнке), вам — базовый корейский (TOPIK 1) или общий язык, и нужно настоящее жильё.', uz: 'Koreya fuqarosi bilan qonuniy nikoh. Koreyalik turmush o‘rtog‘ingizning yillik daromadi ikki kishi uchun taxminan ₩25,2 mln bo‘lishi kerak (2026; umumiy farzand bo‘lsa, kerak emas), sizga boshlang‘ich koreys tili (TOPIK 1) yoki umumiy til va haqiqiy uy-joy kerak.', uz-cyrl: 'Корея фуқароси билан қонуний никоҳ. Кореялик турмуш ўртоғингизнинг йиллик даромади икки киши учун тахминан ₩25,2 млн бўлиши керак (2026; умумий фарзанд бўлса, керак эмас), сизга бошланғич корейс тили (TOPIK 1) ёки умумий тил ва ҳақиқий уй-жой керак.'}
+    next:
+    - to: F-5-2
+      needs: {spouse: korean}
+    - F-6-2
+    - F-6-3
+    needs: {spouse: korean}
+    lang: {topik: 1, kiip: 2}
+    notes:
+    - countries: marriageProgram
+      text: {en: 'For your nationality, the Korean spouse must first complete the international marriage guidance programme.', ru: Для вашего гражданства супруг-кореец сначала должен пройти программу по международным бракам., uz: Fuqaroligingiz uchun koreyalik turmush o‘rtog‘ingiz avval xalqaro nikoh bo‘yicha tushuntirish dasturidan o‘tishi kerak., uz-cyrl: Фуқаролигингиз учун кореялик турмуш ўртоғингиз аввал халқаро никоҳ бўйича тушунтириш дастуридан ўтиши керак.}
+  F-6-2:
+    name: {en: Parent raising a Korean child, ru: 'Родитель, воспитывающий ребёнка', uz: Koreys farzandini tarbiyalayotgan ota-ona, uz-cyrl: Корейс фарзандини тарбиялаётган ота-она}
+    how: {en: 'After the marriage to a Korean citizen ended, raising your minor Korean child in Korea. While still married, you stay on F-6-1.', ru: 'После окончания брака с гражданином Кореи — воспитание в Корее вашего несовершеннолетнего ребёнка-корейца. Пока брак продолжается, вы остаётесь на F-6-1.', uz: 'Koreya fuqarosi bilan nikoh tugaganidan keyin Koreyada voyaga yetmagan koreys farzandingizni tarbiyalash. Nikoh davom etsa, F-6-1 da qolasiz.', uz-cyrl: 'Корея фуқароси билан никоҳ тугаганидан кейин Кореяда вояга етмаган корейс фарзандингизни тарбиялаш. Никоҳ давом этса, F-6-1 да қоласиз.'}
+    next: [F-5-2]
+    needs:
+      koreanChild: true
+      spouse: [exKorean, none]
+  F-6-3:
+    name: {en: Marriage ended (not your fault), ru: Брак прекращён не по вашей вине, uz: Nikoh sizning aybingizsiz tugagan, uz-cyrl: Никоҳ сизнинг айбингизсиз тугаган}
+    how: {en: 'The marriage ended through the Korean spouse''s death, disappearance or fault.', ru: 'Брак прекращён из-за смерти, исчезновения или вины супруга-гражданина Кореи.', uz: 'Nikoh Koreya fuqarosi bo‘lgan turmush o‘rtog‘ining vafoti, bedarak yo‘qolishi yoki aybi bilan tugagan.', uz-cyrl: 'Никоҳ Корея фуқароси бўлган турмуш ўртоғининг вафоти, бедарак йўқолиши ёки айби билан тугаган.'}
+    next: [F-5-2]
+    needs: {spouse: exKorean}
+  F-4:
+    name: {en: Overseas Korean, ru: Этнический кореец, uz: Xorijdagi koreys, uz-cyrl: Хориждаги корейс}
+    how: {en: 'Ethnic Korean of any nationality: former Korean citizen or descendant. Men who gave up Korean nationality without military service: only from the year they turn 41.', ru: 'Этнический кореец любого гражданства: бывший гражданин Кореи или потомок. Мужчины, отказавшиеся от гражданства Кореи без военной службы, — только с года, когда им исполнится 41.', uz: 'Har qanday fuqarolikdagi etnik koreys: Koreyaning sobiq fuqarosi yoki avlodi. Harbiy xizmatsiz Koreya fuqaroligidan chiqqan erkaklar — faqat 41 yoshga to‘ladigan yildan.', uz-cyrl: 'Ҳар қандай фуқароликдаги этник корейс: Кореянинг собиқ фуқароси ёки авлоди. Ҳарбий хизматсиз Корея фуқаролигидан чиққан эркаклар — фақат 41 ёшга тўладиган йилдан.'}
+    next: [F-5-6, F-4-R, F-5-7, F-5-13]
+    needs: *id001
+    gives: *id001
+  F-4-R:
+    name: {en: Regional overseas Korean, ru: Этнический кореец (регион), uz: Hududiy xorijdagi koreys, uz-cyrl: Ҳудудий хориждаги корейс}
+    how: {en: F-4 holder settling in a depopulating area with a local-government recommendation; people moving there must be under 60., ru: 'Обладатель F-4, переселяющийся в депопулирующий район по рекомендации местных властей; переезжающим — до 60 лет.', uz: Mahalliy hokimiyat tavsiyasi bilan aholisi kamayayotgan hududga ko‘chgan F-4 egasi; ko‘chib keluvchilar 60 yoshgacha., uz-cyrl: Маҳаллий ҳокимият тавсияси билан аҳолиси камаяётган ҳудудга кўчган F-4 эгаси; кўчиб келувчилар 60 ёшгача.}
+    next: [F-5-6R]
+    needs: *id001
+    gives: *id001
+  G-1-5:
+    name: {en: Refugee applicant, ru: Заявитель на статус беженца, uz: Qochqin maqomiga ariza beruvchi, uz-cyrl: Қочқин мақомига ариза берувчи}
+    how: {en: Waiting for a decision on a refugee application., ru: Ожидание решения по заявлению о статусе беженца., uz: Qochqin maqomi bo‘yicha arizaga qaror kutilmoqda., uz-cyrl: Қочқин мақоми бўйича аризага қарор кутилмоқда.}
+    next: [F-2-4]
+  G-1-6:
+    name: {en: Humanitarian stay, ru: Гуманитарное пребывание, uz: Insonparvarlik asosida bo‘lish, uz-cyrl: Инсонпарварлик асосида бўлиш}
+    how: {en: 'Refugee status refused, but a humanitarian stay was granted.', ru: 'В статусе беженца отказано, но разрешено гуманитарное пребывание.', uz: 'Qochqin maqomi rad etilgan, ammo insonparvarlik asosida qolishga ruxsat berilgan.', uz-cyrl: 'Қочқин мақоми рад этилган, аммо инсонпарварлик асосида қолишга рухсат берилган.'}
+    next: [D-2-2, D-4-1]
+  F-5-1:
+    name: {en: After 5 years of work or business, ru: После 5 лет работы или бизнеса, uz: 5 yillik ish yoki biznesdan so‘ng, uz-cyrl: 5 йиллик иш ёки бизнесдан сўнг}
+    how: {en: '5+ years on D-7–E-7 or F-2, age 19+, income of 2× GNI (or assets of 1.5× average) and KIIP level 5; E-7 holders need a bachelor''s degree.', ru: '5+ лет в статусах D-7–E-7 или F-2, возраст 19+, доход 2× ВНД (или активы 1,5× от среднего) и KIIP 5; для E-7 нужен диплом бакалавра.', uz: 'D-7–E-7 yoki F-2 da 5+ yil, yosh 19+, daromad 2× GNI (yoki aktivlar o‘rtachadan 1,5×) va KIIP 5; E-7 egalariga bakalavr diplomi kerak.', uz-cyrl: 'D-7–E-7 ёки F-2 да 5+ йил, ёш 19+, даромад 2× GNI (ёки активлар ўртачадан 1,5×) ва KIIP 5; E-7 эгаларига бакалавр дипломи керак.'}
+    age: [19]
+    lang: {kiip: 5}
+  F-5-2:
+    name: {en: Spouse of a Korean citizen, ru: Супруг(а) гражданина Кореи, uz: Koreya fuqarosining turmush o‘rtog‘i, uz-cyrl: Корея фуқаросининг турмуш ўртоғи}
+    how: {en: 2+ years on F-6; household income of 1× GNI or median assets; KIIP or the integration test., ru: 2+ года на F-6; доход семьи 1× ВНД или медианные активы; KIIP или интеграционный тест., uz: F-6 da 2+ yil; oila daromadi 1× GNI yoki mediana darajasidagi aktivlar; KIIP yoki integratsiya testi., uz-cyrl: F-6 да 2+ йил; оила даромади 1× GNI ёки медиана даражасидаги активлар; KIIP ёки интеграция тести.}
+    lang: {kiip: 5}
+  F-5-3:
+    name: {en: Minor child of a Korean citizen, ru: Ребёнок гражданина Кореи, uz: Koreya fuqarosining farzandi, uz-cyrl: Корея фуқаросининг фарзанди}
+    how: {en: 2+ years on F-2-2 while still a minor; no income test., ru: '2+ года на F-2-2, пока ребёнок несовершеннолетний; без требования к доходу.', uz: Voyaga yetmagan holda F-2-2 da 2+ yil; daromad talab qilinmaydi., uz-cyrl: Вояга етмаган ҳолда F-2-2 да 2+ йил; даромад талаб қилинмайди.}
+    age: [0, 18]
+  F-5-4:
+    name: {en: Family of a permanent resident, ru: Семья обладателя ПМЖ, uz: Doimiy yashovchining oilasi, uz-cyrl: Доимий яшовчининг оиласи}
+    how: {en: 2+ years on F-2-3 after the family member has held F-5 for 2+ years; income of 1× GNI; KIIP level 5., ru: '2+ года на F-2-3 после того, как член семьи 2+ года имеет F-5; доход 1× ВНД; KIIP 5.', uz: Oila a’zosi 2+ yil F-5 ga ega bo‘lgach F-2-3 da 2+ yil; daromad 1× GNI; KIIP 5., uz-cyrl: Оила аъзоси 2+ йил F-5 га эга бўлгач F-2-3 да 2+ йил; даромад 1× GNI; KIIP 5.}
+    lang: {kiip: 5}
+  F-5-5:
+    name: {en: Large investor, ru: Крупный инвестор, uz: Yirik investor, uz-cyrl: Йирик инвестор}
+    how: {en: US$500K+ investment and 5+ Korean full-time employees for 6+ months; no minimum stay., ru: Инвестиции от 500 тыс. USD и 5+ корейских штатных сотрудников от 6 месяцев; без минимального срока пребывания., uz: 500 ming USD+ investitsiya va 6+ oy davomida 5+ koreys shtat xodimi; eng kam qolish muddati yo‘q., uz-cyrl: 500 минг USD+ инвестиция ва 6+ ой давомида 5+ корейс штат ходими; энг кам қолиш муддати йўқ.}
+    needs: {invest: 3}
+  F-5-6:
+    name: {en: Overseas Korean, ru: Этнический кореец, uz: Xorijdagi koreys, uz-cyrl: Хориждаги корейс}
+    how: {en: '2+ years on F-4 plus income of 1× GNI or another option (assets, trade, investment, pension at 60+); KIIP not required.', ru: '2+ года на F-4 и доход 1× ВНД или другой вариант (активы, торговля, инвестиции, пенсия с 60 лет); KIIP не нужен.', uz: 'F-4 da 2+ yil va 1× GNI daromad yoki boshqa variant (aktivlar, savdo, investitsiya, 60 yoshdan pensiya); KIIP talab qilinmaydi.', uz-cyrl: 'F-4 да 2+ йил ва 1× GNI даромад ёки бошқа вариант (активлар, савдо, инвестиция, 60 ёшдан пенсия); KIIP талаб қилинмайди.'}
+    needs: *id001
+    gives: *id001
+  F-5-6R:
+    name: {en: Regional overseas Korean, ru: Этнический кореец (регион), uz: Hududiy xorijdagi koreys, uz-cyrl: Ҳудудий хориждаги корейс}
+    how: {en: 4+ years on F-4-R in the region (2 years for existing residents); income of 70% of GNI; KIIP level 5., ru: 4+ года на F-4-R в регионе (2 года для местных жителей); доход 70% ВНД; KIIP 5., uz: Hududda F-4-R da 4+ yil (mahalliy aholi uchun 2 yil); daromad GNI ning 70%; KIIP 5., uz-cyrl: Ҳудудда F-4-R да 4+ йил (маҳаллий аҳоли учун 2 йил); даромад GNI нинг 70%; KIIP 5.}
+    needs: *id001
+    gives: *id001
+    lang: {kiip: 5}
+  F-5-7:
+    name: {en: Ethnic Korean eligible for nationality, ru: Этнический кореец с правом на гражданство, uz: Fuqarolik olish huquqiga ega etnik koreys, uz-cyrl: Фуқаролик олиш ҳуқуқига эга этник корейс}
+    how: {en: Ethnic Korean who already meets the Korean naturalization or nationality-restoration requirements., ru: 'Этнический кореец, уже отвечающий требованиям натурализации или восстановления гражданства Кореи.', uz: Koreya fuqaroligini olish yoki tiklash talablariga allaqachon javob beradigan etnik koreys., uz-cyrl: Корея фуқаролигини олиш ёки тиклаш талабларига аллақачон жавоб берадиган этник корейс.}
+    needs: *id001
+    gives: *id001
+  F-5-9:
+    name: {en: High-tech doctorate (foreign), ru: Иностранная докторская степень в hi-tech, uz: Yuqori texnologiyalar bo‘yicha xorijiy doktorlik, uz-cyrl: Юқори технологиялар бўйича хорижий докторлик}
+    how: {en: Foreign doctorate in a high-tech field and 1+ year full-time at a Korean company; income of 1× GNI., ru: Иностранная докторская степень в высокотехнологичной области и 1+ год работы в корейской компании; доход 1× ВНД., uz: Yuqori texnologiyalar sohasida xorijiy doktorlik va Koreya kompaniyasida 1+ yil to‘liq ish; daromad 1× GNI., uz-cyrl: Юқори технологиялар соҳасида хорижий докторлик ва Корея компаниясида 1+ йил тўлиқ иш; даромад 1× GNI.}
+    needs: {edu: 5, stem: true}
+  F-5-10:
+    name: {en: Degree or licence holder, ru: Обладатель диплома или лицензии, uz: Diplom yoki litsenziya egasi, uz-cyrl: Диплом ёки лицензия эгаси}
+    how: {en: 'High-tech bachelor''s, Korean STEM bachelor''s, Korean master''s or engineer licence; 3+ years'' work in Korea; own income of 1× GNI; KIIP level 5.', ru: 'Бакалавр в hi-tech, корейский бакалавр STEM, корейская магистратура или лицензия инженера; 3+ года работы в Корее; свой доход 1× ВНД; KIIP 5.', uz: 'Yuqori texnologiyalar bakalavri, Koreya STEM bakalavri, Koreya magistraturasi yoki muhandis litsenziyasi; Koreyada 3+ yil ish; shaxsiy daromad 1× GNI; KIIP 5.', uz-cyrl: 'Юқори технологиялар бакалаври, Корея STEM бакалаври, Корея магистратураси ёки муҳандис лицензияси; Кореяда 3+ йил иш; шахсий даромад 1× GNI; KIIP 5.'}
+    needs:
+    - {edu: 3, stem: true}
+    - {koreanEdu: 4}
+    lang: {kiip: 5}
+  F-5-11:
+    name: {en: Outstanding ability, ru: Выдающиеся способности, uz: Alohida qobiliyat, uz-cyrl: Алоҳида қобилият}
+    how: {en: 'Outstanding ability in science, business, education, arts or sport, proven by a points test.', ru: 'Выдающиеся достижения в науке, бизнесе, образовании, искусстве или спорте, подтверждённые балльной оценкой.', uz: 'Fan, biznes, ta’lim, san’at yoki sportda alohida qobiliyat, ball tizimi bilan tasdiqlangan.', uz-cyrl: 'Фан, бизнес, таълим, санъат ёки спортда алоҳида қобилият, балл тизими билан тасдиқланган.'}
+  F-5-13:
+    name: {en: Pensioner, ru: Пенсионер, uz: Pensioner, uz-cyrl: Пенсионер}
+    how: {en: Age 60+ with a foreign pension of at least 2× GNI a year., ru: Возраст 60+ и иностранная пенсия не менее 2× ВНД в год., uz: Yosh 60+ va yiliga kamida 2× GNI miqdorida xorijiy pensiya., uz-cyrl: Ёш 60+ ва йилига камида 2× GNI миқдорида хорижий пенсия.}
+    age: [60]
+  F-5-14:
+    name: {en: Long-serving H-2 worker, ru: Работник H-2 со стажем, uz: Uzoq ishlagan H-2 ishchisi, uz-cyrl: Узоқ ишлаган H-2 ишчиси}
+    how: {en: '4+ years on H-2 with the same employer in manufacturing, farming, fishing or care work, plus a qualification or income of 70% of GNI.', ru: '4+ года на H-2 у одного работодателя в производстве, сельском хозяйстве, рыболовстве или уходе, плюс квалификация или доход 70% ВНД.', uz: 'Ishlab chiqarish, qishloq xo‘jaligi, baliqchilik yoki parvarish sohasida bitta ish beruvchida H-2 da 4+ yil, malaka yoki GNI ning 70% daromadi bilan.', uz-cyrl: 'Ишлаб чиқариш, қишлоқ хўжалиги, балиқчилик ёки парвариш соҳасида битта иш берувчида H-2 да 4+ йил, малака ёки GNI нинг 70% даромади билан.'}
+    needs: *id001
+    gives: *id001
+  F-5-15:
+    name: {en: Korean doctorate holder, ru: Докторская степень корейского вуза, uz: Koreya doktorlik darajasi egasi, uz-cyrl: Корея докторлик даражаси эгаси}
+    how: {en: Doctorate from a Korean university's regular program and 1+ year full-time at a Korean company; income of 1× GNI., ru: Докторская степень по очной программе корейского вуза и 1+ год работы в корейской компании; доход 1× ВНД., uz: Koreya universitetining asosiy dasturida doktorlik va Koreya kompaniyasida 1+ yil to‘liq ish; daromad 1× GNI., uz-cyrl: Корея университетининг асосий дастурида докторлик ва Корея компаниясида 1+ йил тўлиқ иш; даромад 1× GNI.}
+    needs: {koreanEdu: 5}
+  F-5-16:
+    name: {en: Points-based permanent residence, ru: ПМЖ по баллам, uz: Ball tizimi bo‘yicha doimiy yashash, uz-cyrl: Балл тизими бўйича доимий яшаш}
+    how: {en: '3+ years on F-2-7, income of 2× GNI (1× if you came via E-7-S2) or assets of 1.5× average, KIIP level 5.', ru: '3+ года на F-2-7, доход 2× ВНД (1× при пути через E-7-S2) или активы 1,5× от среднего, KIIP 5.', uz: 'F-2-7 da 3+ yil, daromad 2× GNI (E-7-S2 orqali kelganlar uchun 1×) yoki aktivlar o‘rtachadan 1,5×, KIIP 5.', uz-cyrl: 'F-2-7 да 3+ йил, даромад 2× GNI (E-7-S2 орқали келганлар учун 1×) ёки активлар ўртачадан 1,5×, KIIP 5.'}
+    lang: {kiip: 5}
+  F-5-17:
+    name: {en: Tourism/resort investor, ru: Инвестор в туризм/курорты, uz: Turizm/kurort investori, uz-cyrl: Туризм/курорт инвестори}
+    how: {en: F-2-8 investment kept for 5 years., ru: Инвестиции F-2-8 сохраняются 5 лет., uz: F-2-8 investitsiyasi 5 yil saqlangan., uz-cyrl: F-2-8 инвестицияси 5 йил сақланган.}
+  F-5-18:
+    name: {en: Family of points-based PR, ru: Семья обладателя ПМЖ по баллам, uz: Ball tizimidagi doimiy yashovchi oilasi, uz-cyrl: Балл тизимидаги доимий яшовчи оиласи}
+    how: {en: 2+ years on F-2-71 after the family member has held F-5-16 for 2+ years; income of 1× GNI; KIIP level 5., ru: '2+ года на F-2-71 после того, как член семьи 2+ года имеет F-5-16; доход 1× ВНД; KIIP 5.', uz: Oila a’zosi 2+ yil F-5-16 ga ega bo‘lgach F-2-71 da 2+ yil; daromad 1× GNI; KIIP 5., uz-cyrl: Оила аъзоси 2+ йил F-5-16 га эга бўлгач F-2-71 да 2+ йил; даромад 1× GNI; KIIP 5.}
+    lang: {kiip: 5}
+  F-5-19:
+    name: {en: Family of tourism/resort investor, ru: Семья инвестора в туризм, uz: Turizm investori oilasi, uz-cyrl: Туризм инвестори оиласи}
+    how: {en: Spouse or unmarried child of an F-5-17 holder after 5 years on F-2-8 or F-2-81., ru: 'Супруг(а) или ребёнок обладателя F-5-17, не состоящий в браке, после 5 лет на F-2-8 или F-2-81.', uz: F-2-8 yoki F-2-81 da 5 yildan keyin F-5-17 egasining turmush o‘rtog‘i yoki turmush qurmagan farzandi., uz-cyrl: F-2-8 ёки F-2-81 да 5 йилдан кейин F-5-17 эгасининг турмуш ўртоғи ёки турмуш қурмаган фарзанди.}
+  F-5-21:
+    name: {en: Public-interest investor, ru: Инвестор в общественные проекты, uz: Jamoat loyihalari investori, uz-cyrl: Жамоат лойиҳалари инвестори}
+    how: {en: F-2-12 investment kept for 5 years., ru: Инвестиции F-2-12 сохраняются 5 лет., uz: F-2-12 investitsiyasi 5 yil saqlangan., uz-cyrl: F-2-12 инвестицияси 5 йил сақланган.}
+  F-5-22:
+    name: {en: Family of public-interest investor, ru: Семья инвестора в общественные проекты, uz: Jamoat loyihalari investori oilasi, uz-cyrl: Жамоат лойиҳалари инвестори оиласи}
+    how: {en: Spouse or unmarried child of an F-5-21 holder., ru: 'Супруг(а) или ребёнок обладателя F-5-21, не состоящий в браке.', uz: F-5-21 egasining turmush o‘rtog‘i yoki turmush qurmagan farzandi., uz-cyrl: F-5-21 эгасининг турмуш ўртоғи ёки турмуш қурмаган фарзанди.}
+  F-5-24:
+    name: {en: Tech start-up founder, ru: Основатель техностартапа, uz: Texnologik startap asoschisi, uz-cyrl: Технологик стартап асосчиси}
+    how: {en: '3+ years on D-8-4, ₩300M+ of investment raised and 2+ Korean full-time employees.', ru: '3+ года на D-8-4, привлечено от ₩300 млн инвестиций и 2+ корейских штатных сотрудника.', uz: 'D-8-4 da 3+ yil, ₩300 mln+ investitsiya jalb qilingan va 2+ koreys shtat xodimi.', uz-cyrl: 'D-8-4 да 3+ йил, ₩300 млн+ инвестиция жалб қилинган ва 2+ корейс штат ходими.'}
+  F-5-25:
+    name: {en: Conditional large investor, ru: Условный крупный инвестор, uz: Shartli yirik investor, uz-cyrl: Шартли йирик инвестор}
+    how: {en: ₩3bn deposited in a designated public fund with a pledge to keep it for 5 years; withdrawing it cancels the status., ru: ₩3 млрд на счёте определённого общественного фонда с обязательством хранить 5 лет; при изъятии статус аннулируется., uz: 'Belgilangan jamoat fondiga ₩3 mlrd 5 yil saqlash majburiyati bilan; pul qaytarib olinsa, maqom bekor qilinadi.', uz-cyrl: 'Белгиланган жамоат фондига ₩3 млрд 5 йил сақлаш мажбурияти билан; пул қайтариб олинса, мақом бекор қилинади.'}
+    needs: {invest: 6}
+  F-5-26:
+    name: {en: R&D staff at a foreign-invested firm, ru: Сотрудник R&D компании с иностранным капиталом, uz: Xorijiy investitsiyali kompaniyaning R&D xodimi, uz-cyrl: Хорижий инвестицияли компаниянинг R&D ходими}
+    how: {en: 3+ years as essential R&D staff of a foreign-invested company (D-8-1); bachelor's degree; income of 2× GNI., ru: 3+ года ключевым сотрудником R&D компании с иностранными инвестициями (D-8-1); диплом бакалавра; доход 2× ВНД., uz: Xorijiy investitsiyali kompaniyada (D-8-1) asosiy R&D xodimi sifatida 3+ yil; bakalavr diplomi; daromad 2× GNI., uz-cyrl: Хорижий инвестицияли компанияда (D-8-1) асосий R&D ходими сифатида 3+ йил; бакалавр дипломи; даромад 2× GNI.}
+  F-5-27:
+    name: {en: Recognised refugee, ru: Признанный беженец, uz: Tan olingan qochqin, uz-cyrl: Тан олинган қочқин}
+    how: {en: '2+ years as a recognised refugee (F-2-4), under a separate guideline with income and KIIP requirements.', ru: 2+ года в статусе признанного беженца (F-2-4) по отдельному регламенту с требованиями к доходу и KIIP., uz: 'Tan olingan qochqin (F-2-4) sifatida 2+ yil, daromad va KIIP talablari bo‘lgan alohida yo‘riqnoma asosida.', uz-cyrl: 'Тан олинган қочқин (F-2-4) сифатида 2+ йил, даромад ва KIIP талаблари бўлган алоҳида йўриқнома асосида.'}
+  F-5-28:
+    name: {en: Special contributor, ru: Особый вклад, uz: Alohida hissa qo‘shgan shaxs, uz-cyrl: Алоҳида ҳисса қўшган шахс}
+    how: {en: 2+ years on F-2-16; income of 1× GNI or average assets; KIIP level 5., ru: 2+ года на F-2-16; доход 1× ВНД или средние активы; KIIP 5., uz: F-2-16 da 2+ yil; daromad 1× GNI yoki o‘rtacha aktivlar; KIIP 5., uz-cyrl: F-2-16 да 2+ йил; даромад 1× GNI ёки ўртача активлар; KIIP 5.}
+    lang: {kiip: 5}
+  F-5-29:
+    name: {en: Family of special contributor, ru: Семья лица с особым вкладом, uz: Alohida hissa qo‘shgan shaxs oilasi, uz-cyrl: Алоҳида ҳисса қўшган шахс оиласи}
+    how: {en: 'Spouse or minor child, 2+ years after the family member got F-5-28; income of 1× GNI.', ru: 'Супруг(а) или несовершеннолетний ребёнок, через 2+ года после получения членом семьи F-5-28; доход 1× ВНД.', uz: 'Turmush o‘rtog‘i yoki voyaga yetmagan farzand, oila a’zosi F-5-28 olganidan 2+ yil o‘tib; daromad 1× GNI.', uz-cyrl: 'Турмуш ўртоғи ёки вояга етмаган фарзанд, оила аъзоси F-5-28 олганидан 2+ йил ўтиб; даромад 1× GNI.'}
+  F-5-S1:
+    name: {en: K-STAR permanent residence, ru: ПМЖ K-STAR, uz: K-STAR doimiy yashash, uz-cyrl: K-STAR доимий яшаш}
+    how: {en: 3+ years on F-2-7S or F-2-7 as a K-STAR graduate and 90/200 K-STAR points., ru: 3+ года на F-2-7S или F-2-7 как выпускник K-STAR и 90/200 баллов K-STAR., uz: K-STAR bitiruvchisi sifatida F-2-7S yoki F-2-7 da 3+ yil va 90/200 K-STAR ball., uz-cyrl: K-STAR битирувчиси сифатида F-2-7S ёки F-2-7 да 3+ йил ва 90/200 K-STAR балл.}
+  F-5-S2:
+    name: {en: K-STAR family, ru: Семья K-STAR, uz: K-STAR oilasi, uz-cyrl: K-STAR оиласи}
+    how: {en: Spouse or minor child of an F-5-S1 holder after 2+ years on F-2-71., ru: Супруг(а) или несовершеннолетний ребёнок обладателя F-5-S1 после 2+ лет на F-2-71., uz: F-2-71 da 2+ yildan keyin F-5-S1 egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi., uz-cyrl: F-2-71 да 2+ йилдан кейин F-5-S1 эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди.}
+  F-5-T:
+    name: {en: Top-Tier permanent residence, ru: ПМЖ Top-Tier, uz: Top-Tier doimiy yashash, uz-cyrl: Top-Tier доимий яшаш}
+    how: {en: '3+ years on F-2-T in a high-tech or science field, income of 3× GNI, KIIP level 3 or TOPIK 3.', ru: '3+ года на F-2-T в hi-tech или науке, доход 3× ВНД, KIIP 3 или TOPIK 3.', uz: 'Yuqori texnologiyalar yoki fan sohasida F-2-T da 3+ yil, daromad 3× GNI, KIIP 3 yoki TOPIK 3.', uz-cyrl: 'Юқори технологиялар ёки фан соҳасида F-2-T да 3+ йил, даромад 3× GNI, KIIP 3 ёки TOPIK 3.'}
+    lang: {topik: 3, kiip: 3}
+  F-5-T1:
+    name: {en: Top-Tier family, ru: Семья Top-Tier, uz: Top-Tier oilasi, uz-cyrl: Top-Tier оиласи}
+    how: {en: 'Spouse or minor child: 3 years on F-2-T1 (2 years if joining after the family member got F-5-T).', ru: 'Супруг(а) или несовершеннолетний ребёнок: 3 года на F-2-T1 (2 года, если присоединились после получения F-5-T).', uz: 'Turmush o‘rtog‘i yoki voyaga yetmagan farzand: F-2-T1 da 3 yil (oila a’zosi F-5-T olgandan keyin qo‘shilsa, 2 yil).', uz-cyrl: 'Турмуш ўртоғи ёки вояга етмаган фарзанд: F-2-T1 да 3 йил (оила аъзоси F-5-T олгандан кейин қўшилса, 2 йил).'}
+  NONE:
+    name: {en: Outside Korea, ru: За пределами Кореи, uz: Koreyadan tashqarida, uz-cyrl: Кореядан ташқарида}
+    how: {en: 'No Korean visa yet: your first visa is issued by a Korean consulate or online.', ru: 'Корейской визы пока нет: первую визу выдаёт консульство Кореи или онлайн-сервис.', uz: 'Hali Koreya vizasi yo‘q: birinchi vizani Koreya konsulligi yoki onlayn xizmat beradi.', uz-cyrl: 'Ҳали Корея визаси йўқ: биринчи визани Корея консуллиги ёки онлайн хизмат беради.'}
+    next:
+    - B-1
+    - B-2
+    - C-3-9
+    - C-3-1
+    - C-3-4
+    - C-3-8
+    - D-4-1
+    - D-4-7
+    - D-4-6
+    - D-4-3
+    - D-2-1
+    - D-2-2
+    - D-2-3
+    - D-2-4
+    - D-2-5
+    - D-2-6
+    - D-2-7
+    - D-2-8
+    - C-4
+    - D-3
+    - D-10-1
+    - D-10-2
+    - D-10-3
+    - D-10-T
+    - E-1
+    - E-2
+    - E-3
+    - E-4
+    - E-5
+    - E-6-1
+    - E-6-3
+    - E-7-1
+    - E-7-2
+    - E-7-3
+    - E-7-S1
+    - E-7-S2
+    - E-7-T
+    - E-8
+    - E-9
+    - E-10
+    - H-1
+    - D-7
+    - D-8-1
+    - D-8-2
+    - D-8-3
+    - D-8-4
+    - D-9-1
+    - D-9-4
+    - F-5-5
+    - F-6-1
+    - F-6-2
+    - F-2-2
+    - to: F-2-3
+      needs: {spouse: f5}
+    - F-3
+    - F-4
+    - to: F-2-7
+      note: {en: 'From abroad only on two tracks, with a job at a listed company or in a promising industry and a visa confirmation (CCVI); 80+ points.', ru: 'Из-за рубежа — только по двум трекам: работа в компании на бирже или в перспективной отрасли и подтверждение визы (CCVI); 80+ баллов.', uz: 'Chet eldan faqat ikki yo‘nalish bo‘yicha: birjadagi kompaniyada yoki istiqbolli sohada ish va viza tasdig‘i (CCVI); 80+ ball.', uz-cyrl: 'Чет элдан фақат икки йўналиш бўйича: биржадаги компанияда ёки истиқболли соҳада иш ва виза тасдиғи (CCVI); 80+ балл.'}
+    - F-2-T
+    - F-5-11
+    - D-1
+    - D-5
+    - D-6
+    notes:
+    - countries: tb
+      text: {en: 'For your nationality, a long-term visa needs a tuberculosis test certificate from a hospital approved by the Korean embassy.', ru: 'Для вашего гражданства на долгосрочную визу нужна справка об обследовании на туберкулёз из больницы, одобренной посольством Кореи.', uz: Fuqaroligingiz uchun uzoq muddatli vizaga Koreya elchixonasi tasdiqlagan shifoxonadan sil kasalligi tekshiruvi haqida ma’lumotnoma kerak., uz-cyrl: Фуқаролигингиз учун узоқ муддатли визага Корея элчихонаси тасдиқлаган шифохонадан сил касаллиги текшируви ҳақида маълумотнома керак.}
