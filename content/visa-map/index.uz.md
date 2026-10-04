@@ -23,7 +23,7 @@ menus:
 
 Bu xarita Koreya immigratsiya xizmati va Adliya vazirligining 2026-yil oktabr holatidagi ochiq ma’lumotlariga asoslangan soddalashtirilgan qo‘llanma. Har bir vizaning bu yerga sig‘maydigan qo‘shimcha shartlari bor: hujjatlar, qonunbuzarlik yo‘qligi, daromad, koreys tili darajasi. Qoidalar tez-tez o‘zgaradi. Daromad talablari aholi jon boshiga GNI asosida hisoblanadi (2025-yil uchun ₩52,4 mln).
 
-Topshirishdan oldin [HiKorea](https://www.hikorea.go.kr) saytida yoki immigratsiya xizmatining **1345** raqamida tekshiring yoki bepul maslahat uchun biz bilan bog‘laning.
+Topshirishdan oldin [HiKorea](https://www.hikorea.go.kr) saytida yoki immigratsiya xizmatining **1345** raqamida tekshiring. Bu sahifa umumiy ma’lumot beradi, sizning shaxsiy holatingiz bo‘yicha maslahat emas. Sahifaning o‘zi bo‘yicha savollaringiz bo‘lsa, biz bilan bog‘laning.
 
 ## Manbalar
 

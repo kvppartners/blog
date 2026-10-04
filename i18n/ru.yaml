@@ -56,8 +56,8 @@
   translation: "Скачать PNG"
 - id: vm_share
   translation: "Поделиться"
-- id: vm_consult
-  translation: "Свяжитесь с нами для бесплатной консультации"
+- id: vm_contact
+  translation: "Наши контакты"
 - id: vm_is_goal
   translation: "F-5 — это постоянное проживание, цель этой карты."
 - id: vm_err_age
@@ -88,8 +88,6 @@
   translation: "Недоступно для вашего гражданства"
 - id: vm_koreans_only
   translation: "Только для этнических корейцев"
-- id: vm_consult_button
-  translation: "Бесплатная консультация"
 - id: vm_no_visa
   translation: "Визы пока нет"
 - id: vm_start_none
@@ -279,7 +277,7 @@
 - id: vm_report_contact
   translation: "Telegram или e-mail (необязательно)"
 - id: vm_report_privacy
-  translation: "Мы отправим ваше сообщение, имя и контакт, если указаны (чтобы ответить вам), ответы на этой странице и картинку карты команде KVP Partners."
+  translation: "Отправлять или нет — решаете вы. Чтобы исправить страницу и ответить вам, мы отправляем команде KVP Partners через Telegram (серверы за пределами Кореи): ваше сообщение, имя и контакт, если вы их указали, ваш выбор на этой странице с её изображением и тип браузера. Чувствительные ответы, например о корейском происхождении, не отправляются. Мы удаляем сообщение, когда проблема исправлена. Пожалуйста, не пишите о здоровье, религии или судимости."
 - id: vm_report_send
   translation: "Отправить"
 - id: vm_report_sending

@@ -23,7 +23,7 @@ Options marked **✈** need a new visa from abroad: you leave Korea and apply at
 
 This map is a simplified guide based on public information from the Korea Immigration Service and the Ministry of Justice as of October 2026. Every visa has more conditions than fit here, such as documents, a clean record, income and Korean-language levels, and the rules change often. Income thresholds are based on GNI per capita (₩52.4M for 2025).
 
-Before you apply, check with [HiKorea](https://www.hikorea.go.kr) or the immigration call centre **1345**, or contact us for a free consultation.
+Before you apply, check with [HiKorea](https://www.hikorea.go.kr) or the immigration call centre **1345**. This page is general information, not advice on your own case. For questions about the page itself, contact us.
 
 ## Sources
 

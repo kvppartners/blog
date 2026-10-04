@@ -44,7 +44,7 @@
   {{- end }}
 
   {{- partial "extend_post_content.html" . }}
-  {{- partial "reactions.html" . }}
+  {{- if not (.Param "hideReactions") }}{{ partial "reactions.html" . }}{{ end }}
   {{- partial "telegram_comments.html" . }}
 
   <footer class="post-footer">

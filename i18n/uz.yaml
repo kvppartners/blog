@@ -56,8 +56,8 @@
   translation: "PNG yuklab olish"
 - id: vm_share
   translation: "Ulashish"
-- id: vm_consult
-  translation: "Bepul maslahat uchun biz bilan bog‘laning"
+- id: vm_contact
+  translation: "Kontaktlarimiz"
 - id: vm_is_goal
   translation: "F-5 — doimiy yashash huquqi, bu xaritaning maqsadi."
 - id: vm_err_age
@@ -88,8 +88,6 @@
   translation: "Fuqaroligingiz uchun mavjud emas"
 - id: vm_koreans_only
   translation: "Faqat etnik koreyslar uchun"
-- id: vm_consult_button
-  translation: "Bepul maslahat"
 - id: vm_no_visa
   translation: "Hali viza yo‘q"
 - id: vm_start_none
@@ -279,7 +277,7 @@
 - id: vm_report_contact
   translation: "Telegram yoki e-mail (ixtiyoriy)"
 - id: vm_report_privacy
-  translation: "Xabaringiz, ismingiz va aloqa manzilingiz (agar yozilgan bo‘lsa, sizga javob berish uchun), ushbu sahifadagi javoblaringiz va xarita rasmi KVP Partners jamoasiga yuboriladi."
+  translation: "Yuborish ixtiyoriy. Sahifani tuzatish va sizga javob berish uchun KVP Partners jamoasiga Telegram orqali (serverlari Koreyadan tashqarida) quyidagilar yuboriladi: xabaringiz, ko‘rsatgan bo‘lsangiz ismingiz va aloqa manzilingiz, shu sahifadagi tanlovlaringiz va uning rasmi, brauzeringiz turi. Koreys kelib chiqishi kabi nozik javoblar yuborilmaydi. Muammo tuzatilgach, xabarni o‘chirib tashlaymiz. Iltimos, sog‘liq, din yoki sudlanganlik haqidagi ma’lumotlarni yozmang."
 - id: vm_report_send
   translation: "Yuborish"
 - id: vm_report_sending

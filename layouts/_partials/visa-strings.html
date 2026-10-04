@@ -4,7 +4,7 @@
 {{- return dict
     "noMatch" (i18n "no_results") "isGoal" (i18n "vm_is_goal") "noVisa" (i18n "vm_no_visa")
     "nationality" (i18n "vm_nationality") "errNationality" (i18n "vm_err_nationality")
-    "consult" (i18n "vm_consult") "disclaimer" (i18n "vm_disclaimer")
+    "contact" (i18n "vm_contact") "disclaimer" (i18n "vm_disclaimer")
     "site" site.Title "url" ($contact.website | default (replaceRE `^https?://|/$` "" site.BaseURL))
     "telegram" ($contact.telegram | default "") "instagram" ($contact.instagram | default "")
     "email" ($contact.email | default "") "telegramAdmin" ($contact.telegramAdmin | default "")

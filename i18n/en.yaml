@@ -56,8 +56,8 @@
   translation: "Download PNG"
 - id: vm_share
   translation: "Share"
-- id: vm_consult
-  translation: "Contact us for a free consultation"
+- id: vm_contact
+  translation: "Our contacts"
 - id: vm_is_goal
   translation: "F-5 is permanent residence, the goal of this map."
 - id: vm_err_age
@@ -88,8 +88,6 @@
   translation: "Not for your nationality"
 - id: vm_koreans_only
   translation: "Ethnic Koreans only"
-- id: vm_consult_button
-  translation: "Free consultation"
 - id: vm_no_visa
   translation: "No visa yet"
 - id: vm_start_none
@@ -279,7 +277,7 @@
 - id: vm_report_contact
   translation: "Telegram or email (optional)"
 - id: vm_report_privacy
-  translation: "We'll send your message, name and contact if given (so we can reply), your answers on this page and a picture of your map to the KVP Partners team."
+  translation: "Sending is up to you. To fix the page and reply to you, we send the KVP Partners team, through Telegram (servers outside Korea): your message, your name and contact if given, your choices on this page with a picture of it, and your browser type. Sensitive answers, such as Korean descent, are left out. We delete the report once the problem is fixed. Please don't write health, religion or criminal-record details."
 - id: vm_report_send
   translation: "Send report"
 - id: vm_report_sending

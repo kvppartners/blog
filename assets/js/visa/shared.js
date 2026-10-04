@@ -357,7 +357,7 @@ export function paintContacts(ctx, draw, y, T, { width = 1080, pad = 64 } = {}) 
         ctx.fillRect(pad, y, inner, 2);
     }
     ctx.font = font(700, 36);
-    wrap(ctx, T.consult, inner, 2).forEach((line, i) => {
+    wrap(ctx, T.contact, inner, 2).forEach((line, i) => {
         y += i ? 46 : 64;
         if (draw) {
             ctx.fillStyle = C.navy;

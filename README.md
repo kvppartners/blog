@@ -150,10 +150,25 @@ One-time setup:
    Secrets → Add**, type *Secret*.
 5. Create the flood-protection table: `npx wrangler d1 migrations apply kvp-blog --remote`
 
+Reports leave out sensitive answers (under Korea's Personal Information Protection Act,
+information about ethnicity, health, beliefs or criminal records is "sensitive"): the Visa map
+report leaves out Korean descent (`SENSITIVE` in `assets/js/visamap.js`), and the Visa docs
+report leaves out the reader's yes/no answers (`withoutAnswers` in `assets/js/visadocs.js`).
+The report's link opens the page without them. The report form tells readers that reports are
+deleted once the problem is fixed, so delete them from the Telegram chat then.
+
 Each reader can send 5 reports an hour, and the site at most 100 a day. Until the
 secrets are set (and under `hugo server`, which has no Worker), the dialog offers a
 Telegram link with the report filled in instead. To try the bot locally, put the two
 values in `.dev.vars` (ignored by git) and run `npx wrangler dev`.
+
+## Privacy policy
+
+`content/privacy/` says what personal information the site handles (reactions, hashed IP
+addresses for flood protection, problem reports), who else handles it (Cloudflare, Telegram)
+and how long it is kept. It is `draft: true` until you have checked it; once published, the
+footer and the problem-report form link to it. Update it when the site starts collecting
+anything new, in all four languages.
 
 ## Comments from Telegram
 

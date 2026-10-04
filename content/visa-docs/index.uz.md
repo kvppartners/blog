@@ -24,7 +24,7 @@ Hujjatni beradigan rasmiy blanka yoki onlayn xizmat bo‘lsa, unga havola ham ko
 
 ## Muhim
 
-Ro‘yxatlar Koreya immigratsiya xizmatining qo‘llanmalaridan (2026-yil sentabr nashri) olingan; manba har bir ro‘yxat ostida ko‘rsatilgan. Ba’zi vizalar uchun qo‘llanmada hujjatlarning faqat bir qismi keltirilgan — sahifa bu haqda ogohlantiradi. Immigratsiya idorasi yoki elchixona qo‘shimcha hujjat so‘rashi mumkin, qoidalar esa o‘zgarib turadi, shuning uchun topshirishdan oldin [HiKorea](https://www.hikorea.go.kr) saytida yoki **1345** raqamida tekshiring yoki bepul maslahat uchun biz bilan bog‘laning.
+Ro‘yxatlar Koreya immigratsiya xizmatining qo‘llanmalaridan (2026-yil sentabr nashri) olingan; manba har bir ro‘yxat ostida ko‘rsatilgan. Ba’zi vizalar uchun qo‘llanmada hujjatlarning faqat bir qismi keltirilgan — sahifa bu haqda ogohlantiradi. Immigratsiya idorasi yoki elchixona qo‘shimcha hujjat so‘rashi mumkin, qoidalar esa o‘zgarib turadi, shuning uchun topshirishdan oldin [HiKorea](https://www.hikorea.go.kr) saytida yoki **1345** raqamida tekshiring. Bu sahifa umumiy ma’lumot beradi, sizning shaxsiy holatingiz bo‘yicha maslahat emas. Sahifaning o‘zi bo‘yicha savollaringiz bo‘lsa, biz bilan bog‘laning.
 
 ## Manbalar
 

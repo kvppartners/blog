@@ -263,15 +263,6 @@ function visaDocs(root) {
         return groups.filter((group) => group.docs.length);
     }
 
-    // Documents left out because of the reader's answers (for problem reports).
-    function hiddenDocs() {
-        const out = [];
-        [...chosenVariants(), chosenExtra()].filter(Boolean).forEach((variant) => variant.docs.forEach((item) => {
-            if (item.only && state.answers.get(condKey(item)) === 'no') out.push(item);
-        }));
-        return out;
-    }
-
     // How the chosen case is applied for: in Korea, or abroad at an embassy, through a CCVI, as
     // an e-visa, or (cases of both kinds) depending on the case.
     const ROUTE = { ccvi: 'ccvi', 'e-visa': 'evisa', both: 'both' };
@@ -667,6 +658,20 @@ function visaDocs(root) {
 
     // ---------- Problem reports ----------
 
+    // The yes/no answers are about the reader's own situation, and some are sensitive under the
+    // Personal Information Protection Act ("If the spouse is in prison", "School-age overseas
+    // Korean"), so problem reports leave them all out: they describe and link the list as it
+    // is before any answer.
+    function withoutAnswers(make) {
+        const saved = state.answers;
+        state.answers = new Map();
+        try {
+            return make();
+        } finally {
+            state.answers = saved;
+        }
+    }
+
     // The list as plain text, for the admin or an AI assistant.
     function docsText(message, sender) {
         const asked = conditions();
@@ -694,8 +699,8 @@ function visaDocs(root) {
             `case: ${state.caseIndex === null ? `all (${variants().length})` : text(variants()[state.caseIndex].case)}`,
             `extra list: ${!extras().length ? '(none offered)' : state.extraIndex === null ? `all (${extras().length})`
                 : state.extraIndex === 'none' ? 'none of these' : text(chosenExtra().case)}`,
-            `answers: ${asked.map((c) => `${c.label}=${state.answers.get(c.key) || '?'}`).join('; ') || '(no questions)'}`,
-            'documents shown:',
+            `answers: ${asked.length ? `left out of reports (${asked.length} question${asked.length === 1 ? '' : 's'})` : '(no questions)'}`,
+            'documents (before any answer):',
         ];
         let number = 0;
         documentGroups().forEach((group) => {
@@ -709,13 +714,11 @@ function visaDocs(root) {
                     + `${item.note ? ` | note: ${text(item.note)}` : ''}${entry.link ? ` | ${entry.link}` : ''}`);
             });
         });
-        const hidden = hiddenDocs();
-        lines.push(`documents hidden by answers: ${hidden.map((item) => item.doc).join(', ') || 'none'}`);
         lines.push('', `browser: ${navigator.userAgent}`, `window: ${innerWidth}x${innerHeight} @${devicePixelRatio}x`);
         return lines.join('\n');
     }
 
-    setupReport(page, () => {
+    setupReport(page, () => withoutAnswers(() => {
         let number = 0;
         const rows = [];
         documentGroups().forEach((group) => group.docs.forEach((item) => {
@@ -726,17 +729,16 @@ function visaDocs(root) {
             page: 'Visa docs',
             link: docsLink(),
             summary: [profileLine(' · '), `${T.reportPath}: ${moveLabel()}`],
-            text: docsText,
+            text: (message, sender) => withoutAnswers(() => docsText(message, sender)),
             fileTag: `${state.from}-${state.self ? 'extension' : state.to}`,
             sections: [
                 { heading: 'Answers', rows: [profileLine(' · ')] },
                 { heading: 'Move', rows: [`${moveLabel()} · ${routeLine.textContent}`,
                     { muted: true, text: `Source: ${chosenSource().source}${state.list.partial ? ' (partial list)' : ''}` }] },
-                { heading: `Documents shown (${number})`, rows },
-                { heading: 'Hidden by answers', rows: [hiddenDocs().map((item) => docName(item)).join(', ') || 'none'] },
+                { heading: `Documents (${number}, before any answer)`, rows },
             ],
         };
-    });
+    }));
 
     // A link with a choice (from a report or a shared address) opens it right away.
     if (location.hash.includes('from=')) openDocs();

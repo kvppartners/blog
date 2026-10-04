@@ -323,17 +323,17 @@ function visaMap(root) {
     const SELECTS = ['spouse', 'parent', 'edu', 'rank', 'topik', 'kiip', 'experience', 'invest'];
     const CHECKS = ['eduKorea', 'stem'];
 
-    function mapParams() {
+    function mapParams(leaveOut = []) {
         const f = form.elements;
         const params = new URLSearchParams({ nationality: person.nationality, age: person.age });
-        RADIOS.forEach((name) => f[name].value && params.set(name, f[name].value));
+        RADIOS.filter((name) => !leaveOut.includes(name)).forEach((name) => f[name].value && params.set(name, f[name].value));
         SELECTS.forEach((name) => f[name].value !== '' && params.set(name, f[name].value));
         CHECKS.forEach((name) => f[name].checked && params.set(name, '1'));
         params.set('path', path.join('.'));
         return params;
     }
 
-    const mapLink = () => `${location.origin}${location.pathname}#${mapParams()}`;
+    const mapLink = (leaveOut) => `${location.origin}${location.pathname}#${mapParams(leaveOut)}`;
     const saveMap = () => history.replaceState(null, '', `#${mapParams()}`);
 
     // Opens the map from the page address, keeping only the steps that are still possible.
@@ -717,14 +717,31 @@ function visaMap(root) {
 
     // ---------- Problem reports ----------
 
-    setupReport(page, () => {
+    // Korean descent is information about ethnicity, which the Personal Information Protection
+    // Act treats as sensitive, so problem reports leave it out: they describe and link the map
+    // as if that question had not been answered.
+    const SENSITIVE = ['korean'];
+    function withoutSensitive(make) {
+        const saved = person;
+        person = { ...person };
+        SENSITIVE.forEach((key) => {
+            person[key] = undefined;
+        });
+        try {
+            return make();
+        } finally {
+            person = saved;
+        }
+    }
+
+    setupReport(page, () => withoutSensitive(() => {
         const last = path[path.length - 1];
         const row = lastRow();
         return {
             page: 'Visa map',
-            link: mapLink(),
+            link: mapLink(SENSITIVE),
             summary: [profileLine(' · '), `${T.reportPath}: ${path.map(codeLabel).join(' → ')}`],
-            text: reportText,
+            text: (message, sender) => withoutSensitive(() => reportText(message, sender)),
             fileTag: last,
             sections: [
                 { heading: 'Answers', rows: [profileLine(' · ')] },
@@ -741,7 +758,7 @@ function visaMap(root) {
                 },
             ],
         };
-    });
+    }));
 
     // The options after the last step, as the reader sees them (or none at the goal).
     function lastRow() {
@@ -752,7 +769,8 @@ function visaMap(root) {
     }
 
     // The map as plain text, for the admin or an AI assistant: enough to see and reproduce
-    // exactly what the reader saw. Labels are English; names and notes are in the page language.
+    // what the reader saw (without the sensitive answers). Labels are English; names and notes
+    // are in the page language.
     function reportText(message, sender) {
         const last = path[path.length - 1];
         const facts = Object.entries(person)
@@ -763,8 +781,8 @@ function visaMap(root) {
             `time: ${new Date().toISOString()}`,
             `page: ${location.origin}${location.pathname}`,
             `language: ${page.lang}`,
-            `data: data/visamap.yaml, updated ${data.updated || '?'}`,
-            `link: ${mapLink()}`,
+            `data: data/visamap.yaml, updated ${page.data.updated || '?'}`,
+            `link: ${mapLink(SENSITIVE)}`,
             '',
             'message:',
             message,
@@ -773,6 +791,7 @@ function visaMap(root) {
             '',
             `profile: nationality=${person.nationality} (${countryName(person.nationality)}) age=${person.age}`,
             `details: ${facts.join(' ') || '(none)'}`,
+            `left out (sensitive): ${SENSITIVE.join(', ')}`,
             `path: ${path.join(' > ')}`,
             'steps:',
             ...path.map((code, i) => (i === 0
