@@ -38,7 +38,7 @@
 				{
 					"binding": "DB",
 					"database_name": "kvp-blog-dev",
-					"database_id": "REPLACE-WITH-THE-DEV-DATABASE-ID",
+					"database_id": "8f2fdfe9-7225-4406-8ae1-8891476ac3d1",
 					"migrations_dir": "worker/migrations"
 				}
 			]
