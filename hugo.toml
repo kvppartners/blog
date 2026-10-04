@@ -80,3 +80,10 @@ capitalizeListTitles = false
 
 [caches.images]
   dir = ":cacheDir/images"
+
+# Environment variables templates may read (Hugo allows only HUGO_* and CI by default).
+#   SHOW_DOCUMENT_SOURCE=true  shows where to get each document (form or online link) on the
+#   Visa docs page and its pictures; anything else hides it. Read at build time, so on
+#   Cloudflare set it under the Worker's build variables and redeploy after changing it.
+[security.funcs]
+  getenv = ['^HUGO_', '^CI$', '^SHOW_DOCUMENT_SOURCE$']

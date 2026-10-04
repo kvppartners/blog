@@ -294,3 +294,111 @@
   translation: "Iltimos, muammoni yozing."
 - id: vm_report_name
   translation: "Ismingiz (ixtiyoriy)"
+- id: vd_from
+  translation: "Hozirgi vizangiz"
+- id: vd_from_hint
+  translation: "D-2 kabi kod yoki so‘z yozing yoki «Hali viza yo‘q» ni tanlang."
+- id: vd_to
+  translation: "Kerakli viza"
+- id: vd_to_placeholder
+  translation: "Kod yoki so‘z yozing yoki ro‘yxatdan tanlang"
+- id: vd_to_hint
+  translation: "Rasmiy hujjatlar ro‘yxati bor barcha vizalar. Talablarni tekshiring: Doim ham tanangan visaga o'tib bo'lmaydi. ✈ — chet eldan topshiriladi; ✈* — chet eldan yoki ayrim hollarda Koreyada."
+- id: vd_to_none
+  translation: "Bu vizadan keyingi vizalar uchun hozircha rasmiy hujjatlar ro‘yxati yo‘q."
+- id: vd_in_korea
+  translation: "Koreyada maqomni o‘zgartirish"
+- id: vd_abroad
+  translation: "Koreya elchixonasi yoki konsulligida yangi viza"
+- id: vd_ccvi
+  translation: "Koreyadagi taklif qiluvchi rasmiylashtiradigan tasdiqnoma (CCVI) orqali viza"
+- id: vd_questions
+  translation: "Ro‘yxatni o‘zingizga moslash"
+- id: vd_questions_hint
+  translation: "Ixtiyoriy. Savollar rasmiy ro‘yxatdan olingan. Javobsiz barcha hujjatlar kimga kerakligi haqidagi izohlar bilan ko‘rsatiladi."
+- id: vd_situation
+  translation: "Sizga qaysi biri mos?"
+- id: vd_situation_all
+  translation: "Aniq emas: hammasini ko‘rsatish"
+- id: vd_applies
+  translation: "Bu sizga tegishlimi?"
+- id: vd_everyone
+  translation: "Hammaga"
+- id: vd_only_case
+  translation: "Faqat: {case}"
+- id: vd_only_if
+  translation: "Faqat agar: {cond}"
+- id: vd_by_employer
+  translation: "Ish beruvchi tayyorlaydi"
+- id: vd_by_school
+  translation: "O‘quv yurti beradi"
+- id: vd_by_inviter
+  translation: "Taklif qiluvchi tayyorlaydi"
+- id: vd_link_form
+  translation: "Blankani yuklab olish"
+- id: vd_link_online
+  translation: "Onlayn olish"
+- id: vd_link_info
+  translation: "Qayerdan olish"
+- id: vd_source
+  translation: "Manba"
+- id: vd_requirements
+  translation: "Talablar"
+- id: vd_fee
+  translation: "To‘lov"
+- id: vd_image_title
+  translation: "Koreya vizam uchun hujjatlar"
+- id: vd_docs_title
+  translation: "Tayyorlash kerak bo‘lgan hujjatlar"
+- id: vd_report_ask
+  translation: "Ro‘yxatda nimadir noto‘g‘rimi?"
+- id: vd_evisa
+  translation: "Elektron viza Korea Visa Portal (visa.go.kr) orqali"
+- id: vd_both
+  translation: "Chet elda yangi viza: Koreya elchixonasida yoki CCVI orqali — holatingizga bog‘liq"
+- id: vd_extra
+  translation: "Kasbingiz yoki dasturingiz"
+- id: vd_extra_all
+  translation: "Aniq emas: hammasini ko‘rsatish"
+- id: vd_extra_none
+  translation: "Bularning hech biri"
+- id: vd_extra_for
+  translation: "Qo‘shimcha: {case}"
+- id: vd_extra_hint
+  translation: "Ba’zi kasblar va hududiy dasturlar uchun ro‘yxatdan tashqari qo‘shimcha hujjatlar kerak."
+- id: vd_partial
+  translation: "Rasmiy qo‘llanmada bu viza uchun hujjatlarning faqat bir qismi keltirilgan. Ariza berishdan oldin to‘liq ro‘yxatni immigratsiya xizmatidan (1345) aniqlang."
+- id: vd_at_embassy
+  translation: "Elchixonada viza arizasi bilan topshiriladi"
+- id: vd_extend
+  translation: "Hozirgi vizamni uzaytirish"
+- id: vd_extend_hint
+  translation: "Hozirgi vizangiz bo‘yicha yashash muddatini uzaytirish (체류기간 연장) uchun hujjatlarni ko‘rsatadi."
+- id: vd_extend_short
+  translation: "Uzaytirish"
+- id: vd_extend_route
+  translation: "Koreyada yashash muddatini uzaytirish"
+- id: vd_extend_none
+  translation: "Bu viza uchun uzaytirish bo‘yicha rasmiy hujjatlar ro‘yxati bizda yo‘q."
+- id: vd_within_extend
+  translation: "Koreyada, yangi viza turi bilan yashash muddatini uzaytirish sifatida"
+- id: vd_group_usual
+  translation: "Vizangizdan odatiy keyingi qadamlar"
+- id: vd_group_other
+  translation: "Rasmiy ro‘yxati bor boshqa vizalar"
+- id: vd_fee_exempt
+  translation: "olinmaydi"
+- id: vd_report_route
+  translation: "Koreyada: ro‘yxatga olish ma’lumotlari o‘zgarganini xabar qilish (등록사항 변경신고), 15 kun ichida, immigratsiya idorasida yoki onlayn"
+- id: vd_via
+  translation: "Qanday topshirasiz?"
+- id: vd_via_abroad
+  translation: "Chet eldan: yangi viza (umumiy qoida)"
+- id: vd_via_korea
+  translation: "Koreyada: {who}"
+- id: vd_exception_route
+  translation: "Koreyada maqomni o‘zgartirish (qo‘llanmada ruxsat etilgan istisno)"
+- id: vd_permit_route
+  translation: "Koreyada: maqomdan tashqari faoliyatga ruxsat (체류자격외 활동허가)"
+- id: vd_visa_fee
+  translation: "Viza to‘lovi: bir martalik viza — 40 AQSh dollari (90 kungacha yashash) yoki 60 AQSh dollari (91 kun va undan ko‘p), ikki martalik — 70 AQSh dollari, ko‘p martalik — 90 AQSh dollari; elchixona o‘zaro manfaatlilik asosida boshqa miqdor olishi mumkin"

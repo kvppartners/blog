@@ -1,0 +1,4 @@
+{{- /* The "Report a problem" button (flag icon from Feather); opens the dialog in visa-report.html. */}}
+{{- if (site.Params.contact | default dict).telegramAdmin }}
+<button type="button" class="vm-btn vm-btn-ghost" data-report><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>{{ i18n "vm_report" }}</button>
+{{- end }}

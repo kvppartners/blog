@@ -1,0 +1,169 @@
+{{- define "main" }}
+{{- /*
+  Visa docs: the reader picks their current visa and the visa they want (any visa with an
+  official document list, the Visa map's usual next steps first) or an extension of the
+  current one, answers optional questions taken from that list, and gets the documents to
+  prepare, with Korean names and links. Everything runs in the browser (assets/js/visadocs.js); the documents come from
+  data/visadocs.yaml and the moves from data/visamap.yaml.
+*/}}
+{{- $lang := .Lang }}
+{{- $vm := hugo.Data.visamap }}
+{{- $vd := hugo.Data.visadocs | default dict }}
+
+{{- /* Check data/visadocs.yaml once per build: every document a list uses must be in the catalog. */}}
+{{- if eq $lang "en" }}
+{{- range $code, $target := $vd.targets }}
+{{- if not (index $vm.visas $code) }}{{ warnf "data/visadocs.yaml: unknown visa %s" $code }}{{ end }}
+{{- range $where, $list := $target }}
+{{- if reflect.IsMap $list }}
+{{- range $list.variants }}{{ range .docs }}
+{{- if not (index $vd.docs .doc) }}{{ warnf "data/visadocs.yaml: %s (%s) uses unknown document %q" $code $where .doc }}{{ end }}
+{{- end }}{{ end }}
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- /* Names and moves from the Visa map, in this page's language. */}}
+{{- $visas := dict }}
+{{- range $code, $v := $vm.visas }}
+{{- $next := slice }}
+{{- range $v.next }}
+{{- if reflect.IsMap . }}
+{{- $m := dict "to" .to }}
+{{- with .abroad }}{{ $m = merge $m (dict "abroad" .) }}{{ end }}
+{{- with .abroadFor }}{{ $m = merge $m (dict "abroadFor" .) }}{{ end }}
+{{- $next = $next | append $m }}
+{{- else }}
+{{- $next = $next | append (dict "to" .) }}
+{{- end }}
+{{- end }}
+{{- $visas = merge $visas (dict $code (dict "name" (index $v.name $lang | default $v.name.en)
+    "how" (index $v.how $lang | default $v.how.en) "next" $next)) }}
+{{- end }}
+{{- $statuses := dict }}
+{{- range $k, $v := $vm.statuses }}{{ $statuses = merge $statuses (dict $k (index $v $lang | default $v.en)) }}{{ end }}
+{{- $docs := partial "localize.html" (dict "value" $vd "lang" $lang) }}
+{{- $pageData := dict "visas" $visas "statuses" $statuses "groups" $vm.groups
+    "countries" (index hugo.Data.countries $lang | default hugo.Data.countries.en)
+    "docs" ($docs.docs | default dict) "targets" ($docs.targets | default dict) "fees" ($docs.fees | default dict)
+    "sources" ($docs.sources | default dict) "within" ($docs.within | default dict)
+    "exceptions" ($docs.exceptions | default dict)
+    "updated" ($vd.updated | default "") }}
+
+{{- $logo := "" }}
+{{- with site.Params.label.icon }}{{ with resources.Get . }}{{ $logo = (.Resize "256x").RelPermalink }}{{ end }}{{ end }}
+{{- $strings := merge (partial "visa-strings.html" .) (dict
+    "toPlaceholder" (i18n "vd_to_placeholder") "toNone" (i18n "vd_to_none")
+    "inKorea" (i18n "vd_in_korea") "abroad" (i18n "vd_abroad") "ccvi" (i18n "vd_ccvi")
+    "evisa" (i18n "vd_evisa") "both" (i18n "vd_both")
+    "extra" (i18n "vd_extra") "extraAll" (i18n "vd_extra_all") "extraNone" (i18n "vd_extra_none")
+    "extraFor" (i18n "vd_extra_for") "extraHint" (i18n "vd_extra_hint")
+    "partial" (i18n "vd_partial") "atEmbassy" (i18n "vd_at_embassy")
+    "extendShort" (i18n "vd_extend_short") "extendRoute" (i18n "vd_extend_route")
+    "extendNone" (i18n "vd_extend_none") "withinExtend" (i18n "vd_within_extend") "reportRoute" (i18n "vd_report_route")
+    "via" (i18n "vd_via") "viaAbroad" (i18n "vd_via_abroad") "viaKorea" (i18n "vd_via_korea")
+    "exceptionRoute" (i18n "vd_exception_route") "permitRoute" (i18n "vd_permit_route") "visaFee" (i18n "vd_visa_fee")
+    "groupUsual" (i18n "vd_group_usual") "groupOther" (i18n "vd_group_other") "feeExempt" (i18n "vd_fee_exempt")
+    "situation" (i18n "vd_situation") "situationAll" (i18n "vd_situation_all") "applies" (i18n "vd_applies")
+    "yes" (i18n "vm_yes") "no" (i18n "vm_no") "everyone" (i18n "vd_everyone")
+    "onlyCase" (i18n "vd_only_case") "onlyIf" (i18n "vd_only_if")
+    "byEmployer" (i18n "vd_by_employer") "bySchool" (i18n "vd_by_school") "byInviter" (i18n "vd_by_inviter")
+    "linkForm" (i18n "vd_link_form") "linkOnline" (i18n "vd_link_online") "linkInfo" (i18n "vd_link_info")
+    "source" (i18n "vd_source") "requirements" (i18n "vd_requirements") "fee" (i18n "vd_fee")
+    "imageTitle" (i18n "vd_image_title") "docsTitle" (i18n "vd_docs_title")) }}
+
+{{- /* Where to get each document is shown only when the build sets SHOW_DOCUMENT_SOURCE=true (see hugo.toml). */}}
+{{- $showSource := partial "document-sources.html" . }}
+
+<article class="visa-map visa-docs" id="visa-docs" data-lang="{{ .Lang }}" data-logo="{{ $logo }}"
+    data-show-source="{{ $showSource }}">
+    <header class="vm-header">
+        <h1 class="vm-title">{{ .Title }}</h1>
+        {{- with .Description }}
+        <p class="vm-lead">{{ . }}</p>
+        {{- end }}
+    </header>
+
+    <form class="vm-card vm-start" id="vd-form" novalidate>
+        <div class="vm-field">
+            <label class="vm-label" for="vd-nationality">{{ i18n "vm_nationality" }} <span class="vm-req" aria-hidden="true">*</span></label>
+            <select class="vm-input" id="vd-nationality" name="nationality" aria-required="true">
+                <option value="">{{ i18n "vm_choose_country" }}</option>
+            </select>
+        </div>
+        <div class="vm-field vm-field-visa">
+            <label class="vm-label" for="vd-from">{{ i18n "vd_from" }} <span class="vm-req" aria-hidden="true">*</span></label>
+            <div class="vm-combo">
+                <input class="vm-input" id="vd-from" name="from" type="text" autocomplete="off" spellcheck="false"
+                    placeholder="{{ i18n "vm_visa_placeholder" }}" role="combobox" aria-autocomplete="list"
+                    aria-expanded="false" aria-controls="vd-from-list">
+                <ul class="vm-options" id="vd-from-list" role="listbox" hidden></ul>
+            </div>
+            <p class="vm-hint">{{ i18n "vd_from_hint" }}</p>
+        </div>
+        <div class="vm-field vd-extend-field" id="vd-extend-field" hidden>
+            <div class="vm-checks">
+                <label><input type="checkbox" id="vd-extend" name="extend"> {{ i18n "vd_extend" }}</label>
+            </div>
+            <p class="vm-hint">{{ i18n "vd_extend_hint" }}</p>
+        </div>
+        <div class="vm-field vm-field-visa" id="vd-to-field">
+            <label class="vm-label" for="vd-to">{{ i18n "vd_to" }} <span class="vm-req" aria-hidden="true">*</span></label>
+            <div class="vm-combo">
+                <input class="vm-input" id="vd-to" name="to" type="text" autocomplete="off" spellcheck="false"
+                    placeholder="{{ i18n "vd_to_placeholder" }}" role="combobox" aria-autocomplete="list"
+                    aria-expanded="false" aria-controls="vd-to-list" disabled>
+                <ul class="vm-options" id="vd-to-list" role="listbox" hidden></ul>
+            </div>
+            <p class="vm-hint" id="vd-to-hint">{{ i18n "vd_to_hint" }}</p>
+        </div>
+        <p class="vm-error" id="vd-error" role="alert" hidden></p>
+    </form>
+
+    <section class="vd-result" id="vd-result" hidden>
+        <div class="vd-head">
+            <div>
+                <p class="vd-route" id="vd-route"></p>
+                <h2 class="vd-title" id="vd-title"></h2>
+            </div>
+            <div class="vm-board-tools">
+                {{- partial "visa-report-button.html" . }}
+            </div>
+        </div>
+        <p class="vd-req" id="vd-req"></p>
+
+        <details class="vm-details vd-questions" id="vd-questions" hidden>
+            <summary class="vm-details-summary">
+                <span class="vm-details-title">{{ i18n "vd_questions" }}</span>
+                <span class="vm-details-hint">{{ i18n "vd_questions_hint" }}</span>
+            </summary>
+            <div class="vm-details-body" id="vd-questions-body"></div>
+        </details>
+
+        <h3 class="vd-docs-title" id="vd-docs-title">{{ i18n "vd_docs_title" }}</h3>
+        <p class="vd-partial" id="vd-partial" role="note" hidden>{{ i18n "vd_partial" }}</p>
+        <div class="vd-docs" id="vd-docs"></div>
+        <p class="vd-source" id="vd-source"></p>
+
+        <div class="vm-actions">
+            <button type="button" class="vm-btn vm-btn-primary" id="vd-download">{{ i18n "vm_download" }}</button>
+            <button type="button" class="vm-btn vm-btn-ghost" id="vd-share" hidden>{{ i18n "vm_share" }}</button>
+            <button type="button" class="vm-btn vm-btn-ghost" popovertarget="contact-card">{{ i18n "vm_consult_button" }}</button>
+        </div>
+        {{- if (site.Params.contact | default dict).telegramAdmin }}
+        <p class="vm-report-line">{{ i18n "vd_report_ask" }}
+            <button type="button" class="vm-link-button" data-report>{{ i18n "vm_report" }}</button></p>
+        {{- end }}
+    </section>
+
+    {{- partial "visa-report.html" . }}
+
+    {{- with .Content }}
+    <div class="vm-about md-content">{{ . }}</div>
+    {{- end }}
+
+    <script type="application/json" id="vm-data">{{ $pageData | jsonify | safeJS }}</script>
+    <script type="application/json" id="vm-i18n">{{ $strings | jsonify | safeJS }}</script>
+</article>
+{{- end }}

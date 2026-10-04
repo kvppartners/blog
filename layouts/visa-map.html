@@ -91,13 +91,10 @@
 {{- range slice "study" "work" "family" "business" "residence" "pr" "visit" "other" }}
 {{- $categories = merge $categories (dict . (i18n (printf "vm_cat_%s" .))) }}
 {{- end }}
-{{- $strings := dict
-    "gender" (i18n "vm_gender") "male" (i18n "vm_male") "female" (i18n "vm_female")
-    "age" (i18n "vm_age") "noMatch" (i18n "no_results") "isGoal" (i18n "vm_is_goal")
-    "nationality" (i18n "vm_nationality") "errNationality" (i18n "vm_err_nationality")
+{{- $strings := merge (partial "visa-strings.html" .) (dict
+    "gender" (i18n "vm_gender") "male" (i18n "vm_male") "female" (i18n "vm_female") "age" (i18n "vm_age")
     "notForNationality" (i18n "vm_not_for_nationality") "koreansOnly" (i18n "vm_koreans_only")
-    "errAge" (i18n "vm_err_age") "errVisa" (i18n "vm_err_visa")
-    "noVisa" (i18n "vm_no_visa") "startNone" (i18n "vm_start_none")
+    "errAge" (i18n "vm_err_age") "errVisa" (i18n "vm_err_visa") "startNone" (i18n "vm_start_none")
     "start" (i18n "vm_start") "choose" (i18n "vm_choose") "goal" (i18n "vm_goal")
     "abroad" (i18n "vm_abroad") "ageOnly" (i18n "vm_age_only") "how" (i18n "vm_how")
     "koreanRoots" (i18n "vm_korean_roots") "koreanChild" (i18n "vm_korean_child_short")
@@ -107,15 +104,7 @@
     "noneFit" (i18n "vm_none_fit") "whyFamily" (i18n "vm_why_family") "whyEducation" (i18n "vm_why_education")
     "whyExperience" (i18n "vm_why_experience") "whyInvest" (i18n "vm_why_invest") "whyPrevious" (i18n "vm_why_previous")
     "langNeed" (i18n "vm_lang_need") "langOk" (i18n "vm_lang_ok") "categories" $categories
-    "doneTitle" (i18n "vm_done_title") "imageTitle" (i18n "vm_image_title")
-    "consult" (i18n "vm_consult") "disclaimer" (i18n "vm_disclaimer") "deadEnd" (i18n "vm_dead_end")
-    "site" site.Title "url" ($contact.website | default (replaceRE `^https?://|/$` "" site.BaseURL))
-    "telegram" ($contact.telegram | default "") "instagram" ($contact.instagram | default "")
-    "email" ($contact.email | default "") "telegramAdmin" ($contact.telegramAdmin | default "")
-    "reportSending" (i18n "vm_report_sending") "reportSent" (i18n "vm_report_sent")
-    "reportFailed" (i18n "vm_report_failed") "reportBusy" (i18n "vm_report_busy") "reportEmpty" (i18n "vm_report_empty")
-    "reportMsg" (i18n "vm_report_msg") "reportPath" (i18n "vm_report_path")
-    "reportMap" (i18n "vm_report_map") "reportProblem" (i18n "vm_report_problem") }}
+    "doneTitle" (i18n "vm_done_title") "imageTitle" (i18n "vm_image_title") "deadEnd" (i18n "vm_dead_end")) }}
 
 <article class="visa-map" id="visa-map" data-lang="{{ .Lang }}" data-logo="{{ $logo }}">
     <header class="vm-header">
@@ -292,9 +281,7 @@
         <div class="vm-board-head">
             <p class="vm-profile" id="vm-profile"></p>
             <div class="vm-board-tools">
-                {{- if $contact.telegramAdmin }}
-                <button type="button" class="vm-btn vm-btn-ghost" data-report><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>{{ i18n "vm_report" }}</button>
-                {{- end }}
+                {{- partial "visa-report-button.html" . }}
                 <button type="button" class="vm-btn vm-btn-ghost" id="vm-restart">{{ i18n "vm_restart" }}</button>
             </div>
         </div>
@@ -324,30 +311,7 @@
         </div>
     </section>
 
-    {{- with $contact.telegramAdmin }}
-    {{- /* Problem reports: sent to the admin by the Telegram bot behind /api/report (worker/index.js),
-        with a bug-report picture and the map as text; a Telegram link is the fallback. */}}
-    <dialog class="vm-report" id="vm-report" aria-labelledby="vm-report-title">
-        <form class="vm-report-form" id="vm-report-form" novalidate>
-            <h2 class="vm-report-title" id="vm-report-title">{{ i18n "vm_report" }}</h2>
-            <p>{{ i18n "vm_report_text" }}</p>
-            <textarea class="vm-input vm-report-message" name="message" rows="5" maxlength="2000"
-                placeholder="{{ i18n "vm_report_placeholder" }}" aria-label="{{ i18n "vm_report_placeholder" }}"></textarea>
-            <input class="vm-input" name="name" type="text" maxlength="100" autocomplete="name"
-                placeholder="{{ i18n "vm_report_name" }}" aria-label="{{ i18n "vm_report_name" }}">
-            <input class="vm-input" name="contact" type="text" maxlength="200" autocomplete="email"
-                placeholder="{{ i18n "vm_report_contact" }}" aria-label="{{ i18n "vm_report_contact" }}">
-            <p class="vm-report-note">{{ i18n "vm_report_privacy" }}</p>
-            <p class="vm-report-status" id="vm-report-status" role="status"></p>
-            <div class="vm-actions">
-                <button type="submit" class="vm-btn vm-btn-primary" id="vm-report-send">{{ i18n "vm_report_send" }}</button>
-                <a class="vm-btn vm-btn-primary" id="vm-report-telegram" href="https://t.me/{{ . }}" target="_blank" rel="noopener" hidden>{{ i18n "vm_report_open" }}</a>
-                <button type="button" class="vm-btn vm-btn-ghost" id="vm-report-download" hidden>{{ i18n "vm_report_download" }}</button>
-                <button type="button" class="vm-btn vm-btn-ghost" id="vm-report-close">{{ i18n "vm_report_close" }}</button>
-            </div>
-        </form>
-    </dialog>
-    {{- end }}
+    {{- partial "visa-report.html" . }}
 
     {{- with .Content }}
     <div class="vm-about md-content">{{ . }}</div>

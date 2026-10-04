@@ -1,0 +1,21 @@
+{{- /* Returns .value with every { en, ru, uz, uz-cyrl } text replaced by the one for .lang
+   (English when that language is missing), so a page embeds only its own language. */}}
+{{- $value := .value }}
+{{- $lang := .lang }}
+{{- $out := $value }}
+{{- if reflect.IsMap $value }}
+{{- if and (isset $value "en") (or (isset $value "ru") (isset $value "uz")) }}
+{{- $out = index $value $lang | default (index $value "en") }}
+{{- else }}
+{{- $out = dict }}
+{{- range $key, $item := $value }}
+{{- $out = merge $out (dict $key (partial "localize.html" (dict "value" $item "lang" $lang))) }}
+{{- end }}
+{{- end }}
+{{- else if reflect.IsSlice $value }}
+{{- $out = slice }}
+{{- range $value }}
+{{- $out = $out | append (partial "localize.html" (dict "value" . "lang" $lang)) }}
+{{- end }}
+{{- end }}
+{{- return $out }}

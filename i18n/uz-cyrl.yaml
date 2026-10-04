@@ -320,3 +320,111 @@
   translation: "Илтимос, муаммони ёзинг."
 - id: vm_report_name
   translation: "Исмингиз (ихтиёрий)"
+- id: vd_from
+  translation: "Ҳозирги визангиз"
+- id: vd_from_hint
+  translation: "D-2 каби код ёки сўз ёзинг ёки «Ҳали виза йўқ» ни танланг."
+- id: vd_to
+  translation: "Керакли виза"
+- id: vd_to_placeholder
+  translation: "Код ёки сўз ёзинг ёки рўйхатдан танланг"
+- id: vd_to_hint
+  translation: "Расмий ҳужжатлар рўйхати бор барча визалар. Талабларни текширинг: ҳар қандай визадан ҳар қандай визага ўтиб бўлмайди. ✈ — чет элдан топширилади; ✈* — чет элдан ёки айрим ҳолларда Кореяда."
+- id: vd_to_none
+  translation: "Бу визадан кейинги визалар учун ҳозирча расмий ҳужжатлар рўйхати йўқ."
+- id: vd_in_korea
+  translation: "Кореяда мақомни ўзгартириш"
+- id: vd_abroad
+  translation: "Корея элчихонаси ёки консуллигида янги виза"
+- id: vd_ccvi
+  translation: "Кореядаги таклиф қилувчи расмийлаштирадиган тасдиқнома (CCVI) орқали виза"
+- id: vd_questions
+  translation: "Рўйхатни ўзингизга мослаш"
+- id: vd_questions_hint
+  translation: "Ихтиёрий. Саволлар расмий рўйхатдан олинган. Жавобсиз барча ҳужжатлар кимга кераклиги ҳақидаги изоҳлар билан кўрсатилади."
+- id: vd_situation
+  translation: "Сизга қайси бири мос?"
+- id: vd_situation_all
+  translation: "Аниқ эмас: ҳаммасини кўрсатиш"
+- id: vd_applies
+  translation: "Бу сизга тегишлими?"
+- id: vd_everyone
+  translation: "Ҳаммага"
+- id: vd_only_case
+  translation: "Фақат: {case}"
+- id: vd_only_if
+  translation: "Фақат агар: {cond}"
+- id: vd_by_employer
+  translation: "Иш берувчи тайёрлайди"
+- id: vd_by_school
+  translation: "Ўқув юрти беради"
+- id: vd_by_inviter
+  translation: "Таклиф қилувчи тайёрлайди"
+- id: vd_link_form
+  translation: "Бланкани юклаб олиш"
+- id: vd_link_online
+  translation: "Онлайн олиш"
+- id: vd_link_info
+  translation: "Қаердан олиш"
+- id: vd_source
+  translation: "Манба"
+- id: vd_requirements
+  translation: "Талаблар"
+- id: vd_fee
+  translation: "Тўлов"
+- id: vd_image_title
+  translation: "Корея визам учун ҳужжатлар"
+- id: vd_docs_title
+  translation: "Тайёрлаш керак бўлган ҳужжатлар"
+- id: vd_report_ask
+  translation: "Рўйхатда нимадир нотўғрими?"
+- id: vd_evisa
+  translation: "Электрон виза Korea Visa Portal (visa.go.kr) орқали"
+- id: vd_both
+  translation: "Чет элда янги виза: Корея элчихонасида ёки CCVI орқали — ҳолатингизга боғлиқ"
+- id: vd_extra
+  translation: "Касбингиз ёки дастурингиз"
+- id: vd_extra_all
+  translation: "Аниқ эмас: ҳаммасини кўрсатиш"
+- id: vd_extra_none
+  translation: "Буларнинг ҳеч бири"
+- id: vd_extra_for
+  translation: "Қўшимча: {case}"
+- id: vd_extra_hint
+  translation: "Баъзи касблар ва ҳудудий дастурлар учун рўйхатдан ташқари қўшимча ҳужжатлар керак."
+- id: vd_partial
+  translation: "Расмий қўлланмада бу виза учун ҳужжатларнинг фақат бир қисми келтирилган. Ариза беришдан олдин тўлиқ рўйхатни иммиграция хизматидан (1345) аниқланг."
+- id: vd_at_embassy
+  translation: "Элчихонада виза аризаси билан топширилади"
+- id: vd_extend
+  translation: "Ҳозирги визамни узайтириш"
+- id: vd_extend_hint
+  translation: "Ҳозирги визангиз бўйича яшаш муддатини узайтириш (체류기간 연장) учун ҳужжатларни кўрсатади."
+- id: vd_extend_short
+  translation: "Узайтириш"
+- id: vd_extend_route
+  translation: "Кореяда яшаш муддатини узайтириш"
+- id: vd_extend_none
+  translation: "Бу виза учун узайтириш бўйича расмий ҳужжатлар рўйхати бизда йўқ."
+- id: vd_within_extend
+  translation: "Кореяда, янги виза тури билан яшаш муддатини узайтириш сифатида"
+- id: vd_group_usual
+  translation: "Визангиздан одатий кейинги қадамлар"
+- id: vd_group_other
+  translation: "Расмий рўйхати бор бошқа визалар"
+- id: vd_fee_exempt
+  translation: "олинмайди"
+- id: vd_report_route
+  translation: "Кореяда: рўйхатга олиш маълумотлари ўзгарганини хабар қилиш (등록사항 변경신고), 15 кун ичида, иммиграция идорасида ёки онлайн"
+- id: vd_via
+  translation: "Қандай топширасиз?"
+- id: vd_via_abroad
+  translation: "Чет элдан: янги виза (умумий қоида)"
+- id: vd_via_korea
+  translation: "Кореяда: {who}"
+- id: vd_exception_route
+  translation: "Кореяда мақомни ўзгартириш (қўлланмада рухсат этилган истисно)"
+- id: vd_permit_route
+  translation: "Кореяда: мақомдан ташқари фаолиятга рухсат (체류자격외 활동허가)"
+- id: vd_visa_fee
+  translation: "Виза тўлови: бир марталик виза — 40 АҚШ доллари (90 кунгача яшаш) ёки 60 АҚШ доллари (91 кун ва ундан кўп), икки марталик — 70 АҚШ доллари, кўп марталик — 90 АҚШ доллари; элчихона ўзаро манфаатлилик асосида бошқа миқдор олиши мумкин"

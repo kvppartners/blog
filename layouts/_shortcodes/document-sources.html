@@ -1,0 +1,3 @@
+{{- /* Text about where to get documents, shown only when the build shows those links
+       (SHOW_DOCUMENT_SOURCE=true, see document-sources.html). Use as {{% document-sources %}}. */ -}}
+{{- if partial "document-sources.html" . }}{{ .Inner }}{{ end -}}

@@ -294,3 +294,111 @@
   translation: "Please describe the problem."
 - id: vm_report_name
   translation: "Your name (optional)"
+- id: vd_from
+  translation: "Your visa now"
+- id: vd_from_hint
+  translation: "Type a code such as D-2 or a word, or choose \"No visa yet\"."
+- id: vd_to
+  translation: "Visa you want"
+- id: vd_to_placeholder
+  translation: "Type a code or a word, or pick from the list"
+- id: vd_to_hint
+  translation: "Every visa with an official document list. Check the requirements: not every change is allowed from every visa. ✈ = apply from abroad; ✈* = from abroad, or in Korea in some cases."
+- id: vd_to_none
+  translation: "We don't have an official document list for the next visas from this one yet."
+- id: vd_in_korea
+  translation: "Change of status in Korea"
+- id: vd_abroad
+  translation: "New visa at a Korean embassy or consulate"
+- id: vd_ccvi
+  translation: "Visa through a confirmation (CCVI) that your inviter in Korea applies for"
+- id: vd_questions
+  translation: "Make the list yours"
+- id: vd_questions_hint
+  translation: "Optional. The questions come from the official list. Without answers you see every document, with notes on who needs it."
+- id: vd_situation
+  translation: "Which describes you?"
+- id: vd_situation_all
+  translation: "Not sure: show all"
+- id: vd_applies
+  translation: "Does this apply to you?"
+- id: vd_everyone
+  translation: "Everyone"
+- id: vd_only_case
+  translation: "Only for: {case}"
+- id: vd_only_if
+  translation: "Only if: {cond}"
+- id: vd_by_employer
+  translation: "Prepared by the employer"
+- id: vd_by_school
+  translation: "From the school"
+- id: vd_by_inviter
+  translation: "Prepared by the inviter"
+- id: vd_link_form
+  translation: "Download the form"
+- id: vd_link_online
+  translation: "Get it online"
+- id: vd_link_info
+  translation: "Where to get it"
+- id: vd_source
+  translation: "Source"
+- id: vd_requirements
+  translation: "Requirements"
+- id: vd_fee
+  translation: "Fee"
+- id: vd_image_title
+  translation: "Documents for my Korean visa"
+- id: vd_docs_title
+  translation: "Documents to prepare"
+- id: vd_report_ask
+  translation: "Something wrong in this list?"
+- id: vd_evisa
+  translation: "E-visa through the Korea Visa Portal (visa.go.kr)"
+- id: vd_both
+  translation: "New visa abroad: at a Korean embassy or through a CCVI, depending on your case"
+- id: vd_extra
+  translation: "Your occupation or programme"
+- id: vd_extra_all
+  translation: "Not sure: show all"
+- id: vd_extra_none
+  translation: "None of these"
+- id: vd_extra_for
+  translation: "Also for: {case}"
+- id: vd_extra_hint
+  translation: "Some occupations and regional programmes need extra documents on top of the list."
+- id: vd_partial
+  translation: "The official manual names only part of the documents for this visa. Check the full list with the immigration office (1345) before you apply."
+- id: vd_at_embassy
+  translation: "Handed in at the embassy with the visa application"
+- id: vd_extend
+  translation: "Extend my current visa"
+- id: vd_extend_hint
+  translation: "Shows the documents for an extension of stay (체류기간 연장) on your current visa."
+- id: vd_extend_short
+  translation: "Extension"
+- id: vd_extend_route
+  translation: "Extension of stay in Korea"
+- id: vd_extend_none
+  translation: "We don't have an official extension list for this visa."
+- id: vd_within_extend
+  translation: "In Korea, as an extension of stay with the new visa type"
+- id: vd_group_usual
+  translation: "Usual next steps from your visa"
+- id: vd_group_other
+  translation: "Other visas with an official list"
+- id: vd_fee_exempt
+  translation: "exempt"
+- id: vd_report_route
+  translation: "In Korea: report of a change of registration (등록사항 변경신고), within 15 days, at the immigration office or online"
+- id: vd_via
+  translation: "How do you apply?"
+- id: vd_via_abroad
+  translation: "From abroad: a new visa (general rule)"
+- id: vd_via_korea
+  translation: "In Korea: {who}"
+- id: vd_exception_route
+  translation: "Change of status in Korea (an exception the manual allows)"
+- id: vd_permit_route
+  translation: "In Korea: permission for activities outside your status (체류자격외 활동허가)"
+- id: vd_visa_fee
+  translation: "Visa fee: single-entry US$40 (stay up to 90 days) or US$60 (91 days or more), double-entry US$70, multiple-entry US$90; an embassy may charge a different amount by reciprocity"

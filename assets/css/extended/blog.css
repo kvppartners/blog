@@ -884,6 +884,20 @@
     color: var(--secondary);
 }
 
+/* Headings inside a visa list ("Usual next steps", "Other visas"). */
+.vm-option-group {
+    padding: 12px 10px 4px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.vm-option-group:first-child {
+    padding-top: 4px;
+}
+
 .vm-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1485,6 +1499,214 @@ button.vm-node:focus-visible {
     max-width: 720px;
     margin: 48px auto 0;
     font-size: 15px;
+}
+
+/* ---------- Visa docs page (shares the Visa map's form, buttons and dialog styles) ---------- */
+
+.main:has(> .visa-docs) {
+    max-width: calc(820px + var(--gap) * 2);
+}
+
+.visa-docs .vm-start {
+    max-width: 640px;
+}
+
+.vd-result {
+    max-width: 760px;
+    margin: 28px auto 0;
+}
+
+.vd-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.vd-route {
+    margin: 0 0 4px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--vm-line);
+}
+
+.vd-title {
+    margin: 0;
+    font-size: 26px;
+}
+
+.vd-code {
+    white-space: nowrap;
+}
+
+.vd-title-name {
+    display: block;
+    margin-top: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.vd-req {
+    margin: 14px 0 18px;
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+.vd-questions {
+    margin-bottom: 22px;
+}
+
+.vd-condition {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    padding: 8px 0;
+    border-top: 1px solid var(--border);
+}
+
+.vd-condition-text {
+    flex: 1 1 260px;
+    font-size: 14px;
+    color: var(--primary);
+}
+
+.vd-condition-ko {
+    display: block;
+    margin-top: 2px;
+    font-size: 12.5px;
+    color: var(--secondary);
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+.vd-partial {
+    margin: 0 0 14px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #b54708;
+    background: #fffaeb;
+    border: 1px solid #fedf89;
+    border-radius: 10px;
+}
+
+[data-theme="dark"] .vd-partial {
+    color: #fec84b;
+    background: rgba(254, 200, 75, 0.08);
+    border-color: rgba(254, 200, 75, 0.35);
+}
+
+.vd-condition .vm-segment span {
+    padding: 5px 16px;
+    font-size: 14px;
+}
+
+.vd-docs-title {
+    margin: 8px 0 12px;
+    font-size: 20px;
+}
+
+.vd-group + .vd-group {
+    margin-top: 20px;
+}
+
+details.vd-group > summary.vd-group-title {
+    padding: 10px 14px;
+    background: var(--code-bg);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+details.vd-group[open] > summary.vd-group-title {
+    margin-bottom: 10px;
+}
+
+.vd-group-title {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.vd-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.vd-doc {
+    display: flex;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.vd-num {
+    flex: 0 0 28px;
+    height: 28px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: center;
+    color: #fff;
+    background: var(--vm-green);
+    border-radius: 50%;
+}
+
+.vd-doc-body {
+    min-width: 0;
+}
+
+.vd-doc-body p {
+    margin: 0;
+}
+
+.vd-doc-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.vd-doc-ko {
+    margin-left: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--vm-line);
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+.vd-doc-note {
+    margin-top: 4px !important;
+    font-size: 13.5px;
+    color: var(--secondary);
+}
+
+.vd-doc-link {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.vd-source {
+    margin: 18px 0 16px;
+    font-size: 13px;
+    color: var(--secondary);
 }
 
 @media screen and (max-width: 640px) {

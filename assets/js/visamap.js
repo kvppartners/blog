@@ -3,18 +3,18 @@
 // possible next visas until they reach permanent residence (F-5). The visa data
 // (data/visamap.yaml) and translated texts are embedded in the page by
 // layouts/visa-map.html. Everything runs in the browser.
-(function () {
-    'use strict';
+import {
+    C, NONE, byCode, clearableRadios, el, fillCountries, font, isGoal, loadImage, pageContext, paintBrand,
+    paintContacts, renderPicture, roundRect, saveBlob, shareButton as offerShare, visaSearch, wrap,
+} from './visa/shared.js';
+import { setupReport } from './visa/report.js';
 
-    const root = document.getElementById('visa-map');
-    if (!root) return;
+const mapRoot = document.getElementById('visa-map');
+if (mapRoot) visaMap(mapRoot);
 
-    const data = JSON.parse(document.getElementById('vm-data').textContent);
-    const T = JSON.parse(document.getElementById('vm-i18n').textContent);
-    const lang = root.dataset.lang;
-    const visas = data.visas || {};
-    const statuses = data.statuses || {};
-    const groups = data.groups || {};
+function visaMap(root) {
+    const page = pageContext(root);
+    const { T, visas, text, nameOf, codeLabel, countryName } = page;
 
     const form = document.getElementById('vm-start');
     const ageInput = document.getElementById('vm-age');
@@ -34,51 +34,12 @@
     const downloadButton = document.getElementById('vm-download');
     const shareButton = document.getElementById('vm-share');
 
-    // The starting point for readers who have no Korean visa yet.
-    const NONE = 'NONE';
-
     let person = null; // nationality, age and the details the reader gave
     let path = []; // chosen visa codes; path[0] is the current visa or NONE
-    let picked = null; // code chosen in the search box
     const revealed = new Set(); // rows where options that don't fit the reader are shown
 
-    // ---------- Helpers ----------
-
-    const langTag = lang === 'uz-cyrl' ? 'uz-Cyrl' : lang;
-
-    // Picks the current language from { en, ru, uz, uz-cyrl } values.
-    const text = (value) => (value && typeof value === 'object' ? value[lang] || value.en || '' : value || '');
-    const isGoal = (code) => code.startsWith('F-5');
-    const nameOf = (code) => text(visas[code] && visas[code].name);
-    const codeLabel = (code) => (code === NONE ? T.noVisa : code);
-    const statusOf = (code) => code.split('-').slice(0, 2).join('-');
-    const tokens = (s) => String(s).toUpperCase().match(/[A-Z]+|\d+/g) || [];
-    const fold = (s) => String(s).toLocaleLowerCase().replace(/[‘’ʻʼ`´']/g, "'").replace(/ё/g, 'е');
-    const el = (tag, className, content) => {
-        const node = document.createElement(tag);
-        if (className) node.className = className;
-        if (content !== undefined) node.textContent = content;
-        return node;
-    };
-
-    // Natural order of visa codes: D-2-2 before D-2-10, D-10-1 after D-9-1.
-    function byCode(a, b) {
-        const ta = tokens(a);
-        const tb = tokens(b);
-        for (let i = 0; i < Math.max(ta.length, tb.length); i++) {
-            if (ta[i] === undefined) return -1;
-            if (tb[i] === undefined) return 1;
-            const na = Number(ta[i]);
-            const nb = Number(tb[i]);
-            const diff = Number.isNaN(na) || Number.isNaN(nb) ? ta[i].localeCompare(tb[i]) : na - nb;
-            if (diff) return diff;
-        }
-        return 0;
-    }
-
-    // Nationality lists: a group name from data.groups, or a list of ISO codes.
-    const countryList = (value) => (typeof value === 'string' ? groups[value] || [] : value || []);
-    const isIn = (value) => Boolean(person && countryList(value).includes(person.nationality));
+    // Whether the reader's nationality is in a list (group name or ISO codes).
+    const isIn = (value) => Boolean(person && page.countryList(value).includes(person.nationality));
 
     // Possible next visas from `code`. A visa held earlier on the path can be offered again
     // (a second D-10-1 after a new degree, E-7-1 again after a job search); a move's `again`
@@ -239,31 +200,11 @@
 
     // ---------- Nationality list ----------
 
-    // Names in the page language come from data/countries.yaml, since many
-    // browsers have no Uzbek country names.
-    const countries = data.countries || {};
-    const countryName = (code) => countries[code] || code;
-
-    const first = ['UZ'];
-    first.forEach((code) => nationalityInput.add(new Option(countryName(code), code)));
-    const divider = new Option('──────────', '');
-    divider.disabled = true;
-    nationalityInput.add(divider);
-    Object.keys(countries).filter((code) => !first.includes(code))
-        .sort((a, b) => countryName(a).localeCompare(countryName(b), langTag))
-        .forEach((code) => nationalityInput.add(new Option(countryName(code), code)));
+    fillCountries(nationalityInput, page);
 
     // ---------- Details ----------
 
-    // Yes/no buttons can be clicked again to clear the answer.
-    form.querySelectorAll('.vm-segment input[type="radio"]').forEach((input) => {
-        input.addEventListener('click', () => {
-            if (input.dataset.checked === 'true') input.checked = false;
-            form.querySelectorAll(`input[name="${input.name}"]`).forEach((r) => {
-                r.dataset.checked = String(r.checked);
-            });
-        });
-    });
+    clearableRadios(form);
 
     // Parents only matter for readers under 19; school details need a school level.
     function syncDetails() {
@@ -304,106 +245,13 @@
 
     // ---------- Search box (current visa) ----------
 
-    const startCodes = Object.keys(visas).filter((c) => !isGoal(c) && c !== NONE).sort(byCode);
-    let active = -1;
-
-    function search(query) {
-        const q = query.trim();
-        if (!q) return visas[NONE] ? [NONE] : [];
-        const qt = tokens(q);
-        const qf = fold(q);
-        const hits = [];
-        if (visas[NONE] && qf.length >= 2 && fold(`${T.noVisa} ${nameOf(NONE)}`).includes(qf)) hits.push({ code: NONE, score: -1 });
-        for (const code of startCodes) {
-            const ct = tokens(code);
-            let score = -1;
-            // Code match: every typed part matches the code; the last one may be unfinished.
-            if (qt.length && qt.length <= ct.length &&
-                qt.every((t, i) => (i === qt.length - 1 ? ct[i].startsWith(t) : ct[i] === t))) {
-                score = qt.length === ct.length && qt[qt.length - 1] === ct[ct.length - 1] ? 0 : 1;
-            } else if (qf.length >= 2 && fold(`${nameOf(code)} ${text(statuses[statusOf(code)])}`).includes(qf)) {
-                score = 2;
-            }
-            if (score >= 0) hits.push({ code, score });
-        }
-        hits.sort((a, b) => a.score - b.score || byCode(a.code, b.code));
-        return hits.slice(0, 40).map((h) => h.code);
-    }
-
-    function exactCode(value) {
-        if (fold(value.trim()) === fold(T.noVisa)) return NONE;
-        const vt = tokens(value).join('-');
-        return startCodes.find((c) => tokens(c).join('-') === vt) || null;
-    }
-
-    function showOptions() {
-        const hits = search(visaInput.value);
-        active = -1;
-        optionList.replaceChildren();
-        if (!hits.length) {
-            const goal = tokens(visaInput.value).slice(0, 2).join('-') === 'F-5';
-            optionList.append(el('li', 'vm-option-empty', goal ? T.isGoal : T.noMatch));
-        }
-        hits.forEach((code, i) => {
-            const li = el('li', code === NONE ? 'vm-option vm-option-none' : 'vm-option');
-            li.id = `vm-opt-${i}`;
-            li.setAttribute('role', 'option');
-            li.dataset.code = code;
-            li.append(el('b', '', codeLabel(code)), el('span', '', nameOf(code)));
-            optionList.append(li);
-        });
-        optionList.hidden = false;
-        visaInput.setAttribute('aria-expanded', 'true');
-    }
-
-    function closeOptions() {
-        optionList.hidden = true;
-        visaInput.setAttribute('aria-expanded', 'false');
-        visaInput.removeAttribute('aria-activedescendant');
-    }
-
-    function pick(code) {
-        picked = code;
-        visaInput.value = code === NONE ? T.noVisa : `${code} — ${nameOf(code)}`;
-        closeOptions();
-        errorBox.hidden = true;
-    }
-
-    function highlight(index) {
-        const items = optionList.querySelectorAll('.vm-option');
-        if (!items.length) return;
-        active = (index + items.length) % items.length;
-        items.forEach((item, i) => item.classList.toggle('is-active', i === active));
-        items[active].scrollIntoView({ block: 'nearest' });
-        visaInput.setAttribute('aria-activedescendant', items[active].id);
-    }
-
-    visaInput.addEventListener('input', () => {
-        picked = null;
-        showOptions();
-    });
-    visaInput.addEventListener('focus', () => {
-        if (!picked) showOptions();
-    });
-    visaInput.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-            e.preventDefault();
-            if (optionList.hidden) showOptions();
-            highlight(active + (e.key === 'ArrowDown' ? 1 : -1));
-        } else if (e.key === 'Enter' && !optionList.hidden && active >= 0) {
-            e.preventDefault();
-            pick(optionList.querySelectorAll('.vm-option')[active].dataset.code);
-        } else if (e.key === 'Escape') {
-            closeOptions();
-        }
-    });
-    optionList.addEventListener('mousedown', (e) => e.preventDefault()); // keep focus in the input
-    optionList.addEventListener('click', (e) => {
-        const option = e.target.closest('.vm-option');
-        if (option) pick(option.dataset.code);
-    });
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.vm-combo')) closeOptions();
+    const search = visaSearch(page, {
+        input: visaInput,
+        list: optionList,
+        codes: Object.keys(visas).filter((code) => !isGoal(code) && code !== NONE).sort(byCode),
+        onPick: () => {
+            errorBox.hidden = true;
+        },
     });
 
     // ---------- Start ----------
@@ -412,9 +260,8 @@
     function start() {
         const nationality = nationalityInput.value;
         const age = Number.parseInt(ageInput.value, 10);
-        const typed = visaInput.value.trim();
         // An empty visa field means no Korean visa yet.
-        const code = picked || (typed ? exactCode(typed) : NONE);
+        const code = search.value();
         const error = !nationality ? T.errNationality : !(age >= 14 && age <= 99) ? T.errAge
             : !code || !visas[code] ? T.errVisa : '';
         if (error) {
@@ -519,7 +366,7 @@
             document.getElementById('vm-details').open = true;
         }
         syncDetails();
-        pick(codes[0]);
+        search.pick(codes[0]);
         if (!start()) return;
         for (let level = 1; level < codes.length && !isGoal(path[level - 1]); level++) {
             const step = nextSteps(path[level - 1], level).find((s) => s.to === codes[level]);
@@ -757,43 +604,6 @@
         }));
     }
 
-    const FONT = 'system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Noto Sans", Arial, sans-serif';
-    const C = {
-        navy: '#1e2e4f', gold: '#e8c27a', green: '#16a34a', greenSoft: '#eaf7ef',
-        ink: '#1f2937', muted: '#6b7280', line: '#e5e7eb', white: '#ffffff',
-    };
-    const font = (weight, size) => `${weight} ${size}px ${FONT}`;
-
-    function wrap(ctx, value, maxWidth, maxLines) {
-        const words = String(value || '').split(/\s+/).filter(Boolean);
-        const lines = [];
-        let line = '';
-        for (const word of words) {
-            const test = line ? `${line} ${word}` : word;
-            if (!line || ctx.measureText(test).width <= maxWidth) line = test;
-            else {
-                lines.push(line);
-                line = word;
-            }
-        }
-        if (line) lines.push(line);
-        if (maxLines && lines.length > maxLines) {
-            lines.length = maxLines;
-            lines[maxLines - 1] = `${lines[maxLines - 1].replace(/[\s,.;:]+$/, '')}…`;
-        }
-        return lines;
-    }
-
-    function roundRect(ctx, x, y, w, h, r) {
-        ctx.beginPath();
-        ctx.moveTo(x + r, y);
-        ctx.arcTo(x + w, y, x + w, y + h, r);
-        ctx.arcTo(x + w, y + h, x, y + h, r);
-        ctx.arcTo(x, y + h, x, y, r);
-        ctx.arcTo(x, y, x + w, y, r);
-        ctx.closePath();
-    }
-
     // Lays out the image; draws only when `draw` is true. Returns the height used.
     function paint(ctx, draw, logo) {
         const W = 1080;
@@ -803,27 +613,7 @@
         const textX = P + 104;
         ctx.textBaseline = 'alphabetic';
 
-        // Header band: logo, site name, title.
-        const headerH = 220;
-        if (draw) {
-            ctx.fillStyle = C.navy;
-            ctx.fillRect(0, 0, W, headerH);
-            if (logo) ctx.drawImage(logo, P, (headerH - 132) / 2, 132, 132);
-        }
-        const tx = P + 132 + 32;
-        ctx.font = font(700, 50);
-        if (draw) {
-            ctx.fillStyle = C.white;
-            ctx.fillText(T.site, tx, 104);
-        }
-        ctx.font = font(500, 30);
-        wrap(ctx, T.imageTitle, W - tx - P, 2).forEach((line, i) => {
-            if (draw) {
-                ctx.fillStyle = C.gold;
-                ctx.fillText(line, tx, 152 + i * 38);
-            }
-        });
-
+        const headerH = paintBrand(ctx, draw, { logo, site: T.site, title: T.imageTitle });
         let y = headerH + 24;
         ctx.font = font(500, 28);
         const now = new Date();
@@ -907,78 +697,15 @@
         });
 
         // Footer: call to action and contacts.
-        y += 56;
-        if (draw) {
-            ctx.fillStyle = C.line;
-            ctx.fillRect(P, y, inner, 2);
-        }
-        ctx.font = font(700, 36);
-        wrap(ctx, T.consult, inner, 2).forEach((line, i) => {
-            y += i ? 46 : 64;
-            if (draw) {
-                ctx.fillStyle = C.navy;
-                ctx.fillText(line, P, y);
-            }
-        });
-        ctx.font = font(500, 28);
-        const contacts = [
-            [T.telegram && `Telegram: @${T.telegram}`, T.instagram && `Instagram: @${T.instagram}`],
-            [T.email, T.url],
-        ].map((parts) => parts.filter(Boolean).join('   ·   ')).filter(Boolean);
-        contacts.forEach((line) => {
-            y += 46;
-            if (draw) {
-                ctx.fillStyle = C.ink;
-                ctx.fillText(line, P, y);
-            }
-        });
-        y += 26;
-        ctx.font = font(400, 22);
-        wrap(ctx, T.disclaimer, inner, 3).forEach((line) => {
-            y += 32;
-            if (draw) {
-                ctx.fillStyle = C.muted;
-                ctx.fillText(line, P, y);
-            }
-        });
-        return y + P;
-    }
-
-    function loadImage(src) {
-        return new Promise((resolve) => {
-            if (!src) return resolve(null);
-            const img = new Image();
-            img.onload = () => resolve(img);
-            img.onerror = () => resolve(null);
-            img.src = src;
-        });
+        return paintContacts(ctx, draw, y, T);
     }
 
     async function makeImage() {
         const logo = await loadImage(root.dataset.logo);
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = 1080;
-        canvas.height = Math.ceil(paint(ctx, false, logo));
-        const draw = canvas.getContext('2d');
-        draw.fillStyle = C.white;
-        draw.fillRect(0, 0, canvas.width, canvas.height);
-        paint(draw, true, logo);
-        return new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+        return renderPicture((c, draw) => paint(c, draw, logo));
     }
 
     const fileName = () => `visa-map-${path[0] === NONE ? 'no-visa' : path[0]}-to-${path[path.length - 1]}.png`;
-
-    function saveBlob(blob, name) {
-        const url = URL.createObjectURL(blob);
-        const a = el('a');
-        a.href = url;
-        a.download = name;
-        document.body.append(a);
-        a.click();
-        a.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 10000);
-    }
 
     async function downloadImage() {
         saveBlob(await makeImage(), fileName());
@@ -986,109 +713,35 @@
 
     downloadButton.addEventListener('click', downloadImage);
 
-    // Share the image straight to apps (Telegram etc.) where the browser supports it.
-    const probe = new File([new Blob()], 'probe.png', { type: 'image/png' });
-    if (navigator.canShare && navigator.canShare({ files: [probe] })) {
-        shareButton.hidden = false;
-        shareButton.addEventListener('click', async () => {
-            const blob = await makeImage();
-            const file = new File([blob], fileName(), { type: 'image/png' });
-            try {
-                await navigator.share({ files: [file], title: T.imageTitle, text: `${T.imageTitle} — ${T.url}` });
-            } catch {
-                // Sharing cancelled.
-            }
-        });
-    }
+    offerShare(shareButton, makeImage, fileName, { title: T.imageTitle, url: T.url });
 
     // ---------- Problem reports ----------
 
-    // The reader describes the problem; the page sends it to /api/report (worker/index.js),
-    // whose Telegram bot passes it to the admin with a bug-report picture and the map as
-    // text. Without a picture the text still goes; if sending fails, a Telegram link with
-    // the same text is offered instead.
-    const report = document.getElementById('vm-report');
-    if (report) {
-        const reportForm = document.getElementById('vm-report-form');
-        const status = document.getElementById('vm-report-status');
-        const sendButton = document.getElementById('vm-report-send');
-        const telegram = document.getElementById('vm-report-telegram');
-        const download = document.getElementById('vm-report-download');
-        const say = (message) => {
-            status.textContent = message;
+    setupReport(page, () => {
+        const last = path[path.length - 1];
+        const row = lastRow();
+        return {
+            page: 'Visa map',
+            link: mapLink(),
+            summary: [profileLine(' · '), `${T.reportPath}: ${path.map(codeLabel).join(' → ')}`],
+            text: reportText,
+            fileTag: last,
+            sections: [
+                { heading: 'Answers', rows: [profileLine(' · ')] },
+                {
+                    heading: `Path (${path.length} steps)`,
+                    rows: path.map((code, i) => ({ num: i + 1, strong: codeLabel(code), rest: nameOf(code), green: isGoal(code) })),
+                },
+                isGoal(last) ? { heading: 'Result', rows: [`Finished at ${last}.`] } : {
+                    heading: `Options after ${codeLabel(last)}`,
+                    rows: [
+                        `Shown: ${row.filter((o) => !o.check.blocked).map((o) => `${o.step.to}${o.step.abroad ? ' (abroad)' : ''}`).join(', ') || 'none'}`,
+                        { muted: true, text: `Hidden: ${row.filter((o) => o.check.blocked).map((o) => `${o.step.to} (${o.check.reasons.join('; ')})`).join(', ') || 'none'}` },
+                    ],
+                },
+            ],
         };
-
-        root.querySelectorAll('[data-report]').forEach((button) => button.addEventListener('click', () => {
-            say('');
-            sendButton.hidden = false;
-            sendButton.disabled = false;
-            telegram.hidden = true;
-            download.hidden = true;
-            reportForm.elements.message.readOnly = false;
-            report.showModal();
-            reportForm.elements.message.focus();
-        }));
-
-        reportForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const message = reportForm.elements.message.value.trim();
-            // Optional, so the admin knows who wrote and can answer.
-            const sender = { name: reportForm.elements.name.value.trim(), contact: reportForm.elements.contact.value.trim() };
-            if (!message) {
-                say(T.reportEmpty);
-                reportForm.elements.message.focus();
-                return;
-            }
-            sendButton.disabled = true;
-            say(T.reportSending);
-            const body = new FormData();
-            body.append('message', message);
-            body.append('name', sender.name);
-            body.append('contact', sender.contact);
-            body.append('details', reportText(message, sender));
-            body.append('link', mapLink());
-            body.append('lang', lang);
-            const picture = await makeReportImage(message, sender).catch(() => null);
-            if (picture) body.append('picture', picture, 'visa-map-report.png');
-            let response = null;
-            try {
-                response = await fetch('/api/report', { method: 'POST', body });
-            } catch {
-                // Offline or blocked: offer Telegram below.
-            }
-            if (response && response.ok) {
-                say(T.reportSent);
-                sendButton.hidden = true;
-                reportForm.elements.message.readOnly = true;
-                return;
-            }
-            sendButton.disabled = false;
-            if (response && response.status === 429) {
-                say(T.reportBusy);
-                return;
-            }
-            say(T.reportFailed);
-            const text = [T.reportMsg, profileLine(' · '), `${T.reportPath}: ${path.map(codeLabel).join(' → ')}`,
-                `${T.reportMap}: ${mapLink()}`, '', T.reportProblem, message].join('\n');
-            telegram.href = `https://t.me/${T.telegramAdmin}?text=${encodeURIComponent(text)}`;
-            telegram.hidden = false;
-            download.hidden = !picture;
-        });
-
-        download.addEventListener('click', async () => {
-            const form = reportForm.elements;
-            const sender = { name: form.name.value.trim(), contact: form.contact.value.trim() };
-            const blob = await makeReportImage(form.message.value.trim(), sender);
-            saveBlob(blob, `visa-map-report-${path[path.length - 1]}.png`);
-        });
-        telegram.addEventListener('click', () => report.close());
-        document.getElementById('vm-report-close').addEventListener('click', () => report.close());
-        // A click on the dimmed area around the dialog closes it.
-        report.addEventListener('click', (e) => {
-            const box = report.getBoundingClientRect();
-            if (e.clientX < box.left || e.clientX > box.right || e.clientY < box.top || e.clientY > box.bottom) report.close();
-        });
-    }
+    });
 
     // The options after the last step, as the reader sees them (or none at the goal).
     function lastRow() {
@@ -1109,7 +762,7 @@
             'VISA MAP BUG REPORT',
             `time: ${new Date().toISOString()}`,
             `page: ${location.origin}${location.pathname}`,
-            `language: ${lang}`,
+            `language: ${page.lang}`,
             `data: data/visamap.yaml, updated ${data.updated || '?'}`,
             `link: ${mapLink()}`,
             '',
@@ -1140,150 +793,10 @@
         return lines.join('\n');
     }
 
-    // Wraps text that may have no spaces (links) at any character.
-    function wrapAnywhere(ctx, value, maxWidth) {
-        const lines = [];
-        let line = '';
-        for (const char of String(value)) {
-            if (line && ctx.measureText(line + char).width > maxWidth) {
-                lines.push(line);
-                line = '';
-            }
-            line += char;
-        }
-        if (line) lines.push(line);
-        return lines;
-    }
-
-    // A picture for the admin, not a plan for the reader: a red BUG REPORT band, the reader's
-    // message, answers, path and the options after the last step, and the map link.
-    const MONO = 'ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", monospace';
-    const R = { red: '#b42318', redSoft: '#fef3f2', redLine: '#fecdca' };
-
-    function paintReport(ctx, draw, message, sender) {
-        const W = 1080;
-        const P = 56;
-        const inner = W - 2 * P;
-        const stamp = `${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC`;
-        ctx.textBaseline = 'alphabetic';
-        const text = (value, x, y, style, color) => {
-            ctx.font = style;
-            if (draw) {
-                ctx.fillStyle = color;
-                ctx.fillText(value, x, y);
-            }
-        };
-
-        // Red band with a warning mark.
-        const bandH = 150;
-        if (draw) {
-            ctx.fillStyle = R.red;
-            ctx.fillRect(0, 0, W, bandH);
-            ctx.beginPath();
-            ctx.arc(P + 42, bandH / 2, 42, 0, Math.PI * 2);
-            ctx.fillStyle = C.white;
-            ctx.fill();
-        }
-        ctx.textAlign = 'center';
-        text('!', P + 42, bandH / 2 + 21, font(800, 60), R.red);
-        ctx.textAlign = 'left';
-        text('BUG REPORT', P + 112, 76, font(800, 48), C.white);
-        text(`${T.site} · Visa map · ${lang} · ${stamp}`, P + 112, 114, font(500, 24), 'rgba(255,255,255,0.88)');
-
-        let y = bandH;
-        const heading = (title) => {
-            y += 52;
-            text(title.toUpperCase(), P, y, font(800, 22), R.red);
-            y += 8;
-        };
-        const paragraph = (value, size, color, maxLines, family = FONT, weight = 400) => {
-            ctx.font = `${weight} ${size}px ${family}`;
-            const lines = family === MONO ? wrapAnywhere(ctx, value, inner) : wrap(ctx, value, inner, maxLines);
-            lines.forEach((line) => {
-                y += Math.round(size * 1.45);
-                text(line, P, y, `${weight} ${size}px ${family}`, color);
-            });
-        };
-
-        // The reader's message, in a tinted box.
-        heading('Message from the user');
-        ctx.font = font(500, 28);
-        const said = wrap(ctx, message, inner - 48, 14);
-        const from = [sender.name, sender.contact].filter(Boolean).join(' · ');
-        const boxTop = y + 14;
-        const boxH = said.length * 40 + 36 + (from ? 44 : 0);
-        if (draw) {
-            roundRect(ctx, P, boxTop, inner, boxH, 18);
-            ctx.fillStyle = R.redSoft;
-            ctx.fill();
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = R.redLine;
-            ctx.stroke();
-        }
-        said.forEach((line, i) => text(line, P + 24, boxTop + 46 + i * 40, font(500, 28), C.ink));
-        if (from) text(`From: ${from}`, P + 24, boxTop + boxH - 22, font(600, 24), C.muted);
-        y = boxTop + boxH;
-
-        heading('Answers');
-        paragraph(profileLine(' · '), 26, C.ink, 6);
-
-        heading(`Path (${path.length} steps)`);
-        path.forEach((code, i) => {
-            y += 42;
-            text(`${i + 1}.`, P, y, font(700, 26), C.muted);
-            text(codeLabel(code), P + 48, y, font(800, 28), isGoal(code) ? C.green : C.ink);
-            ctx.font = font(800, 28);
-            const nameX = P + 48 + ctx.measureText(codeLabel(code)).width + 16;
-            ctx.font = font(400, 26);
-            const name = wrap(ctx, nameOf(code), W - P - nameX, 1)[0] || '';
-            text(name, nameX, y, font(400, 26), C.muted);
-        });
-
-        const last = path[path.length - 1];
-        if (isGoal(last)) {
-            heading('Result');
-            paragraph(`Finished at ${last}.`, 26, C.ink, 2);
-        } else {
-            const row = lastRow();
-            heading(`Options after ${codeLabel(last)}`);
-            const shown = row.filter((o) => !o.check.blocked)
-                .map((o) => `${o.step.to}${o.step.abroad ? ' (abroad)' : ''}`);
-            const hidden = row.filter((o) => o.check.blocked)
-                .map((o) => `${o.step.to} (${o.check.reasons.join('; ')})`);
-            paragraph(`Shown: ${shown.join(', ') || 'none'}`, 26, C.ink, 8);
-            paragraph(`Hidden: ${hidden.join(', ') || 'none'}`, 26, C.muted, 8);
-        }
-
-        heading('Map link');
-        paragraph(mapLink(), 20, C.muted, 0, MONO);
-
-        y += 40;
-        if (draw) {
-            ctx.fillStyle = C.line;
-            ctx.fillRect(P, y, inner, 2);
-        }
-        y += 40;
-        text(`Reported from ${T.url}. The text snapshot sent with this picture has every detail.`, P, y, font(400, 22), C.muted);
-        return y + P;
-    }
-
-    async function makeReportImage(message, sender) {
-        const canvas = document.createElement('canvas');
-        canvas.width = 1080;
-        canvas.height = Math.ceil(paintReport(canvas.getContext('2d'), false, message, sender));
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = C.white;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        paintReport(ctx, true, message, sender);
-        const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
-        if (!blob) throw new Error('No picture');
-        return blob;
-    }
-
     // A map link (from a report or a shared address) opens that map right away, also when
     // it's opened in a tab that already shows the page.
     if (location.hash.includes('path=')) openMap();
     window.addEventListener('hashchange', () => {
         if (location.hash.includes('path=')) openMap();
     });
-})();
+}

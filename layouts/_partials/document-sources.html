@@ -1,0 +1,3 @@
+{{- /* True when the build shows where to get each document on the Visa docs page: the
+       environment variable SHOW_DOCUMENT_SOURCE=true (see hugo.toml). */ -}}
+{{- return eq (lower (os.Getenv "SHOW_DOCUMENT_SOURCE")) "true" -}}

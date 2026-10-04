@@ -1,0 +1,25 @@
+{{- /* "Report a problem" dialog of the Visa map and Visa docs pages: sent to the admin by the
+   Telegram bot behind /api/report (worker/index.js), with a bug-report picture and a text
+   snapshot; a Telegram link is the fallback. Logic: assets/js/visa/report.js. */}}
+{{- with (site.Params.contact | default dict).telegramAdmin }}
+<dialog class="vm-report" id="vm-report" aria-labelledby="vm-report-title">
+    <form class="vm-report-form" id="vm-report-form" novalidate>
+        <h2 class="vm-report-title" id="vm-report-title">{{ i18n "vm_report" }}</h2>
+        <p>{{ i18n "vm_report_text" }}</p>
+        <textarea class="vm-input vm-report-message" name="message" rows="5" maxlength="2000"
+            placeholder="{{ i18n "vm_report_placeholder" }}" aria-label="{{ i18n "vm_report_placeholder" }}"></textarea>
+        <input class="vm-input" name="name" type="text" maxlength="100" autocomplete="name"
+            placeholder="{{ i18n "vm_report_name" }}" aria-label="{{ i18n "vm_report_name" }}">
+        <input class="vm-input" name="contact" type="text" maxlength="200" autocomplete="email"
+            placeholder="{{ i18n "vm_report_contact" }}" aria-label="{{ i18n "vm_report_contact" }}">
+        <p class="vm-report-note">{{ i18n "vm_report_privacy" }}</p>
+        <p class="vm-report-status" id="vm-report-status" role="status"></p>
+        <div class="vm-actions">
+            <button type="submit" class="vm-btn vm-btn-primary" id="vm-report-send">{{ i18n "vm_report_send" }}</button>
+            <a class="vm-btn vm-btn-primary" id="vm-report-telegram" href="https://t.me/{{ . }}" target="_blank" rel="noopener" hidden>{{ i18n "vm_report_open" }}</a>
+            <button type="button" class="vm-btn vm-btn-ghost" id="vm-report-download" hidden>{{ i18n "vm_report_download" }}</button>
+            <button type="button" class="vm-btn vm-btn-ghost" id="vm-report-close">{{ i18n "vm_report_close" }}</button>
+        </div>
+    </form>
+</dialog>
+{{- end }}

@@ -45,11 +45,92 @@ One-time setup:
 After that, every push to the main branch rebuilds and publishes the site.
 If a new file is added to `worker/migrations/`, run step 3 again.
 
-## Visa map problem reports (Telegram bot)
+## Test site (dev.kvppartners.com)
 
-**Report a problem** on the Visa map sends the reader's message, a bug-report picture
-and the map as text to you through a Telegram bot, without opening Telegram. The
-bot's token stays in Cloudflare (`worker/index.js`, `/api/report`); browsers never see it.
+New features are tested on https://dev.kvppartners.com before they reach the main site.
+It is a second Worker, `kvp-blog-dev`, built from the `dev` branch; the production Worker
+above keeps building `main`. The test site:
+
+- shows draft pages too (`--buildDrafts`), so a page with `draft: true` can be tested
+  there while the main site leaves it out;
+- tells search engines not to index it (Hugo builds it as the `dev` environment, so pages
+  get `noindex`);
+- has its own database (`kvp-blog-dev`, `env.dev` in `wrangler.jsonc`), so test reactions
+  and problem reports never reach the main site's data.
+
+One-time setup (after the production setup above):
+
+1. Create the test database: `npx wrangler d1 create kvp-blog-dev`. Copy the
+   `database_id` it prints into `wrangler.jsonc`, under `env.dev`.
+2. Create its tables: `npx wrangler d1 migrations apply kvp-blog-dev --remote --env dev`
+3. Commit, create the `dev` branch and push it:
+   `git checkout -b dev`, commit, then `git push -u origin dev`.
+4. Create the Worker with a first deploy from your computer:
+
+   ```bash
+   git submodule update --init --recursive
+   hugo --gc --minify --buildDrafts --environment dev --baseURL https://dev.kvppartners.com/ --cleanDestinationDir
+   npx wrangler deploy --env dev
+   ```
+
+5. Problem reports: give the test Worker the Telegram bot's token and chat id (the same
+   bot works; reports from the test site have a dev.kvppartners.com link):
+   `npx wrangler secret put TELEGRAM_BOT_TOKEN --env dev`, then
+   `npx wrangler secret put TELEGRAM_CHAT_ID --env dev`.
+6. In the Cloudflare dashboard, open **Workers & Pages → kvp-blog-dev**:
+   - **Settings → Domains & Routes → Add → Custom domain:** `dev.kvppartners.com`
+   - **Settings → Build → Connect** this repository, and set:
+     - **Branch:** `dev`
+     - **Build command:** `git submodule update --init --recursive && hugo --gc --minify --buildDrafts --environment dev --baseURL https://dev.kvppartners.com/`
+     - **Deploy command:** `npx wrangler deploy --env dev`
+     - **Preview builds** (builds for other branches): off
+     - **Build variables:** `HUGO_VERSION` = `0.167.0`, and `SHOW_DOCUMENT_SOURCE` = `true` if
+       the test site should show where to get each document
+7. On the production Worker (**kvp-blog → Settings → Build → Branch control**), keep the
+   branch `main` and turn preview builds off, so pushes to `dev` build only the test site.
+
+From then on:
+
+- Push to `dev`: the test site rebuilds. Push to `main`: the main site rebuilds.
+- To release: merge `dev` into `main` and push `main`. A page that is still
+  `draft: true` stays off the main site until you set `draft: false`.
+- A new file in `worker/migrations/` must be applied to both databases: step 3 of the
+  production setup and step 2 here.
+- Production builds print a warning that `wrangler.jsonc` has more than one environment.
+  It is harmless; the deploy command `npx wrangler deploy --env=""` silences it.
+
+## Visa docs
+
+The **Visa docs** page (`content/visa-docs/`, menu item after Visa map) lists the documents
+to prepare for a move between two visas, inside Korea (change of status) or at a Korean
+embassy (first visa, or a ✈ move), or for an extension of stay on the current visa. Every
+visa with an official document list is offered; the Visa map's usual next steps come first.
+A move within one status (D-2-2 → D-2-3) is offered only when the manual says how it is made
+(`within` in the data).
+
+- The lists live in `data/visadocs.yaml`, copied from the Korea Immigration Service manuals
+  with the source of each list. Add only documents from official lists.
+- Optional questions on the page come from the lists themselves: the manual's applicant
+  cases, its extra documents for some occupations and regional programmes (`addon`), and
+  the documents it marks as applying only to some people. Cases for some nationalities only
+  (visa agreements, the marriage guidance programme) are shown only to them.
+- A list the manual gives only in part is marked `partial`, and the page says so. Visas
+  whose manual chapter has no document list are not offered.
+- **Where to get each document** (download the form or get it online) shows only when the
+  site is built with the environment variable `SHOW_DOCUMENT_SOURCE=true`; otherwise it is
+  hidden. Hugo reads it at build time: on Cloudflare, set it under the Worker's
+  **Settings → Build → Variables and secrets** (not the runtime variables) and redeploy.
+  Locally: `SHOW_DOCUMENT_SOURCE=true hugo server -D`. Page text that only makes sense
+  with the links goes inside `{{% document-sources %}}…{{% /document-sources %}}`.
+- Page layout: `layouts/visa-docs.html`; logic: `assets/js/visadocs.js`. Code shared with the
+  Visa map (search box, pictures, problem reports) is in `assets/js/visa/`.
+
+## Problem reports (Telegram bot)
+
+**Report a problem** on the Visa map and Visa docs pages sends the reader's message, a
+bug-report picture and what the page shows as text to you through a Telegram bot,
+without opening Telegram. The bot's token stays in Cloudflare (`worker/index.js`,
+`/api/report`); browsers never see it.
 
 One-time setup:
 
@@ -107,7 +188,7 @@ and only hide options that clearly don't fit. It runs entirely in the browser.
 - The page address keeps the current map (answers and path after `#`), so a copied
   address opens the same map.
 - **Report a problem** sends the reader's message to you through a Telegram bot; see
-  [Visa map problem reports](#visa-map-problem-reports-telegram-bot). Remove
+  [Problem reports](#problem-reports-telegram-bot). Remove
   `telegramAdmin` from `hugo.toml` to hide the button.
 - Page layout: `layouts/visa-map.html`; logic and PNG drawing: `assets/js/visamap.js`.
 - Add more pages to the menu by putting this in their front matter:

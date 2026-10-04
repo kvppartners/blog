@@ -21,5 +21,27 @@
 			"database_id": "d19f9842-c4fd-44ce-967f-cf29ab427353",
 			"migrations_dir": "worker/migrations"
 		}
-	]
+	],
+	// Test site on dev.kvppartners.com: a second Worker, kvp-blog-dev, built from the dev
+	// branch and deployed with `npx wrangler deploy --env dev`. Everything above is the
+	// production site and stays as it is. The test site has its own database, so test
+	// reactions and problem reports never reach production. Setup steps are in README.md.
+	"env": {
+		"dev": {
+			"assets": {
+				"directory": "./public",
+				"binding": "ASSETS",
+				"not_found_handling": "404-page"
+			},
+			// Replace database_id with the id printed by `npx wrangler d1 create kvp-blog-dev`.
+			"d1_databases": [
+				{
+					"binding": "DB",
+					"database_name": "kvp-blog-dev",
+					"database_id": "REPLACE-WITH-THE-DEV-DATABASE-ID",
+					"migrations_dir": "worker/migrations"
+				}
+			]
+		}
+	}
 }

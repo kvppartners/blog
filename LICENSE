@@ -48,10 +48,10 @@ licenses.
      layouts/_partials/post_list.html
 
 3. Feather icons (https://github.com/feathericons/feather)
-   The search, moon, sun, home, map, back-arrow, chat, close, mail and flag icons
-   in layouts/_partials/header.html, layouts/_partials/back_link.html,
-   layouts/_partials/contact.html and layouts/visa-map.html. License: MIT,
-   Copyright (c) Cole Bemis.
+   The search, moon, sun, home, map, file-text, back-arrow, chat, close, mail and
+   flag icons in layouts/_partials/header.html, layouts/_partials/back_link.html,
+   layouts/_partials/contact.html, layouts/visa-map.html and layouts/visa-docs.html.
+   License: MIT, Copyright (c) Cole Bemis.
 
 4. Simple Icons (https://simpleicons.org)
    The Telegram and Instagram logos in layouts/_partials/contact.html.

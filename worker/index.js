@@ -11,7 +11,8 @@
 //   POST /api/reactions  { path, key, reaction, visitor, active }
 //        -> same shape, after adding (active: true) or removing the reaction
 //
-// /api/report passes Visa map problem reports to the admin through a Telegram bot.
+// /api/report passes problem reports from the Visa map and Visa docs pages to the admin
+// through a Telegram bot.
 // The bot token and the admin chat id are secrets (TELEGRAM_BOT_TOKEN,
 // TELEGRAM_CHAT_ID), never sent to browsers; setup steps are in README.md.
 //   POST /api/report  multipart form: message, name, contact, details, link, lang and
@@ -23,6 +24,7 @@ const MAX_REPORTS_PER_DAY = 100; // from everyone, so a flood can't bury the adm
 const MAX_PICTURE_BYTES = 4 * 1024 * 1024;
 const REPORT_LANGS = new Set(['en', 'ru', 'uz', 'uz-cyrl']);
 const PNG_SIGNATURE = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
+const REPORT_PAGES = /\/visa-(?:map|docs)\/$/;
 
 // A single emoji, optionally with skin tone, variation selector or ZWJ sequence.
 const EMOJI = /^\p{Extended_Pictographic}(?:️|\p{Emoji_Modifier}|‍\p{Extended_Pictographic})*$/u;
@@ -169,10 +171,11 @@ async function handleReport(request, env, url) {
     const lang = field('lang');
     if (!message || message.length > 2000 || name.length > 100 || contact.length > 200 || details.length > 20000 ||
         !REPORT_LANGS.has(lang) || link.length > 2000 ||
-        // The map link must point to the Visa map on this site.
-        !link.startsWith(`${url.origin}/`) || !new URL(link).pathname.endsWith('/visa-map/')) {
+        // The link must point to the Visa map or Visa docs page on this site.
+        !link.startsWith(`${url.origin}/`) || !REPORT_PAGES.test(new URL(link).pathname)) {
         return json({ error: 'invalid report' }, 400);
     }
+    const pageName = new URL(link).pathname.endsWith('/visa-docs/') ? 'Visa docs' : 'Visa map';
 
     let picture = null;
     const file = form.get('picture');
@@ -189,15 +192,15 @@ async function handleReport(request, env, url) {
 
     // 1. The picture with a short summary as its caption (or the summary alone);
     // 2. the full map snapshot, as a copyable block or, if too long, a text file.
-    const summary = ['🐞 Visa map bug report', `From: ${name || '—'}`, `Contact: ${contact || '—'}`,
-        `Language: ${lang}`, `Map: ${link}`, '', message].join('\n');
+    const summary = [`🐞 ${pageName} bug report`, `From: ${name || '—'}`, `Contact: ${contact || '—'}`,
+        `Language: ${lang}`, `Link: ${link}`, '', message].join('\n');
     try {
         if (picture) {
             try {
-                await telegram(env, 'sendPhoto', { caption: clip(summary, 1024) }, ['photo', picture, 'visa-map-report.png']);
+                await telegram(env, 'sendPhoto', { caption: clip(summary, 1024) }, ['photo', picture, 'bug-report.png']);
             } catch {
                 // Telegram refuses some photo sizes; a document keeps the picture as it is.
-                await telegram(env, 'sendDocument', { caption: clip(summary, 1024) }, ['document', picture, 'visa-map-report.png']);
+                await telegram(env, 'sendDocument', { caption: clip(summary, 1024) }, ['document', picture, 'bug-report.png']);
             }
         } else {
             await telegram(env, 'sendMessage', { text: clip(summary, 4096), link_preview_options: '{"is_disabled":true}' });
@@ -208,7 +211,7 @@ async function handleReport(request, env, url) {
                 await telegram(env, 'sendMessage', { text: block, parse_mode: 'HTML' });
             } else {
                 const text = new Blob([details], { type: 'text/plain; charset=utf-8' });
-                await telegram(env, 'sendDocument', { caption: 'Map snapshot' }, ['document', text, 'visa-map-report.txt']);
+                await telegram(env, 'sendDocument', { caption: 'Snapshot' }, ['document', text, 'bug-report.txt']);
             }
         }
     } catch (err) {

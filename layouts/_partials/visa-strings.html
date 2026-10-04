@@ -1,0 +1,14 @@
+{{- /* Texts and contacts shared by the Visa map and Visa docs pages (search box, pictures,
+   problem reports). Each page merges its own texts into these. */}}
+{{- $contact := site.Params.contact | default dict }}
+{{- return dict
+    "noMatch" (i18n "no_results") "isGoal" (i18n "vm_is_goal") "noVisa" (i18n "vm_no_visa")
+    "nationality" (i18n "vm_nationality") "errNationality" (i18n "vm_err_nationality")
+    "consult" (i18n "vm_consult") "disclaimer" (i18n "vm_disclaimer")
+    "site" site.Title "url" ($contact.website | default (replaceRE `^https?://|/$` "" site.BaseURL))
+    "telegram" ($contact.telegram | default "") "instagram" ($contact.instagram | default "")
+    "email" ($contact.email | default "") "telegramAdmin" ($contact.telegramAdmin | default "")
+    "reportSending" (i18n "vm_report_sending") "reportSent" (i18n "vm_report_sent")
+    "reportFailed" (i18n "vm_report_failed") "reportBusy" (i18n "vm_report_busy") "reportEmpty" (i18n "vm_report_empty")
+    "reportMsg" (i18n "vm_report_msg") "reportPath" (i18n "vm_report_path")
+    "reportMap" (i18n "vm_report_map") "reportProblem" (i18n "vm_report_problem") }}

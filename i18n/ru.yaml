@@ -294,3 +294,111 @@
   translation: "Опишите, пожалуйста, проблему."
 - id: vm_report_name
   translation: "Ваше имя (необязательно)"
+- id: vd_from
+  translation: "Ваша виза сейчас"
+- id: vd_from_hint
+  translation: "Введите код, например D-2, или слово, либо выберите «Визы пока нет»."
+- id: vd_to
+  translation: "Нужная виза"
+- id: vd_to_placeholder
+  translation: "Введите код или слово либо выберите из списка"
+- id: vd_to_hint
+  translation: "Все визы с официальным списком документов. Проверьте требования: не на каждую визу можно перейти с любой другой. ✈ — подача из-за рубежа; ✈* — из-за рубежа или, в некоторых случаях, в Корее."
+- id: vd_to_none
+  translation: "Для следующих виз после этой у нас пока нет официального списка документов."
+- id: vd_in_korea
+  translation: "Смена статуса в Корее"
+- id: vd_abroad
+  translation: "Новая виза в посольстве или консульстве Кореи"
+- id: vd_ccvi
+  translation: "Виза по подтверждению (CCVI), которое оформляет приглашающая сторона в Корее"
+- id: vd_questions
+  translation: "Подобрать список под вас"
+- id: vd_questions_hint
+  translation: "Необязательно. Вопросы взяты из официального списка. Без ответов показаны все документы с пометками, кому они нужны."
+- id: vd_situation
+  translation: "Что подходит к вам?"
+- id: vd_situation_all
+  translation: "Не уверены: показать все"
+- id: vd_applies
+  translation: "Относится ли это к вам?"
+- id: vd_everyone
+  translation: "Всем"
+- id: vd_only_case
+  translation: "Только для: {case}"
+- id: vd_only_if
+  translation: "Только если: {cond}"
+- id: vd_by_employer
+  translation: "Готовит работодатель"
+- id: vd_by_school
+  translation: "Выдаёт учебное заведение"
+- id: vd_by_inviter
+  translation: "Готовит приглашающая сторона"
+- id: vd_link_form
+  translation: "Скачать бланк"
+- id: vd_link_online
+  translation: "Получить онлайн"
+- id: vd_link_info
+  translation: "Где получить"
+- id: vd_source
+  translation: "Источник"
+- id: vd_requirements
+  translation: "Требования"
+- id: vd_fee
+  translation: "Сбор"
+- id: vd_image_title
+  translation: "Документы для моей корейской визы"
+- id: vd_docs_title
+  translation: "Документы для подготовки"
+- id: vd_report_ask
+  translation: "Что-то не так со списком?"
+- id: vd_evisa
+  translation: "Электронная виза через Korea Visa Portal (visa.go.kr)"
+- id: vd_both
+  translation: "Новая виза за рубежом: в посольстве Кореи или через CCVI — зависит от вашего случая"
+- id: vd_extra
+  translation: "Ваша профессия или программа"
+- id: vd_extra_all
+  translation: "Не уверены: показать все"
+- id: vd_extra_none
+  translation: "Ничего из этого"
+- id: vd_extra_for
+  translation: "Дополнительно для: {case}"
+- id: vd_extra_hint
+  translation: "Для некоторых профессий и региональных программ к списку нужны дополнительные документы."
+- id: vd_partial
+  translation: "В официальном руководстве для этой визы названа только часть документов. Перед подачей уточните полный список в иммиграционной службе (1345)."
+- id: vd_at_embassy
+  translation: "Подаётся в посольстве вместе с заявлением на визу"
+- id: vd_extend
+  translation: "Продлить текущую визу"
+- id: vd_extend_hint
+  translation: "Покажет документы для продления срока пребывания (체류기간 연장) по текущей визе."
+- id: vd_extend_short
+  translation: "Продление"
+- id: vd_extend_route
+  translation: "Продление срока пребывания в Корее"
+- id: vd_extend_none
+  translation: "Для этой визы у нас нет официального списка документов на продление."
+- id: vd_within_extend
+  translation: "В Корее, как продление срока пребывания с новым типом визы"
+- id: vd_group_usual
+  translation: "Обычные следующие шаги с вашей визы"
+- id: vd_group_other
+  translation: "Другие визы с официальным списком"
+- id: vd_fee_exempt
+  translation: "не взимается"
+- id: vd_report_route
+  translation: "В Корее: заявление об изменении регистрационных данных (등록사항 변경신고) в течение 15 дней, в иммиграционной службе или онлайн"
+- id: vd_via
+  translation: "Как вы подаёте документы?"
+- id: vd_via_abroad
+  translation: "Из-за рубежа: новая виза (общее правило)"
+- id: vd_via_korea
+  translation: "В Корее: {who}"
+- id: vd_exception_route
+  translation: "Смена статуса в Корее (исключение, предусмотренное руководством)"
+- id: vd_permit_route
+  translation: "В Корее: разрешение на деятельность вне рамок статуса (체류자격외 활동허가)"
+- id: vd_visa_fee
+  translation: "Визовый сбор: однократная виза — 40 долл. США (пребывание до 90 дней) или 60 долл. США (91 день и более), двукратная — 70 долл. США, многократная — 90 долл. США; посольство может взимать иную сумму на основе взаимности"
