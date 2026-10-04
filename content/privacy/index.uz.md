@@ -24,13 +24,41 @@ Bu saytni KVP Partners yuritadi. Koreyaning Shaxsiy ma’lumotlarni himoya qilis
 
 Xabar yuborish ixtiyoriy: usiz ham barcha sahifalardan odatdagidek foydalanishingiz mumkin. Agar 14 yoshga to‘lmagan bo‘lsangiz, xabarni ota-onangizdan yuborishni so‘rang.
 
-## Ma’lumotlarni yana kim ishlatadi
+## Ma’lumotlarni yana kim ishlatadi va chet elga uzatish
 
-- **Cloudflare, Inc.** (AQSh) saytni va uning kichik serverini, jumladan reaksiyalar bazasini joylashtiradi. Har qanday xosting kabi, uning dunyo bo‘ylab serverlari sahifalarni yetkazish uchun IP-manzilingizni ko‘radi.
-- **Telegram:** **Yuborish** tugmasini bosganingizda, muammo xabari KVP Partners jamoasiga himoyalangan ulanish orqali Telegram xabari sifatida yetkaziladi. Telegram uni biz o‘chirgunimizcha Koreyadan tashqaridagi serverlarida saqlaydi.
-- Izohli maqolalarda telegram.org dan yuklanadigan Telegram izohlar vidjeti ko‘rsatiladi. U yerda yozganlaringizni Telegram o‘z maxfiylik siyosati asosida ishlatadi.
+Koreyadan tashqaridagi ikki kompaniya biz uchun shaxsiy ma’lumotlarni ishlatadi. Bu saytning ishlashi va siz yuborgan xabarlarning bizga yetib kelishi uchun zarur. Quyidagi ma’lumotlar shu yerda e’lon qilinsa, qonun bunga ruxsat beradi (Shaxsiy ma’lumotlarni himoya qilish to‘g‘risidagi qonun, 28-8-modda, 1-qism, 3-band «a»).
+
+### Cloudflare: xosting
+
+- **Qabul qiluvchi:** Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA; [privacyquestions@cloudflare.com](mailto:privacyquestions@cloudflare.com).
+- **Nima:** har bir tashrifda IP-manzilingiz va brauzer ma’lumotlari; reaksiyalar (emoji va tasodifiy identifikator); xeshlangan IP-manzillar.
+- **Davlat:** AQSh va Cloudflare’ning dunyo bo‘ylab ma’lumot markazlari (ma’lumotlar asosan AQSh va Yevropa iqtisodiy hududida saqlanadi).
+- **Qachon va qanday:** har bir tashrifda, himoyalangan ulanish orqali.
+- **Maqsad:** saytni, uning kichik serverini va reaksiyalar bazasini joylashtirish.
+- **Qancha muddat:** reaksiyalar — olib tashlaguningizcha; xeshlangan IP-manzillar — bir daqiqa yoki bir kun.
+- **Rad etish:** usiz saytdan foydalanib bo‘lmaydi, chunki har bir sahifani Cloudflare yetkazadi.
+
+### Telegram: muammo xabarlari
+
+- **Qabul qiluvchi:** Telegram Messenger Inc.; aloqa — Telegram ilovasida **Sozlamalar → Savol berish** bo‘limi yoki [telegram.org/privacy](https://telegram.org/privacy).
+- **Nima:** muammo xabari: xabaringiz, ko‘rsatgan bo‘lsangiz ismingiz va aloqa manzilingiz, sahifadagi tanlovlaringiz va uning rasmi, brauzeringiz turi.
+- **Davlat:** Telegram’ning Koreyadan tashqaridagi ma’lumot markazlari. Telegram Yevropa iqtisodiy hududi va Buyuk Britaniyadan tashqarida ro‘yxatdan o‘tgan akkauntlar uchun davlatni e’lon qilmaydi.
+- **Qachon va qanday:** **Yuborish** tugmasini bosganingizda, himoyalangan ulanish orqali.
+- **Maqsad:** xabarni KVP Partners jamoasiga yetkazish va jamoa chatida saqlash.
+- **Qancha muddat:** muammo tuzatilgach, biz uni o‘chirgunimizcha.
+- **Rad etish:** xabar yubormang. Barcha sahifalar usiz ham ishlaydi.
+
+Izohli maqolalarda telegram.org dan yuklanadigan Telegram izohlar vidjeti ham ko‘rsatiladi. U yerda yozganlaringizni Telegram o‘z maxfiylik siyosati asosida ishlatadi.
 
 Ma’lumotlaringizni hech kimga sotmaymiz va bermaymiz, reklama uchun ham ishlatmaymiz.
+
+## Ma’lumotlarni qanday himoya qilamiz
+
+- Xabarlar faqat KVP Partners jamoasining Telegram chatiga keladi. Bot tokeni va chat identifikatori Cloudflare’da maxfiy saqlanadi va hech qachon brauzerga yuborilmaydi.
+- Barcha ulanishlar shifrlangan: brauzeringiz bilan sayt o‘rtasida ham, sayt bilan Telegram o‘rtasida ham.
+- Sayt bazasida ismlar, aloqa manzillari va xabar matnlari yo‘q. IP-manzillar faqat har kuni o‘zgaradigan xesh ko‘rinishida saqlanadi va bir kun ichida o‘chiriladi.
+- Nozik javoblar xabarga kirmaydi, har bir o‘quvchi soatiga ko‘pi bilan 5 ta xabar yubora oladi.
+- O‘chirish: muammo tuzatilgach, xabarni Telegram chatidan o‘chiramiz; eski yozuvlarni baza avtomatik o‘chiradi.
 
 ## Brauzeringizda
 
@@ -43,7 +71,5 @@ Yuborgan muammo xabaringizni ko‘rsatishimizni, tuzatishimizni yoki o‘chirish
 ## Aloqa
 
 Shaxsiy ma’lumotlar bo‘yicha savol va so‘rovlar: KVP Partners jamoasi, [help@kvppartners.com](mailto:help@kvppartners.com).
-
-Shuningdek, Shaxsiy ma’lumotlar buzilishi haqida xabar berish markaziga ([privacy.kisa.or.kr](https://privacy.kisa.or.kr), 118 raqami) yoki Shaxsiy ma’lumotlar bo‘yicha nizolarni hal qilish qo‘mitasiga ([kopico.go.kr](https://www.kopico.go.kr), 1833-6972) murojaat qilishingiz mumkin.
 
 Yangilangan sana: 2026-yil 5-oktabr.

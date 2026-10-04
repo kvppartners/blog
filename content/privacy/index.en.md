@@ -24,13 +24,41 @@ Your answers on the Visa map and Visa docs pages stay in your browser. They are 
 
 Sending a report is optional: without it you can use every page as usual. If you are under 14, please ask a parent to send it for you.
 
-## Who else handles it
+## Who else handles it, and transfer abroad
 
-- **Cloudflare, Inc.** (USA) hosts the site and its small server, including the reactions database. Like any web host, its servers around the world see your IP address to deliver the pages.
-- **Telegram:** a problem report is delivered to the KVP Partners team as a Telegram message, over an encrypted connection, when you press **Send report**. Telegram keeps it on its servers outside Korea until we delete it.
-- Articles with comments show Telegram's comment widget, loaded from telegram.org. What you post there is handled by Telegram under its own privacy policy.
+Two companies outside Korea handle personal information for us. This is needed to run the site and to deliver the reports you send, and the law allows it when the details below are published here (Personal Information Protection Act, art. 28-8(1)3 a).
+
+### Cloudflare: hosting
+
+- **Recipient:** Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA; [privacyquestions@cloudflare.com](mailto:privacyquestions@cloudflare.com).
+- **What:** your IP address and browser details on every visit; reactions (the emoji and the random id); the hashed IP addresses.
+- **Country:** the USA, and Cloudflare's data centres around the world (it mainly stores data in the USA and the European Economic Area).
+- **When and how:** on every visit, over an encrypted connection.
+- **Purpose:** hosting the site, its small server and the reactions database.
+- **How long:** reactions until you remove them; hashed IP addresses for a minute or a day.
+- **Refusing:** the site can't be used without it, because Cloudflare delivers every page.
+
+### Telegram: problem reports
+
+- **Recipient:** Telegram Messenger Inc.; contact in the Telegram app under **Settings → Ask a Question**, or see [telegram.org/privacy](https://telegram.org/privacy).
+- **What:** a problem report: your message, your name and contact if you give them, your choices on the page with a picture of it, and your browser type.
+- **Country:** Telegram's data centres outside Korea. Telegram does not publish the country for accounts registered outside the European Economic Area and the UK.
+- **When and how:** when you press **Send report**, over an encrypted connection.
+- **Purpose:** delivering the report to the KVP Partners team and keeping it in the team's chat.
+- **How long:** until we delete it, once the problem is fixed.
+- **Refusing:** don't send a report. Every page still works without it.
+
+Articles with comments also show Telegram's comment widget, loaded from telegram.org. What you post there is handled by Telegram under its own privacy policy.
 
 We don't sell or give your information to anyone else, and we don't use it for advertising.
+
+## How we protect it
+
+- Reports go only to the KVP Partners team's Telegram chat. The bot's token and the chat's id are kept as secrets in Cloudflare and never reach browsers.
+- Every connection is encrypted: between your browser and the site, and between the site and Telegram.
+- The site's database holds no names, contacts or report texts. IP addresses are kept only as scrambled hashes that change daily, and are deleted within a day.
+- Reports leave out sensitive answers, and each reader can send at most 5 reports an hour.
+- Deleting: we delete a report from the Telegram chat once the problem is fixed; the database deletes old rows automatically.
 
 ## In your browser
 
@@ -43,7 +71,5 @@ You can ask us to show, correct or delete a problem report you sent, or to stop 
 ## Contact
 
 Privacy questions and requests: the KVP Partners team, [help@kvppartners.com](mailto:help@kvppartners.com).
-
-You can also turn to the Personal Information Infringement Report Center ([privacy.kisa.or.kr](https://privacy.kisa.or.kr), call 118) or the Personal Information Dispute Mediation Committee ([kopico.go.kr](https://www.kopico.go.kr), 1833-6972).
 
 Last updated: 5 October 2026.
