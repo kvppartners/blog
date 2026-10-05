@@ -125,6 +125,23 @@ A move within one status (D-2-2 → D-2-3) is offered only when the manual says 
 - Page layout: `layouts/visa-docs.html`; logic: `assets/js/visadocs.js`. Code shared with the
   Visa map (search box, pictures, problem reports) is in `assets/js/visa/`.
 
+## Archive
+
+The **Archive** page (`content/archive/`, menu item after Visa docs) offers official blank
+forms to download as PDF, HWP or Word: the 156 forms on HiKorea's forms page (민원서식) and the
+EPS standard labour contract, grouped as on HiKorea, with a search box.
+
+- The list lives in `data/archive.yaml`; the files are in `static/forms/`, named after each
+  form's `id`. Keep the files unchanged and name the source: Korean government forms may be
+  shared (Copyright Act arts. 7, 24-2 and 37), but only as the government published them.
+- A form changed: download the new file from the source page, replace the file in
+  `static/forms/` under the same name, update its `size` and the `updated` date.
+- A new form: add it to its group in `data/archive.yaml` with names in all four languages, and
+  put its files in `static/forms/`.
+- `catalog` in the same file says which Visa docs documents are one of these forms. With
+  `SHOW_DOCUMENT_SOURCE=true` (see Visa docs), those documents link to the form on this page.
+- Page layout: `layouts/archive.html`; search: `assets/js/archive.js`.
+
 ## Problem reports (Telegram bot)
 
 **Report a problem** on the Visa map and Visa docs pages sends the reader's message, a

@@ -1709,6 +1709,109 @@ details.vd-group[open] > summary.vd-group-title {
     color: var(--secondary);
 }
 
+/* ---------- Archive page (forms to download; reuses the Visa docs list styles) ---------- */
+
+.main:has(> .archive) {
+    max-width: calc(820px + var(--gap) * 2);
+}
+
+.ar-search {
+    display: grid;
+    gap: 8px;
+    max-width: 760px;
+    margin: 0 auto 28px;
+}
+
+.ar-jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.ar-jump a {
+    padding: 4px 10px;
+    font-size: 13px;
+    color: var(--primary);
+    text-decoration: none;
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+}
+
+.ar-jump a span {
+    margin-left: 2px;
+    color: var(--secondary);
+}
+
+.ar-jump a[hidden],
+.ar-group[hidden],
+.ar-form[hidden] {
+    display: none;
+}
+
+.ar-empty {
+    text-align: center;
+    color: var(--secondary);
+}
+
+.ar-group {
+    max-width: 760px;
+    margin: 0 auto 32px;
+    scroll-margin-top: 16px;
+}
+
+.ar-group-title {
+    margin: 0 0 4px;
+    font-size: 20px;
+}
+
+.ar-group-source {
+    margin: 0 0 12px;
+    font-size: 13px;
+    color: var(--secondary);
+}
+
+.ar-group-source a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.ar-form {
+    scroll-margin-top: 16px;
+}
+
+.ar-form:target {
+    border-color: var(--vm-line);
+    box-shadow: 0 0 0 1px var(--vm-line);
+}
+
+.ar-files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px !important;
+}
+
+.ar-file {
+    padding: 5px 12px;
+    font-size: 13.5px;
+    color: var(--primary);
+    text-decoration: none;
+    background: var(--theme);
+    border: 1px solid var(--tertiary);
+    border-radius: 8px;
+}
+
+.ar-file:hover {
+    border-color: var(--vm-line);
+}
+
+.ar-type {
+    font-weight: 700;
+    color: var(--vm-line);
+}
+
 @media screen and (max-width: 640px) {
     .site-menu-item {
         padding: 9px 12px;

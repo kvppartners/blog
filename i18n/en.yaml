@@ -400,3 +400,15 @@
   translation: "In Korea: permission for activities outside your status (체류자격외 활동허가)"
 - id: vd_visa_fee
   translation: "Visa fee: single-entry US$40 (stay up to 90 days) or US$60 (91 days or more), double-entry US$70, multiple-entry US$90; an embassy may charge a different amount by reciprocity"
+- id: archive_search
+  translation: "Search forms"
+- id: archive_search_placeholder
+  translation: "Name or visa code"
+- id: archive_count
+  translation: "{n} forms"
+- id: archive_groups
+  translation: "Groups"
+- id: archive_none
+  translation: "No forms match your search."
+- id: archive_source
+  translation: "Source"

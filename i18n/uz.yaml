@@ -400,3 +400,15 @@
   translation: "Koreyada: maqomdan tashqari faoliyatga ruxsat (체류자격외 활동허가)"
 - id: vd_visa_fee
   translation: "Viza to‘lovi: bir martalik viza — 40 AQSh dollari (90 kungacha yashash) yoki 60 AQSh dollari (91 kun va undan ko‘p), ikki martalik — 70 AQSh dollari, ko‘p martalik — 90 AQSh dollari; elchixona o‘zaro manfaatlilik asosida boshqa miqdor olishi mumkin"
+- id: archive_search
+  translation: "Shakllarni qidirish"
+- id: archive_search_placeholder
+  translation: "Nomi yoki viza kodi"
+- id: archive_count
+  translation: "{n} ta shakl"
+- id: archive_groups
+  translation: "Bo‘limlar"
+- id: archive_none
+  translation: "Hech narsa topilmadi."
+- id: archive_source
+  translation: "Manba"

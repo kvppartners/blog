@@ -294,6 +294,14 @@ function visaDocs(root) {
             return '';
         }
     };
+    // A document that is one of the Archive page's forms links to it there (when published);
+    // { korea: id } is that form only in lists for applications made in Korea.
+    const archive = page.data.archive || {};
+    const archived = (item) => {
+        const form = (archive.forms || {})[item.doc];
+        const id = form && typeof form === 'object' ? (state.kind === 'abroad' ? form.abroad : form.korea) : form;
+        return id ? `${archive.url}#${id}` : '';
+    };
 
     // Conditions that already read as one ("If…", "Если…", "Agar…") are shown as they are;
     // others ("GKS scholarship students") get "Only if:" in front.
@@ -375,9 +383,10 @@ function visaDocs(root) {
                 body.append(name);
                 const notes = docNotes(item);
                 if (notes.length) body.append(el('p', 'vd-doc-note', notes.join(' · ')));
-                if (showSource && entry.link) {
-                    const a = el('a', 'vd-doc-link', `${T[LINK[entry.kind] || 'linkInfo']} · ${host(entry.link)}`);
-                    a.href = entry.link;
+                if (showSource && (archived(item) || entry.link)) {
+                    const a = el('a', 'vd-doc-link', archived(item) ? `${T.linkForm} · ${archive.title}`
+                        : `${T[LINK[entry.kind] || 'linkInfo']} · ${host(entry.link)}`);
+                    a.href = archived(item) || entry.link;
                     a.target = '_blank';
                     a.rel = 'noopener';
                     body.append(a);
@@ -617,7 +626,8 @@ function visaDocs(root) {
                         line(part, textX, y, font(500, 26), C.green);
                     });
                 }
-                const meta = [...docNotes(item), showSource && entry.link && `→ ${host(entry.link)}`].filter(Boolean).join(' · ');
+                const where = archived(item) ? `${T.url}${archive.url.replace(/\/$/, '')}` : host(entry.link || '');
+                const meta = [...docNotes(item), showSource && where && `→ ${where}`].filter(Boolean).join(' · ');
                 if (meta) {
                     ctx.font = font(400, 23);
                     wrap(ctx, meta, inner - (textX - P), 4).forEach((part) => {
@@ -711,7 +721,8 @@ function visaDocs(root) {
                 lines.push(`  ${number}. ${item.doc}: ${docName(item)} / ${docKo(item)}`
                     + `${item.only ? ` | only: ${text(item.only)}` : ''}${item.by ? ` | by: ${item.by}` : ''}`
                     + `${item.at ? ` | at: ${item.at}` : ''}`
-                    + `${item.note ? ` | note: ${text(item.note)}` : ''}${entry.link ? ` | ${entry.link}` : ''}`);
+                    + `${item.note ? ` | note: ${text(item.note)}` : ''}${entry.link ? ` | ${entry.link}` : ''}`
+                    + `${archived(item) ? ` | archive: ${archived(item)}` : ''}`);
             });
         });
         lines.push('', `browser: ${navigator.userAgent}`, `window: ${innerWidth}x${innerHeight} @${devicePixelRatio}x`);

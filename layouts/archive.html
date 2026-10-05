@@ -1,0 +1,65 @@
+{{- define "main" }}
+{{- /*
+  Archive: official blank forms, grouped as on their source pages, each with its name in the
+  page language, its Korean name and its files (PDF, HWP, Word) to download. The forms are
+  listed in data/archive.yaml and stored unchanged in static/forms/ (README.md, "Archive").
+  Each form has an anchor (#its-id), which the Visa docs page links to. The search box filters
+  the list in the browser (assets/js/archive.js).
+*/}}
+{{- $data := partial "localize.html" (dict "value" (hugo.Data.archive | default dict) "lang" .Lang) }}
+{{- $types := dict "pdf" "PDF" "hwp" "HWP" "docx" "Word" "doc" "Word" "rtf" "Word" }}
+{{- $count := 0 }}
+{{- range $data.groups }}{{ $count = add $count (len .forms) }}{{ end }}
+
+<article class="visa-map archive" id="archive" data-count="{{ i18n "archive_count" }}">
+    <header class="vm-header">
+        <h1 class="vm-title">{{ .Title }}</h1>
+        {{- with .Description }}
+        <p class="vm-lead">{{ . }}</p>
+        {{- end }}
+    </header>
+
+    <div class="vm-card ar-search">
+        <label class="vm-label" for="ar-search">{{ i18n "archive_search" }}</label>
+        <input class="vm-input" id="ar-search" type="search" autocomplete="off" spellcheck="false"
+            placeholder="{{ i18n "archive_search_placeholder" }}">
+        <p class="vm-hint" id="ar-count" aria-live="polite">{{ replace (i18n "archive_count") "{n}" (string $count) }}</p>
+        <nav class="ar-jump" aria-label="{{ i18n "archive_groups" }}">
+            {{- range $i, $g := $data.groups }}
+            <a href="#group-{{ $i }}">{{ $g.name }} <span>{{ len $g.forms }}</span></a>
+            {{- end }}
+        </nav>
+    </div>
+
+    <p class="ar-empty" id="ar-empty" hidden>{{ i18n "archive_none" }}</p>
+
+    {{- range $i, $g := $data.groups }}
+    <section class="ar-group" id="group-{{ $i }}">
+        <h2 class="ar-group-title">{{ $g.name }} <span class="vd-doc-ko" lang="ko">{{ $g.ko }}</span></h2>
+        {{- with index $data.sources (index $g.forms 0).source }}
+        <p class="ar-group-source">{{ i18n "archive_source" }}: <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a> · {{ .by }}</p>
+        {{- end }}
+        <ul class="vd-list">
+            {{- range $g.forms }}
+            <li class="vd-doc ar-form" id="{{ .id }}" data-search="{{ lower (printf "%s %s %s" .name .ko (replace .id "-" " ")) }}">
+                <div class="vd-doc-body">
+                    <p class="vd-doc-name">{{ .name }}<span class="vd-doc-ko" lang="ko">{{ .ko }}</span></p>
+                    <p class="ar-files">
+                        {{- range .files }}
+                        {{- $size := cond (ge .size 1048576) (printf "%s MB" (lang.FormatNumber 1 (div (float .size) 1048576))) (printf "%d KB" (int (math.Max 1 (math.Round (div (float .size) 1024))))) }}
+                        <a class="ar-file" href="{{ printf "forms/%s" .file | relURL }}" download="{{ .save }}">
+                            <span class="ar-type">{{ index $types .type }}</span> {{ $size }}{{ with .note }} · {{ . }}{{ end }}</a>
+                        {{- end }}
+                    </p>
+                </div>
+            </li>
+            {{- end }}
+        </ul>
+    </section>
+    {{- end }}
+
+    {{- with .Content }}
+    <div class="vm-about md-content">{{ . }}</div>
+    {{- end }}
+</article>
+{{- end }}

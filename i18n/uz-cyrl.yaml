@@ -426,3 +426,15 @@
   translation: "Кореяда: мақомдан ташқари фаолиятга рухсат (체류자격외 활동허가)"
 - id: vd_visa_fee
   translation: "Виза тўлови: бир марталик виза — 40 АҚШ доллари (90 кунгача яшаш) ёки 60 АҚШ доллари (91 кун ва ундан кўп), икки марталик — 70 АҚШ доллари, кўп марталик — 90 АҚШ доллари; элчихона ўзаро манфаатлилик асосида бошқа миқдор олиши мумкин"
+- id: archive_search
+  translation: "Шаклларни қидириш"
+- id: archive_search_placeholder
+  translation: "Номи ёки виза коди"
+- id: archive_count
+  translation: "{n} та шакл"
+- id: archive_groups
+  translation: "Бўлимлар"
+- id: archive_none
+  translation: "Ҳеч нарса топилмади."
+- id: archive_source
+  translation: "Манба"

@@ -1,7 +1,7 @@
 {{- $js := resources.Get "js/blog.js" | resources.Minify | fingerprint }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
-{{- /* The Visa map and Visa docs pages: their script plus the shared modules in assets/js/visa/, bundled by Hugo. */}}
-{{- $page := index (dict "visa-map" "js/visamap.js" "visa-docs" "js/visadocs.js") .Layout }}
+{{- /* The Visa map, Visa docs and Archive pages: their script (plus the shared modules in assets/js/visa/), bundled by Hugo. */}}
+{{- $page := index (dict "visa-map" "js/visamap.js" "visa-docs" "js/visadocs.js" "archive" "js/archive.js") .Layout }}
 {{- with $page }}
 {{- $vm := resources.Get . | js.Build (dict "minify" true "target" "es2020") | fingerprint }}
 <script src="{{ $vm.RelPermalink }}" integrity="{{ $vm.Data.Integrity }}" crossorigin="anonymous"></script>

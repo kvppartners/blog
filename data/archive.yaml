@@ -1,0 +1,3311 @@
+# Archive page (content/archive/): official blank forms, copied unchanged into static/forms/
+# from the sources below on the date in "updated". Each form: id (its anchor on the page and
+# its file names), Korean name, names in four languages, source, files (type, size in bytes,
+# the name a download is saved under, optional note). See README.md, "Archive".
+# catalog: Visa docs documents (keys of docs in data/visadocs.yaml) that are one of these forms;
+# { korea: id } links it only in lists for applications made in Korea.
+updated: '2026-10-05'
+sources:
+  hikorea:
+    url: https://www.hikorea.go.kr/board/BoardApplicationListR.pt
+    name:
+      en: HiKorea, forms (민원서식)
+      ru: HiKorea, формы (민원서식)
+      uz: HiKorea, shakllar (민원서식)
+      uz-cyrl: HiKorea, шакллар (민원서식)
+    by:
+      en: Ministry of Justice, Korea Immigration Service
+      ru: Министерство юстиции, иммиграционная служба Кореи
+      uz: Adliya vazirligi, Koreya immigratsiya xizmati
+      uz-cyrl: Адлия вазирлиги, Корея иммиграция хизмати
+  eps:
+    url: https://www.eps.go.kr/eo/FormDataR.eo?bbswSn=3778
+    name:
+      en: EPS, forms by task (업무별서식)
+      ru: EPS, формы по видам работ (업무별서식)
+      uz: EPS, ish turlari bo‘yicha shakllar (업무별서식)
+      uz-cyrl: EPS, иш турлари бўйича шакллар (업무별서식)
+    by:
+      en: Ministry of Employment and Labor
+      ru: Министерство занятости и труда
+      uz: Bandlik va mehnat vazirligi
+      uz-cyrl: Бандлик ва меҳнат вазирлиги
+groups:
+- ko: 체류 관련
+  name:
+    en: Stay in Korea
+    ru: Пребывание в Корее
+    uz: Koreyada qolish
+    uz-cyrl: Кореяда қолиш
+  forms:
+  - id: integrated-application
+    ko: 통합신청서(신고서)
+    name:
+      en: Integrated application form (report form)
+      ru: Единая форма заявления (уведомления)
+      uz: Yagona ariza (bildirishnoma) shakli
+      uz-cyrl: Ягона ариза (билдиришнома) шакли
+    source: hikorea
+    files:
+    - file: integrated-application.pdf
+      type: pdf
+      size: 85427
+      save: 통합신청서(신고서).pdf
+    - file: integrated-application.hwp
+      type: hwp
+      size: 104448
+      save: 통합신청서(신고서).hwp
+    - file: integrated-application.docx
+      type: docx
+      size: 25511
+      save: 통합신청서(신고서).docx
+  - id: letter-of-guarantee-ko
+    ko: 신원보증서(한글)
+    name:
+      en: Letter of guarantee (Korean)
+      ru: Гарантийное письмо (поручительство), на корейском
+      uz: Kafillik xati (koreys tilida)
+      uz-cyrl: Кафиллик хати (корейс тилида)
+    source: hikorea
+    files:
+    - file: letter-of-guarantee-ko.pdf
+      type: pdf
+      size: 40644
+      save: 신원보증서(한글).pdf
+    - file: letter-of-guarantee-ko.hwp
+      type: hwp
+      size: 13824
+      save: 신원보증서(한글).hwp
+    - file: letter-of-guarantee-ko.doc
+      type: doc
+      size: 46080
+      save: 신원보증서(한글).doc
+  - id: letter-of-guarantee-en
+    ko: 신원보증서(영문)
+    name:
+      en: Letter of guarantee (English)
+      ru: Гарантийное письмо (поручительство), на английском
+      uz: Kafillik xati (ingliz tilida)
+      uz-cyrl: Кафиллик хати (инглиз тилида)
+    source: hikorea
+    files:
+    - file: letter-of-guarantee-en.pdf
+      type: pdf
+      size: 25282
+      save: 신원보증서(영문).pdf
+    - file: letter-of-guarantee-en.hwp
+      type: hwp
+      size: 15360
+      save: 신원보증서(영문).hwp
+    - file: letter-of-guarantee-en.doc
+      type: doc
+      size: 46080
+      save: 신원보증서(영문).doc
+  - id: employment-change-report
+    ko: 고용·연수외국인변동사유발생신고서
+    name:
+      en: Report of changes for a foreign employee or trainee
+      ru: Уведомление об изменениях по иностранному работнику или стажёру
+      uz: Chet ellik xodim yoki stajyor bo‘yicha o‘zgarishlar haqida bildirishnoma
+      uz-cyrl: Чет эллик ходим ёки стажёр бўйича ўзгаришлар ҳақида билдиришнома
+    source: hikorea
+    files:
+    - file: employment-change-report.pdf
+      type: pdf
+      size: 233715
+      save: 고용·연수외국인변동사유발생신고서.pdf
+    - file: employment-change-report.hwp
+      type: hwp
+      size: 25600
+      save: 고용·연수외국인변동사유발생신고서.hwp
+    - file: employment-change-report.rtf
+      type: rtf
+      size: 510296
+      save: 고용·연수외국인변동사유발생신고서.rtf
+  - id: international-students-status
+    ko: 유학생현황
+    name:
+      en: International student status report
+      ru: Сведения об иностранных студентах
+      uz: Xorijiy talabalar holati haqida ma’lumot
+      uz-cyrl: Хорижий талабалар ҳолати ҳақида маълумот
+    source: hikorea
+    files:
+    - file: international-students-status.pdf
+      type: pdf
+      size: 144339
+      save: 유학생현황.pdf
+    - file: international-students-status.hwp
+      type: hwp
+      size: 13824
+      save: 유학생현황.hwp
+    - file: international-students-status.rtf
+      type: rtf
+      size: 159431
+      save: 유학생현황.rtf
+  - id: language-students-status
+    ko: 어학연수생현황
+    name:
+      en: Language student status report
+      ru: Сведения о студентах языковых курсов
+      uz: Til kursi talabalari holati haqida ma’lumot
+      uz-cyrl: Тил курси талабалари ҳолати ҳақида маълумот
+    source: hikorea
+    files:
+    - file: language-students-status.pdf
+      type: pdf
+      size: 146961
+      save: 어학연수생현황.pdf
+    - file: language-students-status.hwp
+      type: hwp
+      size: 14336
+      save: 어학연수생현황.hwp
+    - file: language-students-status.rtf
+      type: rtf
+      size: 44434
+      save: 어학연수생현황.rtf
+  - id: h2-employment-start-report
+    ko: 방문취업동포취업개시등신고서
+    name:
+      en: Report of starting work (H-2 visiting workers)
+      ru: Уведомление о начале работы (H-2)
+      uz: Ishni boshlash haqida bildirishnoma (H-2)
+      uz-cyrl: Ишни бошлаш ҳақида билдиришнома (H-2)
+    source: hikorea
+    files:
+    - file: h2-employment-start-report.pdf
+      type: pdf
+      size: 62713
+      save: 방문취업동포취업개시등신고서.pdf
+    - file: h2-employment-start-report.hwp
+      type: hwp
+      size: 17408
+      save: 방문취업동포취업개시등신고서.hwp
+    - file: h2-employment-start-report.rtf
+      type: rtf
+      size: 207162
+      save: 방문취업동포취업개시등신고서.rtf
+  - id: student-part-time-work-confirmation
+    ko: 외국인유학(어학연수)생 시간제취업 확인서
+    name:
+      en: Confirmation of part-time work for an international or language student
+      ru: Подтверждение подработки иностранного студента (слушателя языковых курсов)
+      uz: Xorijiy talaba (til kursi tinglovchisi) yarim kunlik ishi tasdiqnomasi
+      uz-cyrl: Хорижий талаба (тил курси тингловчиси) ярим кунлик иши тасдиқномаси
+    source: hikorea
+    files:
+    - file: student-part-time-work-confirmation.pdf
+      type: pdf
+      size: 143420
+      save: 시간제취업확인서.pdf
+    - file: student-part-time-work-confirmation.hwp
+      type: hwp
+      size: 62464
+      save: 시간제취업확인서.hwp
+  - id: d3-training-plan
+    ko: 산업연수(D-3) 연수계획서
+    name:
+      en: Industrial trainee (D-3) training plan
+      ru: План обучения промышленного стажёра (D-3)
+      uz: Sanoat stajyori (D-3) o‘qish rejasi
+      uz-cyrl: Саноат стажёри (D-3) ўқиш режаси
+    source: hikorea
+    files:
+    - file: d3-training-plan.pdf
+      type: pdf
+      size: 125763
+      save: 산업연수계획서.pdf
+    - file: d3-training-plan.hwp
+      type: hwp
+      size: 14336
+      save: 산업연수계획서.hwp
+    - file: d3-training-plan.rtf
+      type: rtf
+      size: 27708
+      save: 산업연수계획서.rtf
+  - id: d3-training-log
+    ko: 산업연수(D-3) 연수일지
+    name:
+      en: Industrial trainee (D-3) training log
+      ru: Дневник обучения промышленного стажёра (D-3)
+      uz: Sanoat stajyori (D-3) o‘qish kundaligi
+      uz-cyrl: Саноат стажёри (D-3) ўқиш кундалиги
+    source: hikorea
+    files:
+    - file: d3-training-log.pdf
+      type: pdf
+      size: 175283
+      save: 산업연수일지.pdf
+    - file: d3-training-log.hwp
+      type: hwp
+      size: 14336
+      save: 산업연수일지.hwp
+    - file: d3-training-log.rtf
+      type: rtf
+      size: 19877
+      save: 산업연수일지.rtf
+  - id: d3-extension-reason
+    ko: 산업연수(D-3) 연수기간 연장신청 사유서
+    name:
+      en: 'Industrial trainee (D-3): reasons for extending the training'
+      ru: 'Промышленный стажёр (D-3): обоснование продления обучения'
+      uz: 'Sanoat stajyori (D-3): o‘qishni uzaytirish sabablari'
+      uz-cyrl: 'Саноат стажёри (D-3): ўқишни узайтириш сабаблари'
+    source: hikorea
+    files:
+    - file: d3-extension-reason.pdf
+      type: pdf
+      size: 81218
+      save: 산업연수기간연장신청사유서.pdf
+    - file: d3-extension-reason.hwp
+      type: hwp
+      size: 12800
+      save: 산업연수기간연장신청사유서.hwp
+    - file: d3-extension-reason.rtf
+      type: rtf
+      size: 17792
+      save: 산업연수기간연장신청사유서.rtf
+  - id: departure-deadline-extension
+    ko: 출국기한유예신청서
+    name:
+      en: Application to defer the departure deadline
+      ru: Заявление об отсрочке срока выезда
+      uz: Chiqib ketish muddatini kechiktirish uchun ariza
+      uz-cyrl: Чиқиб кетиш муддатини кечиктириш учун ариза
+    source: hikorea
+    files:
+    - file: departure-deadline-extension.pdf
+      type: pdf
+      size: 63604
+      save: 출국기한유예신청서.pdf
+    - file: departure-deadline-extension.hwp
+      type: hwp
+      size: 17408
+      save: 출국기한유예신청서.hwp
+    - file: departure-deadline-extension.docx
+      type: docx
+      size: 10523
+      save: 출국기한유예신청서.docx
+  - id: accommodation-confirmation-en
+    ko: 거주숙소제공사실확인서(영문병기)
+    name:
+      en: Confirmation of housing provided (with English)
+      ru: Подтверждение предоставления жилья (с английским)
+      uz: Turar joy berilganligi haqida tasdiqnoma (ingliz tili bilan)
+      uz-cyrl: Турар жой берилганлиги ҳақида тасдиқнома (инглиз тили билан)
+    source: hikorea
+    files:
+    - file: accommodation-confirmation-en.pdf
+      type: pdf
+      size: 70911
+      save: 거주숙소제공사실확인서(영문병기).pdf
+    - file: accommodation-confirmation-en.hwp
+      type: hwp
+      size: 70144
+      save: 거주숙소제공사실확인서(영문병기).hwp
+  - id: accommodation-confirmation-zh
+    ko: 거주숙소제공사실확인서(중문병기)
+    name:
+      en: Confirmation of housing provided (with Chinese)
+      ru: Подтверждение предоставления жилья (с китайским)
+      uz: Turar joy berilganligi haqida tasdiqnoma (xitoy tili bilan)
+      uz-cyrl: Турар жой берилганлиги ҳақида тасдиқнома (хитой тили билан)
+    source: hikorea
+    files:
+    - file: accommodation-confirmation-zh.pdf
+      type: pdf
+      size: 103994
+      save: 거주숙소제공사실확인서(중문병기).pdf
+    - file: accommodation-confirmation-zh.hwp
+      type: hwp
+      size: 86528
+      save: 거주숙소제공사실확인서(중문병기).hwp
+  - id: supervisor-confirmation
+    ko: 논문지도·졸업시험·학점취득 지도교수 확인서(국문)
+    name:
+      en: Supervisor's confirmation of thesis guidance, graduation exams or credits (Korean)
+      ru: Подтверждение научного руководителя о диссертации, выпускных экзаменах или зачётах (на корейском)
+      uz: Ilmiy rahbarning dissertatsiya, bitiruv imtihonlari yoki kreditlar haqidagi tasdiqnomasi (koreys tilida)
+      uz-cyrl: Илмий раҳбарнинг диссертация, битирув имтиҳонлари ёки кредитлар ҳақидаги тасдиқномаси (корейс тилида)
+    source: hikorea
+    files:
+    - file: supervisor-confirmation.pdf
+      type: pdf
+      size: 63960
+      save: 논문 지도교수 확인서(국문).pdf
+    - file: supervisor-confirmation.hwp
+      type: hwp
+      size: 48128
+      save: 논문 지도교수 확인서(국문).hwp
+    - file: supervisor-confirmation.docx
+      type: docx
+      size: 17612
+      save: 논문 지도교수 확인서(국문).docx
+  - id: student-part-time-compliance
+    ko: 유학생 시간제취업 요건 준수 확인서(국문)
+    name:
+      en: International student's pledge to follow part-time work rules (Korean)
+      ru: Обязательство иностранного студента соблюдать правила подработки (на корейском)
+      uz: Xorijiy talabaning yarim kunlik ish qoidalariga rioya qilish majburiyatnomasi (koreys tilida)
+      uz-cyrl: Хорижий талабанинг ярим кунлик иш қоидаларига риоя қилиш мажбуриятномаси (корейс тилида)
+    source: hikorea
+    files:
+    - file: student-part-time-compliance.pdf
+      type: pdf
+      size: 59813
+      save: 유학생 시간제취업 요건 준수 확인서(제조업_국문).pdf
+    - file: student-part-time-compliance.hwp
+      type: hwp
+      size: 14336
+      save: 유학생 시간제취업 요건 준수 확인서(제조업_국문).hwp
+    - file: student-part-time-compliance.doc
+      type: doc
+      size: 41472
+      save: 유학생 시간제취업 요건 준수 확인서(제조업_국문).doc
+  - id: employer-applicant-pledge
+    ko: 사업자(고용주) 및 신청인 서약서
+    name:
+      en: Pledge by the business operator (employer) and the applicant
+      ru: Обязательство предпринимателя (работодателя) и заявителя
+      uz: Tadbirkor (ish beruvchi) va arizachining majburiyatnomasi
+      uz-cyrl: Тадбиркор (иш берувчи) ва аризачининг мажбуриятномаси
+    source: hikorea
+    files:
+    - file: employer-applicant-pledge.pdf
+      type: pdf
+      size: 102437
+      save: 사업자(고용주)및 신청인 서약서.pdf
+    - file: employer-applicant-pledge.hwp
+      type: hwp
+      size: 13824
+      save: 사업자(고용주)및 신청인 서약서.hwp
+    - file: employer-applicant-pledge.rtf
+      type: rtf
+      size: 86041
+      save: 사업자(고용주)및 신청인 서약서.rtf
+  - id: f5-basic-information
+    ko: 영주(F-5) 자격 신청자 기본 정보
+    name:
+      en: Basic information of a permanent residence (F-5) applicant
+      ru: Основные сведения о заявителе на ПМЖ (F-5)
+      uz: Doimiy yashash (F-5) uchun arizachi haqida asosiy ma’lumot
+      uz-cyrl: Доимий яшаш (F-5) учун аризачи ҳақида асосий маълумот
+    source: hikorea
+    files:
+    - file: f5-basic-information.pdf
+      type: pdf
+      size: 277206
+      save: 영주(F-5) 자격 신청자 기본 정보.pdf
+    - file: f5-basic-information.hwp
+      type: hwp
+      size: 26112
+      save: 영주(F-5) 자격 신청자 기본 정보.hwp
+    - file: f5-basic-information.rtf
+      type: rtf
+      size: 475564
+      save: 영주(F-5) 자격 신청자 기본 정보.rtf
+  - id: hangul-name-application
+    ko: 한글병기 신청서
+    name:
+      en: Application to add a name in Hangul
+      ru: Заявление о добавлении имени на хангыле
+      uz: Ismni hangulda qo‘shish uchun ariza
+      uz-cyrl: Исмни ҳангулда қўшиш учун ариза
+    source: hikorea
+    files:
+    - file: hangul-name-application.pdf
+      type: pdf
+      size: 49407
+      save: 한글병기 신청서.pdf
+    - file: hangul-name-application.hwp
+      type: hwp
+      size: 14848
+      save: 한글병기 신청서.hwp
+    - file: hangul-name-application.doc
+      type: doc
+      size: 41472
+      save: 한글병기 신청서.doc
+  - id: hangul-name-application-en
+    ko: 한글병기 신청서(영문)
+    name:
+      en: Application to add a name in Hangul (English)
+      ru: Заявление о добавлении имени на хангыле (на английском)
+      uz: Ismni hangulda qo‘shish uchun ariza (ingliz tilida)
+      uz-cyrl: Исмни ҳангулда қўшиш учун ариза (инглиз тилида)
+    source: hikorea
+    files:
+    - file: hangul-name-application-en.pdf
+      type: pdf
+      size: 36374
+      save: 한글병기 신청서(영문).pdf
+    - file: hangul-name-application-en.hwp
+      type: hwp
+      size: 16384
+      save: 한글병기 신청서(영문).hwp
+    - file: hangul-name-application-en.doc
+      type: doc
+      size: 43520
+      save: 한글병기 신청서(영문).doc
+  - id: hangul-name-application-zh
+    ko: 한글병기 신청서(중문)
+    name:
+      en: Application to add a name in Hangul (Chinese)
+      ru: Заявление о добавлении имени на хангыле (на китайском)
+      uz: Ismni hangulda qo‘shish uchun ariza (xitoy tilida)
+      uz-cyrl: Исмни ҳангулда қўшиш учун ариза (хитой тилида)
+    source: hikorea
+    files:
+    - file: hangul-name-application-zh.pdf
+      type: pdf
+      size: 65559
+      save: 한글병기 신청서(중문).pdf
+    - file: hangul-name-application-zh.hwp
+      type: hwp
+      size: 14336
+      save: 한글병기 신청서(중문).hwp
+    - file: hangul-name-application-zh.doc
+      type: doc
+      size: 41472
+      save: 한글병기 신청서(중문).doc
+  - id: voluntary-departure-report
+    ko: 불법체류외국인 자진출국 신고서
+    name:
+      en: Voluntary departure report for undocumented foreigners
+      ru: Уведомление о добровольном выезде для нелегально пребывающих иностранцев
+      uz: Noqonuniy qolgan chet elliklarning ixtiyoriy chiqib ketishi haqida bildirishnoma
+      uz-cyrl: Ноқонуний қолган чет элликларнинг ихтиёрий чиқиб кетиши ҳақида билдиришнома
+    source: hikorea
+    files:
+    - file: voluntary-departure-report.pdf
+      type: pdf
+      size: 83267
+      save: 불법체류외국인 자진출국 신고서.pdf
+    - file: voluntary-departure-report.hwp
+      type: hwp
+      size: 17408
+      save: 불법체류외국인 자진출국 신고서.hwp
+    - file: voluntary-departure-report.docx
+      type: docx
+      size: 28209
+      save: 불법체류외국인 자진출국 신고서.docx
+  - id: enrolment-status-report
+    ko: 재학여부 신고서
+    name:
+      en: Report of enrolment status
+      ru: Уведомление о статусе обучения
+      uz: O‘qishdagi holat haqida bildirishnoma
+      uz-cyrl: Ўқишдаги ҳолат ҳақида билдиришнома
+    source: hikorea
+    files:
+    - file: enrolment-status-report.pdf
+      type: pdf
+      size: 47472
+      save: 재학사항 신고서.pdf
+    - file: enrolment-status-report.hwp
+      type: hwp
+      size: 46592
+      save: 재학사항 신고서.hwp
+    - file: enrolment-status-report.docx
+      type: docx
+      size: 17198
+      save: 재학사항 신고서.docx
+  - id: occupation-report
+    ko: 외국인 직업 신고서
+    name:
+      en: Foreigner's occupation report
+      ru: Декларация иностранца о роде занятий
+      uz: Chet ellikning kasbi haqida deklaratsiya
+      uz-cyrl: Чет элликнинг касби ҳақида декларация
+    source: hikorea
+    files:
+    - file: occupation-report.pdf
+      type: pdf
+      size: 121947
+      save: 외국인 직업 및 연간 소득금액 신고서.pdf
+    - file: occupation-report.hwp
+      type: hwp
+      size: 72192
+      save: 외국인 직업 및 연간 소득금액 신고서.hwp
+    - file: occupation-report.docx
+      type: docx
+      size: 22089
+      save: 외국인 직업 및 연간 소득금액 신고서.docx
+  - id: h2-non-work-guidance
+    ko: 취업 외 목적 방문취업(H-2) 체류자격 소지자 안내 및 유의사항
+    name:
+      en: Guidance and cautions for H-2 holders staying for purposes other than work
+      ru: Памятка и предупреждения для владельцев H-2, пребывающих не для работы
+      uz: Ishdan boshqa maqsadda turgan H-2 egalari uchun yo‘riqnoma va ogohlantirishlar
+      uz-cyrl: Ишдан бошқа мақсадда турган H-2 эгалари учун йўриқнома ва огоҳлантиришлар
+    source: hikorea
+    files:
+    - file: h2-non-work-guidance.pdf
+      type: pdf
+      size: 172478
+      save: 취업 외 목적 방문취업(H-2) 체류자격 소지자 안내 및 유의사항.pdf
+    - file: h2-non-work-guidance.hwp
+      type: hwp
+      size: 20992
+      save: 취업 외 목적 방문취업(H-2) 체류자격 소지자 안내 및 유의사항.hwp
+    - file: h2-non-work-guidance.rtf
+      type: rtf
+      size: 173224
+      save: 취업 외 목적 방문취업(H-2) 체류자격 소지자 안내 및 유의사항.rtf
+  - id: non-employment-pledge
+    ko: 국내 체류 중 비취업 서약서
+    name:
+      en: Pledge not to work during the stay in Korea
+      ru: Обязательство не работать во время пребывания в Корее
+      uz: Koreyada turgan vaqtda ishlamaslik majburiyatnomasi
+      uz-cyrl: Кореяда турган вақтда ишламаслик мажбуриятномаси
+    source: hikorea
+    files:
+    - file: non-employment-pledge.pdf
+      type: pdf
+      size: 205950
+      save: 국내 체류 중 비취업 서약서.pdf
+    - file: non-employment-pledge.hwp
+      type: hwp
+      size: 25600
+      save: 국내 체류 중 비취업 서약서.hwp
+    - file: non-employment-pledge.rtf
+      type: rtf
+      size: 342133
+      save: 국내 체류 중 비취업 서약서.rtf
+  - id: f1-statement
+    ko: 방문동거 신청 관련 진술서
+    name:
+      en: Statement for a visiting and joining family (F-1) application
+      ru: Заявление (объяснение) к ходатайству о визите к семье (F-1)
+      uz: Oilaga tashrif (F-1) arizasi bo‘yicha bayonot
+      uz-cyrl: Оилага ташриф (F-1) аризаси бўйича баёнот
+    source: hikorea
+    files:
+    - file: f1-statement.hwp
+      type: hwp
+      size: 23552
+      save: 방문동거진술서.hwp
+  - id: f15-non-employment-pledge
+    ko: 비취업 서약서(F-1-5)
+    name:
+      en: Pledge not to work (F-1-5)
+      ru: Обязательство не работать (F-1-5)
+      uz: Ishlamaslik majburiyatnomasi (F-1-5)
+      uz-cyrl: Ишламаслик мажбуриятномаси (F-1-5)
+    source: hikorea
+    files:
+    - file: f15-non-employment-pledge.pdf
+      type: pdf
+      size: 51300
+      save: 비취업 서약서(F-1-5).pdf
+    - file: f15-non-employment-pledge.hwp
+      type: hwp
+      size: 16896
+      save: 비취업 서약서(F-1-5).hwp
+    - file: f15-non-employment-pledge.rtf
+      type: rtf
+      size: 95862
+      save: 비취업 서약서(F-1-5).rtf
+  - id: stay-within-passport-validity
+    ko: 여권 유효기간 내 체류 확인서
+    name:
+      en: Confirmation of stay within passport validity
+      ru: Подтверждение пребывания в пределах срока действия паспорта
+      uz: Pasport amal qilish muddati ichida turish haqida tasdiqnoma
+      uz-cyrl: Паспорт амал қилиш муддати ичида туриш ҳақида тасдиқнома
+    source: hikorea
+    files:
+    - file: stay-within-passport-validity.pdf
+      type: pdf
+      size: 31441
+      save: 여권 유효기간 범위 내 체류 확인서.pdf
+    - file: stay-within-passport-validity.hwp
+      type: hwp
+      size: 69120
+      save: 여권 유효기간 범위 내 체류 확인서.hwp
+    - file: stay-within-passport-validity.docx
+      type: docx
+      size: 16087
+      save: 여권 유효기간 범위 내 체류 확인서.docx
+  - id: f4-restricted-jobs-pledge
+    ko: 재외동포(F-4) 취업활동 제한직업 비취업 서약서
+    name:
+      en: 'Overseas Korean (F-4): pledge not to work in restricted jobs'
+      ru: 'Зарубежный кореец (F-4): обязательство не работать на запрещённых должностях'
+      uz: 'Xorijdagi koreys (F-4): cheklangan kasblarda ishlamaslik majburiyatnomasi'
+      uz-cyrl: 'Хориждаги корейс (F-4): чекланган касбларда ишламаслик мажбуриятномаси'
+    source: hikorea
+    files:
+    - file: f4-restricted-jobs-pledge.pdf
+      type: pdf
+      size: 81256
+      save: 재외동포(F-4) 취업활동 제한직업 비취업 서약서.pdf
+    - file: f4-restricted-jobs-pledge.hwp
+      type: hwp
+      size: 83456
+      save: 재외동포(F-4) 취업활동 제한직업 비취업 서약서.hwp
+  - id: e74-employment-contract-sample
+    ko: K-POINT E-7-4 고용계약서 견본
+    name:
+      en: 'K-POINT E-7-4: sample employment contract'
+      ru: 'K-POINT E-7-4: образец трудового договора'
+      uz: 'K-POINT E-7-4: mehnat shartnomasi namunasi'
+      uz-cyrl: 'K-POINT E-7-4: меҳнат шартномаси намунаси'
+    source: hikorea
+    files:
+    - file: e74-employment-contract-sample.hwp
+      type: hwp
+      size: 56832
+      save: K-POINT E-7-4 고용계약서 견본.hwp
+  - id: e74-company-recommendation
+    ko: K-POINT E-7-4 고용기업추천양식
+    name:
+      en: 'K-POINT E-7-4: employer recommendation form'
+      ru: 'K-POINT E-7-4: форма рекомендации работодателя'
+      uz: 'K-POINT E-7-4: ish beruvchi tavsiyanomasi shakli'
+      uz-cyrl: 'K-POINT E-7-4: иш берувчи тавсияномаси шакли'
+    source: hikorea
+    files:
+    - file: e74-company-recommendation.hwp
+      type: hwp
+      size: 54272
+      save: K-POINT E74 고용기업추천양식.hwp
+  - id: e74-personal-statement
+    ko: K-POINT E-7-4 신상기술서
+    name:
+      en: 'K-POINT E-7-4: personal statement'
+      ru: 'K-POINT E-7-4: анкета с личными сведениями'
+      uz: 'K-POINT E-7-4: shaxsiy ma’lumotnoma'
+      uz-cyrl: 'K-POINT E-7-4: шахсий маълумотнома'
+    source: hikorea
+    files:
+    - file: e74-personal-statement.hwp
+      type: hwp
+      size: 50176
+      save: K-POINT E-7-4 신상기술서.hwp
+  - id: e74-self-assessment
+    ko: K-POINT E-7-4 점수제 자체 심사표
+    name:
+      en: 'K-POINT E-7-4: points self-assessment sheet'
+      ru: 'K-POINT E-7-4: лист самооценки по баллам'
+      uz: 'K-POINT E-7-4: ballar bo‘yicha o‘zini baholash varaqasi'
+      uz-cyrl: 'K-POINT E-7-4: баллар бўйича ўзини баҳолаш варақаси'
+    source: hikorea
+    files:
+    - file: e74-self-assessment.hwp
+      type: hwp
+      size: 70144
+      save: K-POINT E-7-4 점수제 자체 심사표.hwp
+  - id: application-withdrawal
+    ko: 체류허가 등 신청 취하서
+    name:
+      en: Withdrawal of an application for a stay permit
+      ru: Отзыв заявления на разрешение на пребывание
+      uz: Qolish ruxsatnomasi uchun arizani qaytarib olish
+      uz-cyrl: Қолиш рухсатномаси учун аризани қайтариб олиш
+    source: hikorea
+    files:
+    - file: application-withdrawal.hwp
+      type: hwp
+      size: 133632
+      save: 체류허가 등 신청 취하서.hwp
+  - id: d10-job-seeking-plan
+    ko: D-10 구직활동 계획서
+    name:
+      en: D-10 job-seeking activity plan
+      ru: План поиска работы (D-10)
+      uz: Ish qidirish faoliyati rejasi (D-10)
+      uz-cyrl: Иш қидириш фаолияти режаси (D-10)
+    source: hikorea
+    files:
+    - file: d10-job-seeking-plan.pdf
+      type: pdf
+      size: 128178
+      save: D-10 구직활동 계획서.pdf
+    - file: d10-job-seeking-plan.hwp
+      type: hwp
+      size: 71680
+      save: D-10 구직활동 계획서.hwp
+    - file: d10-job-seeking-plan.docx
+      type: docx
+      size: 19744
+      save: D-10 구직활동 계획서.docx
+  - id: f27-points-table
+    ko: F-2-7 민원인 제출용 점수표
+    name:
+      en: F-2-7 points table for applicants
+      ru: Таблица баллов F-2-7 для заявителя
+      uz: Arizachi uchun F-2-7 ballar jadvali
+      uz-cyrl: Аризачи учун F-2-7 баллар жадвали
+    source: hikorea
+    files:
+    - file: f27-points-table.pdf
+      type: pdf
+      size: 64183
+      save: F-2-7 민원인 제출용 점수표.pdf
+    - file: f27-points-table.hwp
+      type: hwp
+      size: 71680
+      save: F-2-7 민원인 제출용 점수표.hwp
+    - file: f27-points-table.docx
+      type: docx
+      size: 36393
+      save: F-2-7 민원인 제출용 점수표.docx
+  - id: g1-livelihood-check
+    ko: '[G-1]생계유지능력 심사확인서'
+    name:
+      en: '[G-1] Confirmation of the ability to support oneself'
+      ru: '[G-1] Подтверждение способности обеспечивать себя'
+      uz: '[G-1] O‘zini ta’minlash qobiliyati haqida tasdiqnoma'
+      uz-cyrl: '[G-1] Ўзини таъминлаш қобилияти ҳақида тасдиқнома'
+    source: hikorea
+    files:
+    - file: g1-livelihood-check.pdf
+      type: pdf
+      size: 121088
+      save: '[G-1]생계유지능력 심사확인서.pdf'
+    - file: g1-livelihood-check.hwp
+      type: hwp
+      size: 52736
+      save: '[G-1]생계유지능력 심사확인서.hwp'
+    - file: g1-livelihood-check.docx
+      type: docx
+      size: 12399
+      save: '[G-1]생계유지능력 심사확인서.docx'
+- ko: 재외동포/방문취업 관련
+  name:
+    en: Overseas Koreans and H-2 visiting workers
+    ru: Зарубежные корейцы и H-2
+    uz: Xorijdagi koreyslar va H-2
+    uz-cyrl: Хориждаги корейслар ва H-2
+  forms:
+  - id: f4-integrated-application
+    ko: 재외동포(F-4) 통합신청서(신고서)
+    name:
+      en: Overseas Korean (F-4) integrated application form (report form)
+      ru: Единая форма заявления для зарубежных корейцев (F-4)
+      uz: Xorijdagi koreyslar (F-4) uchun yagona ariza shakli
+      uz-cyrl: Хориждаги корейслар (F-4) учун ягона ариза шакли
+    source: hikorea
+    files:
+    - file: f4-integrated-application.pdf
+      type: pdf
+      size: 88651
+      save: 거소신고(신청)서.pdf
+    - file: f4-integrated-application.hwp
+      type: hwp
+      size: 190976
+      save: 거소신고(신청)서.hwp
+    - file: f4-integrated-application.docx
+      type: docx
+      size: 23352
+      save: 거소신고(신청)서.docx
+  - id: company-head-guarantee
+    ko: 기업대표신원 보증서
+    name:
+      en: Letter of guarantee by a company's representative
+      ru: Гарантийное письмо руководителя компании
+      uz: Kompaniya rahbarining kafillik xati
+      uz-cyrl: Компания раҳбарининг кафиллик хати
+    source: hikorea
+    files:
+    - file: company-head-guarantee.pdf
+      type: pdf
+      size: 105040
+      save: 기업대표신원보증서.pdf
+    - file: company-head-guarantee.hwp
+      type: hwp
+      size: 29184
+      save: 기업대표신원보증서.hwp
+    - file: company-head-guarantee.rtf
+      type: rtf
+      size: 15316
+      save: 기업대표신원보증서.rtf
+  - id: simple-labour-non-employment-pledge
+    ko: 국내단순노무업종 비취업 서약서
+    name:
+      en: Pledge not to work in simple labour jobs in Korea
+      ru: Обязательство не работать на простых работах в Корее
+      uz: Koreyada oddiy mehnat ishlarida ishlamaslik majburiyatnomasi
+      uz-cyrl: Кореяда оддий меҳнат ишларида ишламаслик мажбуриятномаси
+    source: hikorea
+    files:
+    - file: simple-labour-non-employment-pledge.pdf
+      type: pdf
+      size: 84134
+      save: 국내단순노무업종비취업서약서.pdf
+    - file: simple-labour-non-employment-pledge.hwp
+      type: hwp
+      size: 27648
+      save: 국내단순노무업종비취업서약서.hwp
+    - file: simple-labour-non-employment-pledge.rtf
+      type: rtf
+      size: 9100
+      save: 국내단순노무업종비취업서약서.rtf
+  - id: overseas-korean-association
+    ko: 동포단체 현황
+    name:
+      en: Overseas Korean association details
+      ru: Сведения об объединении зарубежных корейцев
+      uz: Xorijdagi koreyslar uyushmasi haqida ma’lumot
+      uz-cyrl: Хориждаги корейслар уюшмаси ҳақида маълумот
+    source: hikorea
+    files:
+    - file: overseas-korean-association.pdf
+      type: pdf
+      size: 84974
+      save: 동포단체현황.pdf
+    - file: overseas-korean-association.hwp
+      type: hwp
+      size: 23040
+      save: 동포단체현황.hwp
+    - file: overseas-korean-association.rtf
+      type: rtf
+      size: 14779
+      save: 동포단체현황.rtf
+  - id: lottery-waiting-training-plan
+    ko: 추첨대기동포 연수계획서
+    name:
+      en: Training plan for overseas Koreans waiting for the H-2 lottery
+      ru: План обучения для зарубежных корейцев, ожидающих жеребьёвки H-2
+      uz: H-2 qur’asini kutayotgan xorijdagi koreyslar uchun o‘qish rejasi
+      uz-cyrl: H-2 қуръасини кутаётган хориждаги корейслар учун ўқиш режаси
+    source: hikorea
+    files:
+    - file: lottery-waiting-training-plan.pdf
+      type: pdf
+      size: 294187
+      save: 연수계획서.pdf
+    - file: lottery-waiting-training-plan.hwp
+      type: hwp
+      size: 23040
+      save: 연수계획서.hwp
+    - file: lottery-waiting-training-plan.rtf
+      type: rtf
+      size: 12486
+      save: 연수계획서.rtf
+  - id: lottery-waiting-training-recommendation
+    ko: 추첨대기동포 연수추천서
+    name:
+      en: Training recommendation for overseas Koreans waiting for the H-2 lottery
+      ru: Рекомендация на обучение для зарубежных корейцев, ожидающих жеребьёвки H-2
+      uz: H-2 qur’asini kutayotgan xorijdagi koreyslar uchun o‘qishga tavsiyanoma
+      uz-cyrl: H-2 қуръасини кутаётган хориждаги корейслар учун ўқишга тавсиянома
+    source: hikorea
+    files:
+    - file: lottery-waiting-training-recommendation.pdf
+      type: pdf
+      size: 71877
+      save: 연수추천서.pdf
+    - file: lottery-waiting-training-recommendation.hwp
+      type: hwp
+      size: 22528
+      save: 연수추천서.hwp
+    - file: lottery-waiting-training-recommendation.rtf
+      type: rtf
+      size: 11947
+      save: 연수추천서.rtf
+  - id: lottery-waiting-guarantee
+    ko: 추첨대기동포 신원보증서
+    name:
+      en: Letter of guarantee for overseas Koreans waiting for the H-2 lottery
+      ru: Гарантийное письмо для зарубежных корейцев, ожидающих жеребьёвки H-2
+      uz: H-2 qur’asini kutayotgan xorijdagi koreyslar uchun kafillik xati
+      uz-cyrl: H-2 қуръасини кутаётган хориждаги корейслар учун кафиллик хати
+    source: hikorea
+    files:
+    - file: lottery-waiting-guarantee.pdf
+      type: pdf
+      size: 377528
+      save: 신원보증서.pdf
+    - file: lottery-waiting-guarantee.hwp
+      type: hwp
+      size: 23040
+      save: 신원보증서.hwp
+    - file: lottery-waiting-guarantee.rtf
+      type: rtf
+      size: 13357
+      save: 신원보증서.rtf
+- ko: 사증(VISA) 관련
+  name:
+    en: Visas
+    ru: Визы
+    uz: Vizalar
+    uz-cyrl: Визалар
+  forms:
+  - id: ccvi-application
+    ko: 사증발급인정신청서
+    name:
+      en: Certificate for Confirmation of Visa Issuance (CCVI) application form
+      ru: Заявление на подтверждение выдачи визы (CCVI)
+      uz: Viza berish tasdiqnomasi (CCVI) uchun ariza
+      uz-cyrl: Виза бериш тасдиқномаси (CCVI) учун ариза
+    source: hikorea
+    files:
+    - file: ccvi-application.pdf
+      type: pdf
+      size: 175146
+      save: 사증발급인정신청서.pdf
+    - file: ccvi-application.hwp
+      type: hwp
+      size: 38400
+      save: 사증발급인정신청서.hwp
+    - file: ccvi-application.rtf
+      type: rtf
+      size: 710292
+      save: 사증발급인정신청서.rtf
+  - id: visa-application
+    ko: 사증발급신청서
+    name:
+      en: Visa application form
+      ru: Анкета на визу
+      uz: Viza ariza shakli
+      uz-cyrl: Виза ариза шакли
+    source: hikorea
+    files:
+    - file: visa-application.pdf
+      type: pdf
+      size: 176086
+      save: 사증발급신청서.pdf
+    - file: visa-application.hwp
+      type: hwp
+      size: 39424
+      save: 사증발급신청서.hwp
+    - file: visa-application.doc
+      type: doc
+      size: 214528
+      save: 사증발급신청서.doc
+  - id: group-visa-application
+    ko: 단체사증발급신청서
+    name:
+      en: Group visa application form
+      ru: Заявление на групповую визу
+      uz: Guruh vizasi uchun ariza
+      uz-cyrl: Гуруҳ визаси учун ариза
+    source: hikorea
+    files:
+    - file: group-visa-application.pdf
+      type: pdf
+      size: 69658
+      save: 단체사증발급신청서.pdf
+    - file: group-visa-application.hwp
+      type: hwp
+      size: 16896
+      save: 단체사증발급신청서.hwp
+    - file: group-visa-application.doc
+      type: doc
+      size: 58368
+      save: 단체사증발급신청서.doc
+  - id: visa-application-with-ccvi
+    ko: 사증발급신청서(사증발급인정서를 받은 사람)
+    name:
+      en: Visa application form (for holders of a CCVI)
+      ru: Анкета на визу (для получивших CCVI)
+      uz: Viza ariza shakli (CCVI olganlar uchun)
+      uz-cyrl: Виза ариза шакли (CCVI олганлар учун)
+    source: hikorea
+    files:
+    - file: visa-application-with-ccvi.pdf
+      type: pdf
+      size: 115591
+      save: 사증발급신청서(사증발급인정서를 받은사람).pdf
+    - file: visa-application-with-ccvi.hwp
+      type: hwp
+      size: 22016
+      save: 사증발급신청서(사증발급인정서를 받은사람).hwp
+    - file: visa-application-with-ccvi.rtf
+      type: rtf
+      size: 260576
+      save: 사증발급신청서(사증발급인정서를 받은사람).rtf
+  - id: group-visa-list
+    ko: 단체사증발급대상자명단
+    name:
+      en: List of group visa applicants
+      ru: Список заявителей на групповую визу
+      uz: Guruh vizasi uchun arizachilar ro‘yxati
+      uz-cyrl: Гуруҳ визаси учун аризачилар рўйхати
+    source: hikorea
+    files:
+    - file: group-visa-list.pdf
+      type: pdf
+      size: 9317
+      save: 단체사증발급대상자명단.pdf
+    - file: group-visa-list.hwp
+      type: hwp
+      size: 24956
+      save: 단체사증발급대상자명단.hwp
+    - file: group-visa-list.rtf
+      type: rtf
+      size: 17690
+      save: 단체사증발급대상자명단.rtf
+  - id: visa-applicants-list
+    ko: 사증발급대상자명단
+    name:
+      en: List of visa applicants
+      ru: Список заявителей на визу
+      uz: Viza arizachilari ro‘yxati
+      uz-cyrl: Виза аризачилари рўйхати
+    source: hikorea
+    files:
+    - file: visa-applicants-list.pdf
+      type: pdf
+      size: 9164
+      save: 사증발급대상자명단.pdf
+    - file: visa-applicants-list.hwp
+      type: hwp
+      size: 25941
+      save: 사증발급대상자명단.hwp
+    - file: visa-applicants-list.rtf
+      type: rtf
+      size: 22886
+      save: 사증발급대상자명단.rtf
+  - id: standard-interview-manual
+    ko: 표준인터뷰메뉴얼
+    name:
+      en: Standard interview manual
+      ru: Стандартное руководство по собеседованию
+      uz: Suhbat bo‘yicha standart qo‘llanma
+      uz-cyrl: Суҳбат бўйича стандарт қўлланма
+    source: hikorea
+    files:
+    - file: standard-interview-manual.pdf
+      type: pdf
+      size: 768071
+      save: 표준인터뷰메뉴얼.pdf
+    - file: standard-interview-manual.hwp
+      type: hwp
+      size: 40960
+      save: 표준인터뷰메뉴얼.hwp
+    - file: standard-interview-manual.rtf
+      type: rtf
+      size: 46385
+      save: 표준인터뷰메뉴얼.rtf
+  - id: e2-self-health-check
+    ko: E-2자격사증신청자 자기건강확인서
+    name:
+      en: Self health-check statement for E-2 visa applicants
+      ru: Декларация о состоянии здоровья для заявителей на визу E-2
+      uz: E-2 viza arizachilari uchun o‘z sog‘lig‘i haqida bayonot
+      uz-cyrl: E-2 виза аризачилари учун ўз соғлиғи ҳақида баёнот
+    source: hikorea
+    files:
+    - file: e2-self-health-check.pdf
+      type: pdf
+      size: 86534
+      save: 자기건강확인서.pdf
+    - file: e2-self-health-check.hwp
+      type: hwp
+      size: 48640
+      save: 자기건강확인서.hwp
+    - file: e2-self-health-check.docx
+      type: docx
+      size: 20242
+      save: 자기건강확인서.docx
+  - id: e7-employment-recommendation
+    ko: 전문외국인력 고용추천서(E-7 관련)
+    name:
+      en: Employment recommendation for foreign professionals (E-7)
+      ru: Рекомендация на трудоустройство иностранного специалиста (E-7)
+      uz: Chet ellik mutaxassisni ishga olish uchun tavsiyanoma (E-7)
+      uz-cyrl: Чет эллик мутахассисни ишга олиш учун тавсиянома (E-7)
+    source: hikorea
+    files:
+    - file: e7-employment-recommendation.pdf
+      type: pdf
+      size: 98413
+      save: 전문외국인력고용추천서.pdf
+    - file: e7-employment-recommendation.hwp
+      type: hwp
+      size: 12800
+      save: 전문외국인력고용추천서.hwp
+    - file: e7-employment-recommendation.rtf
+      type: rtf
+      size: 13390
+      save: 전문외국인력고용추천서.rtf
+  - id: medical-patient-invitation
+    ko: 외국인환자초청확인서 서식
+    name:
+      en: Confirmation of invitation for a foreign patient
+      ru: Подтверждение приглашения иностранного пациента
+      uz: Chet ellik bemorni taklif qilish tasdiqnomasi
+      uz-cyrl: Чет эллик беморни таклиф қилиш тасдиқномаси
+    source: hikorea
+    files:
+    - file: medical-patient-invitation.pdf
+      type: pdf
+      size: 50516
+      save: 외국인환자초청확인서.pdf
+    - file: medical-patient-invitation.hwp
+      type: hwp
+      size: 14336
+      save: 외국인환자초청확인서.hwp
+    - file: medical-patient-invitation.doc
+      type: doc
+      size: 42496
+      save: 외국인환자초청확인서.doc
+  - id: spouse-invitation
+    ko: 외국인 배우자 초청장
+    name:
+      en: Invitation letter for the foreign spouse
+      ru: Приглашение для иностранного супруга
+      uz: Chet ellik turmush o‘rtoq uchun taklifnoma
+      uz-cyrl: Чет эллик турмуш ўртоқ учун таклифнома
+    source: hikorea
+    files:
+    - file: spouse-invitation.pdf
+      type: pdf
+      size: 173447
+      save: 외국인 배우자 초청장.pdf
+    - file: spouse-invitation.hwp
+      type: hwp
+      size: 74752
+      save: 외국인 배우자 초청장.hwp
+    - file: spouse-invitation.docx
+      type: docx
+      size: 80100
+      save: 외국인 배우자 초청장.docx
+  - id: spouse-marriage-background
+    ko: 외국인 배우자의 결혼배경 진술서
+    name:
+      en: Foreign spouse's statement of marriage background
+      ru: Заявление иностранного супруга об обстоятельствах заключения брака
+      uz: Chet ellik turmush o‘rtoqning nikoh tuzilishi holatlari haqidagi bayonoti
+      uz-cyrl: Чет эллик турмуш ўртоқнинг никоҳ тузилиши ҳолатлари ҳақидаги баёноти
+    source: hikorea
+    files:
+    - file: spouse-marriage-background.pdf
+      type: pdf
+      size: 149660
+      save: 외국인 배우자의 결혼배경 진술서.pdf
+    - file: spouse-marriage-background.hwp
+      type: hwp
+      size: 83968
+      save: 외국인 배우자의 결혼배경 진술서.hwp
+    - file: spouse-marriage-background.docx
+      type: docx
+      size: 24571
+      save: 외국인 배우자의 결혼배경 진술서.docx
+  - id: e9-e10-h2-health-check
+    ko: E-9/E-10/H-2자격 사증신청자 건강확인서
+    name:
+      en: Health check statement for E-9, E-10 and H-2 visa applicants
+      ru: Декларация о состоянии здоровья для заявителей на визы E-9, E-10 и H-2
+      uz: E-9, E-10 va H-2 viza arizachilari uchun sog‘liq haqida bayonot
+      uz-cyrl: E-9, E-10 ва H-2 виза аризачилари учун соғлиқ ҳақида баёнот
+    source: hikorea
+    files:
+    - file: e9-e10-h2-health-check.pdf
+      type: pdf
+      size: 186516
+      save: 건강확인서.pdf
+    - file: e9-e10-h2-health-check.hwp
+      type: hwp
+      size: 30720
+      save: 건강확인서.hwp
+    - file: e9-e10-h2-health-check.doc
+      type: doc
+      size: 52736
+      save: 건강확인서.doc
+  - id: f23-spouse-invitation
+    ko: 영주자격자의 배우자 초청장(F-2-3)
+    name:
+      en: Invitation letter for the spouse of a permanent resident (F-2-3)
+      ru: Приглашение для супруга постоянного жителя (F-2-3)
+      uz: Doimiy yashovchining turmush o‘rtog‘i uchun taklifnoma (F-2-3)
+      uz-cyrl: Доимий яшовчининг турмуш ўртоғи учун таклифнома (F-2-3)
+    source: hikorea
+    files:
+    - file: f23-spouse-invitation.pdf
+      type: pdf
+      size: 193992
+      save: 영주자격자의 배우자 초청장(F-2-3).pdf
+    - file: f23-spouse-invitation.hwp
+      type: hwp
+      size: 31232
+      save: 영주자격자의 배우자 초청장(F-2-3).hwp
+    - file: f23-spouse-invitation.doc
+      type: doc
+      size: 165888
+      save: 영주자격자의 배우자 초청장(F-2-3).doc
+  - id: spouse-inviter-family-income
+    ko: 외국인 배우자 초청인의 가족소득현황 진술서
+    name:
+      en: Inviter's statement of family income (foreign spouse)
+      ru: Заявление приглашающего о доходах семьи (иностранный супруг)
+      uz: Taklif qiluvchining oila daromadi haqidagi bayonoti (chet ellik turmush o‘rtoq)
+      uz-cyrl: Таклиф қилувчининг оила даромади ҳақидаги баёноти (чет эллик турмуш ўртоқ)
+    source: hikorea
+    files:
+    - file: spouse-inviter-family-income.pdf
+      type: pdf
+      size: 183470
+      save: 외국인 배우자 초청인의 가족소득현황 진술서.pdf
+    - file: spouse-inviter-family-income.hwp
+      type: hwp
+      size: 533504
+      save: 외국인 배우자 초청인의 가족소득현황 진술서.hwp
+    - file: spouse-inviter-family-income.doc
+      type: doc
+      size: 132608
+      save: 외국인 배우자 초청인의 가족소득현황 진술서.doc
+  - id: f23-marriage-background
+    ko: 영주자격자의 배우자 결혼배경진술서(F-2-3)
+    name:
+      en: Statement of marriage background for the spouse of a permanent resident (F-2-3)
+      ru: Заявление об обстоятельствах заключения брака для супруга постоянного жителя (F-2-3)
+      uz: Doimiy yashovchining turmush o‘rtog‘i uchun nikoh tuzilishi holatlari haqidagi bayonot (F-2-3)
+      uz-cyrl: Доимий яшовчининг турмуш ўртоғи учун никоҳ тузилиши ҳолатлари ҳақидаги баёнот (F-2-3)
+    source: hikorea
+    files:
+    - file: f23-marriage-background.pdf
+      type: pdf
+      size: 156370
+      save: 영주자격자의 배우자 결혼배경진술서(F-2-3).pdf
+    - file: f23-marriage-background.hwp
+      type: hwp
+      size: 28160
+      save: 영주자격자의 배우자 결혼배경진술서(F-2-3).hwp
+    - file: f23-marriage-background.doc
+      type: doc
+      size: 105984
+      save: 영주자격자의 배우자 결혼배경진술서(F-2-3).doc
+  - id: f15-illegal-work-pledge
+    ko: 불법체류 취업 방지 서약서(F-1-5)
+    name:
+      en: Pledge not to overstay or work illegally (F-1-5)
+      ru: Обязательство не нарушать сроки пребывания и не работать нелегально (F-1-5)
+      uz: Muddatdan ortiq qolmaslik va noqonuniy ishlamaslik majburiyatnomasi (F-1-5)
+      uz-cyrl: Муддатдан ортиқ қолмаслик ва ноқонуний ишламаслик мажбуриятномаси (F-1-5)
+    source: hikorea
+    files:
+    - file: f15-illegal-work-pledge.pdf
+      type: pdf
+      size: 64813
+      save: 불법체류 취업 방지 서약서(F-1-5).pdf
+    - file: f15-illegal-work-pledge.hwp
+      type: hwp
+      size: 15360
+      save: 불법체류 취업 방지 서약서(F-1-5).hwp
+    - file: f15-illegal-work-pledge.rtf
+      type: rtf
+      size: 108551
+      save: 불법체류 취업 방지 서약서(F-1-5).rtf
+  - id: f15-family-invitation
+    ko: 결혼이민자의 부모 등 가족 초청장(F-1-5 비자 신청)
+    name:
+      en: Invitation for a marriage migrant's parents or family (F-1-5 visa)
+      ru: Приглашение родителей или семьи брачного мигранта (виза F-1-5)
+      uz: Nikoh migrantining ota-onasi yoki oilasi uchun taklifnoma (F-1-5 viza)
+      uz-cyrl: Никоҳ мигрантининг ота-онаси ёки оиласи учун таклифнома (F-1-5 виза)
+    source: hikorea
+    files:
+    - file: f15-family-invitation.pdf
+      type: pdf
+      size: 89109
+      save: 결혼이민자의 부모 등 가족 초청장(F-1-5 비자 신청).pdf
+    - file: f15-family-invitation.hwp
+      type: hwp
+      size: 24576
+      save: 결혼이민자의 부모 등 가족 초청장(F-1-5 비자 신청).hwp
+    - file: f15-family-invitation.docx
+      type: docx
+      size: 25150
+      save: 결혼이민자의 부모 등 가족 초청장(F-1-5 비자 신청).docx
+  - id: group-evisa-cancellation
+    ko: 단체전자사증 무효 신청서
+    name:
+      en: Application to cancel a group e-visa
+      ru: Заявление об аннулировании групповой электронной визы
+      uz: Guruh elektron vizasini bekor qilish uchun ariza
+      uz-cyrl: Гуруҳ электрон визасини бекор қилиш учун ариза
+    source: hikorea
+    files:
+    - file: group-evisa-cancellation.hwp
+      type: hwp
+      size: 14336
+      save: 단체전자사증 무효 신청서.hwp
+- ko: 국적 관련
+  name:
+    en: Korean nationality
+    ru: Корейское гражданство
+    uz: Koreya fuqaroligi
+    uz-cyrl: Корея фуқаролиги
+  forms:
+  - id: naturalisation-application
+    ko: 귀화허가신청서
+    name:
+      en: Application for naturalisation
+      ru: Заявление о натурализации
+      uz: Fuqarolikka qabul qilish (naturalizatsiya) uchun ariza
+      uz-cyrl: Фуқароликка қабул қилиш (натурализация) учун ариза
+    source: hikorea
+    files:
+    - file: naturalisation-application.pdf
+      type: pdf
+      size: 163952
+      save: 귀화허가신청서.pdf
+    - file: naturalisation-application.hwp
+      type: hwp
+      size: 92160
+      save: 귀화허가신청서.hwp
+    - file: naturalisation-application.rtf
+      type: rtf
+      size: 875852
+      save: 귀화허가신청서.rtf
+  - id: nationality-reinstatement-application
+    ko: 국적회복허가신청서
+    name:
+      en: Application to reinstate Korean nationality
+      ru: Заявление о восстановлении корейского гражданства
+      uz: Koreya fuqaroligini tiklash uchun ariza
+      uz-cyrl: Корея фуқаролигини тиклаш учун ариза
+    source: hikorea
+    files:
+    - file: nationality-reinstatement-application.pdf
+      type: pdf
+      size: 90969
+      save: 국적회복허가신청서.pdf
+    - file: nationality-reinstatement-application.hwp
+      type: hwp
+      size: 26624
+      save: 국적회복허가신청서.hwp
+    - file: nationality-reinstatement-application.rtf
+      type: rtf
+      size: 350318
+      save: 국적회복허가신청서.rtf
+  - id: nationality-retention-report
+    ko: 국적보유신고서
+    name:
+      en: Report of retaining Korean nationality
+      ru: Уведомление о сохранении корейского гражданства
+      uz: Koreya fuqaroligini saqlab qolish haqida bildirishnoma
+      uz-cyrl: Корея фуқаролигини сақлаб қолиш ҳақида билдиришнома
+    source: hikorea
+    files:
+    - file: nationality-retention-report.pdf
+      type: pdf
+      size: 66984
+      save: 국적보유신고서.pdf
+    - file: nationality-retention-report.hwp
+      type: hwp
+      size: 16896
+      save: 국적보유신고서.hwp
+    - file: nationality-retention-report.rtf
+      type: rtf
+      size: 208579
+      save: 국적보유신고서.rtf
+  - id: nationality-loss-report
+    ko: 국적상실신고서
+    name:
+      en: Report of losing Korean nationality
+      ru: Уведомление об утрате корейского гражданства
+      uz: Koreya fuqaroligini yo‘qotish haqida bildirishnoma
+      uz-cyrl: Корея фуқаролигини йўқотиш ҳақида билдиришнома
+    source: hikorea
+    files:
+    - file: nationality-loss-report.pdf
+      type: pdf
+      size: 71344
+      save: 국적상실신고서.pdf
+    - file: nationality-loss-report.hwp
+      type: hwp
+      size: 18944
+      save: 국적상실신고서.hwp
+    - file: nationality-loss-report.rtf
+      type: rtf
+      size: 267356
+      save: 국적상실신고서.rtf
+  - id: nationality-choice-report
+    ko: 국적선택신고서
+    name:
+      en: Report of choosing a nationality
+      ru: Уведомление о выборе гражданства
+      uz: Fuqarolikni tanlash haqida bildirishnoma
+      uz-cyrl: Фуқароликни танлаш ҳақида билдиришнома
+    source: hikorea
+    files:
+    - file: nationality-choice-report.pdf
+      type: pdf
+      size: 69794
+      save: 국적선택신고서.pdf
+    - file: nationality-choice-report.hwp
+      type: hwp
+      size: 18944
+      save: 국적선택신고서.hwp
+    - file: nationality-choice-report.rtf
+      type: rtf
+      size: 233490
+      save: 국적선택신고서.rtf
+  - id: nationality-renunciation-report
+    ko: 국적이탈신고서
+    name:
+      en: Report of renouncing Korean nationality
+      ru: Уведомление об отказе от корейского гражданства
+      uz: Koreya fuqaroligidan voz kechish haqida bildirishnoma
+      uz-cyrl: Корея фуқаролигидан воз кечиш ҳақида билдиришнома
+    source: hikorea
+    files:
+    - file: nationality-renunciation-report.pdf
+      type: pdf
+      size: 56303
+      save: 국적이탈신고서.pdf
+    - file: nationality-renunciation-report.hwp
+      type: hwp
+      size: 18432
+      save: 국적이탈신고서.hwp
+    - file: nationality-renunciation-report.doc
+      type: doc
+      size: 70656
+      save: 국적이탈신고서.doc
+  - id: nationality-acquisition-report
+    ko: 국적취득신고서
+    name:
+      en: Report of acquiring Korean nationality
+      ru: Уведомление о приобретении корейского гражданства
+      uz: Koreya fuqaroligini olish haqida bildirishnoma
+      uz-cyrl: Корея фуқаролигини олиш ҳақида билдиришнома
+    source: hikorea
+    files:
+    - file: nationality-acquisition-report.pdf
+      type: pdf
+      size: 71745
+      save: 국적취득신고서.pdf
+    - file: nationality-acquisition-report.hwp
+      type: hwp
+      size: 18432
+      save: 국적취득신고서.hwp
+    - file: nationality-acquisition-report.rtf
+      type: rtf
+      size: 246187
+      save: 국적취득신고서.rtf
+  - id: nationality-determination-application
+    ko: 국적판정신청서
+    name:
+      en: Application for a nationality determination
+      ru: Заявление об определении гражданства
+      uz: Fuqarolikni aniqlash uchun ariza
+      uz-cyrl: Фуқароликни аниқлаш учун ариза
+    source: hikorea
+    files:
+    - file: nationality-determination-application.pdf
+      type: pdf
+      size: 71243
+      save: 국적판정신청서.pdf
+    - file: nationality-determination-application.hwp
+      type: hwp
+      size: 17408
+      save: 국적판정신청서.hwp
+    - file: nationality-determination-application.rtf
+      type: rtf
+      size: 219624
+      save: 국적판정신청서.rtf
+  - id: reinstatement-statement
+    ko: 국적회복진술서(일반국가)
+    name:
+      en: Statement for reinstating nationality (general countries)
+      ru: Объяснение к восстановлению гражданства (общие страны)
+      uz: Fuqarolikni tiklash bo‘yicha bayonot (umumiy davlatlar)
+      uz-cyrl: Фуқароликни тиклаш бўйича баёнот (умумий давлатлар)
+    source: hikorea
+    files:
+    - file: reinstatement-statement.pdf
+      type: pdf
+      size: 83263
+      save: 국적회복진술서(일반국가).pdf
+    - file: reinstatement-statement.hwp
+      type: hwp
+      size: 11264
+      save: 국적회복진술서(일반국가).hwp
+    - file: reinstatement-statement.rtf
+      type: rtf
+      size: 1498186
+      save: 국적회복진술서(일반국가).rtf
+  - id: reinstatement-statement-china
+    ko: 국적회복진술서(중국동포)
+    name:
+      en: Statement for reinstating nationality (ethnic Koreans from China)
+      ru: Объяснение к восстановлению гражданства (корейцы из Китая)
+      uz: Fuqarolikni tiklash bo‘yicha bayonot (Xitoydagi koreyslar)
+      uz-cyrl: Фуқароликни тиклаш бўйича баёнот (Хитойдаги корейслар)
+    source: hikorea
+    files:
+    - file: reinstatement-statement-china.pdf
+      type: pdf
+      size: 157766
+      save: 국적회복진술서(중국동포).pdf
+    - file: reinstatement-statement-china.hwp
+      type: hwp
+      size: 15872
+      save: 국적회복진술서(중국동포).hwp
+    - file: reinstatement-statement-china.rtf
+      type: rtf
+      size: 10541
+      save: 국적회복진술서(중국동포).rtf
+  - id: family-relationship-notice
+    ko: 가족관계통보서
+    name:
+      en: Family relationship notice
+      ru: Уведомление о семейных отношениях
+      uz: Oilaviy munosabatlar haqida xabarnoma
+      uz-cyrl: Оилавий муносабатлар ҳақида хабарнома
+    source: hikorea
+    files:
+    - file: family-relationship-notice.pdf
+      type: pdf
+      size: 43849
+      save: 가족관계통보서.pdf
+    - file: family-relationship-notice.hwp
+      type: hwp
+      size: 49664
+      save: 가족관계통보서.hwp
+    - file: family-relationship-notice.docx
+      type: docx
+      size: 18497
+      save: 가족관계통보서.docx
+  - id: foreign-nationality-renunciation-certificate-request
+    ko: 외국국적포기확인서발급신청서
+    name:
+      en: Application for a certificate of renouncing foreign nationality
+      ru: Заявление о выдаче подтверждения отказа от иностранного гражданства
+      uz: Chet el fuqaroligidan voz kechish tasdiqnomasini olish uchun ariza
+      uz-cyrl: Чет эл фуқаролигидан воз кечиш тасдиқномасини олиш учун ариза
+    source: hikorea
+    files:
+    - file: foreign-nationality-renunciation-certificate-request.pdf
+      type: pdf
+      size: 36136
+      save: 외국국적포기확인서발급신청서.pdf
+    - file: foreign-nationality-renunciation-certificate-request.hwp
+      type: hwp
+      size: 9728
+      save: 외국국적포기확인서발급신청서.hwp
+    - file: foreign-nationality-renunciation-certificate-request.rtf
+      type: rtf
+      size: 13093
+      save: 외국국적포기확인서발급신청서.rtf
+  - id: nationality-application-withdrawal
+    ko: 국적신청취하서
+    name:
+      en: Withdrawal of a nationality application
+      ru: Отзыв заявления по гражданству
+      uz: Fuqarolik bo‘yicha arizani qaytarib olish
+      uz-cyrl: Фуқаролик бўйича аризани қайтариб олиш
+    source: hikorea
+    files:
+    - file: nationality-application-withdrawal.pdf
+      type: pdf
+      size: 30561
+      save: 국적신청취하서.pdf
+    - file: nationality-application-withdrawal.hwp
+      type: hwp
+      size: 20992
+      save: 국적신청취하서.hwp
+    - file: nationality-application-withdrawal.rtf
+      type: rtf
+      size: 8092
+      save: 국적신청취하서.rtf
+  - id: marriage-breakdown-confirmation
+    ko: 혼인파탄 확인서
+    name:
+      en: Confirmation of marriage breakdown
+      ru: Подтверждение распада брака
+      uz: Nikoh buzilganligi haqida tasdiqnoma
+      uz-cyrl: Никоҳ бузилганлиги ҳақида тасдиқнома
+    source: hikorea
+    files:
+    - file: marriage-breakdown-confirmation.pdf
+      type: pdf
+      size: 73576
+      save: 혼인파탄확인서.pdf
+    - file: marriage-breakdown-confirmation.hwp
+      type: hwp
+      size: 13824
+      save: 혼인파탄확인서.hwp
+    - file: marriage-breakdown-confirmation.rtf
+      type: rtf
+      size: 16050
+      save: 혼인파탄확인서.rtf
+  - id: marriage-facts-confirmation
+    ko: 혼인관계사실확인서
+    name:
+      en: Confirmation of marriage facts
+      ru: Подтверждение фактов о браке
+      uz: Nikoh faktlari haqida tasdiqnoma
+      uz-cyrl: Никоҳ фактлари ҳақида тасдиқнома
+    source: hikorea
+    files:
+    - file: marriage-facts-confirmation.pdf
+      type: pdf
+      size: 49170
+      save: 혼인관계사실확인서.pdf
+    - file: marriage-facts-confirmation.hwp
+      type: hwp
+      size: 9216
+      save: 혼인관계사실확인서.hwp
+    - file: marriage-facts-confirmation.rtf
+      type: rtf
+      size: 13866
+      save: 혼인관계사실확인서.rtf
+  - id: translator-confirmation-nationality
+    ko: 번역자확인서
+    name:
+      en: Translator's confirmation
+      ru: Подтверждение переводчика
+      uz: Tarjimon tasdiqnomasi
+      uz-cyrl: Таржимон тасдиқномаси
+    source: hikorea
+    files:
+    - file: translator-confirmation-nationality.pdf
+      type: pdf
+      size: 84345
+      save: 번역자확인서.pdf
+    - file: translator-confirmation-nationality.hwp
+      type: hwp
+      size: 81920
+      save: 번역자확인서.hwp
+    - file: translator-confirmation-nationality.docx
+      type: docx
+      size: 17649
+      save: 번역자확인서.docx
+  - id: naturalisation-recommendation
+    ko: 귀화추천서
+    name:
+      en: Recommendation for naturalisation
+      ru: Рекомендация для натурализации
+      uz: Fuqarolikka qabul qilish uchun tavsiyanoma
+      uz-cyrl: Фуқароликка қабул қилиш учун тавсиянома
+    source: hikorea
+    files:
+    - file: naturalisation-recommendation.pdf
+      type: pdf
+      size: 30796
+      save: 귀화추천서.pdf
+    - file: naturalisation-recommendation.hwp
+      type: hwp
+      size: 12800
+      save: 귀화추천서.hwp
+    - file: naturalisation-recommendation.doc
+      type: doc
+      size: 40960
+      save: 귀화추천서.doc
+  - id: acknowledgement-statement
+    ko: 인지경위서
+    name:
+      en: Statement on the circumstances of acknowledgement (of a child)
+      ru: Объяснение об обстоятельствах признания (ребёнка)
+      uz: (Bolani) tan olish holatlari haqida bayonot
+      uz-cyrl: (Болани) тан олиш ҳолатлари ҳақида баёнот
+    source: hikorea
+    files:
+    - file: acknowledgement-statement.pdf
+      type: pdf
+      size: 89088
+      save: 인지경위서.pdf
+    - file: acknowledgement-statement.hwp
+      type: hwp
+      size: 24576
+      save: 인지경위서.hwp
+    - file: acknowledgement-statement.rtf
+      type: rtf
+      size: 17936
+      save: 인지경위서.rtf
+  - id: same-person-confirmation
+    ko: 동일인확인서
+    name:
+      en: Confirmation of being the same person
+      ru: Подтверждение тождества лица
+      uz: Shaxsning bir xilligi haqida tasdiqnoma
+      uz-cyrl: Шахснинг бир хиллиги ҳақида тасдиқнома
+    source: hikorea
+    files:
+    - file: same-person-confirmation.pdf
+      type: pdf
+      size: 137040
+      save: 동일인확인서.pdf
+    - file: same-person-confirmation.hwp
+      type: hwp
+      size: 22528
+      save: 동일인확인서.hwp
+    - file: same-person-confirmation.rtf
+      type: rtf
+      size: 11214
+      save: 동일인확인서.rtf
+  - id: non-exercise-pledge
+    ko: 외국국적불행사서약서
+    name:
+      en: Pledge not to exercise foreign nationality
+      ru: Обязательство не пользоваться иностранным гражданством
+      uz: Chet el fuqaroligidan foydalanmaslik majburiyatnomasi
+      uz-cyrl: Чет эл фуқаролигидан фойдаланмаслик мажбуриятномаси
+    source: hikorea
+    files:
+    - file: non-exercise-pledge.pdf
+      type: pdf
+      size: 68170
+      save: 외국국적불행사서약서.pdf
+    - file: non-exercise-pledge.hwp
+      type: hwp
+      size: 15872
+      save: 외국국적불행사서약서.hwp
+    - file: non-exercise-pledge.rtf
+      type: rtf
+      size: 157714
+      save: 외국국적불행사서약서.rtf
+  - id: non-exercise-pledge-confirmation
+    ko: 외국국적불행사서약확인서
+    name:
+      en: Confirmation of the pledge not to exercise foreign nationality
+      ru: Подтверждение обязательства не пользоваться иностранным гражданством
+      uz: Chet el fuqaroligidan foydalanmaslik majburiyatnomasi tasdiqnomasi
+      uz-cyrl: Чет эл фуқаролигидан фойдаланмаслик мажбуриятномаси тасдиқномаси
+    source: hikorea
+    files:
+    - file: non-exercise-pledge-confirmation.pdf
+      type: pdf
+      size: 72040
+      save: 외국국적불행사서약확인서.pdf
+    - file: non-exercise-pledge-confirmation.hwp
+      type: hwp
+      size: 17408
+      save: 외국국적불행사서약확인서.hwp
+    - file: non-exercise-pledge-confirmation.rtf
+      type: rtf
+      size: 175142
+      save: 외국국적불행사서약확인서.rtf
+  - id: foreign-nationality-renunciation-confirmation
+    ko: 외국국적포기확인서
+    name:
+      en: Confirmation of renouncing foreign nationality
+      ru: Подтверждение отказа от иностранного гражданства
+      uz: Chet el fuqaroligidan voz kechish tasdiqnomasi
+      uz-cyrl: Чет эл фуқаролигидан воз кечиш тасдиқномаси
+    source: hikorea
+    files:
+    - file: foreign-nationality-renunciation-confirmation.pdf
+      type: pdf
+      size: 69018
+      save: 외국국적포기확인서.pdf
+    - file: foreign-nationality-renunciation-confirmation.hwp
+      type: hwp
+      size: 15872
+      save: 외국국적포기확인서.hwp
+    - file: foreign-nationality-renunciation-confirmation.rtf
+      type: rtf
+      size: 150590
+      save: 외국국적포기확인서.rtf
+  - id: dual-nationality-notice
+    ko: 복수국적자발견통보서
+    name:
+      en: Notice of finding a dual national
+      ru: Уведомление о выявлении лица с двойным гражданством
+      uz: Ikki fuqarolikka ega shaxs aniqlanganligi haqida xabarnoma
+      uz-cyrl: Икки фуқароликка эга шахс аниқланганлиги ҳақида хабарнома
+    source: hikorea
+    files:
+    - file: dual-nationality-notice.pdf
+      type: pdf
+      size: 38618
+      save: 복수국적자발견통보서.pdf
+    - file: dual-nationality-notice.hwp
+      type: hwp
+      size: 15360
+      save: 복수국적자발견통보서.hwp
+    - file: dual-nationality-notice.rtf
+      type: rtf
+      size: 56002
+      save: 복수국적자발견통보서.rtf
+  - id: foreign-residence-certificate
+    ko: 외국거주사실증명서
+    name:
+      en: Certificate of residence abroad
+      ru: Справка о проживании за границей
+      uz: Chet elda yashaganlik haqida ma’lumotnoma
+      uz-cyrl: Чет элда яшаганлик ҳақида маълумотнома
+    source: hikorea
+    files:
+    - file: foreign-residence-certificate.hwp
+      type: hwp
+      size: 40960
+      save: 외국거주사실증명서.hwp
+    - file: foreign-residence-certificate.doc
+      type: doc
+      size: 32256
+      save: 외국거주사실증명서.doc
+  - id: certificate-ceremony-absence
+    ko: 국적증서수여식 불참사유서
+    name:
+      en: Reasons for missing the nationality certificate ceremony
+      ru: Объяснение причин неявки на церемонию вручения сертификата о гражданстве
+      uz: Fuqarolik guvohnomasini topshirish marosimiga kelmaslik sabablari
+      uz-cyrl: Фуқаролик гувоҳномасини топшириш маросимига келмаслик сабаблари
+    source: hikorea
+    files:
+    - file: certificate-ceremony-absence.pdf
+      type: pdf
+      size: 74688
+      save: 국적증서수여식 불참사유서.pdf
+    - file: certificate-ceremony-absence.hwp
+      type: hwp
+      size: 49152
+      save: 국적증서수여식 불참사유서.hwp
+    - file: certificate-ceremony-absence.docx
+      type: docx
+      size: 12414
+      save: 국적증서수여식 불참사유서.docx
+  - id: fact-certificate-request-nationality
+    ko: 사실증명서 발급신청서
+    name:
+      en: Application for a certificate of facts
+      ru: Заявление о выдаче справки о фактах
+      uz: Faktlar haqida ma’lumotnoma olish uchun ariza
+      uz-cyrl: Фактлар ҳақида маълумотнома олиш учун ариза
+    source: hikorea
+    files:
+    - file: fact-certificate-request-nationality.pdf
+      type: pdf
+      size: 53729
+      save: 사실증명서 발급신청서.pdf
+    - file: fact-certificate-request-nationality.hwp
+      type: hwp
+      size: 16896
+      save: 사실증명서 발급신청서.hwp
+    - file: fact-certificate-request-nationality.doc
+      type: doc
+      size: 55808
+      save: 사실증명서 발급신청서.doc
+  - id: interview-place-change
+    ko: 면접심사 장소변경 신청서
+    name:
+      en: Application to change the interview location
+      ru: Заявление о смене места собеседования
+      uz: Suhbat joyini o‘zgartirish uchun ariza
+      uz-cyrl: Суҳбат жойини ўзгартириш учун ариза
+    source: hikorea
+    files:
+    - file: interview-place-change.hwp
+      type: hwp
+      size: 49152
+      save: 면접심사 장소변경 신청서.hwp
+  - id: nationality-renunciation-permit
+    ko: 국적이탈 허가신청서
+    name:
+      en: Application for permission to renounce Korean nationality
+      ru: Заявление о разрешении на отказ от корейского гражданства
+      uz: Koreya fuqaroligidan voz kechishga ruxsat olish uchun ariza
+      uz-cyrl: Корея фуқаролигидан воз кечишга рухсат олиш учун ариза
+    source: hikorea
+    files:
+    - file: nationality-renunciation-permit.pdf
+      type: pdf
+      size: 155096
+      save: 국적이탈 허가신청서(국적법 시행규칙).pdf
+    - file: nationality-renunciation-permit.hwp
+      type: hwp
+      size: 64000
+      save: 국적이탈 허가신청서(국적법 시행규칙).hwp
+- ko: 출입국심사 관련
+  name:
+    en: Immigration inspection
+    ru: Пограничный контроль
+    uz: Chegara nazorati
+    uz-cyrl: Чегара назорати
+  forms:
+  - id: entry-permit-application
+    ko: 입국허가신청서
+    name:
+      en: Application for an entry permit
+      ru: Заявление на разрешение на въезд
+      uz: Kirishga ruxsat olish uchun ariza
+      uz-cyrl: Киришга рухсат олиш учун ариза
+    source: hikorea
+    files:
+    - file: entry-permit-application.pdf
+      type: pdf
+      size: 73578
+      save: 입국허가신청서.pdf
+    - file: entry-permit-application.hwp
+      type: hwp
+      size: 11264
+      save: 입국허가신청서.hwp
+    - file: entry-permit-application.rtf
+      type: rtf
+      size: 14801
+      save: 입국허가신청서.rtf
+  - id: landing-permit-application
+    ko: 상륙허가신청서
+    name:
+      en: Application for a landing permit
+      ru: Заявление на разрешение на высадку
+      uz: Qirg‘oqqa tushishga ruxsat olish uchun ariza
+      uz-cyrl: Қирғоққа тушишга рухсат олиш учун ариза
+    source: hikorea
+    files:
+    - file: landing-permit-application.pdf
+      type: pdf
+      size: 156461
+      save: 상륙허가신청서.pdf
+    - file: landing-permit-application.hwp
+      type: hwp
+      size: 24576
+      save: 상륙허가신청서.hwp
+    - file: landing-permit-application.rtf
+      type: rtf
+      size: 27156
+      save: 상륙허가신청서.rtf
+  - id: boarding-inspection-area-permit
+    ko: 승선허가출입국심사장출입허가신청서
+    name:
+      en: Application to board a ship or enter the immigration inspection area
+      ru: Заявление на разрешение подняться на борт или войти в зону пограничного контроля
+      uz: Kemaga chiqish yoki chegara nazorati hududiga kirishga ruxsat olish uchun ariza
+      uz-cyrl: Кемага чиқиш ёки чегара назорати ҳудудига киришга рухсат олиш учун ариза
+    source: hikorea
+    files:
+    - file: boarding-inspection-area-permit.pdf
+      type: pdf
+      size: 63593
+      save: 승선허가출입국심사장출입허가신청서.pdf
+    - file: boarding-inspection-area-permit.hwp
+      type: hwp
+      size: 14848
+      save: 승선허가출입국심사장출입허가신청서.hwp
+    - file: boarding-inspection-area-permit.rtf
+      type: rtf
+      size: 152829
+      save: 승선허가출입국심사장출입허가신청서.rtf
+  - id: port-arrival-notice
+    ko: 출입항예정통보서
+    name:
+      en: Notice of expected port arrival and departure
+      ru: Уведомление о планируемом заходе в порт и выходе
+      uz: Portga kirish va chiqish rejasi haqida xabarnoma
+      uz-cyrl: Портга кириш ва чиқиш режаси ҳақида хабарнома
+    source: hikorea
+    files:
+    - file: port-arrival-notice.pdf
+      type: pdf
+      size: 70383
+      save: 출입항예정통보서.pdf
+    - file: port-arrival-notice.hwp
+      type: hwp
+      size: 16896
+      save: 출입항예정통보서.hwp
+    - file: port-arrival-notice.rtf
+      type: rtf
+      size: 159865
+      save: 출입항예정통보서.rtf
+  - id: crew-list
+    ko: 승무원명부
+    name:
+      en: Crew list
+      ru: Список экипажа
+      uz: Ekipaj ro‘yxati
+      uz-cyrl: Экипаж рўйхати
+    source: hikorea
+    files:
+    - file: crew-list.pdf
+      type: pdf
+      size: 11028
+      save: 승무원명부.pdf
+    - file: crew-list.hwp
+      type: hwp
+      size: 27142
+      save: 승무원명부.hwp
+    - file: crew-list.rtf
+      type: rtf
+      size: 14210
+      save: 승무원명부.rtf
+  - id: passenger-list
+    ko: 승객명부
+    name:
+      en: Passenger list
+      ru: Список пассажиров
+      uz: Yo‘lovchilar ro‘yxati
+      uz-cyrl: Йўловчилар рўйхати
+    source: hikorea
+    files:
+    - file: passenger-list.pdf
+      type: pdf
+      size: 10866
+      save: 승객명부.pdf
+    - file: passenger-list.hwp
+      type: hwp
+      size: 26972
+      save: 승객명부.hwp
+    - file: passenger-list.rtf
+      type: rtf
+      size: 13820
+      save: 승객명부.rtf
+  - id: crew-registration-report
+    ko: 승무원등록신고서
+    name:
+      en: Crew registration report
+      ru: Уведомление о регистрации членов экипажа
+      uz: Ekipaj a’zolarini ro‘yxatga olish haqida bildirishnoma
+      uz-cyrl: Экипаж аъзоларини рўйхатга олиш ҳақида билдиришнома
+    source: hikorea
+    files:
+    - file: crew-registration-report.pdf
+      type: pdf
+      size: 63690
+      save: 승무원등록신고서.pdf
+    - file: crew-registration-report.hwp
+      type: hwp
+      size: 15872
+      save: 승무원등록신고서.hwp
+    - file: crew-registration-report.rtf
+      type: rtf
+      size: 122971
+      save: 승무원등록신고서.rtf
+  - id: ship-arrival-departure-report
+    ko: 외항선입출항보고서
+    name:
+      en: Report of a foreign ship's arrival and departure
+      ru: Отчёт о заходе и выходе иностранного судна
+      uz: Chet el kemasining kirishi va chiqishi haqida hisobot
+      uz-cyrl: Чет эл кемасининг кириши ва чиқиши ҳақида ҳисобот
+    source: hikorea
+    files:
+    - file: ship-arrival-departure-report.pdf
+      type: pdf
+      size: 106416
+      save: 외항선입출항보고서.pdf
+    - file: ship-arrival-departure-report.hwp
+      type: hwp
+      size: 29696
+      save: 외항선입출항보고서.hwp
+    - file: ship-arrival-departure-report.rtf
+      type: rtf
+      size: 455950
+      save: 외항선입출항보고서.rtf
+  - id: group-tour-list
+    ko: 단체여행객명부
+    name:
+      en: List of group tourists
+      ru: Список туристической группы
+      uz: Turistlar guruhi ro‘yxati
+      uz-cyrl: Туристлар гуруҳи рўйхати
+    source: hikorea
+    files:
+    - file: group-tour-list.pdf
+      type: pdf
+      size: 16407
+      save: 단체여행객명부.pdf
+    - file: group-tour-list.hwp
+      type: hwp
+      size: 33552
+      save: 단체여행객명부.hwp
+    - file: group-tour-list.rtf
+      type: rtf
+      size: 53159
+      save: 단체여행객명부.rtf
+  - id: chinese-group-tour-list
+    ko: 중국인단체여행객명단
+    name:
+      en: List of Chinese group tourists
+      ru: Список китайской туристической группы
+      uz: Xitoylik turistlar guruhi ro‘yxati
+      uz-cyrl: Хитойлик туристлар гуруҳи рўйхати
+    source: hikorea
+    files:
+    - file: chinese-group-tour-list.pdf
+      type: pdf
+      size: 5827
+      save: 중국인단체여행객명단.pdf
+    - file: chinese-group-tour-list.hwp
+      type: hwp
+      size: 23116
+      save: 중국인단체여행객명단.hwp
+    - file: chinese-group-tour-list.rtf
+      type: rtf
+      size: 5156
+      save: 중국인단체여행객명단.rtf
+  - id: chinese-group-tour-invitation
+    ko: 중국인단체여행객초청확인서
+    name:
+      en: Confirmation of invitation for Chinese group tourists
+      ru: Подтверждение приглашения китайской туристической группы
+      uz: Xitoylik turistlar guruhini taklif qilish tasdiqnomasi
+      uz-cyrl: Хитойлик туристлар гуруҳини таклиф қилиш тасдиқномаси
+    source: hikorea
+    files:
+    - file: chinese-group-tour-invitation.pdf
+      type: pdf
+      size: 7923
+      save: 중국인단체여행객초청확인서.pdf
+    - file: chinese-group-tour-invitation.hwp
+      type: hwp
+      size: 24045
+      save: 중국인단체여행객초청확인서.hwp
+    - file: chinese-group-tour-invitation.rtf
+      type: rtf
+      size: 9906
+      save: 중국인단체여행객초청확인서.rtf
+  - id: departure-ban-objection
+    ko: 출국금지결정등이의신청서
+    name:
+      en: Objection to a departure ban decision
+      ru: Возражение против решения о запрете выезда
+      uz: Chiqib ketishni taqiqlash qaroriga e’tiroz
+      uz-cyrl: Чиқиб кетишни тақиқлаш қарорига эътироз
+    source: hikorea
+    files:
+    - file: departure-ban-objection.pdf
+      type: pdf
+      size: 46589
+      save: 출국금지결정등이의신청서.pdf
+    - file: departure-ban-objection.hwp
+      type: hwp
+      size: 14848
+      save: 출국금지결정등이의신청서.hwp
+    - file: departure-ban-objection.doc
+      type: doc
+      size: 43520
+      save: 출국금지결정등이의신청서.doc
+  - id: departure-suspension-objection
+    ko: 출국정지결정등이의신청서
+    name:
+      en: Objection to a departure suspension decision
+      ru: Возражение против решения о приостановке выезда
+      uz: Chiqib ketishni to‘xtatish qaroriga e’tiroz
+      uz-cyrl: Чиқиб кетишни тўхтатиш қарорига эътироз
+    source: hikorea
+    files:
+    - file: departure-suspension-objection.pdf
+      type: pdf
+      size: 50353
+      save: 출국정지결정등이의신청서.pdf
+    - file: departure-suspension-objection.hwp
+      type: hwp
+      size: 15360
+      save: 출국정지결정등이의신청서.hwp
+    - file: departure-suspension-objection.doc
+      type: doc
+      size: 38912
+      save: 출국정지결정등이의신청서.doc
+  - id: smart-entry-registration
+    ko: 자동출입국 등록신청서
+    name:
+      en: Application to register for automated immigration clearance (SES)
+      ru: Заявление на регистрацию в автоматическом пограничном контроле (SES)
+      uz: Avtomatik chegara nazoratiga (SES) ro‘yxatdan o‘tish uchun ariza
+      uz-cyrl: Автоматик чегара назоратига (SES) рўйхатдан ўтиш учун ариза
+    source: hikorea
+    files:
+    - file: smart-entry-registration.pdf
+      type: pdf
+      size: 46534
+      save: 자동출입국등록신청서.pdf
+    - file: smart-entry-registration.hwp
+      type: hwp
+      size: 27648
+      save: 자동출입국등록신청서.hwp
+    - file: smart-entry-registration.doc
+      type: doc
+      size: 38912
+      save: 자동출입국등록신청서.doc
+  - id: smart-entry-cancellation
+    ko: 자동출입국 등록해지신청서
+    name:
+      en: Application to cancel automated immigration clearance registration
+      ru: Заявление об отмене регистрации в автоматическом пограничном контроле
+      uz: Avtomatik chegara nazoratidan ro‘yxatni bekor qilish uchun ariza
+      uz-cyrl: Автоматик чегара назоратидан рўйхатни бекор қилиш учун ариза
+    source: hikorea
+    files:
+    - file: smart-entry-cancellation.pdf
+      type: pdf
+      size: 39491
+      save: 자동출입국등록해지신청서.pdf
+    - file: smart-entry-cancellation.hwp
+      type: hwp
+      size: 12288
+      save: 자동출입국등록해지신청서.hwp
+    - file: smart-entry-cancellation.doc
+      type: doc
+      size: 39424
+      save: 자동출입국등록해지신청서.doc
+- ko: 난민업무 관련
+  name:
+    en: Refugees
+    ru: Беженцы
+    uz: Qochqinlar
+    uz-cyrl: Қочқинлар
+  forms:
+  - id: refugee-application
+    ko: 난민인정신청서
+    name:
+      en: Application for refugee status
+      ru: Заявление о признании беженцем
+      uz: Qochqin maqomini olish uchun ariza
+      uz-cyrl: Қочқин мақомини олиш учун ариза
+    source: hikorea
+    files:
+    - file: refugee-application.pdf
+      type: pdf
+      size: 322853
+      save: 난민인정신청서.pdf
+    - file: refugee-application.hwp
+      type: hwp
+      size: 144384
+      save: 난민인정신청서.hwp
+  - id: refugee-reapplication
+    ko: 난민인정신청서(재신청자용)
+    name:
+      en: Application for refugee status (repeat applicants)
+      ru: Заявление о признании беженцем (повторное)
+      uz: Qochqin maqomini olish uchun ariza (qayta topshiruvchilar uchun)
+      uz-cyrl: Қочқин мақомини олиш учун ариза (қайта топширувчилар учун)
+    source: hikorea
+    files:
+    - file: refugee-reapplication.pdf
+      type: pdf
+      size: 173660
+      save: 난민인정신청서(재신청자용).pdf
+    - file: refugee-reapplication.hwp
+      type: hwp
+      size: 102912
+      save: 난민인정신청서(재신청자용).hwp
+  - id: records-access-request
+    ko: 열람ㆍ복사 신청서
+    name:
+      en: Request to view or copy records
+      ru: Заявление на ознакомление и копирование материалов
+      uz: Hujjatlar bilan tanishish va nusxa olish uchun ariza
+      uz-cyrl: Ҳужжатлар билан танишиш ва нусха олиш учун ариза
+    source: hikorea
+    files:
+    - file: records-access-request.pdf
+      type: pdf
+      size: 106226
+      save: 열람ㆍ복사 신청서.pdf
+    - file: records-access-request.hwp
+      type: hwp
+      size: 67584
+      save: 열람ㆍ복사 신청서.hwp
+    - file: records-access-request.docx
+      type: docx
+      size: 26235
+      save: 열람ㆍ복사 신청서.docx
+  - id: refugee-certificate-reissue
+    ko: 난민인정증명서 재발급 신청서
+    name:
+      en: Application to reissue a refugee recognition certificate
+      ru: Заявление о повторной выдаче удостоверения беженца
+      uz: Qochqin guvohnomasini qayta berish uchun ariza
+      uz-cyrl: Қочқин гувоҳномасини қайта бериш учун ариза
+    source: hikorea
+    files:
+    - file: refugee-certificate-reissue.pdf
+      type: pdf
+      size: 130829
+      save: 난민인정증명서 재발급 신청서.pdf
+    - file: refugee-certificate-reissue.hwp
+      type: hwp
+      size: 57344
+      save: 난민인정증명서 재발급 신청서.hwp
+    - file: refugee-certificate-reissue.docx
+      type: docx
+      size: 33876
+      save: 난민인정증명서 재발급 신청서.docx
+  - id: refugee-objection
+    ko: 이의신청서
+    name:
+      en: Objection (refugee decision)
+      ru: Возражение (решение по беженству)
+      uz: E’tiroz (qochqinlik bo‘yicha qaror)
+      uz-cyrl: Эътироз (қочқинлик бўйича қарор)
+    source: hikorea
+    files:
+    - file: refugee-objection.pdf
+      type: pdf
+      size: 239591
+      save: 이의신청서.pdf
+    - file: refugee-objection.hwp
+      type: hwp
+      size: 100864
+      save: 이의신청서.hwp
+    - file: refugee-objection.docx
+      type: docx
+      size: 72843
+      save: 이의신청서.docx
+  - id: refugee-education-support
+    ko: 교육비 지원 추천 신청서
+    name:
+      en: Application for an education costs support recommendation
+      ru: Заявление на рекомендацию о поддержке расходов на образование
+      uz: Ta’lim xarajatlarini qo‘llab-quvvatlash tavsiyanomasi uchun ariza
+      uz-cyrl: Таълим харажатларини қўллаб-қувватлаш тавсияномаси учун ариза
+    source: hikorea
+    files:
+    - file: refugee-education-support.pdf
+      type: pdf
+      size: 112975
+      save: 교육비 지원 추천 신청서.pdf
+    - file: refugee-education-support.hwp
+      type: hwp
+      size: 62464
+      save: 교육비 지원 추천 신청서.hwp
+    - file: refugee-education-support.docx
+      type: docx
+      size: 30251
+      save: 교육비 지원 추천 신청서.docx
+  - id: refugee-vocational-training
+    ko: 직업훈련 추천 신청서
+    name:
+      en: Application for a vocational training recommendation
+      ru: Заявление на рекомендацию на профессиональное обучение
+      uz: Kasbiy ta’limga tavsiyanoma uchun ariza
+      uz-cyrl: Касбий таълимга тавсиянома учун ариза
+    source: hikorea
+    files:
+    - file: refugee-vocational-training.pdf
+      type: pdf
+      size: 114434
+      save: 직업훈련 추천 신청서.pdf
+    - file: refugee-vocational-training.hwp
+      type: hwp
+      size: 65024
+      save: 직업훈련 추천 신청서.hwp
+    - file: refugee-vocational-training.docx
+      type: docx
+      size: 27180
+      save: 직업훈련 추천 신청서.docx
+  - id: refugee-living-support
+    ko: 생계비 등 지원신청서
+    name:
+      en: Application for living expenses support
+      ru: Заявление о выплате пособия на проживание
+      uz: Yashash xarajatlari uchun yordam olish arizasi
+      uz-cyrl: Яшаш харажатлари учун ёрдам олиш аризаси
+    source: hikorea
+    files:
+    - file: refugee-living-support.pdf
+      type: pdf
+      size: 95175
+      save: 생계비 등 지원신청서.pdf
+    - file: refugee-living-support.hwp
+      type: hwp
+      size: 69632
+      save: 생계비 등 지원신청서.hwp
+    - file: refugee-living-support.docx
+      type: docx
+      size: 28051
+      save: 생계비 등 지원신청서.docx
+  - id: refugee-housing
+    ko: 주거시설 이용신청서
+    name:
+      en: Application to use housing facilities
+      ru: Заявление на пользование жилыми помещениями
+      uz: Turar joy binolaridan foydalanish uchun ariza
+      uz-cyrl: Турар жой биноларидан фойдаланиш учун ариза
+    source: hikorea
+    files:
+    - file: refugee-housing.pdf
+      type: pdf
+      size: 101085
+      save: 주거시설 이용신청서.pdf
+    - file: refugee-housing.hwp
+      type: hwp
+      size: 65536
+      save: 주거시설 이용신청서.hwp
+    - file: refugee-housing.docx
+      type: docx
+      size: 24597
+      save: 주거시설 이용신청서.docx
+  - id: refugee-medical-support
+    ko: 의료 지원 신청서
+    name:
+      en: Application for medical support
+      ru: Заявление о медицинской помощи
+      uz: Tibbiy yordam olish uchun ariza
+      uz-cyrl: Тиббий ёрдам олиш учун ариза
+    source: hikorea
+    files:
+    - file: refugee-medical-support.pdf
+      type: pdf
+      size: 113943
+      save: 의료 지원 신청서.pdf
+    - file: refugee-medical-support.hwp
+      type: hwp
+      size: 70144
+      save: 의료 지원 신청서.hwp
+    - file: refugee-medical-support.docx
+      type: docx
+      size: 26124
+      save: 의료 지원 신청서.docx
+  - id: refugee-support-facility
+    ko: 난민지원시설 이용신청서
+    name:
+      en: Application to use a refugee support facility
+      ru: Заявление на пользование центром поддержки беженцев
+      uz: Qochqinlarni qo‘llab-quvvatlash markazidan foydalanish uchun ariza
+      uz-cyrl: Қочқинларни қўллаб-қувватлаш марказидан фойдаланиш учун ариза
+    source: hikorea
+    files:
+    - file: refugee-support-facility.pdf
+      type: pdf
+      size: 120227
+      save: 난민지원시설 이용신청서.pdf
+    - file: refugee-support-facility.hwp
+      type: hwp
+      size: 71680
+      save: 난민지원시설 이용신청서.hwp
+    - file: refugee-support-facility.docx
+      type: docx
+      size: 28547
+      save: 난민지원시설 이용신청서.docx
+  - id: refugee-temporary-landing
+    ko: 난민임시상륙허가(기간연장) 신청서
+    name:
+      en: Application for refugee temporary landing permission (or its extension)
+      ru: Заявление на временную высадку беженца (или её продление)
+      uz: Qochqinning vaqtincha qirg‘oqqa tushishiga ruxsat (yoki uni uzaytirish) uchun ariza
+      uz-cyrl: Қочқиннинг вақтинча қирғоққа тушишига рухсат (ёки уни узайтириш) учун ариза
+    source: hikorea
+    files:
+    - file: refugee-temporary-landing.pdf
+      type: pdf
+      size: 94560
+      save: 난민임시상륙허가(기간연장) 신청서.pdf
+    - file: refugee-temporary-landing.hwp
+      type: hwp
+      size: 47104
+      save: 난민임시상륙허가(기간연장) 신청서.hwp
+    - file: refugee-temporary-landing.docx
+      type: docx
+      size: 32198
+      save: 난민임시상륙허가(기간연장) 신청서.docx
+  - id: refugee-travel-document
+    ko: 난민여행증명서 (재)발급신청서
+    name:
+      en: Application for (re)issuing a refugee travel document
+      ru: Заявление о выдаче (повторной выдаче) проездного документа беженца
+      uz: Qochqin yo‘l hujjatini berish (qayta berish) uchun ariza
+      uz-cyrl: Қочқин йўл ҳужжатини бериш (қайта бериш) учун ариза
+    source: hikorea
+    files:
+    - file: refugee-travel-document.pdf
+      type: pdf
+      size: 112182
+      save: 난민여행증명서 (재)발급신청서.pdf
+    - file: refugee-travel-document.hwp
+      type: hwp
+      size: 58880
+      save: 난민여행증명서 (재)발급신청서.hwp
+    - file: refugee-travel-document.docx
+      type: docx
+      size: 28067
+      save: 난민여행증명서 (재)발급신청서.docx
+  - id: refugee-travel-document-extension
+    ko: 난민여행증명서 유효기간 연장허가 신청서
+    name:
+      en: Application to extend a refugee travel document
+      ru: Заявление о продлении проездного документа беженца
+      uz: Qochqin yo‘l hujjati muddatini uzaytirish uchun ariza
+      uz-cyrl: Қочқин йўл ҳужжати муддатини узайтириш учун ариза
+    source: hikorea
+    files:
+    - file: refugee-travel-document-extension.pdf
+      type: pdf
+      size: 91756
+      save: 난민여행증명서 유효기간 연장허가 신청서.pdf
+    - file: refugee-travel-document-extension.hwp
+      type: hwp
+      size: 51200
+      save: 난민여행증명서 유효기간 연장허가 신청서.hwp
+    - file: refugee-travel-document-extension.docx
+      type: docx
+      size: 32297
+      save: 난민여행증명서 유효기간 연장허가 신청서.docx
+- ko: 보호 및 범칙금 관련
+  name:
+    en: Detention and fines
+    ru: Содержание под стражей и штрафы
+    uz: Saqlash va jarimalar
+    uz-cyrl: Сақлаш ва жарималар
+  forms:
+  - id: detention-release
+    ko: 보호 일시해제 신청서
+    name:
+      en: Application for temporary release from detention
+      ru: Заявление о временном освобождении из-под содержания
+      uz: Saqlashdan vaqtincha ozod qilish uchun ariza
+      uz-cyrl: Сақлашдан вақтинча озод қилиш учун ариза
+    source: hikorea
+    files:
+    - file: detention-release.pdf
+      type: pdf
+      size: 78596
+      save: 보호 일시해제 신청서.pdf
+    - file: detention-release.hwp
+      type: hwp
+      size: 135680
+      save: 보호 일시해제 신청서.hwp
+  - id: detention-objection
+    ko: 보호에대한이의신청서
+    name:
+      en: Objection to detention
+      ru: Возражение против содержания под стражей
+      uz: Saqlashga e’tiroz
+      uz-cyrl: Сақлашга эътироз
+    source: hikorea
+    files:
+    - file: detention-objection.pdf
+      type: pdf
+      size: 50049
+      save: 보호에대한이의신청서.pdf
+    - file: detention-objection.hwp
+      type: hwp
+      size: 15872
+      save: 보호에대한이의신청서.hwp
+    - file: detention-objection.rtf
+      type: rtf
+      size: 100724
+      save: 보호에대한이의신청서.rtf
+  - id: deportation-objection
+    ko: 강제퇴거명령에대한이의신청서
+    name:
+      en: Objection to a deportation order
+      ru: Возражение против решения о депортации
+      uz: Deportatsiya qaroriga e’tiroz
+      uz-cyrl: Депортация қарорига эътироз
+    source: hikorea
+    files:
+    - file: deportation-objection.pdf
+      type: pdf
+      size: 61012
+      save: 강제퇴거명령에대한이의신청서.pdf
+    - file: deportation-objection.hwp
+      type: hwp
+      size: 15872
+      save: 강제퇴거명령에대한이의신청서.hwp
+    - file: deportation-objection.rtf
+      type: rtf
+      size: 102101
+      save: 강제퇴거명령에대한이의신청서.rtf
+  - id: provisional-payment
+    ko: 임시납부신청서
+    name:
+      en: Application for provisional payment (of a fine)
+      ru: Заявление о предварительной уплате (штрафа)
+      uz: (Jarimani) oldindan to‘lash uchun ariza
+      uz-cyrl: (Жаримани) олдиндан тўлаш учун ариза
+    source: hikorea
+    files:
+    - file: provisional-payment.pdf
+      type: pdf
+      size: 56109
+      save: 임시납부신청서.pdf
+    - file: provisional-payment.hwp
+      type: hwp
+      size: 14848
+      save: 임시납부신청서.hwp
+    - file: provisional-payment.rtf
+      type: rtf
+      size: 79883
+      save: 임시납부신청서.rtf
+- ko: 기타
+  name:
+    en: Other
+    ru: Другое
+    uz: Boshqa
+    uz-cyrl: Бошқа
+  forms:
+  - id: migrant-network-membership
+    ko: 이민자 네트워크 회원 가입·탈퇴 신청서
+    name:
+      en: Application to join or leave the Migrant Network
+      ru: Заявление о вступлении в сеть мигрантов или выходе из неё
+      uz: Muhojirlar tarmog‘iga a’zo bo‘lish yoki chiqish uchun ariza
+      uz-cyrl: Муҳожирлар тармоғига аъзо бўлиш ёки чиқиш учун ариза
+    source: hikorea
+    files:
+    - file: migrant-network-membership.hwp
+      type: hwp
+      size: 49152
+      save: 이민자 네트워크 회원 가입·탈퇴 신청서.hwp
+  - id: hikorea-password
+    ko: 하이코리아 비밀번호 신청양식
+    name:
+      en: HiKorea password request form
+      ru: Форма запроса пароля HiKorea
+      uz: HiKorea parolini so‘rash shakli
+      uz-cyrl: HiKorea паролини сўраш шакли
+    source: hikorea
+    files:
+    - file: hikorea-password.pdf
+      type: pdf
+      size: 92764
+      save: 비밀번호신청양식.pdf
+    - file: hikorea-password.hwp
+      type: hwp
+      size: 32768
+      save: 비밀번호신청양식.hwp
+    - file: hikorea-password.doc
+      type: doc
+      size: 41472
+      save: 비밀번호신청양식.doc
+  - id: agent-designation
+    ko: 출입국민원 대리인지정 신청서
+    name:
+      en: Application to designate an agent for immigration matters
+      ru: Заявление о назначении представителя по иммиграционным делам
+      uz: Immigratsiya ishlari bo‘yicha vakil tayinlash uchun ariza
+      uz-cyrl: Иммиграция ишлари бўйича вакил тайинлаш учун ариза
+    source: hikorea
+    files:
+    - file: agent-designation.pdf
+      type: pdf
+      size: 389483
+      save: 출입국민원대리인지정신청서.pdf
+    - file: agent-designation.hwp
+      type: hwp
+      size: 176128
+      save: 출입국민원대리인지정신청서.hwp
+    - file: agent-designation.rtf
+      type: rtf
+      size: 1700972
+      save: 출입국민원대리인지정신청서.rtf
+  - id: real-estate-registration-number-issue
+    ko: 외국인부동산등기용등록번호발급신청서
+    name:
+      en: Application for a real-estate registration number for foreigners (issue)
+      ru: Заявление о выдаче регистрационного номера иностранца для регистрации недвижимости
+      uz: Ko‘chmas mulkni ro‘yxatga olish uchun chet ellik raqamini berish arizasi
+      uz-cyrl: Кўчмас мулкни рўйхатга олиш учун чет эллик рақамини бериш аризаси
+    source: hikorea
+    files:
+    - file: real-estate-registration-number-issue.pdf
+      type: pdf
+      size: 58061
+      save: 외국인부동산등기용등록번호발급신청서.pdf
+    - file: real-estate-registration-number-issue.hwp
+      type: hwp
+      size: 67584
+      save: 외국인부동산등기용등록번호발급신청서.hwp
+  - id: real-estate-registration-number-assign
+    ko: 외국인부동산등기용등록번호부여신청서
+    name:
+      en: Application for a real-estate registration number for foreigners (assignment)
+      ru: Заявление о присвоении регистрационного номера иностранца для регистрации недвижимости
+      uz: Ko‘chmas mulkni ro‘yxatga olish uchun chet ellik raqamini biriktirish arizasi
+      uz-cyrl: Кўчмас мулкни рўйхатга олиш учун чет эллик рақамини бириктириш аризаси
+    source: hikorea
+    files:
+    - file: real-estate-registration-number-assign.pdf
+      type: pdf
+      size: 66604
+      save: 외국인부동산등기용등록번호부여신청서.pdf
+    - file: real-estate-registration-number-assign.hwp
+      type: hwp
+      size: 71680
+      save: 외국인부동산등기용등록번호부여신청서.hwp
+  - id: h2-agency-registration
+    ko: 방문취업(H-2) 대리업무 등록신청서 및 각서
+    name:
+      en: Application and pledge for H-2 agency registration
+      ru: Заявление и обязательство о регистрации агентства для H-2
+      uz: H-2 bo‘yicha agentlikni ro‘yxatga olish uchun ariza va majburiyatnoma
+      uz-cyrl: H-2 бўйича агентликни рўйхатга олиш учун ариза ва мажбуриятнома
+    source: hikorea
+    files:
+    - file: h2-agency-registration.pdf
+      type: pdf
+      size: 235134
+      save: 대리업무등록신청서및각서.pdf
+    - file: h2-agency-registration.hwp
+      type: hwp
+      size: 13312
+      save: 대리업무등록신청서및각서.hwp
+    - file: h2-agency-registration.rtf
+      type: rtf
+      size: 66428
+      save: 대리업무등록신청서및각서.rtf
+  - id: fact-certificate-request
+    ko: 사실증명 발급·열람 신청서
+    name:
+      en: Application to issue or view a certificate of facts
+      ru: Заявление о выдаче справки о фактах или ознакомлении с ней
+      uz: Faktlar haqida ma’lumotnoma olish yoki u bilan tanishish uchun ariza
+      uz-cyrl: Фактлар ҳақида маълумотнома олиш ёки у билан танишиш учун ариза
+    source: hikorea
+    files:
+    - file: fact-certificate-request.pdf
+      type: pdf
+      size: 134443
+      save: 사실증명발급·열람신청서.pdf
+    - file: fact-certificate-request.hwp
+      type: hwp
+      size: 103936
+      save: 사실증명발급·열람신청서.hwp
+  - id: f41-employer-recommendation
+    ko: 재외동포(F-4-1) 자격변경 고용주 추천서
+    name:
+      en: Employer recommendation for a change to Overseas Korean (F-4-1)
+      ru: Рекомендация работодателя для смены статуса на F-4-1
+      uz: F-4-1 maqomiga o‘tish uchun ish beruvchi tavsiyanomasi
+      uz-cyrl: F-4-1 мақомига ўтиш учун иш берувчи тавсияномаси
+    source: hikorea
+    files:
+    - file: f41-employer-recommendation.pdf
+      type: pdf
+      size: 71503
+      save: 고용주추천서.pdf
+    - file: f41-employer-recommendation.hwp
+      type: hwp
+      size: 25088
+      save: 고용주추천서.hwp
+    - file: f41-employer-recommendation.rtf
+      type: rtf
+      size: 79359
+      save: 고용주추천서.rtf
+  - id: residence-report-certificate-request
+    ko: 국내거소신고 사실증명 발급ㆍ열람 신청서
+    name:
+      en: Application to issue or view a certificate of domestic residence report
+      ru: Заявление о выдаче справки об уведомлении о проживании в Корее или ознакомлении с ней
+      uz: Koreyada yashash joyi haqida bildirishnoma ma’lumotnomasini olish yoki u bilan tanishish uchun ariza
+      uz-cyrl: Кореяда яшаш жойи ҳақида билдиришнома маълумотномасини олиш ёки у билан танишиш учун ариза
+    source: hikorea
+    files:
+    - file: residence-report-certificate-request.pdf
+      type: pdf
+      size: 149206
+      save: 국내거소신고사실발급·열람신청서(위임장).pdf
+    - file: residence-report-certificate-request.hwp
+      type: hwp
+      size: 97792
+      save: 국내거소신고사실발급·열람신청서(위임장).hwp
+  - id: employment-reason-form
+    ko: 고용사유서(활용계획서) 양식(예시)
+    name:
+      en: Statement of reasons for employment (employment plan) – sample
+      ru: Обоснование найма (план использования) – образец
+      uz: Ishga olish sabablari (foydalanish rejasi) – namuna
+      uz-cyrl: Ишга олиш сабаблари (фойдаланиш режаси) – намуна
+    source: hikorea
+    files:
+    - file: employment-reason-form.pdf
+      type: pdf
+      size: 95103
+      save: 고용사유서.pdf
+    - file: employment-reason-form.hwp
+      type: hwp
+      size: 49152
+      save: 고용사유서.hwp
+    - file: employment-reason-form.docx
+      type: docx
+      size: 17255
+      save: 고용사유서.docx
+  - id: e2-medical-examination
+    ko: 회화지도(E-2) 채용신체검사서
+    name:
+      en: Medical examination for employment (E-2 conversation instructors)
+      ru: Медицинское заключение для трудоустройства (преподаватели разговорного языка E-2)
+      uz: Ishga qabul qilish uchun tibbiy ko‘rik (E-2 suhbat o‘qituvchilari)
+      uz-cyrl: Ишга қабул қилиш учун тиббий кўрик (E-2 суҳбат ўқитувчилари)
+    source: hikorea
+    files:
+    - file: e2-medical-examination.pdf
+      type: pdf
+      size: 37559
+      save: 채용신체검서.pdf
+    - file: e2-medical-examination.hwp
+      type: hwp
+      size: 16384
+      save: 채용신체검서.hwp
+    - file: e2-medical-examination.rtf
+      type: rtf
+      size: 66861
+      save: 채용신체검서.rtf
+  - id: medical-institution-designation
+    ko: 채용신체검사의료기관 지정신청서
+    name:
+      en: Application to designate a medical institution for employment examinations
+      ru: Заявление о назначении медучреждения для медосмотров при трудоустройстве
+      uz: Ishga qabul qilish tibbiy ko‘rigi uchun tibbiyot muassasasini tayinlash arizasi
+      uz-cyrl: Ишга қабул қилиш тиббий кўриги учун тиббиёт муассасасини тайинлаш аризаси
+    source: hikorea
+    files:
+    - file: medical-institution-designation.pdf
+      type: pdf
+      size: 47370
+      save: 지정추천서.pdf
+    - file: medical-institution-designation.hwp
+      type: hwp
+      size: 43008
+      save: 지정추천서.hwp
+    - file: medical-institution-designation.doc
+      type: doc
+      size: 45568
+      save: 지정추천서.doc
+  - id: h2-health-certificate
+    ko: 방문취업(H-2)자용 건강진단서
+    name:
+      en: Health certificate for H-2 visiting workers
+      ru: Медицинская справка для H-2
+      uz: H-2 uchun sog‘liq haqida ma’lumotnoma
+      uz-cyrl: H-2 учун соғлиқ ҳақида маълумотнома
+    source: hikorea
+    files:
+    - file: h2-health-certificate.pdf
+      type: pdf
+      size: 40606
+      save: 방문취업(H-2)자용 건강진단서.pdf
+    - file: h2-health-certificate.hwp
+      type: hwp
+      size: 15360
+      save: 방문취업(H-2)자용 건강진단서.hwp
+    - file: h2-health-certificate.doc
+      type: doc
+      size: 41984
+      save: 방문취업(H-2)자용 건강진단서.doc
+  - id: e9-e10-drug-test
+    ko: 비전문취업(E-9),선원취업(E-10) 마약검사확인서
+    name:
+      en: Drug test confirmation (E-9, E-10)
+      ru: Подтверждение теста на наркотики (E-9, E-10)
+      uz: Giyohvand moddalar testi tasdiqnomasi (E-9, E-10)
+      uz-cyrl: Гиёҳванд моддалар тести тасдиқномаси (E-9, E-10)
+    source: hikorea
+    files:
+    - file: e9-e10-drug-test.pdf
+      type: pdf
+      size: 61694
+      save: 마약검사서.pdf
+    - file: e9-e10-drug-test.hwp
+      type: hwp
+      size: 15872
+      save: 마약검사서.hwp
+    - file: e9-e10-drug-test.doc
+      type: doc
+      size: 41984
+      save: 마약검사서.doc
+  - id: treatment-pledge
+    ko: 치료예정서약서
+    name:
+      en: Pledge to undergo treatment
+      ru: Обязательство пройти лечение
+      uz: Davolanishdan o‘tish majburiyatnomasi
+      uz-cyrl: Даволанишдан ўтиш мажбуриятномаси
+    source: hikorea
+    files:
+    - file: treatment-pledge.pdf
+      type: pdf
+      size: 30073
+      save: 치료예정서약서.pdf
+    - file: treatment-pledge.hwp
+      type: hwp
+      size: 16384
+      save: 치료예정서약서.hwp
+    - file: treatment-pledge.doc
+      type: doc
+      size: 33280
+      save: 치료예정서약서.doc
+  - id: immigration-agency-forms
+    ko: 출입국민원대행기관관련서식
+    name:
+      en: Forms for immigration filing agencies
+      ru: Формы для агентств по иммиграционным делам
+      uz: Immigratsiya ishlari agentliklari uchun shakllar
+      uz-cyrl: Иммиграция ишлари агентликлари учун шакллар
+    source: hikorea
+    files:
+    - file: immigration-agency-forms.pdf
+      type: pdf
+      size: 174254
+      save: 출입국민원대행기관관련서식.pdf
+    - file: immigration-agency-forms.hwp
+      type: hwp
+      size: 32256
+      save: 출입국민원대행기관관련서식.hwp
+    - file: immigration-agency-forms.docx
+      type: docx
+      size: 32379
+      save: 출입국민원대행기관관련서식.docx
+  - id: translator-confirmation
+    ko: 번역자확인서
+    name:
+      en: Translator's confirmation
+      ru: Подтверждение переводчика
+      uz: Tarjimon tasdiqnomasi
+      uz-cyrl: Таржимон тасдиқномаси
+    source: hikorea
+    files:
+    - file: translator-confirmation.pdf
+      type: pdf
+      size: 84345
+      save: 번역자확인서(최종).pdf
+    - file: translator-confirmation.hwp
+      type: hwp
+      size: 81920
+      save: 번역자확인서(최종).hwp
+    - file: translator-confirmation.docx
+      type: docx
+      size: 17649
+      save: 번역자 확인서(최종).docx
+  - id: foreign-researcher-confirmation
+    ko: 외국인 연구생 확인서
+    name:
+      en: Confirmation for a foreign research student
+      ru: Подтверждение для иностранного стажёра-исследователя
+      uz: Chet ellik tadqiqotchi-stajyor uchun tasdiqnoma
+      uz-cyrl: Чет эллик тадқиқотчи-стажёр учун тасдиқнома
+    source: hikorea
+    files:
+    - file: foreign-researcher-confirmation.pdf
+      type: pdf
+      size: 75268
+      save: 외국인연구생확인서.pdf
+    - file: foreign-researcher-confirmation.hwp
+      type: hwp
+      size: 107008
+      save: 외국인연구생확인서.hwp
+    - file: foreign-researcher-confirmation.docx
+      type: docx
+      size: 19332
+      save: 외국인연구생확인서.docx
+  - id: performance-venue-confirmation
+    ko: 공연장소 시설현황 확인서
+    name:
+      en: Confirmation of performance venue facilities
+      ru: Подтверждение оснащения места выступлений
+      uz: Chiqish joyi jihozlari haqida tasdiqnoma
+      uz-cyrl: Чиқиш жойи жиҳозлари ҳақида тасдиқнома
+    source: hikorea
+    files:
+    - file: performance-venue-confirmation.pdf
+      type: pdf
+      size: 50276
+      save: 공연장소 시설현황 확인서.pdf
+    - file: performance-venue-confirmation.hwp
+      type: hwp
+      size: 12800
+      save: 공연장소 시설현황 확인서.hwp
+    - file: performance-venue-confirmation.docx
+      type: docx
+      size: 8683
+      save: 공연장소 시설현황 확인서.docx
+  - id: tech-startup-plan
+    ko: 기술창업계획서
+    name:
+      en: Technology start-up plan
+      ru: План технологического стартапа
+      uz: Texnologik startap rejasi
+      uz-cyrl: Технологик стартап режаси
+    source: hikorea
+    files:
+    - file: tech-startup-plan.pdf
+      type: pdf
+      size: 127852
+      save: 기술창업계획서.pdf
+    - file: tech-startup-plan.hwp
+      type: hwp
+      size: 67072
+      save: 기술창업계획서.hwp
+    - file: tech-startup-plan.docx
+      type: docx
+      size: 21649
+      save: 기술창업계획서.docx
+  - id: working-holiday-plan
+    ko: 관광취업 활동계획서
+    name:
+      en: Working holiday activity plan
+      ru: План деятельности по программе Working Holiday
+      uz: Working Holiday faoliyati rejasi
+      uz-cyrl: Working Holiday фаолияти режаси
+    source: hikorea
+    files:
+    - file: working-holiday-plan.pdf
+      type: pdf
+      size: 52633
+      save: 관광취업활동계획서.pdf
+    - file: working-holiday-plan.hwp
+      type: hwp
+      size: 17408
+      save: 관광취업활동계획서.hwp
+    - file: working-holiday-plan.doc
+      type: doc
+      size: 61440
+      save: 관광취업홀동계획서.doc
+  - id: short-stay-lodging-report
+    ko: 단기체류 외국인 숙박신고서
+    name:
+      en: Lodging report for short-stay foreigners
+      ru: Уведомление о проживании краткосрочно пребывающих иностранцев
+      uz: Qisqa muddatga kelgan chet elliklarning yashash joyi haqida bildirishnoma
+      uz-cyrl: Қисқа муддатга келган чет элликларнинг яшаш жойи ҳақида билдиришнома
+    source: hikorea
+    files:
+    - file: short-stay-lodging-report.pdf
+      type: pdf
+      size: 70182
+      save: 단기체류 외국인 숙박신고서.pdf
+    - file: short-stay-lodging-report.hwp
+      type: hwp
+      size: 17920
+      save: 단기체류 외국인 숙박신고서.hwp
+    - file: short-stay-lodging-report.rtf
+      type: rtf
+      size: 79360
+      save: 단기체류 외국인 숙박신고서.rtf
+  - id: e10-health-certificate
+    ko: 선원취업(E-10) 건강진단서
+    name:
+      en: Health certificate for seafarers (E-10)
+      ru: Медицинская справка для моряков (E-10)
+      uz: Dengizchilar uchun sog‘liq haqida ma’lumotnoma (E-10)
+      uz-cyrl: Денгизчилар учун соғлиқ ҳақида маълумотнома (E-10)
+    source: hikorea
+    files:
+    - file: e10-health-certificate.pdf
+      type: pdf
+      size: 70255
+      save: 채용신체검서.pdf
+    - file: e10-health-certificate.hwp
+      type: hwp
+      size: 75776
+      save: 채용신체검서.hwp
+    - file: e10-health-certificate.rtf
+      type: rtf
+      size: 190821
+      save: 채용신체검서.rtf
+  - id: power-of-attorney
+    ko: 위임장
+    name:
+      en: Power of attorney
+      ru: Доверенность
+      uz: Ishonchnoma
+      uz-cyrl: Ишончнома
+    source: hikorea
+    files:
+    - file: power-of-attorney.pdf
+      type: pdf
+      size: 38713
+      save: 위임장.pdf
+    - file: power-of-attorney.hwp
+      type: hwp
+      size: 37376
+      save: 위임장.hwp
+    - file: power-of-attorney.docx
+      type: docx
+      size: 15189
+      save: 위임장.docx
+  - id: non-residence-confirmation
+    ko: 외국인 미거주 사실 확인서
+    name:
+      en: Confirmation that a foreigner does not live at the address
+      ru: Подтверждение непроживания иностранца по адресу
+      uz: Chet ellikning manzilda yashamasligi haqida tasdiqnoma
+      uz-cyrl: Чет элликнинг манзилда яшамаслиги ҳақида тасдиқнома
+    source: hikorea
+    files:
+    - file: non-residence-confirmation.hwp
+      type: hwp
+      size: 49152
+      save: 외국인 미거주 사실 확인서.hwp
+  - id: fact-certificate-reservation
+    ko: 출입국에 관한 사실증명 발급 사전예약 신청서
+    name:
+      en: Advance booking for a certificate of immigration facts
+      ru: Предварительная запись на получение справки о пересечении границы
+      uz: Chegaradan o‘tish faktlari haqida ma’lumotnoma olish uchun oldindan yozilish arizasi
+      uz-cyrl: Чегарадан ўтиш фактлари ҳақида маълумотнома олиш учун олдиндан ёзилиш аризаси
+    source: hikorea
+    files:
+    - file: fact-certificate-reservation.pdf
+      type: pdf
+      size: 47318
+      save: 출입국에 관한 사실증명 발급 사전예약 신청서.pdf
+    - file: fact-certificate-reservation.hwp
+      type: hwp
+      size: 55296
+      save: 출입국에 관한 사실증명 발급 사전예약 신청서.hwp
+  - id: human-rights-council-review
+    ko: 외국인 인권보호 및 권익증진협의회 심의 신청서
+    name:
+      en: Application for review by the council for foreigners' human rights
+      ru: Заявление на рассмотрение советом по защите прав иностранцев
+      uz: Chet elliklar huquqlarini himoya qilish kengashi ko‘rib chiqishi uchun ariza
+      uz-cyrl: Чет элликлар ҳуқуқларини ҳимоя қилиш кенгаши кўриб чиқиши учун ариза
+    source: hikorea
+    files:
+    - file: human-rights-council-review.hwp
+      type: hwp
+      size: 71168
+      save: 외국인 인권보호 및 권익증진협의회 심의 신청서.hwp
+  - id: wage-arrears-insurance-pledge
+    ko: 임금체불 보증보험 가입 확약서
+    name:
+      en: Pledge to take out wage arrears guarantee insurance
+      ru: Обязательство оформить страхование от задержки зарплаты
+      uz: Ish haqi kechiktirilishidan sug‘urta qilish majburiyatnomasi
+      uz-cyrl: Иш ҳақи кечиктирилишидан суғурта қилиш мажбуриятномаси
+    source: hikorea
+    files:
+    - file: wage-arrears-insurance-pledge.pdf
+      type: pdf
+      size: 53694
+      save: 임금체불 보증보험 가입 확약서.pdf
+    - file: wage-arrears-insurance-pledge.hwp
+      type: hwp
+      size: 33280
+      save: 임금체불 보증보험 가입 확약서.hwp
+  - id: farm-fishery-safety-insurance-pledge
+    ko: 농어업인안전보험 가입 확약서
+    name:
+      en: Pledge to take out farmers' and fishers' safety insurance
+      ru: Обязательство оформить страхование безопасности фермеров и рыбаков
+      uz: Fermerlar va baliqchilar xavfsizligi sug‘urtasini rasmiylashtirish majburiyatnomasi
+      uz-cyrl: Фермерлар ва балиқчилар хавфсизлиги суғуртасини расмийлаштириш мажбуриятномаси
+    source: hikorea
+    files:
+    - file: farm-fishery-safety-insurance-pledge.pdf
+      type: pdf
+      size: 59192
+      save: 농어업인안전보험 가입 확약서.pdf
+    - file: farm-fishery-safety-insurance-pledge.hwp
+      type: hwp
+      size: 36352
+      save: 농어업인안전보험 가입 확약서.hwp
+  - id: stay-confirmation-request
+    ko: 외국인체류확인서 열람 또는 교부 신청서
+    name:
+      en: Application to view or issue a foreigner's stay confirmation
+      ru: Заявление об ознакомлении с подтверждением пребывания иностранца или его выдаче
+      uz: Chet ellikning qolganligi haqida tasdiqnoma bilan tanishish yoki uni olish uchun ariza
+      uz-cyrl: Чет элликнинг қолганлиги ҳақида тасдиқнома билан танишиш ёки уни олиш учун ариза
+    source: hikorea
+    files:
+    - file: stay-confirmation-request.pdf
+      type: pdf
+      size: 64391
+      save: 외국인체류확인서 열람 또는 교부 신청서.pdf
+    - file: stay-confirmation-request.hwp
+      type: hwp
+      size: 58368
+      save: 외국인체류확인서 열람 또는 교부 신청서.hwp
+  - id: stay-confirmation-bulk-request
+    ko: 외국인체류확인서 열람 또는 교부 일괄신청서
+    name:
+      en: Bulk application to view or issue foreigners' stay confirmations
+      ru: Пакетное заявление об ознакомлении с подтверждениями пребывания иностранцев или их выдаче
+      uz: Chet elliklarning qolganligi haqida tasdiqnomalar bilan tanishish yoki ularni olish uchun umumiy ariza
+      uz-cyrl: Чет элликларнинг қолганлиги ҳақида тасдиқномалар билан танишиш ёки уларни олиш учун умумий ариза
+    source: hikorea
+    files:
+    - file: stay-confirmation-bulk-request.pdf
+      type: pdf
+      size: 40709
+      save: 외국인체류확인서 열람 또는 교부 일괄신청서.pdf
+    - file: stay-confirmation-bulk-request.hwp
+      type: hwp
+      size: 37888
+      save: 외국인체류확인서 열람 또는 교부 일괄신청서.hwp
+- ko: 고용허가제
+  name:
+    en: Employment Permit System (E-9)
+    ru: Система разрешений на работу (E-9)
+    uz: Ishga ruxsat tizimi (E-9)
+    uz-cyrl: Ишга рухсат тизими (E-9)
+  forms:
+  - id: eps-standard-labour-contract
+    ko: '[별지 제6호서식] 표준근로계약서'
+    name:
+      en: Standard labour contract (form 6, Korean and English)
+      ru: Стандартный трудовой договор (форма 6, на корейском и английском)
+      uz: Standart mehnat shartnomasi (6-shakl, koreys va ingliz tillarida)
+      uz-cyrl: Стандарт меҳнат шартномаси (6-шакл, корейс ва инглиз тилларида)
+    source: eps
+    files:
+    - file: eps-standard-labour-contract.hwp
+      type: hwp
+      size: 25600
+      save: '[별지 제6호서식] 표준근로계약서.hwp'
+    - file: eps-standard-labour-contract-uz.pdf
+      type: pdf
+      size: 249511
+      save: 표준근로계약서(제조업, 건설업, 서비스업)_우즈벡.pdf
+      note:
+        en: Uzbek translation, 2020
+        ru: перевод на узбекский, 2020
+        uz: o‘zbekcha tarjima, 2020
+        uz-cyrl: ўзбекча таржима, 2020
+catalog:
+  applicationForm:
+    korea: integrated-application
+  applicationFormForm34: integrated-application
+  applicationFormForm342: integrated-application
+  applicationFormForm343: integrated-application
+  applicationFormForm344: integrated-application
+  applicationFormForm345: integrated-application
+  ccviApplicationForm: ccvi-application
+  ccviApplicationFormForm21: ccvi-application
+  confirmationOfHousingAccommodationProvid: accommodation-confirmation-en
+  copyOfEmploymentPermitAndStandardLabourC: eps-standard-labour-contract
+  copyOfStandardLabourContract: eps-standard-labour-contract
+  employerRecommendationAnnexFormAndCopyOf: e74-company-recommendation
+  employerSRecommendationAttachment9FormAn: e74-company-recommendation
+  f5ApplicantBasicInformationForm: f5-basic-information
+  foreignSpouseSStatementOfMarriageBackgro: spouse-marriage-background
+  foreignerOccupationReportForm: occupation-report
+  industrialAccidentInsuranceEnrolmentCert: farm-fishery-safety-insurance-pledge
+  integratedApplicationForm: integrated-application
+  integratedApplicationFormForm34: integrated-application
+  integratedApplicationFormForm342: integrated-application
+  integratedApplicationFormForm343: integrated-application
+  integratedApplicationFormWithRevenueStam: integrated-application
+  invitationLetterForTheForeignSpouse: spouse-invitation
+  invitationLetterPlanForUsingTheForeignWo: employment-reason-form
+  inviterSLetterOfGuarantee: letter-of-guarantee-ko
+  jobSeekingActivityPlanAttachment6Form: d10-job-seeking-plan
+  jobSeekingPlan: d10-job-seeking-plan
+  jobSeekingPlanAnnex3: d10-job-seeking-plan
+  leaseAccommodationConfirmationSignedByTh: accommodation-confirmation-en
+  letterOfGuarantee: letter-of-guarantee-ko
+  letterOfGuaranteeE62Only: letter-of-guarantee-ko
+  letterOfGuaranteeEtc: letter-of-guarantee-ko
+  letterOfGuaranteeForm129: letter-of-guarantee-ko
+  letterOfGuaranteeForm1292: letter-of-guarantee-ko
+  letterOfGuaranteeFromThatParentSSpouse: letter-of-guarantee-ko
+  letterOfGuaranteeFromTheKoreanParent: letter-of-guarantee-ko
+  letterOfGuaranteeFromTheKoreanParentWhoH: letter-of-guarantee-ko
+  letterOfGuaranteeFromTheSpouseInKoreaThe: letter-of-guarantee-ko
+  letterOfGuaranteeIfTheGuaranteePeriodHas: letter-of-guarantee-ko
+  letterOfGuaranteeMayBeOmittedIfTheExisti: letter-of-guarantee-ko
+  letterOfGuaranteeOrProofOfFundsBalanceCe: letter-of-guarantee-ko
+  occupationAndAnnualIncomeReportTickOccup: occupation-report
+  originalLetterOfGuarantee: letter-of-guarantee-ko
+  originalLetterOfGuaranteeOnlyForTheOccup: letter-of-guarantee-ko
+  overseasKoreanF4IntegratedApplicationFor: f4-integrated-application
+  overseasKoreanIntegratedApplicationFormF: f4-integrated-application
+  personalStatementAnnexForm: e74-personal-statement
+  pledgeByTheBusinessOperatorEmployerAndTh: employer-applicant-pledge
+  pledgeByTheEmployerAndTheApplicant: employer-applicant-pledge
+  pledgeNotToWork: non-employment-pledge
+  pointsSelfAssessmentSheetAnnexForm: e74-self-assessment
+  powerOfAttorney: power-of-attorney
+  preEmploymentMedicalCheckCertificate: e2-medical-examination
+  proofOfAddressLeaseAccommodationProvisio: accommodation-confirmation-en
+  proofOfPlaceOfStayLeaseAccommodationConf: accommodation-confirmation-en
+  proofOfPlaceOfStayLeaseRealEstateRegiste: accommodation-confirmation-en
+  proofOfResidenceLeaseContractAccommodati: accommodation-confirmation-en
+  proofOfTheNeedToHireAForeignerInvitation: employment-reason-form
+  proofOfTheResearchProgramPresidentSResea: foreign-researcher-confirmation
+  proofOfWorkingOrBeingDueToWorkInTheField: eps-standard-labour-contract
+  residenceAccommodationProvisionConfirmat: accommodation-confirmation-en
+  selfHealthCheckStatementFormRevised20180: e2-self-health-check
+  standardEmploymentContract: eps-standard-labour-contract
+  statementOfMarriageBackground: spouse-marriage-background
+  statementOfMarriageBackgroundAttachment2: spouse-marriage-background
+  statementOfReasonForInvitation: employment-reason-form
+  statementOfReasonsForExtendingTheTrainin: d3-extension-reason
+  statementOfTheInviterSFamilyIncome: spouse-inviter-family-income
+  techStartUpPlan: tech-startup-plan
+  technologyStartUpActivityPlan: tech-startup-plan
+  visaApplicationForm: visa-application
+  visaApplicationForm2: visa-application
+  visaApplicationFormForm17: visa-application
+  visaOrCcviApplicationForm: visa-application
+  workingHolidayActivityPlan: working-holiday-plan

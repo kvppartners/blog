@@ -44,11 +44,16 @@
 {{- $statuses := dict }}
 {{- range $k, $v := $vm.statuses }}{{ $statuses = merge $statuses (dict $k (index $v $lang | default $v.en)) }}{{ end }}
 {{- $docs := partial "localize.html" (dict "value" $vd "lang" $lang) }}
+{{- /* Documents that are one of the Archive page's forms link there, once that page is published. */}}
+{{- $archive := dict }}
+{{- with site.GetPage "/archive" }}
+{{- $archive = dict "url" .RelPermalink "title" .Title "forms" (hugo.Data.archive.catalog | default dict) }}
+{{- end }}
 {{- $pageData := dict "visas" $visas "statuses" $statuses "groups" $vm.groups
     "countries" (index hugo.Data.countries $lang | default hugo.Data.countries.en)
     "docs" ($docs.docs | default dict) "targets" ($docs.targets | default dict) "fees" ($docs.fees | default dict)
     "sources" ($docs.sources | default dict) "within" ($docs.within | default dict)
-    "exceptions" ($docs.exceptions | default dict)
+    "exceptions" ($docs.exceptions | default dict) "archive" $archive
     "updated" ($vd.updated | default "") }}
 
 {{- $logo := "" }}
