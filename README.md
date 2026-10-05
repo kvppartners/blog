@@ -53,6 +53,7 @@ above keeps building `main`. The test site:
 
 - shows draft pages too (`--buildDrafts`), so a page with `draft: true` can be tested
   there while the main site leaves it out;
+- asks for a login (Cloudflare Access, step 8 below);
 - tells search engines not to index it (Hugo builds it as the `dev` environment, so pages
   get `noindex`);
 - has its own database (`kvp-blog-dev`, `env.dev` in `wrangler.jsonc`), so test reactions
@@ -88,6 +89,19 @@ One-time setup (after the production setup above):
        the test site should show where to get each document
 7. On the production Worker (**kvp-blog → Settings → Build → Branch control**), keep the
    branch `main` and turn preview builds off, so pushes to `dev` build only the test site.
+8. Login for the test site, with Cloudflare Access (no code; the main site stays open):
+   - **Zero Trust** (left menu of the dashboard): the first time, choose a team name and the
+     **Free** plan. It asks for payment details but charges nothing.
+   - **Zero Trust → Access controls → Applications → Create new application → Self-hosted
+     and private → Add public hostname:** `dev.kvppartners.com`.
+   - Policy: **Allow**, include **Emails** with the addresses that may open the test site.
+   - Login methods: the **Cloudflare** login (your Cloudflare account) is the default for new
+     Zero Trust accounts and lets in only members of your Cloudflare account. For people
+     without one, add **Zero Trust → Integrations → Identity providers → Add new identity
+     provider → One-time PIN** and select it in the application: they type their email and
+     get a code.
+   - `workers_dev` and `preview_urls` are off for `env.dev` in `wrangler.jsonc`, so the test
+     Worker has no other public address that would skip the login.
 
 From then on:
 
