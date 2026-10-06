@@ -110,9 +110,7 @@ Mana shu kutilmagan vaziyat sodir bo'ldi. Men o'zim hisoblab borgan point qog'oz
 Birdan hayolimga keldi, axir menda 1.4mln jarima bor edi. Demak menda hozirgi bal 75 va bu F-2 uchun yetarli emas. Men E-7 uchun hujjatni tayyorlashni boshladim. Hodim esa hali tugatmagan edi.
 Yana bir ikkita hujjatlarni ko'zdan kechirib yana ballarga qaytdi va +15 yozdi. Bunga men hayron bo'ldim. 
 
----
-Keyinroq tushindim, bunga sabab yaqindagina yangilangan "top 1%" universitetlar ro'yhatiga men tamomlagan universitet ham qo'shilib qolgani ekan. Shunda men Koreyadagi top 1% universitetlardan birini tamomlaganman va buni uchun +15 bal olaman. 
----
+++Keyinroq tushindim++, bunga sabab yaqindagina yangilangan "top 1%" universitetlar ro'yhatiga men tamomlagan universitet ham qo'shilib qolgani ekan. Shunda men Koreyadagi top 1% universitetlardan birini tamomlaganman va buni uchun +15 bal olaman. 
 
 Shunday qilib, umumiy bal 90 bo'ldi va menga F-2 visa 2 yil muddatga berildi. Lekin 2 yilga yetib bormadi, hali 1 yil ham oxiriga yetmasdan F-5 visaga almashtirishga erishdim.
 
