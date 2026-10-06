@@ -108,7 +108,7 @@ And then the unexpected happened. The officer looked over the points sheet I had
 It hit me at once: of course, I had that 1.4 million fine. So my score now stood at 75, and that is not enough for the F-2. I started getting the E-7 documents ready. But the officer was not finished.
 They looked through a couple more documents, went back to the points and wrote +15. That surprised me.
 
-++I understood later++: my own university had just been added to the newly updated list of "top 1%" universities. Which makes me a graduate of one of Korea's top 1% universities, and that is worth +15 points.
+++I understood later++: the university I graduated had just been added to the newly updated list of "top 1%" universities. Which makes me a graduate of one of Korea's top 1% universities, and that is worth +15 points.
 
 So the total came to 90, and I was given the F-2 visa for two years. It did not last two years, though. Before even the first year was out, I had managed to switch to the F-5.
 
