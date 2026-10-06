@@ -44,10 +44,18 @@
                 {{- end }}
             </h2>
         </header>
+        {{- /* The description, written to make readers open the article; articles without one
+           show the start of their text. The article page itself doesn't show the description. */}}
+        {{- with .Description }}
+        <div class="entry-content">
+            <p>{{ . }}</p>
+        </div>
+        {{- else }}
         {{- if and .Summary (ne (.Param "hideSummary") true) }}
         <div class="entry-content">
             <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
         </div>
+        {{- end }}
         {{- end }}
         <footer class="entry-footer">
             {{- if not (.Param "hideMeta") }}

@@ -14,11 +14,6 @@
       </span>
       {{- end }}
     </h1>
-    {{- if .Description }}
-    <div class="post-description">
-      {{ .Description }}
-    </div>
-    {{- end }}
     {{- if not (.Param "hideMeta") }}
     {{- /* Translations are reachable from the language switch in the header. */}}
     <div class="post-meta">
@@ -31,7 +26,11 @@
   </header>
   {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
-  {{- if (.Param "ShowToc") }}
+  {{- /* Every article in posts/ gets a table of contents from its headings; "ShowToc: false"
+     in its front matter hides it, "ShowToc: true" adds one to other pages. */}}
+  {{- $toc := eq .Section "posts" }}
+  {{- if isset .Params "showtoc" }}{{ $toc = .Params.showtoc }}{{ end }}
+  {{- if $toc }}
   {{- partial "toc.html" . }}
   {{- end }}
 
