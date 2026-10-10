@@ -22,6 +22,12 @@
   translation: "Comments come from our Telegram channel. Sign in with Telegram to join the discussion."
 - id: comments_open
   translation: "Open the discussion in Telegram"
+- id: iv_copy
+  translation: "Copy link for Telegram"
+- id: iv_copy_hint
+  translation: "Paste it in a Telegram chat: the article opens there in Instant View"
+- id: iv_copied
+  translation: "Link copied"
 
 # Menu and Visa map page
 - id: menu

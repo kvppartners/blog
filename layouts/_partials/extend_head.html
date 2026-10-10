@@ -1,0 +1,4 @@
+{{- /* The site's Telegram channel: Telegram's Instant View shows a Join button for it (instant-view.txt). */ -}}
+{{- with (site.Params.contact | default dict).telegram }}
+<meta name="telegram:channel" content="@{{ . }}">
+{{- end }}

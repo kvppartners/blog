@@ -48,6 +48,12 @@
   translation: "Изоҳлар Telegram каналимиздан олинади. Муҳокамага қўшилиш учун Telegram орқали киринг."
 - id: comments_open
   translation: "Муҳокамани Telegram’да очиш"
+- id: iv_copy
+  translation: "Telegram учун ҳаволани нусхалаш"
+- id: iv_copy_hint
+  translation: "Telegram чатига жойланг: мақола ўша ернинг ўзида Instant View кўринишида очилади"
+- id: iv_copied
+  translation: "Ҳавола нусхаланди"
 
 # Menu and Visa map page
 - id: menu

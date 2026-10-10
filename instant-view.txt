@@ -1,0 +1,31 @@
+~version: "2.1"
+
+# Telegram Instant View template for kvppartners.com articles.
+# Paste this whole file into the editor at https://instantview.telegram.org/
+# (setup steps: README.md, "Telegram Instant View"). It reads the HTML made by
+# layouts/single.html, so update it if that layout changes.
+
+# Articles only: /posts/<name>/ in Uzbek, /en/, /ru/ and /uz-cyrl/posts/<name>/ in the others.
+?path: ^(/(en|ru|uz-cyrl))?/posts/[^/]+/?$
+
+title:          //article//h1[has-class("post-title")]
+kicker:         //ul[has-class("entry-cats")]/li[1]
+site_name:      //meta[@property="og:site_name"]/@content
+description:    //meta[@property="og:description"]/@content
+published_date: //meta[@property="article:published_time"]/@content
+# "@kvp_partners", from the telegram:channel tag (layouts/_partials/extend_head.html):
+# adds a Join button for the channel.
+channel:        //meta[@name="telegram:channel"]/@content
+cover:          //figure[has-class("entry-cover")]
+image_url:      //figure[has-class("entry-cover")]//img/@src
+
+$body: //div[has-class("post-content")]
+
+# The "#" links the theme adds to headings.
+@remove: $body//a[has-class("anchor")]
+# Photos added with ![...](...) sit inside a paragraph: give them their own block.
+@split_parent: $body//p/img
+# Credits in {{< figure >}} captions ("Photo: ... / Unsplash").
+<cite>: $body//figcaption/p
+
+body: $body

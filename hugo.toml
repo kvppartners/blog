@@ -31,6 +31,10 @@ capitalizeListTitles = false
   # Reaction buttons under each article. Counts are stored by the Cloudflare
   # Worker (worker/index.js), so they only appear where it runs (see README.md).
   reactions = ["👍", "❤️", "🔥", "🙏", "🤔"]
+  # Telegram Instant View: the "rhash" of the template made from instant-view.txt
+  # (see README.md). While it's empty, the "Copy link for Telegram" button under
+  # articles stays hidden.
+  instantViewRhash = "00199acecabf40"
   # Logo next to the site title in the header (file in assets/).
   [params.label]
     icon = "images/logo.png"

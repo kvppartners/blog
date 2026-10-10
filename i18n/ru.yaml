@@ -22,6 +22,12 @@
   translation: "Комментарии — из нашего Telegram-канала. Чтобы присоединиться к обсуждению, войдите через Telegram."
 - id: comments_open
   translation: "Открыть обсуждение в Telegram"
+- id: iv_copy
+  translation: "Скопировать ссылку для Telegram"
+- id: iv_copy_hint
+  translation: "Вставьте её в чат Telegram: статья откроется прямо там, в режиме Instant View"
+- id: iv_copied
+  translation: "Ссылка скопирована"
 
 # Menu and Visa map page
 - id: menu

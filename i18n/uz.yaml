@@ -22,6 +22,12 @@
   translation: "Izohlar Telegram kanalimizdan olinadi. Muhokamaga qo‘shilish uchun Telegram orqali kiring."
 - id: comments_open
   translation: "Muhokamani Telegramda ochish"
+- id: iv_copy
+  translation: "Telegram uchun havolani nusxalash"
+- id: iv_copy_hint
+  translation: "Telegram chatiga joylang: maqola o‘sha yerning o‘zida Instant View ko‘rinishida ochiladi"
+- id: iv_copied
+  translation: "Havola nusxalandi"
 
 # Menu and Visa map page
 - id: menu

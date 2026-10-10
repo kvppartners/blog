@@ -43,6 +43,7 @@
   {{- end }}
 
   {{- partial "extend_post_content.html" . }}
+  {{- if eq .Section "posts" }}{{ partial "telegram_iv_link.html" . }}{{ end }}
   {{- if not (.Param "hideReactions") }}{{ partial "reactions.html" . }}{{ end }}
   {{- partial "telegram_comments.html" . }}
 

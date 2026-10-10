@@ -20,6 +20,7 @@
         initSearchDropdown();
     }
     initBackLinks();
+    initInstantViewLink();
     initReactions();
     initTelegramComments();
 
@@ -210,6 +211,30 @@
                     history.back();
                 }
             });
+        });
+    }
+
+    // "Copy link for Telegram" under an article: copies its Instant View link
+    // (layouts/_partials/telegram_iv_link.html).
+    function initInstantViewLink() {
+        const button = document.querySelector('[data-iv-copy]');
+        if (!button) return;
+        const label = button.querySelector('.iv-copy-label');
+        const text = label.textContent;
+        let timer;
+
+        button.addEventListener('click', async () => {
+            const link = button.dataset.ivCopy;
+            try {
+                await navigator.clipboard.writeText(link);
+            } catch {
+                // No clipboard access (older browser, or not https): copy it by hand.
+                window.prompt(text, link);
+                return;
+            }
+            label.textContent = button.dataset.copied;
+            clearTimeout(timer);
+            timer = setTimeout(() => { label.textContent = text; }, 2500);
         });
     }
 

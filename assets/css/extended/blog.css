@@ -571,6 +571,37 @@
     }
 }
 
+/* ---------- "Copy link for Telegram" under articles ---------- */
+
+.iv-share {
+    margin-top: calc(var(--gap) * 1.5);
+}
+
+.iv-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 16px;
+    font-size: 15px;
+    color: var(--primary);
+    background: var(--entry);
+    border: 1px solid var(--tertiary);
+    border-radius: 999px;
+    transition: border-color 0.15s ease;
+}
+
+.iv-copy:hover {
+    border-color: var(--secondary);
+}
+
+.iv-copy svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: #26a5e4;
+}
+
 /* ---------- Reactions and comments under articles ---------- */
 
 .reactions,

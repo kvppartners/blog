@@ -216,6 +216,39 @@ telegram: "https://t.me/kvp_partners/123"
 
 Articles without this line simply show no comments section.
 
+## Telegram Instant View
+
+Articles can open inside Telegram, in Instant View, without leaving the app. Telegram
+builds that page from a template (`instant-view.txt`) and only uses it for links of the
+form `https://t.me/iv?url=<article>&rhash=<template id>`. Each article has a **Copy link
+for Telegram** button that copies exactly that link; paste it in the channel post.
+
+One-time setup:
+
+1. Open <https://instantview.telegram.org/my/> and log in with Telegram.
+2. Enter an article address, for example `https://kvppartners.com/posts/4/`, to open
+   the editor for kvppartners.com.
+3. Replace the editor's template with the whole of `instant-view.txt`. The preview on
+   the right should show the article with its cover; check one in another language and
+   one with photos or videos too, and fix anything the editor reports.
+4. Use the editor's **View in Telegram** button. The `t.me/iv` link it gives contains
+   `rhash=...`: copy that value into `hugo.toml` and push:
+   ```toml
+   instantViewRhash = "1a2b3c4d5e6f7a"
+   ```
+   The button appears under articles once this is set.
+
+Then, for each article: open it on the site, press **Copy link for Telegram**, and paste
+the link in the channel post. The preview shows an **Instant View** button and a **Join**
+button for @kvp_partners. To keep the long link out of the text, attach it to a word
+instead (select the word, Ctrl+K). Telegram keeps its own copy of a page for a while, so
+later edits to an article can take some time to appear there.
+
+If the template is changed in the editor and its `rhash` changes, update `hugo.toml`.
+Plain `kvppartners.com` links get Instant View only if Telegram approves the template
+(**Submit** in the editor), which can take long or not happen; the `t.me/iv` links
+work without it.
+
 ## Visa map
 
 The **Visa map** page (`content/visa-map/`, menu item next to Home) lets readers draw
