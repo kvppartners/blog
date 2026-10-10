@@ -1210,6 +1210,8 @@ visas:
       note: {en: If you meet the Top-Tier criteria., ru: Если вы соответствуете критериям Top-Tier., uz: Top-Tier mezonlariga javob bersangiz., uz-cyrl: Top-Tier мезонларига жавоб берсангиз.}
     - to: F-5-1
       note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - to: F-5-15
+      note: {en: 'If you earned a doctorate at a Korean university: after 1+ year of full-time work at a Korean company.', ru: 'Если вы получили докторскую степень в корейском вузе: после 1+ года работы на полную ставку в корейской компании.', uz: 'Koreya universitetida doktorlik darajasini olgan bo‘lsangiz: Koreya kompaniyasida 1+ yil to‘liq ishlagandan keyin.', uz-cyrl: 'Корея университетида докторлик даражасини олган бўлсангиз: Корея компаниясида 1+ йил тўлиқ ишлагандан кейин.'}
     - F-5-11
   F-2-7S:
     name: {en: K-STAR resident, ru: Резидент K-STAR, uz: K-STAR rezidenti, uz-cyrl: K-STAR резиденти}
@@ -1218,6 +1220,8 @@ visas:
     - F-5-S1
     - to: F-5-1
       note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
+    - to: F-5-15
+      note: {en: 'If you earned a doctorate at a Korean university: after 1+ year of full-time work at a Korean company.', ru: 'Если вы получили докторскую степень в корейском вузе: после 1+ года работы на полную ставку в корейской компании.', uz: 'Koreya universitetida doktorlik darajasini olgan bo‘lsangiz: Koreya kompaniyasida 1+ yil to‘liq ishlagandan keyin.', uz-cyrl: 'Корея университетида докторлик даражасини олган бўлсангиз: Корея компаниясида 1+ йил тўлиқ ишлагандан кейин.'}
     needs: {koreanEdu: 4, stem: true}
   F-2-71:
     name: {en: Family of a points-based resident, ru: Семья резидента по баллам, uz: Ball tizimidagi rezident oilasi, uz-cyrl: Балл тизимидаги резидент оиласи}
