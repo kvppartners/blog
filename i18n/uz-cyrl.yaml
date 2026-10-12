@@ -284,6 +284,40 @@
   translation: "Ёш мос эмас"
 - id: vm_why_previous
   translation: "Олдинги визангиздан кейин дарҳол мумкин эмас"
+- id: vm_income
+  translation: "Кореядаги йиллик даромад"
+- id: vm_income_unit
+  translation: "₩ млн"
+- id: vm_income_hint
+  translation: "Солиқдан олдин, охирги тўлиқ йил учун. F-2 ва F-5 даромад талаблари шу бўйича текширилади."
+- id: vm_income_short
+  translation: "Даромад"
+- id: vm_money
+  translation: "₩{n} млн"
+- id: vm_income_own
+  translation: "Даромад: йилига {amount} ва ундан кўп{rule}."
+- id: vm_income_household
+  translation: "Оила даромади: йилига {amount} ва ундан кўп{rule}, камида ярми ўзингизники."
+- id: vm_income_gni
+  translation: "{n}× GNI (аҳоли жон бошига, {year} йил)"
+- id: vm_income_cut
+  translation: "Сиз учун: {amount} ({why})."
+- id: vm_income_none
+  translation: "Сиз учун даромад талаби йўқ ({why})."
+- id: vm_income_maybe
+  translation: "Камроқ бўлиши мумкин: {why}."
+- id: vm_income_ok
+  translation: "Даромадингиз етарли."
+- id: vm_later_income
+  translation: "Даромад {amount} дан"
+- id: vm_later_age
+  translation: "{n} ёшдан"
+- id: vm_later_experience
+  translation: "{n} йил ишлагандан кейин"
+- id: vm_why_stay
+  translation: "Бу йўлда мос визаларда керакли муддат тўпланмайди"
+- id: vm_legend_later
+  translation: "Ҳозирча эмас: вақт, корейс тили ёки даромад керак"
 - id: vm_report
   translation: "Хато ҳақида хабар бериш"
 - id: vm_report_ask

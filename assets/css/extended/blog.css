@@ -752,11 +752,13 @@
     --vm-green: #16a34a;
     --vm-line: #16a34a;
     --vm-gold: #c99a2e;
+    --vm-amber: #b45309;
 }
 
 [data-theme="dark"] .visa-map {
     --vm-line: #22c55e;
     --vm-gold: #e3b55b;
+    --vm-amber: #f59e0b;
 }
 
 .vm-header {
@@ -1348,6 +1350,22 @@ button.vm-node:focus-visible {
 .vm-tag-match {
     color: var(--vm-line);
     background: rgba(22, 163, 74, 0.12);
+}
+
+/* Not yet: open, but only after more time, work, Korean or income. */
+.vm-node.is-later {
+    border-style: dashed;
+    border-color: var(--vm-amber);
+}
+
+.vm-tag-later {
+    color: var(--vm-amber);
+    background: rgba(245, 158, 11, 0.12);
+}
+
+.vm-later {
+    font-style: normal;
+    color: var(--vm-amber);
 }
 
 .vm-check {

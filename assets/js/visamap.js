@@ -8,6 +8,7 @@ import {
     paintContacts, renderPicture, roundRect, saveBlob, shareButton as offerShare, visaSearch, wrap,
 } from './visa/shared.js';
 import { setupReport } from './visa/report.js';
+import { visaRules } from './visa/rules.js';
 
 const mapRoot = document.getElementById('visa-map');
 if (mapRoot) visaMap(mapRoot);
@@ -37,165 +38,89 @@ function visaMap(root) {
     let person = null; // nationality, age and the details the reader gave
     let path = []; // chosen visa codes; path[0] is the current visa or NONE
     const revealed = new Set(); // rows where options that don't fit the reader are shown
+    // The steps the reader had chosen after a visa they then replaced or reopened, by the path up
+    // to that visa ('NONE.E-7-1'), so picking it again brings them back.
+    const tails = new Map();
 
-    // Whether the reader's nationality is in a list (group name or ISO codes).
-    const isIn = (value) => Boolean(person && page.countryList(value).includes(person.nationality));
+    const rules = visaRules(page.data);
 
-    // Possible next visas from `code`. A visa held earlier on the path can be offered again
-    // (a second D-10-1 after a new degree, E-7-1 again after a job search); a move's `again`
-    // note then replaces its usual note. A move needs a new visa from abroad if marked so, or
-    // only for some nationalities (abroadFor). A move can have its own requirements (needs,
-    // lang) instead of the visa's.
-    function nextSteps(code, level) {
-        const visa = visas[code];
-        if (!visa) return [];
-        const earlier = path.slice(0, level);
-        return (visa.next || [])
-            .map((step) => (typeof step === 'string' ? { to: step } : step))
-            .filter((step) => visas[step.to])
-            .map((step) => ({
-                to: step.to,
-                note: text(earlier.includes(step.to) && step.again ? step.again : step.note),
-                abroad: Boolean(step.abroad || visa.abroad || (step.abroadFor && isIn(step.abroadFor))),
-                needs: step.needs,
-                lang: step.lang,
-            }));
-    }
+    // Possible next visas from path[level - 1], with notes in the page language.
+    const nextSteps = (level) => rules.nextSteps(person, path, level).map((step) => ({ ...step, note: text(step.note) }));
 
     // Extra notes a visa has for the reader's nationality. Embassy rules (abroad) only show
     // on steps where the reader applies for the visa from abroad.
     const countryNotes = (code, fromAbroad) => ((visas[code] && visas[code].notes) || [])
-        .filter((n) => isIn(n.countries) && (!n.abroad || fromAbroad)).map((n) => text(n.text));
+        .filter((n) => rules.isIn(person, n.countries) && (!n.abroad || fromAbroad)).map((n) => text(n.text));
 
     // What to show about getting `to` as step `level` of the path (from path[level - 1]): the
-    // move's own note or the visa's general note, plus any notes for the reader's nationality.
+    // move's own note or the visa's general note, the income it asks of this reader, and any
+    // notes for the reader's nationality.
     function howTo(level, to) {
         const from = path[level - 1];
-        const step = from ? nextSteps(from, level).find((s) => s.to === to) : null;
+        const step = from ? nextSteps(level).find((s) => s.to === to) : null;
         const main = (step && step.note) || text(visas[to] && visas[to].how);
         const fromAbroad = from === NONE || Boolean(step && step.abroad);
-        return [main, ...countryNotes(to, fromAbroad)].filter(Boolean).join(' ');
+        const income = step ? incomeLine(rules.incomeFor(person, path, level, step)) : '';
+        return [main, income, ...countryNotes(to, fromAbroad)].filter(Boolean).join(' ');
     }
 
     // ---------- What fits the reader ----------
 
-    // Facts are what we know about the reader: their details, plus what the visas chosen so
-    // far imply ("gives": a Korean degree after D-2-2, a Korean spouse on F-6-1). The reader's
-    // own answers win over what a visa implies. Levels are numbers (education, experience,
-    // investment, university ranking); a level implied by the path raises the reader's level,
-    // or is a minimum when they left that field empty. An empty field is unknown and never
-    // hides an option. Requirements can also name an age limit (ageUnder), nationalities
-    // (countries) or visas that may not come right before this step (notAfter); the first two
-    // are always known, the last one once the path has a visa before this step.
-    const LEVELS = ['edu', 'koreanEdu', 'rank', 'experience', 'invest'];
-    const FACTS = ['korean', 'spouse', 'koreanChild', 'parent', 'edu', 'rank', 'experience', 'invest'];
-    // Facts that unlock options; meeting them marks the option as a match.
-    const PERSONAL = ['korean', 'spouse', 'koreanChild', 'parent', 'invest', 'rank', 'stem', 'koreanEdu'];
     // Why an option doesn't fit, by fact.
     const WHY = {
         spouse: 'whyFamily', koreanChild: 'whyFamily', parent: 'whyFamily', korean: 'koreansOnly',
         edu: 'whyEducation', koreanEdu: 'whyEducation', stem: 'whyEducation', rank: 'whyEducation',
         experience: 'whyExperience', invest: 'whyInvest', ageUnder: 'whyAge', countries: 'notForNationality',
-        notAfter: 'whyPrevious',
+        notAfter: 'whyPrevious', stay: 'whyStay',
     };
-    // A visa code matches a listed status or sub-status: 'D-4' matches D-4-1, 'E-1' doesn't match E-10.
-    const isStatus = (code, list) => [].concat(list).some((s) => code === s || code.startsWith(`${s}-`));
-
-    function profileFacts() {
-        const known = {};
-        FACTS.forEach((key) => {
-            if (person[key] !== undefined) known[key] = person[key];
-        });
-        if (person.edu !== undefined) {
-            known.koreanEdu = person.eduKorea ? person.edu : 0;
-            known.stem = person.stem;
-        }
-        if (person.age >= 19) known.parent = 'none'; // parents' status matters for minors only
-        return known;
-    }
-
-    function factsAt(level) {
-        const known = profileFacts();
-        const min = {};
-        path.slice(0, level).forEach((code) => {
-            Object.entries((visas[code] && visas[code].gives) || {}).forEach(([key, value]) => {
-                if (!LEVELS.includes(key)) {
-                    if (known[key] === undefined) known[key] = value;
-                } else if (known[key] !== undefined) known[key] = Math.max(known[key], value);
-                else min[key] = Math.max(min[key] === undefined ? value : min[key], value);
-            });
-        });
-        // The visa held before the one this step leaves from (unknown for the current visa).
-        return { known, min, previous: level >= 2 ? path[level - 2] : undefined };
-    }
-
-    // Each check is 'yes', 'no' or 'maybe' (not enough known).
-    function checkFact(facts, key, want) {
-        if (key === 'ageUnder') return person.age < want ? 'yes' : 'no';
-        if (key === 'countries') return isIn(want) ? 'yes' : 'no';
-        if (key === 'notAfter') return facts.previous === undefined ? 'maybe' : isStatus(facts.previous, want) ? 'no' : 'yes';
-        const have = facts.known[key];
-        if (LEVELS.includes(key)) {
-            if (have !== undefined) return have >= want ? 'yes' : 'no';
-            return facts.min[key] >= want ? 'yes' : 'maybe';
-        }
-        if (have === undefined) return 'maybe';
-        return [].concat(want).includes(have) ? 'yes' : 'no';
-    }
-
-    // Requirements: { fact: value, ... } where all must hold, or a list of those where any
-    // one is enough. Returns the result and the facts behind it.
-    function checkNeeds(needs, facts) {
-        if (!needs) return { result: 'yes', keys: [] };
-        const options = [].concat(needs).map((group) => {
-            const checks = Object.entries(group).map(([key, want]) => ({ key, result: checkFact(facts, key, want) }));
-            const count = (result) => checks.filter((c) => c.result === result).length;
-            return { checks, result: count('no') ? 'no' : count('maybe') ? 'maybe' : 'yes', misses: count('no') };
-        });
-        const best = options.find((o) => o.result === 'yes') || options.find((o) => o.result === 'maybe')
-            || options.reduce((a, b) => (b.misses < a.misses ? b : a));
-        const wanted = best.result === 'yes' ? 'yes' : best.result === 'no' ? 'no' : 'maybe';
-        return { result: best.result, keys: best.checks.filter((c) => c.result === wanted).map((c) => c.key) };
-    }
-
-    // Korean level: { topik: 3, kiip: 3 } means TOPIK 3 or KIIP level 3 is enough.
-    function checkLanguage(want) {
-        if (!want) return null;
-        const results = Object.entries(want)
-            .map(([key, level]) => (person[key] === undefined ? 'maybe' : person[key] >= level ? 'yes' : 'no'));
-        return results.includes('yes') ? 'yes' : results.includes('maybe') ? 'maybe' : 'no';
-    }
 
     const languageText = (want) => Object.entries(want).map(([key, level]) => `${key.toUpperCase()} ${level}`).join(' / ');
+    // Money in ₩ million, as the page language writes it ("₩104.8M").
+    const money = (amount) => T.money.replace('{n}', new Intl.NumberFormat(page.langTag, { maximumFractionDigits: 1 }).format(amount));
 
-    // Whether the reader can take a step: blocked with the reasons, or open with tags.
+    function reasonText(reason) {
+        if (reason.key === 'ageOnly') return T.ageOnly.replace('{range}', reason.range);
+        if (reason.key === 'why') return T[WHY[reason.fact]];
+        return T[reason.key];
+    }
+
+    function tagText(tag) {
+        switch (tag.key) {
+            case 'matches': return `✓ ${T.matches}`;
+            case 'langNeed': return `⏳ ${T.langNeed.replace('{req}', languageText(tag.language))}`;
+            case 'laterAge': return `⏳ ${T.laterAge.replace('{n}', tag.age)}`;
+            case 'laterExperience': return `⏳ ${T.laterExperience.replace('{n}', tag.years)}`;
+            case 'laterIncome': return `⏳ ${T.laterIncome.replace('{amount}', money(tag.amount))}`;
+            default: return T[tag.key];
+        }
+    }
+
+    // The income a step asks of the reader, in words: the amount and the rule behind it, the
+    // reduction that applies to them, and the ones that might.
+    function incomeLine(income) {
+        if (!income) return '';
+        const rule = income.rule.gni !== undefined
+            ? T.incomeGni.replace('{n}', new Intl.NumberFormat(page.langTag).format(income.rule.gni)).replace('{year}', page.data.gni.year)
+            : '';
+        const parts = [(income.whose === 'household' ? T.incomeHousehold : T.incomeOwn)
+            .replace('{amount}', money(income.base)).replace('{rule}', rule ? ` (${rule})` : '')];
+        if (income.cut) {
+            parts.push((income.amount ? T.incomeCut : T.incomeNone)
+                .replace('{amount}', money(income.amount)).replace('{why}', text(income.cut.text)));
+        }
+        if (income.maybe.length) parts.push(T.incomeMaybe.replace('{why}', income.maybe.map((c) => text(c.text)).join('; ')));
+        if (income.result === 'yes') parts.push(`✓ ${T.incomeOk}`);
+        return parts.join(' ');
+    }
+
+    // Whether the reader can take a step: blocked with the reasons, or open with tags (in words).
     function assess(level, step) {
-        const visa = visas[step.to] || {};
-        const reasons = [];
-        const tags = [];
-        const age = (visa.ageByCountry && visa.ageByCountry[person.nationality]) || visa.age;
-        if (age) {
-            const [min, max] = age;
-            if (person.age < min || (max && person.age > max)) {
-                reasons.push(T.ageOnly.replace('{range}', max ? `${min}–${max}` : `${min}+`));
-            }
-        }
-        if (visa.countries && !isIn(visa.countries)) reasons.push(T.notForNationality);
-
-        const want = step.needs || visa.needs;
-        const needs = checkNeeds(want, factsAt(level));
-        // A match: the reader's own answers (not just the path) unlock this option.
-        const own = checkNeeds(want, { known: profileFacts(), min: {} });
-        if (needs.result === 'no') needs.keys.forEach((key) => reasons.push(T[WHY[key]]));
-        else if (needs.result === 'maybe' && needs.keys.includes('korean')) tags.push({ text: T.koreansOnly });
-        else if (own.result === 'yes' && own.keys.some((key) => PERSONAL.includes(key))) {
-            tags.push({ text: `✓ ${T.matches}`, match: true });
-        }
-
-        const language = step.lang || visa.lang;
-        const korean = checkLanguage(language);
-        if (korean === 'no') tags.push({ text: T.langNeed.replace('{req}', languageText(language)) });
-        return { blocked: reasons.length > 0, reasons: [...new Set(reasons)], tags, korean, language };
+        const check = rules.assess(person, path, level, step);
+        return {
+            ...check,
+            reasons: [...new Set(check.reasons.map(reasonText))],
+            tags: check.tags.map((tag) => ({ text: tagText(tag), match: Boolean(tag.match), later: Boolean(tag.later) })),
+        };
     }
 
     // ---------- Nationality list ----------
@@ -222,6 +147,11 @@ function visaMap(root) {
         const choice = (name) => f[name].value || undefined;
         const level = (name) => (f[name].value === '' ? undefined : Number(f[name].value));
         const yes = (name) => (f[name].value === '' ? undefined : f[name].value === 'yes');
+        // A number box: empty or not a sensible amount is unknown.
+        const amount = (name) => {
+            const value = Number.parseFloat(f[name].value);
+            return Number.isFinite(value) && value >= 0 ? value : undefined;
+        };
         const details = {
             gender: choice('gender'),
             korean: yes('korean'),
@@ -233,6 +163,7 @@ function visaMap(root) {
             kiip: level('kiip'),
             experience: level('experience'),
             invest: level('invest'),
+            income: amount('income'),
         };
         if (details.edu !== undefined) {
             const extras = details.edu >= 1;
@@ -273,6 +204,7 @@ function visaMap(root) {
         person = { nationality, age, ...readDetails() };
         path = [code];
         revealed.clear();
+        tails.clear();
         profile.textContent = profileLine(' · ');
         form.hidden = true;
         board.hidden = false;
@@ -312,6 +244,7 @@ function visaMap(root) {
         if (person.kiip !== undefined) parts.push(answer(f.kiip));
         if (person.experience !== undefined) parts.push(`${T.experience}: ${answer(f.experience)}`);
         if (person.invest !== undefined) parts.push(`${T.invest}: ${answer(f.invest)}`);
+        if (person.income !== undefined) parts.push(`${T.income}: ${money(person.income)}`);
         return parts.join(separator);
     }
 
@@ -320,7 +253,7 @@ function visaMap(root) {
     // The page address keeps the map: the answers and the path, so a shared or reported link
     // opens the same map.
     const RADIOS = ['gender', 'korean', 'koreanChild'];
-    const SELECTS = ['spouse', 'parent', 'edu', 'rank', 'topik', 'kiip', 'experience', 'invest'];
+    const SELECTS = ['spouse', 'parent', 'edu', 'rank', 'topik', 'kiip', 'experience', 'invest', 'income']; // and the income box
     const CHECKS = ['eduKorea', 'stem'];
 
     function mapParams(leaveOut = []) {
@@ -339,7 +272,10 @@ function visaMap(root) {
     // Opens the map from the page address, keeping only the steps that are still possible.
     function openMap() {
         const params = new URLSearchParams(location.hash.slice(1));
-        const codes = (params.get('path') || '').split('.').filter((code) => visas[code]);
+        // A visa the map no longer has ends the path there (dropping it would shift the steps after it).
+        let codes = (params.get('path') || '').split('.').filter(Boolean);
+        const unknown = codes.findIndex((code) => !visas[code]);
+        if (unknown >= 0) codes = codes.slice(0, unknown);
         if (!codes.length) return;
         // Start from a clean form, so no answers from an earlier map stay.
         form.reset();
@@ -368,11 +304,7 @@ function visaMap(root) {
         syncDetails();
         search.pick(codes[0]);
         if (!start()) return;
-        for (let level = 1; level < codes.length && !isGoal(path[level - 1]); level++) {
-            const step = nextSteps(path[level - 1], level).find((s) => s.to === codes[level]);
-            if (!step || assess(level, step).blocked) break;
-            path.push(codes[level]);
-        }
+        follow(codes.slice(1));
         render();
     }
 
@@ -397,7 +329,7 @@ function visaMap(root) {
         for (let level = 1; level <= path.length; level++) {
             const parent = path[level - 1];
             if (isGoal(parent)) break;
-            const options = nextSteps(parent, level).map((step) => ({ ...step, check: assess(level, step) }));
+            const options = nextSteps(level).map((step) => ({ ...step, check: assess(level, step) }));
             rows.push({ level, options, selected: path[level] || null });
         }
         levels.replaceChildren(...rows.map(renderRow));
@@ -412,7 +344,9 @@ function visaMap(root) {
     function renderRow(row) {
         const section = el('section', 'vm-level');
         section.dataset.level = row.level;
-        const open = row.options.filter((o) => !o.check || !o.check.blocked);
+        // Options the reader can take now come before the ones they can only take later.
+        const open = row.options.filter((o) => !o.check || (!o.check.blocked && !o.check.later))
+            .concat(row.options.filter((o) => o.check && !o.check.blocked && o.check.later));
         const closed = row.options.filter((o) => o.check && o.check.blocked);
         if (row.level === 0) section.append(el('p', 'vm-caption', path[0] === NONE ? T.startNone : T.start));
         else if (!row.selected) {
@@ -471,7 +405,8 @@ function visaMap(root) {
             node.setAttribute('aria-pressed', String(selected));
             node.title = howTo(row.level, code);
             const tags = el('span', 'vm-node-tags');
-            if (option.abroad) {
+            // From "no visa yet" every first visa is applied for abroad, so the plane would only add noise.
+            if (option.abroad && path[row.level - 1] !== NONE) {
                 const plane = el('span', 'vm-tag vm-tag-abroad', '✈');
                 plane.title = T.abroad;
                 tags.append(plane);
@@ -481,7 +416,10 @@ function visaMap(root) {
                 node.classList.add('is-blocked');
                 check.reasons.forEach((reason) => tags.append(el('span', 'vm-tag', reason)));
             } else {
-                check.tags.forEach((tag) => tags.append(el('span', tag.match ? 'vm-tag vm-tag-match' : 'vm-tag', tag.text)));
+                // Not yet: the reader can take this step after more time, work, Korean or income.
+                if (check.later) node.classList.add('is-later');
+                check.tags.forEach((tag) => tags.append(el('span',
+                    tag.match ? 'vm-tag vm-tag-match' : tag.later ? 'vm-tag vm-tag-later' : 'vm-tag', tag.text)));
             }
             if (tags.childNodes.length) node.append(tags);
             if (selected) {
@@ -498,7 +436,7 @@ function visaMap(root) {
     // A line about the reader's Korean level when the step needs one and we know their level.
     function languageNote(check) {
         if (check.korean === 'yes') return `✓ ${T.langOk.replace('{req}', languageText(check.language))}`;
-        if (check.korean === 'no') return T.langNeed.replace('{req}', languageText(check.language));
+        if (check.korean === 'later') return `⏳ ${T.langNeed.replace('{req}', languageText(check.language))}`;
         return '';
     }
 
@@ -514,8 +452,13 @@ function visaMap(root) {
         if (!node || node.disabled) return;
         const level = Number(node.dataset.level);
         const code = node.dataset.code;
-        // Picking the already chosen visa again reopens the choices after it.
-        path = path[level] === code ? path.slice(0, level + 1) : path.slice(0, level).concat(code);
+        // Picking the already chosen visa again reopens the choices after it; picking another one
+        // brings back the steps last chosen after that one. Either way the steps cut off are kept.
+        const reopen = path[level] === code;
+        const cut = reopen ? level + 1 : level;
+        if (path.length > cut + 1) tails.set(path.slice(0, cut + 1).join('.'), path.slice(cut + 1));
+        path = reopen ? path.slice(0, level + 1) : path.slice(0, level).concat(code);
+        if (!reopen) follow(tails.get(path.join('.')) || []);
         revealed.forEach((l) => l > level && revealed.delete(l));
         render();
         requestAnimationFrame(() => {
@@ -523,6 +466,17 @@ function visaMap(root) {
             if (next) next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
     });
+
+    // Adds the given visas to the path, step by step, as long as each is still possible.
+    function follow(codes) {
+        for (const code of codes) {
+            const level = path.length;
+            if (isGoal(path[level - 1])) break;
+            const step = nextSteps(level).find((s) => s.to === code);
+            if (!step || assess(level, step).blocked) break;
+            path.push(code);
+        }
+    }
 
     // Desktop: curved lines from each chosen visa to the options below it (to the row
     // caption only in big grouped rows). Phones: a timeline, i.e. a line down the left
@@ -765,7 +719,7 @@ function visaMap(root) {
         const level = path.length;
         const last = path[level - 1];
         if (isGoal(last)) return [];
-        return nextSteps(last, level).map((step) => ({ step, check: assess(level, step) }));
+        return nextSteps(level).map((step) => ({ step, check: assess(level, step) }));
     }
 
     // The map as plain text, for the admin or an AI assistant: enough to see and reproduce

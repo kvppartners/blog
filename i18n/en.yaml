@@ -258,6 +258,40 @@
   translation: "Age doesn't match"
 - id: vm_why_previous
   translation: "Not possible right after your previous visa"
+- id: vm_income
+  translation: "Yearly income in Korea"
+- id: vm_income_unit
+  translation: "₩ million"
+- id: vm_income_hint
+  translation: "Before tax, for the last full year. The F-2 and F-5 income rules are checked against it."
+- id: vm_income_short
+  translation: "Income"
+- id: vm_money
+  translation: "₩{n}M"
+- id: vm_income_own
+  translation: "Income: {amount} a year or more{rule}."
+- id: vm_income_household
+  translation: "Household income: {amount} a year or more{rule}, at least half of it your own."
+- id: vm_income_gni
+  translation: "{n}× GNI per person for {year}"
+- id: vm_income_cut
+  translation: "For you: {amount} ({why})."
+- id: vm_income_none
+  translation: "For you there is no income test ({why})."
+- id: vm_income_maybe
+  translation: "May be lower: {why}."
+- id: vm_income_ok
+  translation: "Your income is enough."
+- id: vm_later_income
+  translation: "Income {amount}+"
+- id: vm_later_age
+  translation: "From age {n}"
+- id: vm_later_experience
+  translation: "After {n} years of work"
+- id: vm_why_stay
+  translation: "Not enough years on the right visas on this path"
+- id: vm_legend_later
+  translation: "Not yet: needs more time, Korean or income"
 - id: vm_report
   translation: "Report a problem"
 - id: vm_report_ask

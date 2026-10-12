@@ -1,0 +1,58 @@
+{
+ "verdicts": [
+  {
+   "slice": "visit",
+   "index": 6,
+   "verdict": "confirmed",
+   "reason": "In the current repo, C-3-8 lists bare D-2-1..D-2-4. With no flag, the engine shows an Uzbek or Chinese ethnic Korean an in-Korea change (checked with rules.js: 'UZ C-3-8 => F-4 D-2-1 D-2-2 ...'). Every other short-term sibling (B-1, B-2, C-3-1, C-3-4) carries abroadFor: notified for the same rule, and C-3-9 is fully abroad. The 지침 limits short-term holders who are nationals of the 21 notified countries, and C-3-8 is a C-3 short-term status; nobody has shown a 동포 exception. Caveat: network access was blocked in this session (WebFetch DNS failures, search budget used up), so the 지침 text could not be re-fetched; the verdict rests on the finding's quote plus the repo's own 2026-sourced encoding of the same rule. A patched copy runs correctly in the engine (UZ sees ✈, US does not).",
+   "correctedFix": "In data/visamap.yaml, C-3-8 next: replace the bare `- D-2-1`, `- D-2-2`, `- D-2-3`, `- D-2-4` with\n    - to: D-2-1\n      abroadFor: notified\n      note: <copy the exact 4-language note used on B-1 -> D-2-1: en 'In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.' (ru/uz/uz-cyrl already exist on B-1)>\n    - to: D-2-2\n      abroadFor: notified\n      note: <same note>\n    - to: D-2-3\n      abroadFor: notified\n      note: <same note>\n    - to: D-2-4\n      abroadFor: notified\n      note: <same note>",
+   "source": "외국인유학생 사증발급 및 체류관리 지침 Ⅲ.3.가 유학(D-2) 자격 일반 (https://research.kau.ac.kr/upfile/2022/11/20221108163943-8217.pdf, not reachable this session); data/visamap.yaml B-1/B-2/C-3-1/C-3-4 -> D-2-* (abroadFor: notified)",
+   "quote": "① 단기체류자 중 ... ⅰ) 법무부장관 고시 21개 국가 국민 (단, 해당 국가 국민중 인증대로의 자격변경은 예외적으로 허용) (as quoted by the finding; not re-fetched)"
+  },
+  {
+   "slice": "visit",
+   "index": 7,
+   "verdict": "partly",
+   "reason": "The claim is true: G-1-5 and G-1-6 have no in-edges (checked), and a refugee claim can be filed by any foreigner in Korea (난민법 제5조). The proposed edges are wrong for three reasons. First, G-1-5 has only an 'extend' list in the 2026 manual (34. 기타(G-1) › 체류기간 연장허가 › 5.), so an in-Korea edge breaks the repo's edge/document invariant, and visa-docs would build no move for it. Second, G-1-5 has no gate, so every tourist would see 'Refugee applicant' as an OPEN planning option on facts the engine cannot ask. Third, choosing only 4 source statuses is arbitrary. The alternative fix, deleting the nodes, is also wrong: both are in the current-visa search list, and a reader who already holds G-1-5/G-1-6 needs them as a starting point for F-2-4 / D-2-2 / D-4-1.",
+   "correctedFix": "Add no edges and keep both nodes. Make the decision explicit with a comment above G-1-5 in data/visamap.yaml:\n  # G-1-5 and G-1-6 are start-only on purpose: a refugee claim is not a route the map\n  # recommends, and the 2026 manual documents only an extension list for them. Readers who\n  # already hold one pick it as their current visa.\n  G-1-5:",
+   "source": "난민법 제5조제1항 (law.go.kr); 외국인체류 안내매뉴얼 2026.9.18 › 34. 기타(G-1) › 체류기간 연장허가 › 5. 난민신청자 및 난민불인정자 중 인도적 체류허가자 (data/visadocs.yaml G-1-5/G-1-6: extend only); assets/js/visamap.js:178 (start search includes all non-goal codes)",
+   "quote": "대한민국 안에 있는 외국인으로서 난민인정을 받으려는 사람은 법무부장관에게 난민인정 신청을 할 수 있다. (난민법 제5조①) / visadocs: '34. 기타(G-1) › 체류기간 연장허가 › 5. 난민신청자 및 난민불인정자 중 인도적 체류허가자' - the only list for G-1-5/G-1-6"
+  },
+  {
+   "slice": "visit",
+   "index": 8,
+   "verdict": "partly",
+   "reason": "The German rule is real. data/visadocs.yaml, copied from the 2026.9 manual, carries DE-only in-Korea change exceptions from B-1 to exactly the long-term targets B-1 marks abroad: D-4-1, E-2, E-7-1, F-2-3, F-4 and F-6-1. The claim overstates the gap: B-1 has no D-8-1/D-9-1/E-1 edges, and D-2-*, D-10-1, F-2-8, F-2-12 and F-5-25 are already in-Korea. The fix does not work: a note in B-1's `notes:` renders only when B-1 is a step being moved TO (countryNotes(to) in howTo); a reader standing on B-1 never sees it, and every option still shows ✈. The engine can express the rule today with abroadFor and a group of visaWaiver minus DE; tested on a patched copy, DE gets in-Korea moves and E-9/H-1 stay ✈.",
+   "correctedFix": "In data/visamap.yaml groups add (visaWaiver without DE):\n  b1NoChange: [AE, AG, AT, BB, BG, BR, BS, CL, CO, CR, CZ, DK, DM, DO, EE, ES, FI, FR, GB, GD, GT, HT, HU, IE, IL, IS, IT, JM, KN, LC, LT, LV, MA, MT, NI, 'NO', PA, PE, PL, PT, QA, RO, SE, SG, SK, SV, TH, TR, TT, UY, VC, VE, BE, CH, GR, LI, LU, MX, MY, NL, NZ, SR, RU, LS, KZ, TN]\nIn B-1 next replace\n    - {to: D-4-1, abroad: true}  -> - {to: D-4-1, abroadFor: b1NoChange}\n    - {to: E-7-1, abroad: true}  -> - {to: E-7-1, abroadFor: b1NoChange}\n    - {to: E-2, abroad: true}    -> - {to: E-2, abroadFor: b1NoChange}\n    - {to: F-6-1, abroad: true}  -> - {to: F-6-1, abroadFor: b1NoChange}\n    - {to: F-4, abroad: true}    -> - {to: F-4, abroadFor: b1NoChange}\n    - {to: F-2-3, abroad: true}  -> - {to: F-2-3, abroadFor: b1NoChange}\nKeep {to: E-9, abroad: true} and {to: H-1, abroad: true} (excluded by the rule). Optionally add a B-1 note for countries [DE] (en: 'German citizens who entered visa-free may change to most long-term statuses inside Korea, except D-3, E-9 and H-1.'; ru/uz/uz-cyrl must be translated). It is shown only when B-1 is a step target, so it is not a substitute for the abroadFor change.",
+   "source": "data/visadocs.yaml exceptions B-1>D-4-1, B-1>E-2, B-1>E-7-1, B-1>F-2-3, B-1>F-4, B-1>F-6-1 (who: German nationals who entered visa-free (B-1), countries [DE], use: change; from 외국인체류 안내매뉴얼 2026.9.18); manual D-8 chapter 체류자격 변경허가 5) 기타 (독일인 특례) as cited by the finding",
+   "quote": "사증면제(B-1)로 입국한 독일인: 기술연수(D-3)·비전문취업(E-9)·관광취업(H-1)을 제외한 장기체류자격으로 체류자격 변경 가능 (wording as relayed by the finding; manual not re-fetched this session); visadocs: 'German nationals who entered visa-free (B-1)' / countries: [DE] / use: change"
+  },
+  {
+   "slice": "visit",
+   "index": 9,
+   "verdict": "partly",
+   "reason": "The claim holds. data/visadocs.yaml (2026.9 manual, txt 7807/7816) lists an in-Korea change to E-2 from B-1, B-2, C-3-1, C-3-4 and C-3-9 for teachers hired by the Ministry of Education or a provincial superintendent, 'whatever their current status'. The change list requires an acceptance notice from the 교육감 or the head of NIIED, and E-2 has a change list. Keeping abroad: true plus a note is the right shape, since no engine fact can express 'hired by the MOE'. The proposed note has two problems. A move's note REPLACES the target's `how` (visamap.js howTo: main = step.note || visa.how), so as written it would hide E-2's native-speaker / 7-country text. It also needs ru, uz and uz-cyrl. The wording should also stay neutral, because for B-1 the move becomes in-Korea for DE under visit#8.",
+   "correctedFix": "On the E-2 entries of B-1, B-2, C-3-1, C-3-4 and C-3-9 in data/visamap.yaml:\n    - to: E-2\n      abroad: true            # on B-1: abroadFor: b1NoChange if visit#8 is applied\n      note: {en: 'Native-speaker language teacher; English teachers must be citizens of the US, UK, Canada, South Africa, New Zealand, Australia or Ireland. Usually a new visa from abroad, but teachers hired by the Ministry of Education or a provincial office of education for a primary, middle or high school (EPIK, TaLK) can change status in Korea.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}",
+   "source": "외국인체류 안내매뉴얼 2026.9.18, 회화지도(E-2) 체류자격 변경허가 (txt lines 7807; 7816), as transcribed in data/visadocs.yaml exceptions B-1>E-2, B-2>E-2, C-3-1>E-2, C-3-4>E-2, C-3-9>E-2; assets/js/visamap.js howTo()",
+   "quote": "시˙도 교육감이나 국립국제교육원장이 발급한 합격통지서 또는 통지서 (required document of the in-Korea change list; who: 'English teachers hired by the Ministry of Education / a provincial superintendent of education ... whatever their current status')"
+  },
+  {
+   "slice": "visit",
+   "index": 10,
+   "verdict": "confirmed",
+   "reason": "In the current repo, C-4 offers only `{to: D-2-2, abroad: true}`; it has no D-2-1, D-2-3 or D-2-4 (checked with the engine). C-4 is a 단기체류자격 (시행령 별표 1). The 지침 grants the in-Korea D-2 change to 단기체류자, restricting only nationals of the 21 notified countries and C-3-2/C-3-3/C-3-9. The repo already encodes exactly this as abroadFor: notified on B-1, B-2, C-3-1 and C-3-4, and it already treats C-4 as changeable in Korea for D-10-1. A patched copy behaves as intended: US C-4 gives in-Korea D-2-1..4, UZ C-4 gives ✈. Caveat as in visit#6: the 지침 could not be re-fetched this session (network blocked).",
+   "correctedFix": "In data/visamap.yaml, C-4 next: replace `- {to: D-2-2, abroad: true}` with\n    - to: D-2-1\n      abroadFor: notified\n      note: <same 4-language note as B-1 -> D-2-1: en 'In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.'>\n    - to: D-2-2\n      abroadFor: notified\n      note: <same note>\n    - to: D-2-3\n      abroadFor: notified\n      note: <same note>\n    - to: D-2-4\n      abroadFor: notified\n      note: <same note>",
+   "source": "외국인유학생 사증발급 및 체류관리 지침 Ⅲ.3.가 유학(D-2) 자격 일반 (https://research.kau.ac.kr/upfile/2022/11/20221108163943-8217.pdf, not reachable this session); 출입국관리법 시행령 별표 1 (단기취업 C-4); data/visamap.yaml B-1/B-2/C-3-1/C-3-4 -> D-2-*",
+   "quote": "(허가대상) 단기체류자 또는 등록외국인 ... (제한) ① 단기체류자 중 ⅰ) 법무부장관 고시 21개 국가 국민 ... ⅱ) 단체관광(C-3-2), 의료관광(C-3-3), 일반관광(C-3-9) (as quoted by the finding; not re-fetched)"
+  },
+  {
+   "slice": "visit",
+   "index": 11,
+   "verdict": "partly",
+   "reason": "True of the repo: among B/C statuses only C-3-4 offers D-9-1/D-9-4 (in-edges are C-3-4 and NONE only). The finding's own evidence does not support most of its fix. The basis for B-1/short-term holders covers staff dispatched to install or maintain imported equipment and to supervise shipbuilding or plant fabrication. Those are D-9-2/D-9-3, which the map does not model, not trade (D-9-1). Nothing shown permits B-1/B-2/C-3-1 -> D-9-1. Adding B-2 (관광·통과) contradicts the tourism exclusion the finding itself cites. What survives is the sole-proprietor basis for D-9-4: the 2026 D-9-4 change list itself contemplates applicants who held a short-term visa before the change. Its exact 허가대상 / exclusion list could not be re-read this session.",
+   "correctedFix": "Do not add D-9-1 anywhere, and add nothing to B-2. Add only `- D-9-4` (no abroad flag; the target keeps needs: {invest: 2}) to the next lists of B-1 and C-3-1 in data/visamap.yaml. Leave C-3-9 unchanged.",
+   "source": "data/visadocs.yaml targets D-9-4.change (외국인체류 안내매뉴얼 2026.9.18 › 17. 무역경영(D-9) › 체류자격 변경허가 › 3. 외국인 개인사업자에 대한 체류자격 변경허가, txt 5528-5563) and D-9-1.change (› 1. 무역업(D-9-1)); D-9 extend case 'Ship-building / plant-fabrication supervisors and export equipment installation, operation or maintenance staff'",
+   "quote": "체류자격 변경 전 단기사증 (C-3-4) 등을 소지하고 영업행위를 한 경우에만 해당 (D-9-4 change list, 3. 외국인 개인사업자에 대한 체류자격 변경허가)"
+  }
+ ]
+}

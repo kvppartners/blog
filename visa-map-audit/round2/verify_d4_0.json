@@ -1,0 +1,85 @@
+{
+ "verdicts": [
+  {
+   "slice": "d4",
+   "index": 0,
+   "verdict": "confirmed",
+   "reason": "Lines 264 (D-4-1), 281 (D-4-2), 300 (D-4-6) and 312 (D-4-7) all have the note '60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan)'. The manual sets the 80-point floor only for nationals of the notified countries who hold B-1, B-2, C-1, C-3, C-4, D-3, E-9, E-10 or G-1. That list is closed and does not include D-4, so any D-4 holder with a degree changes at 60 points. The rest of the note (1 year in total, 3 years at 80+) is correct. verified-by-review.md #2 already marks this WRONG and says the same text on D-2-5 (line 457) and F-3 (line 1306) is wrong too. Those two are outside this finding but need the same edit. The note is plain text with no gating, so the fix is only a text change.",
+   "correctedFix": "data/visamap.yaml, the D-10-1 move note on D-4-1 (l.264), D-4-2 (l.281), D-4-6 (l.300), D-4-7 (l.312), and also D-2-5 (l.457) and F-3 (l.1306):\nnote: {en: 'Bachelor''s degree and 60+ points; 1 year in total, 3 years with 80+ points.', ru: 'Диплом бакалавра и 60+ баллов; всего 1 год, при 80+ баллах — 3 года.', uz: 'Bakalavr diplomi va 60+ ball; jami 1 yil, 80+ ball bilan 3 yil.', uz-cyrl: 'Бакалавр дипломи ва 60+ балл; жами 1 йил, 80+ балл билан 3 йил.'}\nLeave the note unchanged on B-1, B-2, C-3-1, C-3-4, C-3-8, C-3-9, C-4, E-9, E-10.",
+   "source": "외국인체류 안내매뉴얼, 구직(D-10) › 체류자격 변경허가 › 가. 허용대상 › 1-1) 일반구직 점수제 적용 대상자 and 나. 체류기간 상한 (https://internationalcenter.inha.ac.kr/bbs/internationalcenter/2507/169552/download.do pp.141-142, 155); the same list is in the SMU D-10 자격변경 안내문 (smu.ac.kr); visa-map-audit/verified-by-review.md #2",
+   "quote": "학사(국내 전문학사 포함) 이상의 학위를 소지한 국내 합법 체류자로 구직 점수표에서 총 190점 중 기본항목이 20점 이상으로 총 득점이 60점 이상인자 - 단, 법무부장관 고시국가 국민 중 B-1, B-2, C-1, C-3, C-4, D-3, E-9, E-10, G-1 자격에 대해서는 총 득점이 80점 이상인 경우에만 체류자격변경 허용"
+  },
+  {
+   "slice": "d4",
+   "index": 1,
+   "verdict": "partly",
+   "reason": "The repo claim holds: I recomputed in-degrees with js-yaml and no 'next' list, NONE's included, contains D-4-2. Its six outgoing edges are therefore dead, and verified-by-review #6 lists it as unreachable. The status is real: a reproduction of the manual describes 졸업생에 대한 일반연수(D-4-2) for 국내대학(전문대 포함) 졸업예정자, and D-4-2 is also issued from abroad to inviting companies' staff. The fix as written does not work in this repo for two reasons. First, data/visadocs.yaml gives D-4-2 only an 'extend' list (K-Trainee D-4-2K), with no 'abroad' and no 'change' list. Both new edges would break the edge/document invariant that verified-by-review lists as correct, and the step would show no documents. Second, the in-Korea D-2-to-D-4-2 route is backed only by a secondary reproduction that may be from an older edition. I could not read the 2026 manual text for it because WebFetch could not reach any site and the search budget ran out. Also, `abroad: true` on a NONE move is redundant, and the new note must be written in all four languages.",
+   "correctedFix": "1) data/visadocs.yaml: first add D-4-2 'abroad' (사증발급 안내매뉴얼 2026.9.1 › 일반연수(D-4) › 사증발급인정서) and 'change' (외국인체류 안내매뉴얼 2026.9.18 › 일반연수(D-4) › 체류자격 변경허가 › 졸업생에 대한 일반연수(D-4-2)) lists. If the 2026 manual has no D-4-2 change section, skip step 3.\n2) NONE next: add a bare `- D-4-2` beside D-4-1/D-4-3/D-4-6/D-4-7 (moves out of NONE are always from abroad).\n3) D-2-1, D-2-2, D-2-3, D-2-4 next: add\n    - to: D-4-2\n      note: {en: 'If you are about to graduate and need training at the Korean parent company or office of the overseas company that hired you, at an international organisation, or at a foreign mission or chamber of commerce in Korea.'}\n   (the ru, uz and uz-cyrl versions must be translated before publishing).",
+   "source": "Recomputed in-degrees over data/visamap.yaml; data/visadocs.yaml D-4-2 (extend only, K-Trainee notice); 외국인체류 안내매뉴얼 일반연수(D-4) 체류자격변경 졸업생에 대한 일반연수(D-4-2), as reproduced at yoonhjs.com/dtype-visa...?mod=document&uid=113 (secondary)",
+   "quote": "국내대학 (전문대 포함) 졸업예정자로서 아래 어느 하나에 해당하는 기관 또는 단체에서 연수가 필요하다고 인정되는 자 ... 연수장소는 취업한 해외 소재 내국인 투자기업의 국내 모기업 또는 외국지사 또는 취업한 해외 소재 외국기업의 국내소재 본사나 지사계열사이어야"
+  },
+  {
+   "slice": "d4",
+   "index": 2,
+   "verdict": "partly",
+   "reason": "The claim holds. D-4-3 has `next: [D-2-1, D-2-2]`, and both the manual and a 2025 MOJ press release (still in force: the 2026.9.18 manual has chapter 38, and the repo's D-10-1 change list has a 'Foreign youth raised in Korea (18-24)' variant) allow a Korean-school graduate aged 18-24 to change to D-10 with no points test and up to 3 years. D-10-1's needs already include {koreanEdu: 1, ageUnder: 25}, so the edge needs no needs override, and D-10-1 has a change list. The fix needs three changes. (a) The note must be in all four languages. (b) It should give the full condition: 7+ years in Korea before 18 and Korean elementary, middle and high school (or the equivalent exams). (c) It only works for real readers if D-4-3 also gets `gives: {koreanEdu: 1}` (see d4#5). The education checkbox reads 'From a Korean university', so a reader who honestly answers 'High school' gets koreanEdu = 0. All three D-10-1 needs branches then return 'no' and the new edge is blocked.",
+   "correctedFix": "data/visamap.yaml D-4-3 (l.285-289):\n  D-4-3:\n    ...\n    next:\n    - D-2-1\n    - D-2-2\n    - to: D-10-1\n      note: {en: 'If you are 18–24, lived in Korea for 7+ years before turning 18 and finished Korean elementary, middle and high school (or passed the equivalent exams): no points test, up to 3 years.'}\n    - E-7-Y\n    age: [0, 19]\n    gives: {edu: 1, koreanEdu: 1}\n(ru, uz and uz-cyrl versions of the note must be translated; E-7-Y edge per d4#3, gives per d4#5.)",
+   "source": "https://www.korea.kr/news/policyNewsView.do?newsId=148940841 and MOJ press release https://www.korea.kr/briefing/pressReleaseView.do?newsId=156680019 (국내 성장 기반 외국인 청소년 취업·정주 방안); 외국인체류 안내매뉴얼 구직(D-10) 체류자격 변경허가 1-2) 점수제 면제 특례자; data/visadocs.yaml D-10-1.change variant 'Foreign youth raised in Korea (age 18-24)' (2026.9.18 manual, 38장)",
+   "quote": "신청일 기준 18세 이상 24세 이하이고 18세가 되기 전 7년 이상 국내에서 체류했으며 국내에서 초·중·고교를 졸업한 경우에는 구직·연수(D-10), 취업(E-7-Y) 자격으로 체류를 허용한다."
+  },
+  {
+   "slice": "d4",
+   "index": 3,
+   "verdict": "confirmed",
+   "reason": "Recomputed: E-7-Y is in no 'next' list, so the page can never offer it as a step, and its 7 outgoing edges are dead. The same MOJ policy grants E-7-Y by in-Korea change of status to 18-24-year-olds who lived 7+ years in Korea before 18 and graduated from Korean school, with no degree or experience requirement. D-4-3 (and F-3 for dependants) is the status this cohort holds. The finding correctly notes that visadocs gives E-7-Y only an 'extend' list. A change list from 외국인체류 안내매뉴얼 2026.9.18 ch.38 Ⅲ.2 must be added before the in-Korea edge, or the edge/document invariant breaks. Two engine caveats: E-7-Y's needs {koreanEdu: 1} is only met by readers who answer 'High school' if D-4-3 gives koreanEdu (d4#5). Its age [18, 24] is checked against the reader's current age, so a 16-year-old D-4-3 reader sees it blocked with an age reason, which is acceptable.",
+   "correctedFix": "data/visamap.yaml: add `- E-7-Y` to D-4-3's next (see d4#2 block) and to F-3's next. data/visadocs.yaml: add an E-7-Y 'change' list from 외국인체류 안내매뉴얼 2026.9.18 › 38. 국내 성장 기반 외국인 청소년 취업‧정주 체류제도 › Ⅲ. 체류자격별 요건 및 제출서류 › 2. 국내성장인력(E-7-Y) › 체류자격 변경. Pair with d4#5 (D-4-3 gives {edu: 1, koreanEdu: 1}).",
+   "source": "https://www.korea.kr/news/policyNewsView.do?newsId=148940841 ; https://www.korea.kr/briefing/pressReleaseView.do?newsId=156680019 ; data/visadocs.yaml E-7-Y (extend only, 2026.9.18 manual ch.38); recomputed in-degrees",
+   "quote": "18세가 되기 전 7년 이상 국내에서 체류했으며 국내에서 초·중·고교를 졸업한 경우에는 구직·연수(D-10), 취업(E-7-Y) 자격으로 체류를 허용한다 ... 그동안 성년이 된 외국인 청소년이 특정활동(E-7) 등 취업자격을 취득하려면 학사학위 또는 5년 이상의 경력이 필요했다."
+  },
+  {
+   "slice": "d4",
+   "index": 4,
+   "verdict": "partly",
+   "reason": "The omission is real. D-4-6's next is [E-7-3, E-7-2, E-7-1, D-2-1, D-2-2, D-10-1], while D-4-1, D-4-2 and D-4-7 list F-6-1 and F-2-3. But the framing is false. I recomputed which nodes lack F-6-1, and the same is true of D-3, D-4-3, D-10-2/3/T, E-8, H-2, all D-8-* and D-9-*. So D-4-6 is not 'the only long-term adult status', and not 'every other D-4' has the route (D-4-3 lacks it). On the law: F-2 가목 sets no condition on current status. The only published F-6 change restriction is on short-term holders, and the temporary allowance for them was ended. D-4-6 is a registered long-term status, so both changes are open to it. Adding the edges is harmless because F-6-1 needs {spouse: korean} and F-2-3 needs a spouse or parent who is an F-5 holder, and both targets have change lists. Treat it as one instance of a file-wide inconsistency.",
+   "correctedFix": "data/visamap.yaml D-4-6 next (after the D-10-1 entry, before `age: [18, 30]`): add `- F-6-1` and `- F-2-3`. Preferably decide one rule for which long-term statuses carry F-6-1/F-2-3 and apply it in the same pass to D-10-2, D-10-3, D-10-T, D-8-*, D-9-* (and D-3/E-8/H-2 after checking their own change restrictions).",
+   "source": "출입국관리법 시행령 별표 1의2 제24호 거주(F-2) 가목; https://www.immigration.go.kr/bbs/immigration/47/416137/download.do (단기체류자의 결혼이민(F-6) 체류자격 변경 신청 일시 허용 종료 알림); data/visadocs.yaml F-6-1.change / F-2-3.change (2026.9.18 manual, no prior-status condition); recomputed next lists",
+   "quote": "국민의 미성년 외국인 자녀 또는 별표 1의3 영주(F-5) 체류자격을 가지고 있는 사람의 배우자 및 그의 미성년 자녀 (별표 1의2 거주(F-2) 가목); 법무부는 2020년 5월 25일부터 시행 중인 \"단기체류자의 결혼이민(F-6) 체류자격 변경 신청\"을 2020년 10월 16일에 종료"
+  },
+  {
+   "slice": "d4",
+   "index": 5,
+   "verdict": "confirmed",
+   "reason": "D-4-3 has no 'gives'. The engine's factsAt() applies the 'gives' of every visa up to and including the one a step leaves from. Without it, two kinds of reader get wrong results. A school student who honestly answers 'Highest completed education: Below high school' (edu 0) is blocked from D-2-1/D-2-2 (needs edu:1), so D-4-3 shows nothing open. This is reproduced by visa-map-audit/tools/sim.mjs case F1: 'no' becomes 'yes' with the fix. A graduate who answers 'High school' cannot honestly tick the only Korea checkbox, which reads 'From a Korean university'. profileFacts() then sets koreanEdu = 0, which blocks the Korean-school routes D-10-1 {koreanEdu: 1, ageUnder: 25} and E-7-Y {koreanEdu: 1}. 'gives' is the only way the engine can learn about Korean schooling. Every step out of D-4-3 assumes the person finished Korean high school, so {edu: 1, koreanEdu: 1} is what the person has after completing D-4-3, as engine.md requires. One residual approximation is already present in the targets' needs: koreanEdu 1 cannot express 'all of elementary, middle and high school plus 7 years before 18'. The notes (d4#2) have to carry that.",
+   "correctedFix": "data/visamap.yaml D-4-3, after `age: [0, 19]`: add `gives: {edu: 1, koreanEdu: 1}`. No per-move needs are required.",
+   "source": "assets/js/visamap.js factsAt()/profileFacts() (l.104-130); layouts/visa-map.html l.199-211 and i18n/en.yaml vm_edu_0 / vm_edu_korea ('From a Korean university'); visa-map-audit/tools/sim.mjs case F1; 외국인체류 안내매뉴얼 구직(D-10) 1-2) 점수제 면제 특례자",
+   "quote": "(국내 성장 기반 외국인 청소년) 신청일 기준 18세 이상 24세 이하의 합법체류자로 「초·중등교육법」에 따른 국내 초‧중‧고교를 모두 졸업하였거나 이와 동등한 학력을 갖춘 사람"
+  },
+  {
+   "slice": "d4",
+   "index": 6,
+   "verdict": "confirmed",
+   "reason": "D-4-1's next is [D-2-1..D-2-4, D-10-1, E-7-1, E-2, F-6-1, F-2-3], with no D-4 sub-code. Recomputed: D-4-3, D-4-6 and D-4-7 have NONE as their only predecessor. data/visadocs.yaml, copied from the 2026.9.18 manual, explicitly records `within: D-4-1>D-4-3 {use: change}`, `D-4-1>D-4-6 {use: change}` and `D-4-1>D-4-7 {use: change}`. Per its header these are moves within one status that the manual says how to make, and all three targets have change lists. The D-4 change rules restrict only short-term holders and D-3/E-9/E-10/G-1 (D-4-6: B-2, C-3, D-3, E-9, E-10, G-1), not D-4-1. The targets' own gates still apply: D-4-6 age [18, 30] and edu 1, and D-4-3 age [0, 19], so D-4-3 only appears for minors. I could not read the manual's 허용대상 text first-hand (no web fetch, search budget used up), so the restriction lists rest on the repo extract plus a manual reproduction.",
+   "correctedFix": "data/visamap.yaml D-4-1 next (l.258-268): add `- D-4-6`, `- D-4-7`, `- D-4-3`.",
+   "source": "data/visadocs.yaml within (l.13798-13800) and targets D-4-3/D-4-6/D-4-7.change (외국인체류 안내매뉴얼 2026.9.18 › 일반연수(D-4) › 체류자격 변경허가); yoonhjs.com ...?mod=document&uid=111 and uid=114 (D-4 체류자격변경 허용/제한대상, manual reproduction)",
+   "quote": "D-4-1>D-4-3: {use: change, list: D-4-3} / D-4-1>D-4-6: {use: change, list: D-4-6} / D-4-1>D-4-7: {use: change, list: D-4-7} (visadocs 'within: moves within one status that the manual says how to make'); 등록외국인 중 B-2, C-3, 기술연수(D-3), 비전문취업(E-9), 선원취업(E-10), 기타(G-1) 자격자는 D-4-6으로의 자격변경 제한"
+  },
+  {
+   "slice": "d4",
+   "index": 7,
+   "verdict": "confirmed",
+   "reason": "D-4-7's next is [D-2-1, D-2-2, D-2-3, D-10-1, F-6-1, F-2-3], with no work visa. The repo's own 2026.9.18 extract of the E-7 change chapter has a case for 'Registered D-1, D-2, D-4~D-10, E-1~E-6 (not E-6-2) holders and their F-3 spouses changing to E-7'. That range includes D-4-7 as much as D-4-1, D-4-2 and D-4-6, which already have E-7-1. The E-2 change chapter likewise covers any 'Registered foreigner (incl. A-1/A-2/A-3) meeting E-2 requirements'. Both targets have change lists and their own needs (E-7-1's list of alternatives; E-2 edu:3). Caveat: E-2 still lacks its `countries` gate (verified-by-review #1), so that separate fix should land with or before the new edge.",
+   "correctedFix": "data/visamap.yaml D-4-7 next (l.307-313): add `- E-7-1` and `- E-2`. Apply the E-2 `countries` gate fix (verified-by-review #1) in the same change.",
+   "source": "data/visadocs.yaml E-7-1.change (외국인체류 안내매뉴얼 2026.9.18 › 25. 특정활동(E-7) › 체류자격 변경허가) and E-2.change (› 20. 회화지도(E-2) › 체류자격 변경허가); yoonhjs.com ...?kboard_content_redirect=219 (E-7 변경 허용/제한대상)",
+   "quote": "문화예술(D-1), 유학(D-2), 일반연수(D-4) ... 자격으로 합법 체류 중인 등록외국인 및 그 동반배우자(F-3) [허용]; 단기체류(B·C계열), 기술연수(D-3), 계절근로(E-8), 비전문취업(E-9), 선원취업(E-10), 기타(G-1) [제한]"
+  },
+  {
+   "slice": "d4",
+   "index": 8,
+   "verdict": "confirmed",
+   "reason": "The repo has the inconsistency described. D-4-1 has D-2-1..D-2-4, D-4-6 only D-2-1/D-2-2, D-4-7 D-2-1..D-2-3, and D-4-2 D-2-2/D-2-3. The D-2 change rule admits any registered foreigner except C-3-2, C-3-3, D-3, E-9, E-10 and G-1, so no D-4 sub-code is excluded. The repo's 2026.9.18 D-2 change list applies to every D-2 level and has a document item specifically for 어학연수(D-4) → 유학(D-2). The prior-degree filter is already enforced by the targets' needs (D-2-3 edu:3, D-2-4 edu:4), so the added edges only appear for readers who qualify. All targets have change lists. The 대상 quote comes from an earlier manual edition (Ajou PDF), and the 2026 extract shows nothing that contradicts it.",
+   "correctedFix": "data/visamap.yaml: D-4-6 next add `- D-2-3` and `- D-2-4`; D-4-7 next add `- D-2-4`; D-4-2 next add `- D-2-1` and `- D-2-4`. (D-4-2 stays unreachable until d4#1 is resolved.)",
+   "source": "외국인체류 안내매뉴얼, 유학(D-2) › 체류자격 변경허가 › 가. 자격변경 대상 (https://www.ajou.ac.kr/se_en/board/news.do?mode=download&articleNo=288573&attachNo=269217 p.27); data/visadocs.yaml D-2-1..D-2-4.change (2026.9.18 manual, 어학연수(D-4) → 유학(D-2) document item)",
+   "quote": "단기체류자(관광통과 및 사증면제협정 입국자 포함) 또는 외국인등록 후 국내에 체류하고 있는 자 ※ 단, 순수 및 단체관광(C-3-2)·의료관광(C-3-3), 기술연수(D-3), 비전문취업(E-9), 선원취업(E-10), 기타(G-1) 자격 소지자는 제한"
+  }
+ ]
+}

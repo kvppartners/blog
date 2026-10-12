@@ -12,6 +12,11 @@
 /node_modules/
 .dev.vars
 
+# Test dependencies (tests/package.json)
+/tests/node_modules/
+/visa-map-audit/tools/node_modules/
+/visa-map-audit/tools/package*.json
+
 # OS and editor files
 .DS_Store
 Thumbs.db

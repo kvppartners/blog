@@ -32,14 +32,21 @@
 {{- end }}
 {{- range $refs | uniq }}{{ if not (or (index $groups .) (index $names.en .)) }}{{ warnf "data/visamap.yaml: unknown country or group %q" . }}{{ end }}{{ end }}
 {{- /* Requirements (needs, gives, lang) may only use the facts visamap.js knows. */}}
-{{- $facts := slice "korean" "spouse" "koreanChild" "parent" "edu" "koreanEdu" "stem" "rank" "experience" "invest" "ageUnder" "countries" "notAfter" }}
+{{- $facts := slice "korean" "spouse" "koreanChild" "parent" "edu" "koreanEdu" "stem" "rank" "experience" "invest" "ageUnder" "countries" "notAfter" "stay" }}
 {{- range $code, $v := $visas }}
 {{- $rules := slice }}
 {{- with $v.needs }}{{ $rules = $rules | append . }}{{ end }}
 {{- with $v.gives }}{{ $rules = $rules | append . }}{{ end }}
 {{- range $v.next }}{{ if reflect.IsMap . }}{{ with .needs }}{{ $rules = $rules | append . }}{{ end }}{{ end }}{{ end }}
 {{- range $rules }}{{ range $k, $_ := . }}{{ if not (in $facts $k) }}{{ warnf "data/visamap.yaml: %s uses unknown fact %q" $code $k }}{{ end }}{{ end }}{{ end }}
+{{- /* Years on visas ('stay') name a group from 'statusGroups' or a list of visa codes; income reductions name an entry of 'incomeCuts'. */}}
+{{- range $rules }}{{ with .stay }}{{ if not (and .years .in) }}{{ warnf "data/visamap.yaml: %s has a 'stay' without 'years' and 'in'" $code }}{{ end }}{{ with .in }}{{ if and (not (reflect.IsSlice .)) (not (index (hugo.Data.visamap.statusGroups | default dict) .)) }}{{ warnf "data/visamap.yaml: %s names unknown status group %q" $code . }}{{ end }}{{ end }}{{ end }}{{ end }}
+{{- $incomes := slice }}
+{{- with $v.income }}{{ $incomes = $incomes | append . }}{{ end }}
+{{- range $v.next }}{{ if reflect.IsMap . }}{{ with .income }}{{ $incomes = $incomes | append . }}{{ end }}{{ end }}{{ end }}
+{{- range $incomes }}{{ range .cuts }}{{ if not (index (hugo.Data.visamap.incomeCuts | default dict) .) }}{{ warnf "data/visamap.yaml: %s names unknown income reduction %q" $code . }}{{ end }}{{ end }}{{ end }}
 {{- end }}
+{{- range $id, $cut := hugo.Data.visamap.incomeCuts }}{{ range slice "en" "ru" "uz" "uz-cyrl" }}{{ if not (index ($cut.text | default dict) .) }}{{ warnf "data/visamap.yaml: income reduction %s has no %s text" $id . }}{{ end }}{{ end }}{{ end }}
 {{- end }}
 {{- /* Keep only this page's language from data/visamap.yaml to make the page lighter. */}}
 {{- $lang := .Lang }}
@@ -59,6 +66,7 @@
 {{- /* An empty 'needs' on a move is kept: it lifts the visa's own requirements for that move. */}}
 {{- if isset . "needs" }}{{ $m = merge $m (dict "needs" .needs) }}{{ end }}
 {{- with .lang }}{{ $m = merge $m (dict "lang" .) }}{{ end }}
+{{- with .income }}{{ $m = merge $m (dict "income" .) }}{{ end }}
 {{- $next = $next | append $m }}
 {{- else }}
 {{- $next = $next | append (dict "to" .) }}
@@ -71,6 +79,10 @@
 {{- with $v.needs }}{{ $e = merge $e (dict "needs" .) }}{{ end }}
 {{- with $v.gives }}{{ $e = merge $e (dict "gives" .) }}{{ end }}
 {{- with $v.lang }}{{ $e = merge $e (dict "lang" .) }}{{ end }}
+{{- with $v.abroad }}{{ $e = merge $e (dict "abroad" .) }}{{ end }}
+{{- with $v.years }}{{ $e = merge $e (dict "years" .) }}{{ end }}
+{{- with $v.work }}{{ $e = merge $e (dict "work" .) }}{{ end }}
+{{- with $v.income }}{{ $e = merge $e (dict "income" .) }}{{ end }}
 {{- with $v.notes }}
 {{- $notes := slice }}
 {{- range . }}
@@ -83,7 +95,9 @@
 {{- $visas = merge $visas (dict $code $e) }}
 {{- end }}
 {{- $countries := index hugo.Data.countries $lang | default hugo.Data.countries.en }}
-{{- $pageData := dict "updated" $vm.updated "groups" $vm.groups "statuses" $statuses "visas" $visas "countries" $countries }}
+{{- $cuts := dict }}
+{{- range $id, $c := $vm.incomeCuts }}{{ $cuts = merge $cuts (dict $id (merge $c (dict "text" (index $c.text $lang | default $c.text.en)))) }}{{ end }}
+{{- $pageData := dict "updated" $vm.updated "groups" $vm.groups "statusGroups" $vm.statusGroups "gni" $vm.gni "incomeCuts" $cuts "statuses" $statuses "visas" $visas "countries" $countries }}
 {{- $logo := "" }}
 {{- with site.Params.label.icon }}{{ with resources.Get . }}{{ $logo = (.Resize "256x").RelPermalink }}{{ end }}{{ end }}
 {{- $contact := site.Params.contact | default dict }}
@@ -104,6 +118,10 @@
     "noneFit" (i18n "vm_none_fit") "whyFamily" (i18n "vm_why_family") "whyEducation" (i18n "vm_why_education")
     "whyExperience" (i18n "vm_why_experience") "whyInvest" (i18n "vm_why_invest") "whyPrevious" (i18n "vm_why_previous")
     "langNeed" (i18n "vm_lang_need") "langOk" (i18n "vm_lang_ok") "categories" $categories
+    "whyStay" (i18n "vm_why_stay") "laterAge" (i18n "vm_later_age") "laterExperience" (i18n "vm_later_experience")
+    "laterIncome" (i18n "vm_later_income") "income" (i18n "vm_income_short") "money" (i18n "vm_money")
+    "incomeOwn" (i18n "vm_income_own") "incomeHousehold" (i18n "vm_income_household") "incomeGni" (i18n "vm_income_gni")
+    "incomeCut" (i18n "vm_income_cut") "incomeNone" (i18n "vm_income_none") "incomeMaybe" (i18n "vm_income_maybe") "incomeOk" (i18n "vm_income_ok")
     "doneTitle" (i18n "vm_done_title") "imageTitle" (i18n "vm_image_title") "deadEnd" (i18n "vm_dead_end")) }}
 
 <article class="visa-map" id="visa-map" data-lang="{{ .Lang }}" data-logo="{{ $logo }}">
@@ -260,6 +278,12 @@
                             </select>
                         </div>
                         <div class="vm-field">
+                            <label class="vm-label" for="vm-income">{{ i18n "vm_income" }}, {{ i18n "vm_income_unit" }}</label>
+                            <input class="vm-input" id="vm-income" name="income" type="number" inputmode="decimal" min="0" max="10000" step="0.1"
+                                placeholder="45" aria-describedby="vm-income-hint">
+                            <p class="vm-hint" id="vm-income-hint">{{ i18n "vm_income_hint" }}</p>
+                        </div>
+                        <div class="vm-field">
                             <label class="vm-label" for="vm-invest">{{ i18n "vm_invest" }}</label>
                             <select class="vm-input" id="vm-invest" name="invest">
                                 <option value="">{{ i18n "vm_not_set" }}</option>
@@ -290,6 +314,7 @@
             <span><i class="vm-dot vm-dot-goal"></i>{{ i18n "vm_goal" }}</span>
             <span><i class="vm-plane">✈</i>{{ i18n "vm_abroad" }}</span>
             <span><i class="vm-check">✓</i>{{ i18n "vm_matches" }}</span>
+            <span><i class="vm-later">⏳</i>{{ i18n "vm_legend_later" }}</span>
         </div>
         <div class="vm-tree" id="vm-tree">
             <svg class="vm-links" id="vm-links" aria-hidden="true"></svg>

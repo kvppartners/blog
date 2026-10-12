@@ -1,0 +1,12 @@
+{
+  "name": "kvp-blog-tests",
+  "private": true,
+  "type": "module",
+  "description": "Tests for the Visa map rules (assets/js/visa/rules.js) and data (data/visamap.yaml).",
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

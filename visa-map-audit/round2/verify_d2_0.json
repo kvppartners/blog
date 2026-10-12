@@ -1,0 +1,85 @@
+{
+ "verdicts": [
+  {
+   "slice": "d2",
+   "index": 0,
+   "verdict": "confirmed",
+   "reason": "The repo matches the claim: D-2-6 -> D-2-2 and D-2-6 -> D-2-3 both carry `abroad: true` with the note 'Usually after the exchange ends: apply anew'. The MOJ student guideline has a '자격변경의 특례' section that allows an in-Korea change to a regular course and asks only for the usual change/extension documents. I found the sibling D-2-8 clause of that section verbatim through search. I could not bring up the D-2-6 clause itself (WebFetch fails DNS for every host and the search budget ran out), and the guideline copy is the 2022 edition, but nothing I found says otherwise. D-2-2 and D-2-3 both have a 'change' list, so the edge is expressible. Side effect: in visadocs.js a move between two D-2 sub-codes only gets a document list from a `within` rule, so the docs page needs one too.",
+   "correctedFix": "data/visamap.yaml, D-2-6.next: remove `abroad: true` from both entries and replace the note:\n    - to: D-2-2\n      note: {en: 'When the exchange ends you can change to a degree course in Korea with a standard admission letter and proof of funds.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\n    - to: D-2-3\n      note: {en: 'When the exchange ends you can change to a degree course in Korea with a standard admission letter and proof of funds.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\n(ru, uz and uz-cyrl must be translated.) Optional, so the docs page shows a list for these moves: in data/visadocs.yaml `within:` add `D-2-6>D-2-2: {use: change, list: D-2-2}` and `D-2-6>D-2-3: {use: change, list: D-2-3}`.",
+   "source": "법무부 「외국인유학생 사증발급 및 체류관리 지침」 Ⅴ.3.라 자격변경의 특례 (교환학생 / 단기유학 체류자), https://research.kau.ac.kr/upfile/2022/11/20221108163943-8217.pdf ; repo: visa-map-audit/tools/visadocs-targets.txt (D-2-2, D-2-3: change), assets/js/visadocs.js makeMove()",
+   "quote": "교환학생(D-2-6)이 교환과정을 종료하고 정규과정으로 변경하고자 하는 경우, 체류자격변경 및 체류기간연장 허가 시 제출하는 서류를 징구하고 변경허용 (D-2-6 clause as cited by the finding; the sibling clause in the same section, verified verbatim: '단기유학(D-2-8)자격으로 체류 중 정규과정(D-2-1~D-2-6)자격으로 변경하고자 하는 경우 체류자격변경 및 체류기간연장 허가 시 제출서류를 징구하고 변경허용')"
+  },
+  {
+   "slice": "d2",
+   "index": 1,
+   "verdict": "confirmed",
+   "reason": "The repo matches the claim: D-2-8 -> D-2-2 and D-2-8 -> D-2-3 carry `abroad: true`. The note says 'after the exchange ends', which is wrong for a visiting (short-term) student. The MOJ guideline lets a D-2-8 holder change to a regular course (D-2-1 to D-2-6) in Korea; I confirmed that text verbatim through search. D-2-2 and D-2-3 have 'change' lists. As with D-2-6, the docs page needs a `within` rule to show a list for this same-status move.",
+   "correctedFix": "data/visamap.yaml, D-2-8.next: remove `abroad: true` from both entries and replace the note:\n    - to: D-2-2\n      note: {en: 'You can change to a degree course in Korea once admitted, with a standard admission letter and proof of funds.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\n    - to: D-2-3\n      note: {en: 'You can change to a degree course in Korea once admitted, with a standard admission letter and proof of funds.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\n(ru, uz and uz-cyrl must be translated.) Optional: in data/visadocs.yaml `within:` add `D-2-8>D-2-2: {use: change, list: D-2-2}` and `D-2-8>D-2-3: {use: change, list: D-2-3}`.",
+   "source": "법무부 「외국인유학생 사증발급 및 체류관리 지침」 Ⅴ.3.라 자격변경의 특례 (단기유학 체류자), https://research.kau.ac.kr/upfile/2022/11/20221108163943-8217.pdf",
+   "quote": "단기유학(D-2-8)자격으로 체류 중 정규과정(D-2-1~D-2-6)자격으로 변경하고자 하는 경우 체류자격변경 및 체류기간연장 허가 시 제출서류를 징구하고 변경허용"
+  },
+  {
+   "slice": "d2",
+   "index": 2,
+   "verdict": "partly",
+   "reason": "Correct that D-2-7 has no `gives` (and no `needs`), and that factsAt(level) applies the current visa's gives. A node run against the real YAML shows the effect for a reader who answered edu=1 (not Korean) and is standing on D-2-7: D-10-1 is always BLOCKED, and E-7-1 and E-7-3 are also BLOCKED once experience is answered. 'Every useful option BLOCKED' overstates it: E-7-2 and F-2-R stay open, and E-7-1/E-7-3 show as 'maybe' while experience is blank. The fix level is wrong. D-2-7 covers '전문학사 이상', so the only guaranteed level is an associate degree. `{edu: 3, koreanEdu: 3}` would over-credit associate-course holders; `{edu: 2, koreanEdu: 2}` already opens E-7-1, E-7-3 and D-10-1 (verified in the simulation).",
+   "correctedFix": "data/visamap.yaml, under D-2-7 add:\n    needs: {edu: 1}\n    gives: {edu: 2, koreanEdu: 2}",
+   "source": "법무부 「외국인유학생 사증발급 및 체류관리 지침」 Ⅰ 유학 세부약호 ⑦, https://research.kau.ac.kr/upfile/2022/11/20221108163943-8217.pdf ; repo: assets/js/visamap.js factsAt() lines 117-130; simulation in scratchpad/verify/d2sim.mjs",
+   "quote": "D-2-7(일-학습연계 2016.5.16. 신설) : 정부초청 장학생 등으로 선발되어 국내 대학 전문학사 이상의 정규 학위과정에서 유학하고자 하거나 재학중인 유학생"
+  },
+  {
+   "slice": "d2",
+   "index": 3,
+   "verdict": "refuted",
+   "reason": "The `{stem: true}` alternative stands for a real exception, so the claim that 'there is no STEM-only route' is wrong. The degree rule is only 'in principle' (원칙으로). Special research institutes (KAIST, GIST, DGIST, UNIST, UST) and, since the MOJ expansion, Korean universities in the THE top 200 / QS top 500 may invite STEM students who are still in a bachelor's programme abroad as D-2-5 research students. The repo's own D-2-5 'abroad' list, copied from 사증발급 안내매뉴얼 2026.9.1, records this. In the engine, `stem` can only be true when edu >= 1 (readDetails), so the 'no degree' case is a high-school graduate studying STEM, which is the exception population. Dropping the alternative would block legitimate applicants. The engine cannot express the condition about the inviting university.",
+   "correctedFix": "",
+   "source": "사증발급 안내매뉴얼 2026.9.1 › 유학(D-2) › 사증발급 일반 › 2. 제출서류 (D-2-5 course-specific documents), as copied in data/visadocs.yaml targets D-2-5.abroad; 법무부 보도 (hellodd.com/news/articleView.html?idxno=104582; etoday.co.kr/news/view/2375280)",
+   "quote": "최종학력 입증서류(석사학위이상 소지자를 원칙으로 함) ; 법무부는 세계 대학평가 상위권에 속하는 국내 대학에서 이공계 분야 국외 학사과정 재학생을 연구유학생(D-2-5)으로 초청할 수 있도록 한다 (기존에는 석·박사 학위 소지자와 KAIST·DGIST·UNIST·GIST·UST 등 특정연구기관이 초청한 학사과정 재학생에게만 허용)"
+  },
+  {
+   "slice": "d2",
+   "index": 4,
+   "verdict": "partly",
+   "reason": "The claim is right, and verified-by-review.md already lists it as confirmed wrong (#2). The 80-point floor applies only to notified-country nationals holding B-1, B-2, C-1, C-3, C-4, D-3, E-9, E-10 or G-1, and D-2 is not among them. The proposed note needs two changes. 'Master's or doctorate holder' is wrong: D-10-1 requires a bachelor's or higher, and some D-2-5 holders are STEM bachelor's students under the exception. It also drops the totals, which the existing text has right: 60-79 points gives 6 months at a time and 1 year in total; 80+ gives 1 year at a time and up to 3 years. The same note sits on D-4-1/2/6/7 and F-3 outside this slice.",
+   "correctedFix": "data/visamap.yaml, D-2-5.next, the `to: D-10-1` entry:\n      note: {en: 'Bachelor''s degree or higher and 60+ points on the D-10 points table (at least 20 from the basic items); the 80-point rule for the 21 notified countries does not apply when changing from a student status. 60-79 points: 6 months at a time, 1 year in total; 80+ points: 1 year at a time, up to 3 years.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\n(ru, uz and uz-cyrl must be translated. Apply the same note to the D-4-1, D-4-2, D-4-6, D-4-7 and F-3 -> D-10-1 moves.)",
+   "source": "외국인체류 안내매뉴얼 › 구직(D-10) › 체류자격변경허가 › 가. 허용대상 1-1) 일반구직(D-10-1), https://internationalcenter.inha.ac.kr/bbs/internationalcenter/2507/169552/download.do",
+   "quote": "학사(국내 전문학사 포함) 이상의 학위를 소지한 국내 합법 체류자로 구직 점수표에서 총 190점 중 기본항목이 20점 이상으로 총 득점이 60점 이상인자 - 단, 법무부장관 고시국가 국민 중 B-1, B-2, C-1, C-3, C-4, D-3, E-9, E-10, G-1 자격에 대해서는 총 득점이 80점 이상인 경우에만 체류자격 변경 허용"
+  },
+  {
+   "slice": "d2",
+   "index": 5,
+   "verdict": "confirmed",
+   "reason": "In the repo, D-2-2 and D-2-3 list D-10-2 and D-2-1 and D-2-4 do not. D-10-2 requires a Korean associate degree or a foreign bachelor's or higher, plus one of the IP, OASIS or K-Startup conditions. Only E-9, E-10 and G-1 are barred from changing to it, so Korean associate-degree and doctoral graduates on D-2 qualify. D-10-2 has a 'change' list. In the engine, D-2-1 gives koreanEdu 2 and D-2-4 gives koreanEdu 5, which satisfies D-10-2's needs [{edu:3},{koreanEdu:2}]. The simulation shows D-10-2 OPEN from both.",
+   "correctedFix": "data/visamap.yaml: add `- D-10-2` to D-2-1.next and to D-2-4.next.",
+   "source": "외국인체류 안내매뉴얼 › 구직(D-10) › 체류자격변경허가 › 가. 허용대상 2) 기술창업준비(D-10-2), https://internationalcenter.inha.ac.kr/bbs/internationalcenter/2507/169552/download.do",
+   "quote": "학사(국내 전문학사) 이상의 학위를 가진 사람으로서, 아래 어느 하나에 해당하는 자 (대한민국 특허권·실용신안권·디자인권 보유 또는 출원 중 / OASIS 교육과정 이수 / K-Startup 그랜드챌린지 참여자 / 해외(OECD) 지식재산권 보유자); E-9, E-10, G-1 자격 소지자는 D-10-2 체류자격 변경 제한"
+  },
+  {
+   "slice": "d2",
+   "index": 6,
+   "verdict": "confirmed",
+   "reason": "D-2-4.next has no D-8-4, while D-2-1, D-2-2 and D-2-3 all have it. D-8-4 (tech start-up) is defined from a Korean associate degree or a foreign bachelor's upward, with no rule that would exclude doctoral graduates. D-8-4 has a 'change' list. D-2-4 gives koreanEdu 5, which meets D-8-4's needs, and the simulation shows it OPEN. I could not fetch the Visa Navigator myself, so the quote below is the one the finding cites. The edge stands on consistency with the sibling D-2 codes and the D-8-4 degree floor.",
+   "correctedFix": "data/visamap.yaml: add `- D-8-4` to D-2-4.next.",
+   "source": "출입국·외국인정책본부 「비자 내비게이터」 PART 02, 1. 유학·연수(D-2, D-4), 유형3 1단계, https://www.immigration.go.kr/bbs/immigration_eng/230/454086/download.do",
+   "quote": "(D-8, 기술창업) 국내 전문학사 이상 취득, 국외 학사 이상 취득 또는 중앙행정기관의 장이 추천한 사람으로서 점수제 등 요건을 충족하거나, K-startup 그랜드챌린지 참여자로서 요건 충족"
+  },
+  {
+   "slice": "d2",
+   "index": 7,
+   "verdict": "confirmed",
+   "reason": "D-2-3 offers D-9-5 but D-2-4 does not. Search confirmed the Visa Navigator wording that the student trade/business route (D-9) is for people who have or will have a Korean master's or higher and invest KRW 100M; doctoral graduates are covered. D-9-5 has a 'change' list (in-Korea only, which suits a non-abroad edge). D-2-4 gives koreanEdu 5, which meets D-9-5's needs {koreanEdu:3, invest:1}; the simulation shows it OPEN with invest=1.",
+   "correctedFix": "data/visamap.yaml: add `- D-9-5` to D-2-4.next.",
+   "source": "출입국·외국인정책본부 「비자 내비게이터」 PART 02, 1. 유학·연수(D-2, D-4), 유형3 1단계 (D-9, 유학무역경영), https://www.immigration.go.kr/bbs/immigration_eng/230/454086/download.do",
+   "quote": "(D-9, 유학무역경영) 국내 석사 이상 취득(예정)자로 1억원 이상을 투자하여 국내에서 회사 경영"
+  },
+  {
+   "slice": "d2",
+   "index": 8,
+   "verdict": "partly",
+   "reason": "D-2-7.next really has only 7 entries and lacks F-2-7, D-8-4, D-10-2 and E-3. D-2-7 is a Korean degree course from 전문학사 upward, so its graduates have the same exits as D-2-1 to D-2-4. The fix needs three changes. (1) The '10-point bonus for D-2-7' comes from the 2022 guideline's 【참고】; I could not confirm it in the current F-2-7 points table (법무부고시 제2025-408호), so it should not go into a note. (2) D-2-7 also covers associate and bachelor's courses, so the F-2-7 note should cover both tracks; the existing D-10-1 -> F-2-7 note (all four languages, visamap.yaml line 524) does. (3) D-8-4 and D-10-2 only open for readers who answered their education if D-2-7 also gets the d2#2 gives; the simulation with gives {edu:2,koreanEdu:2} shows F-2-7, D-8-4 and D-10-2 OPEN and E-3 correctly BLOCKED for a high-school reader.",
+   "correctedFix": "data/visamap.yaml, D-2-7 (together with d2#2's `needs: {edu: 1}` / `gives: {edu: 2, koreanEdu: 2}`), add to next:\n    - to: F-2-7\n      note: <copy the D-10-1 -> F-2-7 note verbatim, all four languages: en 'With a Korean master's or higher (within 5 years) and a job offer, or a job at a listed company or in a promising industry; 80+ points.'>\n    - D-8-4\n    - D-10-2\n    - E-3\nDo not mention a D-2-7 points bonus.",
+   "source": "법무부 「외국인유학생 사증발급 및 체류관리 지침」 Ⅰ 세부약호 ⑦ and 【참고】D-2-7 소지자의 체류우대, https://research.kau.ac.kr/upfile/2022/11/20221108163943-8217.pdf ; 외국인체류 안내매뉴얼 › 30. 거주(F-2) › 점수제 우수인재",
+   "quote": "D-2-7(일-학습연계 2016.5.16. 신설) : 정부초청 장학생 등으로 선발되어 국내 대학 전문학사 이상의 정규 학위과정에서 유학하고자 하거나 재학중인 유학생"
+  }
+ ]
+}

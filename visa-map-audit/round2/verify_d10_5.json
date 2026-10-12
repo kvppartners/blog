@@ -1,0 +1,49 @@
+{
+ "verdicts": [
+  {
+   "slice": "d10",
+   "index": 5,
+   "verdict": "confirmed",
+   "reason": "The repo matches the claim. D-10-2.next is [D-8-4, E-7-1, D-10-1, D-2-2, D-2-3, D-2-4], D-10-3.next is [E-7-1, D-8-4] and D-10-T.next is [E-7-T, F-2-T], so none offers F-6-1 or F-2-3; D-10-1 offers both, and I reproduced this with node from data/visamap.yaml. On the law: a change to F-6 keeps the current status as its base, and the F-6 change restriction list (B-1, B-2, C-1, C-3, C-4, unlawful stayers, exit-only extensions, criminal cases, H-1 under its own guideline) does not name D-10. The F-2-3 decree row puts no condition on the status currently held. Both targets have in-Korea 'change' document lists (visadocs-targets.txt). The same gap for D-8/D-9 was already confirmed 2-0 on the same sources. I could not fetch easylaw or law.go.kr myself (WebFetch fails DNS); the two quotes below come from those earlier verifiers' fetches.",
+   "correctedFix": "In data/visamap.yaml:\n  D-10-2.next: append\n    - F-6-1\n    - F-2-3\n  D-10-3.next: append\n    - F-6-1\n    - F-2-3\n  D-10-T: change `next: [E-7-T, F-2-T]` to `next: [E-7-T, F-2-T, F-6-1, F-2-3]`\n(bare entries, exactly as in D-10-1.next; the visa-level needs {spouse: korean} on F-6-1 and [{spouse: f5},{parent: f5}] on F-2-3 do the gating, so no new note is needed)",
+   "source": "easylaw.go.kr 결혼이민자 › 국제결혼과 체류·국적 › 체류자격 › 결혼에 따른 체류자격; 출입국관리법 시행령 별표 1의2 제24호 거주(F-2) 가목; data/visadocs.yaml F-6-1.change (외국인체류 안내매뉴얼 2026.9.18 › 33. 결혼이민(F-6) › 체류자격 변경허가) and F-2-3.change (› 30. 거주(F-2) › 체류자격 변경허가)",
+   "quote": "외국인이 대한민국 국민과 대한민국에서 결혼한 경우에는 기존의 국내 체류자격을 국민의 배우자에게 주어지는 체류자격인 결혼이민(F-6)자격으로 변경신청할 수 있습니다. / 별표 1의2 24.가: 국민의 미성년 외국인 자녀 또는 별표 1의3 영주(F-5) 체류자격을 가지고 있는 사람의 배우자 및 그의 미성년 자녀"
+  },
+  {
+   "slice": "d10",
+   "index": 6,
+   "verdict": "confirmed",
+   "reason": "Both the D-10-1 -> F-2-R note and visas['F-2-R'].how list '...and 5 years in a depopulating area' among the entry conditions, which reads as past residence. The MOJ notice (거주(F-2) 파목 기준) makes it a forward-looking undertaking counted from the date F-2-R is granted. The 2026 manual's change list in data/visadocs.yaml confirms that actual residence in the recommending area is checked at application, with a special exception for people who could not move there yet. Practitioner summaries add that the first 2 years must be spent in the recommended area, after which a move to another depopulating area in the same province is allowed. The fix is right in substance. I only softened 'must already live', because of the residence exception.",
+   "correctedFix": "Replace the English text in both places (visas.D-10-1.next[to: F-2-R].note.en and visas['F-2-R'].how.en):\n  D-10-1 -> F-2-R note.en: 'Local-government recommendation, a Korean associate degree or regional-wage income, KIIP 3 or TOPIK 3. You must live in the recommending area and commit to living and working (or running a business) in that depopulating area for 5 years after approval: the first 2 years in the recommended area itself, then you may move to another depopulating area in the same province. Not possible if your visa before D-10 was D-3, D-4, E-6-2, E-8, E-9, E-10, G-1 or H-1.'\n  F-2-R how.en: 'Local-government recommendation, a Korean associate degree or regional-wage income, KIIP 3 or TOPIK 3, and a commitment to live and work in the recommended depopulating area for 5 years after approval (the first 2 years in the recommended area itself).'\nThe ru, uz and uz-cyrl strings must be retranslated to match; the current ones carry the same 'and 5 years' wording.",
+   "source": "법무부 고시 「거주(F-2) 파목에 관한 기준」 (지역특화형 우수인재 F-2-R), as reproduced at https://yoonhjs.com/f2r-e74r-f4r-f5r-%EB%B9%84%EC%9E%90/?mod=document&uid=1864 ; data/visadocs.yaml F-2-R.change (외국인체류 안내매뉴얼 2026.9.18 › 37. 지역특화형비자 › Ⅱ. 지역특화형 우수인재(F-2) › (1) 체류자격 변경 › 4. 제출서류)",
+   "quote": "지역특화형 우수인재(F-2-R) 체류자격을 받은 날로부터 5년 이상 추천지역에서 거주하거나 취업 또는 창업활동을 하고자 할 것 / (manual, F-2-R change list) 실거주 인정 특례(지자체에 추천서 발급 신청 시까지 부득이한 사정으로 실거주 요건을 충족하지 못한 경우)"
+  },
+  {
+   "slice": "d10",
+   "index": 7,
+   "verdict": "confirmed",
+   "reason": "The repo matches the claim. D-10-1.next has E-6-1 but not E-6-3, and E-6-3 has no needs, age or countries gate, so adding it filters nobody. The D-10 chapter of the manual names E-6-2 as the only excluded part of E-6 and allows pure arts and sports, and sports means E-6-3. The 2026 manual's E-6 change chapter, as copied into data/visadocs.yaml, has the case 'D-2 / D-10 holder changing to E-6' under E-6-3.change as well as E-6-1.change. So this is a documented in-Korea change to a visa that has a 'change' list.",
+   "correctedFix": "In data/visamap.yaml visas.D-10-1.next insert a bare entry right after `- E-6-1`:\n    - E-6-3",
+   "source": "외국인체류 안내매뉴얼 (2026) › 구직(D-10) › 해당자, p.140 (inha.ac.kr manual extract); data/visadocs.yaml E-6-3.change (외국인체류 안내매뉴얼 2026.9.18 › 24. 예술흥행(E-6) › 체류자격 변경허가, case 'D-2 / D-10 holder changing to E-6')",
+   "quote": "단, 예술흥행(E-6) 자격 중 유흥업소 등의 흥행활동(E-6-2)은 제외하고, 순수예술 및 스포츠분야만 허용"
+  },
+  {
+   "slice": "d10",
+   "index": 8,
+   "verdict": "partly",
+   "reason": "The engine claim is true. The D-10-1 -> F-2-7 move and F-2-7 itself have no needs, and the node run shows a 27-year-old with a foreign bachelor's gets 'yes' (open). With {koreanEdu: 4} that reader gets 'no'; a NONE > D-2-3 > D-10-1 reader gets 'yes' through D-2-3's gives; a blank answer stays 'maybe'. Several practitioner sources quote the manual's rule that D-2/D-10 holders qualify for F-2-7 only with a Korean master's (or a pending one) and a confirmed job, so the koreanEdu: 4 gate is right. I could not read the 2026 primary text (WebFetch fails DNS). The fallback `[{koreanEdu: 4}, {edu: 4}]` has no legal basis: a foreign master's opens no D-10 -> F-2-7 track. Keeping the note's 'or a job at a listed company or in a promising industry' would contradict the gate, so the note must change with it. The Korean-War-ally exception (Korean bachelor's plus a ministry recommendation) cannot be expressed without a new country group, so it is left to the note.",
+   "correctedFix": "In data/visamap.yaml visas.D-10-1.next replace the F-2-7 entry with:\n    - to: F-2-7\n      needs: {koreanEdu: 4}\n      note: {en: 'From D-10 only with a Korean master''s or higher (earned within the last 5 years) and a confirmed job in a professional occupation; 80+ points. Graduates from Korean War allied countries with a Korean bachelor''s and a ministry recommendation are an exception.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\nDo NOT use the alternative `needs: [{koreanEdu: 4}, {edu: 4}]`. The ru, uz and uz-cyrl notes must be retranslated from the new English.",
+   "source": "외국인체류 안내매뉴얼 › 30. 거주(F-2) › 체류자격 변경허가 › 5. 점수제 우수인재 (신청 대상), as quoted in 정봉수 노무사, 전문인력의 점수제 거주비자(F-2-7) (k-labor.co.kr / studykoreanews.com idxno=288) and in yoonhjs.com F2(거주) 점수제 page; primary 2026 text not retrievable in this session",
+   "quote": "유학(D-2) 및 구직(D-10) 체류자격 소지자는 국내 대학에서 석사 이상의 학위를 취득(취득 예정자 포함)하고 국내 기업에 취업이 확정된 경우에 한한다"
+  },
+  {
+   "slice": "d10",
+   "index": 9,
+   "verdict": "confirmed",
+   "reason": "The current note on D-10-3 -> E-7-1 is 'After 1+ year of internship: education and experience requirements are waived.' It leaves out both conditions the manual attaches to the waiver: formal employment in the internship field, and a wage of at least the previous year's per-capita GNI. The 2022 MOJ press release that created D-10-3 sets the same GNI condition. Meanwhile E-7-1's own text quotes the much lower ₩31.1M floor, so a reader relying on the waiver at that salary would be refused. The fix is a note-only change on an existing edge, so the engine can express it.",
+   "correctedFix": "In data/visamap.yaml visas.D-10-3.next, set the E-7-1 entry's note.en to:\n  'After 1+ year of internship, if you are formally hired in the field of your internship at a salary of at least the previous year''s per-capita GNI, the education and experience requirements are waived.'\nThe ru, uz and uz-cyrl notes must be retranslated to match.",
+   "source": "외국인체류 안내매뉴얼 (2026) › 구직(D-10) › 첨단기술인턴 체류지원 특례 › (취업 지원), pp.158-159 (inha.ac.kr manual extract); 법무부 보도자료 '첨단분야 인턴 비자 신설' 2022.8.5 (mirrored at mykoreavisa.com/helpdesk/notice/154)",
+   "quote": "(취업 지원) 첨단기술인턴(D-10-3) 자격으로 국내 기업 등에서 1년 이상 인턴활동을 한 자로서, 인턴 활동 분야에 정식 취업하고, 임금이 전년도 1인당 국민총소득(GNI) 이상일 경우, 특정활동(E-7) 체류자격변경 시 학력, 경력 요건 면제"
+  }
+ ]
+}

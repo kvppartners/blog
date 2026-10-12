@@ -258,6 +258,40 @@
   translation: "Не подходит возраст"
 - id: vm_why_previous
   translation: "Невозможно сразу после вашей предыдущей визы"
+- id: vm_income
+  translation: "Годовой доход в Корее"
+- id: vm_income_unit
+  translation: "₩ млн"
+- id: vm_income_hint
+  translation: "До вычета налогов, за последний полный год. По нему проверяются требования к доходу для F-2 и F-5."
+- id: vm_income_short
+  translation: "Доход"
+- id: vm_money
+  translation: "₩{n} млн"
+- id: vm_income_own
+  translation: "Доход: от {amount} в год{rule}."
+- id: vm_income_household
+  translation: "Доход семьи: от {amount} в год{rule}, не меньше половины — ваш собственный."
+- id: vm_income_gni
+  translation: "{n}× ВНД на душу населения за {year} г."
+- id: vm_income_cut
+  translation: "Для вас: {amount} ({why})."
+- id: vm_income_none
+  translation: "Для вас требования к доходу нет ({why})."
+- id: vm_income_maybe
+  translation: "Может быть ниже: {why}."
+- id: vm_income_ok
+  translation: "Вашего дохода достаточно."
+- id: vm_later_income
+  translation: "Доход от {amount}"
+- id: vm_later_age
+  translation: "С {n} лет"
+- id: vm_later_experience
+  translation: "После {n} лет работы"
+- id: vm_why_stay
+  translation: "На этом пути не набрать нужный срок на подходящих визах"
+- id: vm_legend_later
+  translation: "Пока нет: нужны время, корейский или доход"
 - id: vm_report
   translation: "Сообщить об ошибке"
 - id: vm_report_ask

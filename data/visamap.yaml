@@ -23,6 +23,28 @@
 #   lang:        Korean level needed: {topik: N, kiip: N} (either is enough); a hint, never blocks
 #   NONE:        the starting point for readers without a Korean visa; its moves are first visas
 updated: 2026-10
+gni: {year: 2025, krw: 52.416}
+incomeCuts:
+  volunteer:
+    factor: 0.8
+    text: {en: '100+ hours of volunteering over 6+ months, with a 1365 certificate: 80%', ru: '100+ часов волонтёрства за 6+ месяцев со справкой 1365: 80%', uz: '6+ oy davomida 100+ soat ko‘ngillilik, 1365 ma’lumotnomasi bilan: 80%', uz-cyrl: '6+ ой давомида 100+ соат кўнгиллилик, 1365 маълумотномаси билан: 80%'}
+  koreanSkill:
+    factor: 0.7
+    when:
+    - {kiip: 5}
+    - {koreanEdu: 3}
+    text: {en: 'KIIP level 5, all of Korean school (elementary to high school), or a Korean bachelor''s or higher: 70%', ru: 'KIIP 5-го уровня, вся корейская школа (с начальной по старшую) или корейский бакалавриат и выше: 70%', uz: 'KIIP 5-daraja, Koreya maktabini to‘liq (boshlang‘ichdan o‘rta maktabgacha) tugatish yoki Koreya bakalavri va undan yuqori: 70%', uz-cyrl: 'KIIP 5-даража, Корея мактабини тўлиқ (бошланғичдан ўрта мактабгача) тугатиш ёки Корея бакалаври ва ундан юқори: 70%'}
+  koreanSkillVolunteer:
+    factor: 0.6
+    when:
+    - {kiip: 5, volunteer: true}
+    - {koreanEdu: 3, volunteer: true}
+    text: {en: 'both the Korean and the volunteering conditions: 60%', ru: 'и условие о корейском, и волонтёрство: 60%', uz: 'koreys tili sharti ham, ko‘ngillilik ham: 60%', uz-cyrl: 'корейс тили шарти ҳам, кўнгиллилик ҳам: 60%'}
+  koreanCollege:
+    factor: 0
+    when:
+    - {koreanEdu: 2}
+    text: {en: a Korean college degree or higher is enough instead, ru: вместо этого достаточно корейского диплома колледжа или выше, uz: buning o‘rniga Koreya kolleji yoki undan yuqori diplomi yetarli, uz-cyrl: бунинг ўрнига Корея коллежи ёки ундан юқори дипломи етарли}
 groups:
   notified: [CN, PH, ID, BD, VN, MN, TH, PK, LK, IN, MM, NP, NG, GH, EG, PE, IR, UZ, KZ, KG, UA]
   eps: [TH, PH, LK, VN, ID, MN, PK, UZ, KH, CN, BD, NP, MM, KG, TL, LA, TJ]
@@ -319,8 +341,7 @@ visas:
     - D-2-2
     - to: D-10-1
       note: {en: 'After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.', ru: 'После окончания корейского колледжа или вуза: первый год — без балльной оценки; продление по баллам, всего до 3 лет.', uz: 'Koreya kolleji yoki universitetini tamomlagach: birinchi yil ball talab qilinmaydi; uzaytirish ball bo‘yicha, jami 3 yilgacha.', uz-cyrl: 'Корея коллежи ёки университетини тамомлагач: биринчи йил балл талаб қилинмайди; узайтириш балл бўйича, жами 3 йилгача.'}
-      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3
-          йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
+      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3 йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
     - to: E-7-1
       note: {en: Korean graduates are exempt from the work-experience rule; salary floor applies., ru: Выпускники корейских вузов освобождены от требования об опыте работы; действует минимальная зарплата., uz: Koreya bitiruvchilari ish tajribasi talabidan ozod; eng kam ish haqi talabi amal qiladi., uz-cyrl: Корея битирувчилари иш тажрибаси талабидан озод; энг кам иш ҳақи талаби амал қилади.}
     - E-7-2
@@ -347,8 +368,7 @@ visas:
     - D-2-3
     - to: D-10-1
       note: {en: 'After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.', ru: 'После окончания корейского колледжа или вуза: первый год — без балльной оценки; продление по баллам, всего до 3 лет.', uz: 'Koreya kolleji yoki universitetini tamomlagach: birinchi yil ball talab qilinmaydi; uzaytirish ball bo‘yicha, jami 3 yilgacha.', uz-cyrl: 'Корея коллежи ёки университетини тамомлагач: биринчи йил балл талаб қилинмайди; узайтириш балл бўйича, жами 3 йилгача.'}
-      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3
-          йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
+      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3 йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
     - D-10-2
     - to: E-7-1
       note: {en: Korean graduates are exempt from the work-experience rule; salary floor applies., ru: Выпускники корейских вузов освобождены от требования об опыте работы; действует минимальная зарплата., uz: Koreya bitiruvchilari ish tajribasi talabidan ozod; eng kam ish haqi talabi amal qiladi., uz-cyrl: Корея битирувчилари иш тажрибаси талабидан озод; энг кам иш ҳақи талаби амал қилади.}
@@ -377,8 +397,7 @@ visas:
     - D-2-4
     - to: D-10-1
       note: {en: 'After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.', ru: 'После окончания корейского колледжа или вуза: первый год — без балльной оценки; продление по баллам, всего до 3 лет.', uz: 'Koreya kolleji yoki universitetini tamomlagach: birinchi yil ball talab qilinmaydi; uzaytirish ball bo‘yicha, jami 3 yilgacha.', uz-cyrl: 'Корея коллежи ёки университетини тамомлагач: биринчи йил балл талаб қилинмайди; узайтириш балл бўйича, жами 3 йилгача.'}
-      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3
-          йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
+      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3 йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
     - D-10-2
     - to: E-7-1
       note: {en: Korean graduates are exempt from the work-experience rule; salary floor applies., ru: Выпускники корейских вузов освобождены от требования об опыте работы; действует минимальная зарплата., uz: Koreya bitiruvchilari ish tajribasi talabidan ozod; eng kam ish haqi talabi amal qiladi., uz-cyrl: Корея битирувчилари иш тажрибаси талабидан озод; энг кам иш ҳақи талаби амал қилади.}
@@ -395,8 +414,7 @@ visas:
     - F-6-1
     - F-2-3
     - to: D-2-2
-      note: {en: 'After graduating, this is a new admission, so the lower-level rule for students doesn''t apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program''s time limit.', ru: 'После окончания это новое поступление, и правило о переходе на уровень ниже не действует. До окончания переход ниже — исключение: только некоторые специальности (например, STEM), TOPIK 3+ и окончание в пределах срока текущей программы.', uz: 'O‘qishni tamomlagach bu yangi qabul hisoblanadi, shuning uchun pastroq darajaga o‘tish qoidasi qo‘llanmaydi. Tamomlashdan oldin pastga o‘tish — istisno: faqat ayrim mutaxassisliklar (masalan, STEM), TOPIK 3+ va joriy dastur muddati ichida tamomlash sharti bilan.', uz-cyrl: 'Ўқишни тамомлагач бу янги қабул ҳисобланади, шунинг учун пастроқ даражага ўтиш қоидаси қўлланмайди. Тамомлашдан олдин пастга ўтиш — истисно: фақат айрим мутахассисликлар (масалан, STEM), TOPIK 3+ ва жорий дастур муддати
-          ичида тамомлаш шарти билан.'}
+      note: {en: 'After graduating, this is a new admission, so the lower-level rule for students doesn''t apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program''s time limit.', ru: 'После окончания это новое поступление, и правило о переходе на уровень ниже не действует. До окончания переход ниже — исключение: только некоторые специальности (например, STEM), TOPIK 3+ и окончание в пределах срока текущей программы.', uz: 'O‘qishni tamomlagach bu yangi qabul hisoblanadi, shuning uchun pastroq darajaga o‘tish qoidasi qo‘llanmaydi. Tamomlashdan oldin pastga o‘tish — istisno: faqat ayrim mutaxassisliklar (masalan, STEM), TOPIK 3+ va joriy dastur muddati ichida tamomlash sharti bilan.', uz-cyrl: 'Ўқишни тамомлагач бу янги қабул ҳисобланади, шунинг учун пастроқ даражага ўтиш қоидаси қўлланмайди. Тамомлашдан олдин пастга ўтиш — истисно: фақат айрим мутахассисликлар (масалан, STEM), TOPIK 3+ ва жорий дастур муддати ичида тамомлаш шарти билан.'}
     - to: E-1
       note: {en: As an assistant professor or higher at a college or university., ru: На должность от доцента (assistant professor) и выше в колледже или вузе., uz: Kollej yoki universitetda assistent-professor yoki undan yuqori lavozimga., uz-cyrl: Коллеж ёки университетда ассистент-профессор ёки ундан юқори лавозимга.}
     - E-2
@@ -420,8 +438,7 @@ visas:
       note: {en: Korean graduates are exempt from the work-experience rule; salary floor applies., ru: Выпускники корейских вузов освобождены от требования об опыте работы; действует минимальная зарплата., uz: Koreya bitiruvchilari ish tajribasi talabidan ozod; eng kam ish haqi talabi amal qiladi., uz-cyrl: Корея битирувчилари иш тажрибаси талабидан озод; энг кам иш ҳақи талаби амал қилади.}
     - to: D-10-1
       note: {en: 'After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.', ru: 'После окончания корейского колледжа или вуза: первый год — без балльной оценки; продление по баллам, всего до 3 лет.', uz: 'Koreya kolleji yoki universitetini tamomlagach: birinchi yil ball talab qilinmaydi; uzaytirish ball bo‘yicha, jami 3 yilgacha.', uz-cyrl: 'Корея коллежи ёки университетини тамомлагач: биринчи йил балл талаб қилинмайди; узайтириш балл бўйича, жами 3 йилгача.'}
-      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3
-          йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
+      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3 йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
     - to: F-2-7
       note: {en: Korean master's degree or higher within 5 years and a confirmed job; 80+ points., ru: Корейская магистратура или выше в течение последних 5 лет и подтверждённая работа; 80+ баллов., uz: So‘nggi 5 yil ichida Koreyada magistr yoki undan yuqori daraja va tasdiqlangan ish; 80+ ball., uz-cyrl: Сўнгги 5 йил ичида Кореяда магистр ёки ундан юқори даража ва тасдиқланган иш; 80+ балл.}
     - to: F-2-7S
@@ -432,11 +449,9 @@ visas:
     - F-6-1
     - F-2-3
     - to: D-2-3
-      note: {en: 'After graduating, this is a new admission, so the lower-level rule for students doesn''t apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program''s time limit.', ru: 'После окончания это новое поступление, и правило о переходе на уровень ниже не действует. До окончания переход ниже — исключение: только некоторые специальности (например, STEM), TOPIK 3+ и окончание в пределах срока текущей программы.', uz: 'O‘qishni tamomlagach bu yangi qabul hisoblanadi, shuning uchun pastroq darajaga o‘tish qoidasi qo‘llanmaydi. Tamomlashdan oldin pastga o‘tish — istisno: faqat ayrim mutaxassisliklar (masalan, STEM), TOPIK 3+ va joriy dastur muddati ichida tamomlash sharti bilan.', uz-cyrl: 'Ўқишни тамомлагач бу янги қабул ҳисобланади, шунинг учун пастроқ даражага ўтиш қоидаси қўлланмайди. Тамомлашдан олдин пастга ўтиш — истисно: фақат айрим мутахассисликлар (масалан, STEM), TOPIK 3+ ва жорий дастур муддати
-          ичида тамомлаш шарти билан.'}
+      note: {en: 'After graduating, this is a new admission, so the lower-level rule for students doesn''t apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program''s time limit.', ru: 'После окончания это новое поступление, и правило о переходе на уровень ниже не действует. До окончания переход ниже — исключение: только некоторые специальности (например, STEM), TOPIK 3+ и окончание в пределах срока текущей программы.', uz: 'O‘qishni tamomlagach bu yangi qabul hisoblanadi, shuning uchun pastroq darajaga o‘tish qoidasi qo‘llanmaydi. Tamomlashdan oldin pastga o‘tish — istisno: faqat ayrim mutaxassisliklar (masalan, STEM), TOPIK 3+ va joriy dastur muddati ichida tamomlash sharti bilan.', uz-cyrl: 'Ўқишни тамомлагач бу янги қабул ҳисобланади, шунинг учун пастроқ даражага ўтиш қоидаси қўлланмайди. Тамомлашдан олдин пастга ўтиш — истисно: фақат айрим мутахассисликлар (масалан, STEM), TOPIK 3+ ва жорий дастур муддати ичида тамомлаш шарти билан.'}
     - to: D-2-2
-      note: {en: 'After graduating, this is a new admission, so the lower-level rule for students doesn''t apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program''s time limit.', ru: 'После окончания это новое поступление, и правило о переходе на уровень ниже не действует. До окончания переход ниже — исключение: только некоторые специальности (например, STEM), TOPIK 3+ и окончание в пределах срока текущей программы.', uz: 'O‘qishni tamomlagach bu yangi qabul hisoblanadi, shuning uchun pastroq darajaga o‘tish qoidasi qo‘llanmaydi. Tamomlashdan oldin pastga o‘tish — istisno: faqat ayrim mutaxassisliklar (masalan, STEM), TOPIK 3+ va joriy dastur muddati ichida tamomlash sharti bilan.', uz-cyrl: 'Ўқишни тамомлагач бу янги қабул ҳисобланади, шунинг учун пастроқ даражага ўтиш қоидаси қўлланмайди. Тамомлашдан олдин пастга ўтиш — истисно: фақат айрим мутахассисликлар (масалан, STEM), TOPIK 3+ ва жорий дастур муддати
-          ичида тамомлаш шарти билан.'}
+      note: {en: 'After graduating, this is a new admission, so the lower-level rule for students doesn''t apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program''s time limit.', ru: 'После окончания это новое поступление, и правило о переходе на уровень ниже не действует. До окончания переход ниже — исключение: только некоторые специальности (например, STEM), TOPIK 3+ и окончание в пределах срока текущей программы.', uz: 'O‘qishni tamomlagach bu yangi qabul hisoblanadi, shuning uchun pastroq darajaga o‘tish qoidasi qo‘llanmaydi. Tamomlashdan oldin pastga o‘tish — istisno: faqat ayrim mutaxassisliklar (masalan, STEM), TOPIK 3+ va joriy dastur muddati ichida tamomlash sharti bilan.', uz-cyrl: 'Ўқишни тамомлагач бу янги қабул ҳисобланади, шунинг учун пастроқ даражага ўтиш қоидаси қўлланмайди. Тамомлашдан олдин пастга ўтиш — истисно: фақат айрим мутахассисликлар (масалан, STEM), TOPIK 3+ ва жорий дастур муддати ичида тамомлаш шарти билан.'}
     - E-2
     - E-4
     - E-5
@@ -487,8 +502,7 @@ visas:
     - E-7-3
     - to: D-10-1
       note: {en: 'After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.', ru: 'После окончания корейского колледжа или вуза: первый год — без балльной оценки; продление по баллам, всего до 3 лет.', uz: 'Koreya kolleji yoki universitetini tamomlagach: birinchi yil ball talab qilinmaydi; uzaytirish ball bo‘yicha, jami 3 yilgacha.', uz-cyrl: 'Корея коллежи ёки университетини тамомлагач: биринчи йил балл талаб қилинмайди; узайтириш балл бўйича, жами 3 йилгача.'}
-      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3
-          йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
+      again: {en: 'You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it''s used up, apply for a new D-10 visa from abroad, which restarts the count.', ru: 'У вас уже был D-10: теперь нужны баллы (60+; не нужны при корейском дипломе за последние 3 года и TOPIK 4 или KIIP 4). Время на D-10 суммируется, пока вы в Корее (до 3 лет); если оно исчерпано, оформите новую визу D-10 из-за рубежа — отсчёт начнётся заново.', uz: 'Sizda avval D-10 bo‘lgan: endi ball kerak (60+; so‘nggi 3 yildagi Koreya diplomi va TOPIK 4 yoki KIIP 4 bilan kerak emas). D-10 dagi vaqt Koreyada bo‘lganingizda jamlanadi (3 yilgacha); u tugagan bo‘lsa, chet eldan yangi D-10 vizasini oling — hisob qaytadan boshlanadi.', uz-cyrl: 'Сизда аввал D-10 бўлган: энди балл керак (60+; сўнгги 3 йилдаги Корея дипломи ва TOPIK 4 ёки KIIP 4 билан керак эмас). D-10 даги вақт Кореяда бўлганингизда жамланади (3 йилгача); у тугаган бўлса, чет элдан янги D-10 визасини олинг — ҳисоб қайтадан бошланади.'}
     - F-2-R
     - F-6-1
     - F-2-3
@@ -1259,6 +1273,7 @@ visas:
   F-2-99:
     name: {en: Long-term resident, ru: Долгосрочный резидент, uz: Uzoq muddatli rezident, uz-cyrl: Узоқ муддатли резидент}
     how: {en: '5+ years on eligible work or business statuses, own income of ₩40M+, assets of ₩20M+ and KIIP level 4.', ru: '5+ лет в подходящих рабочих или бизнес-статусах, собственный доход от ₩40 млн, активы от ₩20 млн и KIIP 4.', uz: 'Mos ish yoki biznes maqomlarida 5+ yil, shaxsiy daromad ₩40 mln+, aktivlar ₩20 mln+ va KIIP 4.', uz-cyrl: 'Мос иш ёки бизнес мақомларида 5+ йил, шахсий даромад ₩40 млн+, активлар ₩20 млн+ ва KIIP 4.'}
+    income: {krw: 40}
     next:
     - to: F-5-1
       note: {en: 'After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.', ru: 'После 5+ лет в рабочих или бизнес-статусах (D-7–E-7, F-2), при выполнении требований к доходу и KIIP 5.', uz: 'Ish yoki biznes maqomlarida (D-7–E-7, F-2) 5+ yildan keyin, daromad va KIIP 5 talablari bilan.', uz-cyrl: 'Иш ёки бизнес мақомларида (D-7–E-7, F-2) 5+ йилдан кейин, даромад ва KIIP 5 талаблари билан.'}
@@ -1267,6 +1282,7 @@ visas:
   F-2-R:
     name: {en: Regional talent, ru: Региональный специалист, uz: Hududiy mutaxassis, uz-cyrl: Ҳудудий мутахассис}
     how: {en: 'Local-government recommendation, a Korean associate degree or regional-wage income, KIIP 3 or TOPIK 3, and 5 years in a depopulating area.', ru: 'Рекомендация местных властей, корейский диплом колледжа или доход на уровне региона, KIIP 3 или TOPIK 3 и 5 лет в депопулирующем районе.', uz: 'Mahalliy hokimiyat tavsiyasi, Koreya kolleji diplomi yoki hududiy darajadagi daromad, KIIP 3 yoki TOPIK 3 va aholisi kamayayotgan hududda 5 yil.', uz-cyrl: 'Маҳаллий ҳокимият тавсияси, Корея коллежи дипломи ёки ҳудудий даражадаги даромад, KIIP 3 ёки TOPIK 3 ва аҳолиси камаяётган ҳудудда 5 йил.'}
+    income: {gni: 0.7, cuts: [koreanCollege]}
     next:
     - to: F-5-1
       note: {en: 'No dedicated route: F-2 years count toward F-5-1 (5 years, income, KIIP 5). Confirm with immigration (1345).', ru: 'Отдельного пути нет: годы на F-2 засчитываются для F-5-1 (5 лет, доход, KIIP 5). Уточните в иммиграционной службе (1345).', uz: 'Alohida yo‘l yo‘q: F-2 dagi yillar F-5-1 uchun hisoblanadi (5 yil, daromad, KIIP 5). Immigratsiya xizmatidan aniqlang (1345).', uz-cyrl: 'Алоҳида йўл йўқ: F-2 даги йиллар F-5-1 учун ҳисобланади (5 йил, даромад, KIIP 5). Иммиграция хизматидан аниқланг (1345).'}
@@ -1274,6 +1290,7 @@ visas:
   F-2-T:
     name: {en: Top-Tier resident, ru: Резидент Top-Tier, uz: Top-Tier rezidenti, uz-cyrl: Top-Tier резиденти}
     how: {en: 'World-class high-tech or science talent: top-100 university degree, long experience, income of at least 3× GNI and a ministry recommendation.', ru: 'Специалист мирового уровня в hi-tech или науке: диплом вуза топ-100, большой опыт, доход от 3× ВНД и рекомендация министерства.', uz: 'Yuqori texnologiyalar yoki fan sohasida jahon darajasidagi mutaxassis: top-100 universitet diplomi, katta tajriba, kamida 3× GNI daromad va vazirlik tavsiyasi.', uz-cyrl: 'Юқори технологиялар ёки фан соҳасида жаҳон даражасидаги мутахассис: top-100 университет дипломи, катта тажриба, камида 3× GNI даромад ва вазирлик тавсияси.'}
+    income: {gni: 3}
     next: [F-5-T]
     needs:
     - {edu: 4, rank: 3}
@@ -1366,10 +1383,12 @@ visas:
     how: {en: '5+ years on D-7–E-7 or F-2, age 19+, income of 2× GNI (or assets of 1.5× average) and KIIP level 5; E-7 holders need a bachelor''s degree.', ru: '5+ лет в статусах D-7–E-7 или F-2, возраст 19+, доход 2× ВНД (или активы 1,5× от среднего) и KIIP 5; для E-7 нужен диплом бакалавра.', uz: 'D-7–E-7 yoki F-2 da 5+ yil, yosh 19+, daromad 2× GNI (yoki aktivlar o‘rtachadan 1,5×) va KIIP 5; E-7 egalariga bakalavr diplomi kerak.', uz-cyrl: 'D-7–E-7 ёки F-2 да 5+ йил, ёш 19+, даромад 2× GNI (ёки активлар ўртачадан 1,5×) ва KIIP 5; E-7 эгаларига бакалавр дипломи керак.'}
     age: [19]
     lang: {kiip: 5}
+    income: {gni: 2, household: true}
   F-5-2:
     name: {en: Spouse of a Korean citizen, ru: Супруг(а) гражданина Кореи, uz: Koreya fuqarosining turmush o‘rtog‘i, uz-cyrl: Корея фуқаросининг турмуш ўртоғи}
     how: {en: 2+ years on F-6; household income of 1× GNI or median assets; KIIP or the integration test., ru: 2+ года на F-6; доход семьи 1× ВНД или медианные активы; KIIP или интеграционный тест., uz: F-6 da 2+ yil; oila daromadi 1× GNI yoki mediana darajasidagi aktivlar; KIIP yoki integratsiya testi., uz-cyrl: F-6 да 2+ йил; оила даромади 1× GNI ёки медиана даражасидаги активлар; KIIP ёки интеграция тести.}
     lang: {kiip: 5}
+    income: {gni: 1, household: true}
   F-5-3:
     name: {en: Minor child of a Korean citizen, ru: Ребёнок гражданина Кореи, uz: Koreya fuqarosining farzandi, uz-cyrl: Корея фуқаросининг фарзанди}
     how: {en: 2+ years on F-2-2 while still a minor; no income test., ru: '2+ года на F-2-2, пока ребёнок несовершеннолетний; без требования к доходу.', uz: Voyaga yetmagan holda F-2-2 da 2+ yil; daromad talab qilinmaydi., uz-cyrl: Вояга етмаган ҳолда F-2-2 да 2+ йил; даромад талаб қилинмайди.}
@@ -1378,6 +1397,7 @@ visas:
     name: {en: Family of a permanent resident, ru: Семья обладателя ПМЖ, uz: Doimiy yashovchining oilasi, uz-cyrl: Доимий яшовчининг оиласи}
     how: {en: 2+ years on F-2-3 after the family member has held F-5 for 2+ years; income of 1× GNI; KIIP level 5., ru: '2+ года на F-2-3 после того, как член семьи 2+ года имеет F-5; доход 1× ВНД; KIIP 5.', uz: Oila a’zosi 2+ yil F-5 ga ega bo‘lgach F-2-3 da 2+ yil; daromad 1× GNI; KIIP 5., uz-cyrl: Оила аъзоси 2+ йил F-5 га эга бўлгач F-2-3 да 2+ йил; даромад 1× GNI; KIIP 5.}
     lang: {kiip: 5}
+    income: {gni: 1, household: true}
   F-5-5:
     name: {en: Large investor, ru: Крупный инвестор, uz: Yirik investor, uz-cyrl: Йирик инвестор}
     how: {en: US$500K+ investment and 5+ Korean full-time employees for 6+ months; no minimum stay., ru: Инвестиции от 500 тыс. USD и 5+ корейских штатных сотрудников от 6 месяцев; без минимального срока пребывания., uz: 500 ming USD+ investitsiya va 6+ oy davomida 5+ koreys shtat xodimi; eng kam qolish muddati yo‘q., uz-cyrl: 500 минг USD+ инвестиция ва 6+ ой давомида 5+ корейс штат ходими; энг кам қолиш муддати йўқ.}
@@ -1387,6 +1407,7 @@ visas:
     how: {en: '2+ years on F-4 plus income of 1× GNI or another option (assets, trade, investment, pension at 60+); KIIP not required.', ru: '2+ года на F-4 и доход 1× ВНД или другой вариант (активы, торговля, инвестиции, пенсия с 60 лет); KIIP не нужен.', uz: 'F-4 da 2+ yil va 1× GNI daromad yoki boshqa variant (aktivlar, savdo, investitsiya, 60 yoshdan pensiya); KIIP talab qilinmaydi.', uz-cyrl: 'F-4 да 2+ йил ва 1× GNI даромад ёки бошқа вариант (активлар, савдо, инвестиция, 60 ёшдан пенсия); KIIP талаб қилинмайди.'}
     needs: *id001
     gives: *id001
+    income: {gni: 1, household: true, cuts: [volunteer, koreanSkill, koreanSkillVolunteer]}
   F-5-6R:
     name: {en: Regional overseas Korean, ru: Этнический кореец (регион), uz: Hududiy xorijdagi koreys, uz-cyrl: Ҳудудий хориждаги корейс}
     how: {en: 4+ years on F-4-R in the region (2 years for existing residents); income of 70% of GNI; KIIP level 5., ru: 4+ года на F-4-R в регионе (2 года для местных жителей); доход 70% ВНД; KIIP 5., uz: Hududda F-4-R da 4+ yil (mahalliy aholi uchun 2 yil); daromad GNI ning 70%; KIIP 5., uz-cyrl: Ҳудудда F-4-R да 4+ йил (маҳаллий аҳоли учун 2 йил); даромад GNI нинг 70%; KIIP 5.}
@@ -1402,6 +1423,7 @@ visas:
     name: {en: High-tech doctorate (foreign), ru: Иностранная докторская степень в hi-tech, uz: Yuqori texnologiyalar bo‘yicha xorijiy doktorlik, uz-cyrl: Юқори технологиялар бўйича хорижий докторлик}
     how: {en: Foreign doctorate in a high-tech field and 1+ year full-time at a Korean company; income of 1× GNI., ru: Иностранная докторская степень в высокотехнологичной области и 1+ год работы в корейской компании; доход 1× ВНД., uz: Yuqori texnologiyalar sohasida xorijiy doktorlik va Koreya kompaniyasida 1+ yil to‘liq ish; daromad 1× GNI., uz-cyrl: Юқори технологиялар соҳасида хорижий докторлик ва Корея компаниясида 1+ йил тўлиқ иш; даромад 1× GNI.}
     needs: {edu: 5, stem: true}
+    income: {gni: 1}
   F-5-10:
     name: {en: Degree or licence holder, ru: Обладатель диплома или лицензии, uz: Diplom yoki litsenziya egasi, uz-cyrl: Диплом ёки лицензия эгаси}
     how: {en: 'High-tech bachelor''s, Korean STEM bachelor''s, Korean master''s or engineer licence; 3+ years'' work in Korea; own income of 1× GNI; KIIP level 5.', ru: 'Бакалавр в hi-tech, корейский бакалавр STEM, корейская магистратура или лицензия инженера; 3+ года работы в Корее; свой доход 1× ВНД; KIIP 5.', uz: 'Yuqori texnologiyalar bakalavri, Koreya STEM bakalavri, Koreya magistraturasi yoki muhandis litsenziyasi; Koreyada 3+ yil ish; shaxsiy daromad 1× GNI; KIIP 5.', uz-cyrl: 'Юқори технологиялар бакалаври, Корея STEM бакалаври, Корея магистратураси ёки муҳандис лицензияси; Кореяда 3+ йил иш; шахсий даромад 1× GNI; KIIP 5.'}
@@ -1409,6 +1431,7 @@ visas:
     - {edu: 3, stem: true}
     - {koreanEdu: 4}
     lang: {kiip: 5}
+    income: {gni: 1}
   F-5-11:
     name: {en: Outstanding ability, ru: Выдающиеся способности, uz: Alohida qobiliyat, uz-cyrl: Алоҳида қобилият}
     how: {en: 'Outstanding ability in science, business, education, arts or sport, proven by a points test.', ru: 'Выдающиеся достижения в науке, бизнесе, образовании, искусстве или спорте, подтверждённые балльной оценкой.', uz: 'Fan, biznes, ta’lim, san’at yoki sportda alohida qobiliyat, ball tizimi bilan tasdiqlangan.', uz-cyrl: 'Фан, бизнес, таълим, санъат ёки спортда алоҳида қобилият, балл тизими билан тасдиқланган.'}
@@ -1425,10 +1448,12 @@ visas:
     name: {en: Korean doctorate holder, ru: Докторская степень корейского вуза, uz: Koreya doktorlik darajasi egasi, uz-cyrl: Корея докторлик даражаси эгаси}
     how: {en: Doctorate from a Korean university's regular program and 1+ year full-time at a Korean company; income of 1× GNI., ru: Докторская степень по очной программе корейского вуза и 1+ год работы в корейской компании; доход 1× ВНД., uz: Koreya universitetining asosiy dasturida doktorlik va Koreya kompaniyasida 1+ yil to‘liq ish; daromad 1× GNI., uz-cyrl: Корея университетининг асосий дастурида докторлик ва Корея компаниясида 1+ йил тўлиқ иш; даромад 1× GNI.}
     needs: {koreanEdu: 5}
+    income: {gni: 1}
   F-5-16:
     name: {en: Points-based permanent residence, ru: ПМЖ по баллам, uz: Ball tizimi bo‘yicha doimiy yashash, uz-cyrl: Балл тизими бўйича доимий яшаш}
     how: {en: '3+ years on F-2-7, income of 2× GNI (1× if you came via E-7-S2) or assets of 1.5× average, KIIP level 5.', ru: '3+ года на F-2-7, доход 2× ВНД (1× при пути через E-7-S2) или активы 1,5× от среднего, KIIP 5.', uz: 'F-2-7 da 3+ yil, daromad 2× GNI (E-7-S2 orqali kelganlar uchun 1×) yoki aktivlar o‘rtachadan 1,5×, KIIP 5.', uz-cyrl: 'F-2-7 да 3+ йил, даромад 2× GNI (E-7-S2 орқали келганлар учун 1×) ёки активлар ўртачадан 1,5×, KIIP 5.'}
     lang: {kiip: 5}
+    income: {gni: 2}
   F-5-17:
     name: {en: Tourism/resort investor, ru: Инвестор в туризм/курорты, uz: Turizm/kurort investori, uz-cyrl: Туризм/курорт инвестори}
     how: {en: F-2-8 investment kept for 5 years., ru: Инвестиции F-2-8 сохраняются 5 лет., uz: F-2-8 investitsiyasi 5 yil saqlangan., uz-cyrl: F-2-8 инвестицияси 5 йил сақланган.}
@@ -1436,6 +1461,7 @@ visas:
     name: {en: Family of points-based PR, ru: Семья обладателя ПМЖ по баллам, uz: Ball tizimidagi doimiy yashovchi oilasi, uz-cyrl: Балл тизимидаги доимий яшовчи оиласи}
     how: {en: 2+ years on F-2-71 after the family member has held F-5-16 for 2+ years; income of 1× GNI; KIIP level 5., ru: '2+ года на F-2-71 после того, как член семьи 2+ года имеет F-5-16; доход 1× ВНД; KIIP 5.', uz: Oila a’zosi 2+ yil F-5-16 ga ega bo‘lgach F-2-71 da 2+ yil; daromad 1× GNI; KIIP 5., uz-cyrl: Оила аъзоси 2+ йил F-5-16 га эга бўлгач F-2-71 да 2+ йил; даромад 1× GNI; KIIP 5.}
     lang: {kiip: 5}
+    income: {gni: 1, household: true}
   F-5-19:
     name: {en: Family of tourism/resort investor, ru: Семья инвестора в туризм, uz: Turizm investori oilasi, uz-cyrl: Туризм инвестори оиласи}
     how: {en: Spouse or unmarried child of an F-5-17 holder after 5 years on F-2-8 or F-2-81., ru: 'Супруг(а) или ребёнок обладателя F-5-17, не состоящий в браке, после 5 лет на F-2-8 или F-2-81.', uz: F-2-8 yoki F-2-81 da 5 yildan keyin F-5-17 egasining turmush o‘rtog‘i yoki turmush qurmagan farzandi., uz-cyrl: F-2-8 ёки F-2-81 да 5 йилдан кейин F-5-17 эгасининг турмуш ўртоғи ёки турмуш қурмаган фарзанди.}
@@ -1455,26 +1481,32 @@ visas:
   F-5-26:
     name: {en: R&D staff at a foreign-invested firm, ru: Сотрудник R&D компании с иностранным капиталом, uz: Xorijiy investitsiyali kompaniyaning R&D xodimi, uz-cyrl: Хорижий инвестицияли компаниянинг R&D ходими}
     how: {en: 3+ years as essential R&D staff of a foreign-invested company (D-8-1); bachelor's degree; income of 2× GNI., ru: 3+ года ключевым сотрудником R&D компании с иностранными инвестициями (D-8-1); диплом бакалавра; доход 2× ВНД., uz: Xorijiy investitsiyali kompaniyada (D-8-1) asosiy R&D xodimi sifatida 3+ yil; bakalavr diplomi; daromad 2× GNI., uz-cyrl: Хорижий инвестицияли компанияда (D-8-1) асосий R&D ходими сифатида 3+ йил; бакалавр дипломи; даромад 2× GNI.}
+    income: {gni: 2, household: true}
   F-5-27:
     name: {en: Recognised refugee, ru: Признанный беженец, uz: Tan olingan qochqin, uz-cyrl: Тан олинган қочқин}
     how: {en: '2+ years as a recognised refugee (F-2-4), under a separate guideline with income and KIIP requirements.', ru: 2+ года в статусе признанного беженца (F-2-4) по отдельному регламенту с требованиями к доходу и KIIP., uz: 'Tan olingan qochqin (F-2-4) sifatida 2+ yil, daromad va KIIP talablari bo‘lgan alohida yo‘riqnoma asosida.', uz-cyrl: 'Тан олинган қочқин (F-2-4) сифатида 2+ йил, даромад ва KIIP талаблари бўлган алоҳида йўриқнома асосида.'}
+    income: {gni: 1, household: true}
   F-5-28:
     name: {en: Special contributor, ru: Особый вклад, uz: Alohida hissa qo‘shgan shaxs, uz-cyrl: Алоҳида ҳисса қўшган шахс}
     how: {en: 2+ years on F-2-16; income of 1× GNI or average assets; KIIP level 5., ru: 2+ года на F-2-16; доход 1× ВНД или средние активы; KIIP 5., uz: F-2-16 da 2+ yil; daromad 1× GNI yoki o‘rtacha aktivlar; KIIP 5., uz-cyrl: F-2-16 да 2+ йил; даромад 1× GNI ёки ўртача активлар; KIIP 5.}
     lang: {kiip: 5}
+    income: {gni: 1, household: true}
   F-5-29:
     name: {en: Family of special contributor, ru: Семья лица с особым вкладом, uz: Alohida hissa qo‘shgan shaxs oilasi, uz-cyrl: Алоҳида ҳисса қўшган шахс оиласи}
     how: {en: 'Spouse or minor child, 2+ years after the family member got F-5-28; income of 1× GNI.', ru: 'Супруг(а) или несовершеннолетний ребёнок, через 2+ года после получения членом семьи F-5-28; доход 1× ВНД.', uz: 'Turmush o‘rtog‘i yoki voyaga yetmagan farzand, oila a’zosi F-5-28 olganidan 2+ yil o‘tib; daromad 1× GNI.', uz-cyrl: 'Турмуш ўртоғи ёки вояга етмаган фарзанд, оила аъзоси F-5-28 олганидан 2+ йил ўтиб; даромад 1× GNI.'}
+    income: {gni: 1, household: true}
   F-5-S1:
     name: {en: K-STAR permanent residence, ru: ПМЖ K-STAR, uz: K-STAR doimiy yashash, uz-cyrl: K-STAR доимий яшаш}
     how: {en: 3+ years on F-2-7S or F-2-7 as a K-STAR graduate and 90/200 K-STAR points., ru: 3+ года на F-2-7S или F-2-7 как выпускник K-STAR и 90/200 баллов K-STAR., uz: K-STAR bitiruvchisi sifatida F-2-7S yoki F-2-7 da 3+ yil va 90/200 K-STAR ball., uz-cyrl: K-STAR битирувчиси сифатида F-2-7S ёки F-2-7 да 3+ йил ва 90/200 K-STAR балл.}
   F-5-S2:
     name: {en: K-STAR family, ru: Семья K-STAR, uz: K-STAR oilasi, uz-cyrl: K-STAR оиласи}
     how: {en: Spouse or minor child of an F-5-S1 holder after 2+ years on F-2-71., ru: Супруг(а) или несовершеннолетний ребёнок обладателя F-5-S1 после 2+ лет на F-2-71., uz: F-2-71 da 2+ yildan keyin F-5-S1 egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi., uz-cyrl: F-2-71 да 2+ йилдан кейин F-5-S1 эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди.}
+    income: {gni: 1, household: true}
   F-5-T:
     name: {en: Top-Tier permanent residence, ru: ПМЖ Top-Tier, uz: Top-Tier doimiy yashash, uz-cyrl: Top-Tier доимий яшаш}
     how: {en: '3+ years on F-2-T in a high-tech or science field, income of 3× GNI, KIIP level 3 or TOPIK 3.', ru: '3+ года на F-2-T в hi-tech или науке, доход 3× ВНД, KIIP 3 или TOPIK 3.', uz: 'Yuqori texnologiyalar yoki fan sohasida F-2-T da 3+ yil, daromad 3× GNI, KIIP 3 yoki TOPIK 3.', uz-cyrl: 'Юқори технологиялар ёки фан соҳасида F-2-T да 3+ йил, даромад 3× GNI, KIIP 3 ёки TOPIK 3.'}
     lang: {topik: 3, kiip: 3}
+    income: {gni: 3}
   F-5-T1:
     name: {en: Top-Tier family, ru: Семья Top-Tier, uz: Top-Tier oilasi, uz-cyrl: Top-Tier оиласи}
     how: {en: 'Spouse or minor child: 3 years on F-2-T1 (2 years if joining after the family member got F-5-T).', ru: 'Супруг(а) или несовершеннолетний ребёнок: 3 года на F-2-T1 (2 года, если присоединились после получения F-5-T).', uz: 'Turmush o‘rtog‘i yoki voyaga yetmagan farzand: F-2-T1 da 3 yil (oila a’zosi F-5-T olgandan keyin qo‘shilsa, 2 yil).', uz-cyrl: 'Турмуш ўртоғи ёки вояга етмаган фарзанд: F-2-T1 да 3 йил (оила аъзоси F-5-T олгандан кейин қўшилса, 2 йил).'}

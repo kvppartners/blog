@@ -258,6 +258,40 @@
   translation: "Yosh mos emas"
 - id: vm_why_previous
   translation: "Oldingi vizangizdan keyin darhol mumkin emas"
+- id: vm_income
+  translation: "Koreyadagi yillik daromad"
+- id: vm_income_unit
+  translation: "₩ mln"
+- id: vm_income_hint
+  translation: "Soliqdan oldin, oxirgi to‘liq yil uchun. F-2 va F-5 daromad talablari shu bo‘yicha tekshiriladi."
+- id: vm_income_short
+  translation: "Daromad"
+- id: vm_money
+  translation: "₩{n} mln"
+- id: vm_income_own
+  translation: "Daromad: yiliga {amount} va undan ko‘p{rule}."
+- id: vm_income_household
+  translation: "Oila daromadi: yiliga {amount} va undan ko‘p{rule}, kamida yarmi o‘zingizniki."
+- id: vm_income_gni
+  translation: "{n}× GNI (aholi jon boshiga, {year}-yil)"
+- id: vm_income_cut
+  translation: "Siz uchun: {amount} ({why})."
+- id: vm_income_none
+  translation: "Siz uchun daromad talabi yo‘q ({why})."
+- id: vm_income_maybe
+  translation: "Kamroq bo‘lishi mumkin: {why}."
+- id: vm_income_ok
+  translation: "Daromadingiz yetarli."
+- id: vm_later_income
+  translation: "Daromad {amount} dan"
+- id: vm_later_age
+  translation: "{n} yoshdan"
+- id: vm_later_experience
+  translation: "{n} yil ishlagandan keyin"
+- id: vm_why_stay
+  translation: "Bu yo‘lda mos vizalarda kerakli muddat to‘planmaydi"
+- id: vm_legend_later
+  translation: "Hozircha emas: vaqt, koreys tili yoki daromad kerak"
 - id: vm_report
   translation: "Xato haqida xabar berish"
 - id: vm_report_ask

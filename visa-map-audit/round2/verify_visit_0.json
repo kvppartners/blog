@@ -1,0 +1,58 @@
+{
+ "verdicts": [
+  {
+   "slice": "visit",
+   "index": 0,
+   "verdict": "unverifiable",
+   "reason": "I could not reach any primary source: WebFetch failed with DNS errors on every host and the WebSearch budget was used up. The repo evidence points both ways. The finding misreads data/visadocs.yaml: its `B-1>D-4-1` exception is for German nationals only (`countries: [DE]`, the general German B-1 rule), so it does not show that B-1 holders in general can change to D-4-1 in Korea. The author's own choice of `abroad: true` for D-4-1 next to `abroadFor: notified` for D-2 on the same lines, and another audit agent's quote of the same guideline (D-4-1 허가대상 = '외국인등록 후 국내에 체류하고 있는 자', excluding only D-3/E-9/E-10/G-1), both argue against the claim. Against that, the 2026.9.18 D-4-1 change list asks for the ARC only from '소지자', which hints that some applicants are not registered. If a primary source does confirm the claim, the fix is expressible as written: reuse the four-language D-2 note and keep C-3-9 as `abroad: true`.",
+   "correctedFix": "",
+   "source": "data/visadocs.yaml targets.D-4-1.change (외국인체류 안내매뉴얼 2026.9.18 › 일반연수(D-4) › 체류자격 변경허가 › 1. 어학연수 › 나. 제출서류, txt 3814-3835) and exceptions.B-1>D-4-1 (countries: [DE]); finding's citation (2022 외국인유학생 사증발급 및 체류관리 지침, research.kau.ac.kr) could not be fetched",
+   "quote": "D-4-1 change list: '외국인등록증 (소지자)'; '어학연수 필요성 소명자료 (법무부장관 고시국가 국민 / 연령 등을 고려할 때, 어학연수 필요성이 적다고 판단되는 경우)'. Conflicting secondary quotes of the guideline: '(허가대상) 단기체류자(관광통과 및 사증면제협정 입국자 포함) 또는 외국인등록 후 국내에 체류하고 있는 자' (this finding) vs '외국인등록 후 국내에 체류하고 있는 자' (finding d2#15)."
+  },
+  {
+   "slice": "visit",
+   "index": 1,
+   "verdict": "partly",
+   "reason": "Part of the claim is right: the manual documents an in-Korea change to F-4 from short-term statuses, and the map shows only a plane icon with no note. But the finding's own quote makes the change conditional ('에 한하여'): only when the proof documents are issued in Korea or can be checked in the system, or for CIS ethnic Koreans who held C-3-8/H-2/F-4 before. So applying from abroad stays the default. The repo encodes exactly this as `abroad: true` plus the in-Korea exceptions in data/visadocs.yaml (B-1>F-4, B-2>F-4, C-3-1>F-4, C-3-4>F-4, C-3-9>F-4), which the visa-docs page shows as '✈*'. The proposed plain `- F-4` would turn the default around and also stop visadocs.js from showing those exceptions, because withExceptions() only runs on abroad moves. The finding also missed C-3-4 (line 189). In this engine a move's note replaces the visa's 'how' text, so the note has to repeat F-4's requirements.",
+   "correctedFix": "In data/visamap.yaml keep the plane and add a note on B-1 (l.95), B-2 (l.130), C-3-1 (l.160), C-3-4 (l.189) and C-3-9 (l.228); leave C-3-8 -> F-4 as it is:\n- to: F-4\n  abroad: true\n  note: {en: 'Ethnic Korean of any nationality: former Korean citizen or descendant (men who gave up Korean nationality without military service: only from the year they turn 41). From a short-term stay this is normally a new visa from abroad; you can change in Korea if your proof of Korean descent is issued in Korea or can be checked in the immigration system, or if you are an ethnic Korean from a CIS country who held C-3-8, H-2 or F-4 before.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\nThe ru, uz and uz-cyrl texts must be translated from the English.",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 36. 외국국적동포 관련 (알기쉬운 외국국적동포 업무 매뉴얼 2026.2) › Ⅱ.4 다. 재외동포(F-4) 자격 변경 절차 (txt 22184-22192), as transcribed in data/visadocs.yaml exceptions B-1>F-4 … C-3-9>F-4; assets/js/visadocs.js withExceptions(); assets/js/visamap.js howTo()",
+   "quote": "대상별 제출서류가 국내에서 발급되거나 출입국정보시스템으로 확인이 가능한 경우에 한하여 국내에서 자격변경이 가능합니다. - CIS지역국가동포가 과거에 동포사증(C-3-8, H-2, F-4)을 발급받은 적이 있는 경우에는 동포입증자료 제출 시 국내에서 체류자격변경이 가능함."
+  },
+  {
+   "slice": "visit",
+   "index": 2,
+   "verdict": "unverifiable",
+   "reason": "The only source for the rule is a blog copy of the manual (yoonhjs.com), and no primary text could be fetched in this session (DNS failure, search budget used up). The repo's 2026.9.18 D-8 change lists say nothing about short-term holders: D-8-1 asks for '여권 및 외국인등록증', while D-8-2/D-8-3 ask for the ARC only '해당자', so the lists settle nothing. The finding's own positive rules for German B-1 and Chilean C-3-4 holders suggest that, without such a rule, a change from those statuses is not normally allowed. The fix also contradicts its own exclusion list: it adds D-8 to C-3-9 (and B-2), although '단체/순수관광 목적 입국자' are listed as unable to change. If a primary source confirms the rule, apply it only to B-1, C-3-1 and C-3-4 (D-8-1, D-8-3), and check D-8-2 and D-8-4 separately.",
+   "correctedFix": "",
+   "source": "data/visadocs.yaml targets.D-8-1..D-8-4.change (외국인체류 안내매뉴얼 2026.9.18 › 16. 기업투자(D-8) › 체류자격 변경허가, txt 5082-5187); finding's citation is a blog mirror (yoonhjs.com uid=172), not fetched",
+   "quote": "D-8-1 change list: '여권 및 외국인등록증'; D-8-2/D-8-3: '외국인등록증 (해당자)'. Exclusion as reported by the blog (unverified): 자격변경 불가대상 - 단체관광·순수관광 목적 입국자 …"
+  },
+  {
+   "slice": "visit",
+   "index": 3,
+   "verdict": "refuted",
+   "reason": "The current note ('1 year in total, 3 years with 80+ points') matches the 체류기간 상한 table of the D-10 chapter. Two earlier audit agents (the d4 auditor and its verifier) each extracted that table from the manual PDF, and it already carries the post-revision values '3년(1회 1년)' for 80+ but keeps '1년(1회 6개월)' for 60-79 points. So the total cap does depend on the score. The finding cites only two blogs (yoonhjs.com, talent-link.co.kr). verified-by-review.md also lists these B/C -> D-10-1 notes under 'Checked and found CORRECT', which must not be reopened without a primary source.",
+   "correctedFix": "",
+   "source": "외국인체류 안내매뉴얼, 구직(D-10) › 체류자격 변경허가 › 나. 체류기간 상한 (pp.155-156), as extracted in visa-map-audit/findings.md (graph/d4 finding D-4-1 -> D-10-1, auditor evidence and refute-verdict citing d10.txt:644-653); visa-map-audit/verified-by-review.md 'Checked and found CORRECT'",
+   "quote": "체류기간 상한: 80점 이상 → 3년(1회 1년), 60~80점 미만 → 1년(1회 6개월)"
+  },
+  {
+   "slice": "visit",
+   "index": 4,
+   "verdict": "partly",
+   "reason": "The claim is right that the 2026.9.18 manual documents in-Korea changes to E-7-1 for short-term holders, transcribed in data/visadocs.yaml: a foreign-school teacher from any status; high-tech specialists who entered visa-free or hold a non-work visa, with a ministry recommendation; and, from B-1/B-2 only, Jeju international-school staff. The map's edges mention none of them. But these are exceptions: the general change group in the same chapter is registered D-1, D-2, D-4~D-10 and E-1~E-6 holders. So `abroad: true` is the correct default, and the finding's fix contradicts itself (it drops the flag but says 'Normally a new visa from abroad'). Dropping the flag would also stop the visa-docs page from showing these exceptions ('✈*'). The note must restate E-7-1's 'how', because a move note replaces it, and the Jeju clause applies only to B-1 and B-2.",
+   "correctedFix": "Keep `abroad: true` and add a note.\nB-1 (l.90) and B-2 (l.125):\n- to: E-7-1\n  abroad: true\n  note: {en: 'Job offer in one of about 67 professional occupations, usually with a related degree; salary of at least ₩31.1M (2026). From a short-term stay this is normally a new visa from abroad. In Korea only if you are hired as a teacher at a foreign school, are a high-tech specialist (IT, e-business, BT, NT, new materials, transport machinery, digital electronics, environment/energy) with a recommendation from the competent ministry, or work at a Jeju international school (graduate of its overseas home school, 18+, with 2+ years of experience or a TESOL-type certificate).', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\nC-3-1 (l.155), C-3-4 (l.184), C-3-9 (l.223) and C-4 (l.241): the same note without the Jeju clause.\nThe ru, uz and uz-cyrl texts must be translated from the English.",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 25. 특정활동(E-7) › 체류자격 변경허가 (txt 9028-9051, 9274-9343), as transcribed in data/visadocs.yaml targets.E-7-1.change variants 1-3 and exceptions B-1>E-7-1 … C-4>E-7-1; assets/js/visadocs.js withExceptions(); assets/js/visamap.js howTo()",
+   "quote": "(repo transcription of the 2026.9.18 manual; Korean text not retrievable this session) change group: 'Registered D-1, D-2, D-4~D-10, E-1~E-6 (not E-6-2) holders and their F-3 spouses changing to E-7'; exception: 'High-tech (IT, e-business, BT, NT, materials, transport machinery, digital electronics, environment/energy) talent who entered visa-free or on a non-work visa'"
+  },
+  {
+   "slice": "visit",
+   "index": 5,
+   "verdict": "partly",
+   "reason": "The claim is right. The 2026.9.18 F-6 chapter, as transcribed in data/visadocs.yaml (B-1>F-6-1 … C-4>F-6-1), allows short-term holders to change to F-6-1 in Korea when leaving is unavoidable because of pregnancy, childbirth or raising the couple's own (not adopted) child. Another verifier, using a secondary source (f-6.co.kr), found short-term statuses (C-3, C-4, B-1, B-2) listed as restricted, so `abroad: true` is the correct default. Keeping the plane and adding a note fits the engine. But the proposed note has only English and would replace F-6-1's 'how' text on these edges: in howTo() a move note takes the place of the visa's 'how'. Readers would then lose the ₩25.2M income, Korean-language and housing requirements, because F-6-1 has no `income:` field. The note must restate them and needs all four languages.",
+   "correctedFix": "On B-1 (l.94), B-2 (l.129), C-3-1 (l.159), C-3-4 (l.188), C-3-8 (l.208), C-3-9 (l.227) and C-4 (l.243):\n- to: F-6-1\n  abroad: true\n  note: {en: 'Legal marriage to a Korean citizen. The Korean spouse needs a yearly income of about ₩25.2M for a couple (2026; not needed if you have a child together), you need basic Korean (TOPIK 1) or a shared language, and a real home. From a short-term stay you normally apply from abroad; a change in Korea is allowed only if leaving is unavoidable because of pregnancy, childbirth or raising your own (not adopted) child together.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\nOn B-1 you may also append: 'German citizens who entered visa-free can change in Korea.' (visadocs B-1>F-6-1, countries: [DE]).\nThe ru, uz and uz-cyrl texts must be translated from the English.",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 33. 결혼이민(F-6) › 체류자격 변경허가(F-6-1), as transcribed in data/visadocs.yaml exceptions B-1>F-6-1 … C-4>F-6-1 (who: id035); assets/js/visamap.js howTo() (step.note replaces visa.how)",
+   "quote": "(repo transcription of the 2026.9.18 manual; Korean text not retrievable this session) 'Short-term holders for whom a change in Korea is unavoidable because of pregnancy, childbirth or raising the couple's own child (not adopted)' — use: change, list: F-6-1"
+  }
+ ]
+}

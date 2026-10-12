@@ -1,0 +1,76 @@
+{
+ "verdicts": [
+  {
+   "slice": "d-misc",
+   "index": 1,
+   "verdict": "partly",
+   "reason": "The gap is real. D-3's next list (data/visamap.yaml:248-253) is exactly D-10-1, D-2-2 (abroad), E-7-1 (abroad) and E-9 (abroad), with no family route. Two parts of the finding are wrong, though. First, it is not true that every other status offers F-6-1: H-2 does not, and neither do 37 other non-F-5 nodes, including D-8-*, D-9-*, E-8, D-4-3, D-4-6 and D-10-2/3/T. Second, the in-Korea F-6-1 change is barred only for short-term visas, overstayers, people given extra time to leave, and criminal offenders, and D-3 is not on that list. The D-3 chapter's '불가 원칙' is about changing into D-3 (visadocs-targets: 'D-3: abroad,extend'). So `abroad: true` has no support, and the edge should be an ordinary in-Korea change like the E-9 and E-10 edges. F-2-3 belongs with it because in this file F-6-1 and F-2-3 always come as a pair (the same 46 origins), even though F-2-3 is about the spouse of a permanent resident, not of a Korean citizen.",
+   "correctedFix": "In data/visamap.yaml under D-3 `next`, after `- {to: E-9, abroad: true}` (line 253), add two plain in-Korea entries with no abroad flag (matching E-9 and E-10):\n    - F-6-1\n    - F-2-3",
+   "source": "외국인체류 안내매뉴얼 결혼이민(F-6) › 체류자격 변경허가(F-6-1) 제한대상 (restated at https://f-6.co.kr/결혼이민비자-f-6-1-자격으로-체류자격-변경/ ; KIS hosts were unreachable from this session); data/visamap.yaml:245-254; visa-map-audit/tools/visadocs-targets.txt ('D-3: abroad,extend', 'F-6-1: change,abroad,extend')",
+   "quote": "단기사증 소지자, 불법체류자, 출국기한 유예자, 일반 형사범은 원칙적으로 국내에서 국민의 배우자(F-6-1) 체류자격으로 변경이 불가능하며, 출국 후 재외공관에서 사증을 받아 입국 (예외: 임신·출산, 자녀 양육 등)"
+  },
+  {
+   "slice": "d8d9",
+   "index": 2,
+   "verdict": "partly",
+   "reason": "The graph part is mostly right: D-8-2 and D-8-3 are reached only from NONE, so from abroad only. The headline is wrong for D-8-1, which D-7 already offers as an in-Korea change (plain `- D-8-1`), so D-8-4 is not the only D-8 a resident can be shown. On the law, a Ministry of Justice D-8 guideline notice restricts an in-Korea change to D-8-1/D-8-3 only for D-3, E-9, E-10 and G-1 holders (and short-term tourists). D-2, D-10, E-7 and D-9 holders are not restricted, and the change document lists for D-8-1/2/3 carry no condition on the status held before. The D-10-2 -> D-8-2 part of the fix is not supported: D-10-2 is the start-up preparation track for D-8 다목 (tech start-up, which is D-8-4), and D-10-2 -> D-8-4 is already in the file.",
+   "correctedFix": "In data/visamap.yaml add plain (in-Korea) entries:\n- D-10-1 next: `- D-8-1`, `- D-8-2`, `- D-8-3` (after `- D-8-4`)\n- D-2-2 and D-2-3 next: `- D-8-1`, `- D-8-3` (after `- D-8-4`)\n- D-2-4 next: `- D-8-1`, `- D-8-3`\n- E-7-1 next: `- D-8-1`, `- D-8-3` (after `- D-8-4`)\n- D-9-1 and D-9-4 next: `- D-8-1`, `- D-8-3`\nDo NOT add D-10-2 -> D-8-2. Do not add any D-8 edge from D-3, E-9, E-10 or G-1-x (restricted statuses). D-8-1 and D-8-3 keep their `needs: {invest: 1}` gate.",
+   "source": "법무부 「기업투자(D-8) 자격 사증발급 및 체류관리 지침 개정 안내」 (posted at https://overseas.mofa.go.kr/uy-ko/brd/m_6462/view.do?seq=1119363); 출입국관리법 시행령 별표 1의2 기업투자(D-8) 다목 (via elaw.klri.re.kr); data/visadocs.yaml D-8-1/D-8-2/D-8-3 change (외국인체류 안내매뉴얼 2026.9.18 › 16. 기업투자(D-8) › 체류자격 변경허가)",
+   "quote": "체류외국인 중 기업투자(D-8) 자격변경을 제한하고 있는 기술연수(D-3), 비전문취업(E-9), 선원취업(E-10), 기타(G-1) 자격은 투자금이 5억원 이상 일 경우에만 예외적으로 본부 승인을 통해 자격변경 허용 (기업투자(D-8-1, 3) 자격변경 제한 규정 완화); 별표 1의2 D-8 다목: 지식재산권을 보유하거나 이에 준하는 기술력 등을 가진 사람 중 법무부장관이 인정한 법인 창업자"
+  },
+  {
+   "slice": "d8d9",
+   "index": 3,
+   "verdict": "confirmed",
+   "reason": "Correct as stated. In the current YAML, F-5-5 is reached from D-8-1, D-8-2, D-8-3, F-2-5 and NONE, but not from D-8-4. 별표 1의3 제3호 sets no condition on the status held, and the F-5 manual says large investors may apply whatever their period of residence; NONE -> F-5-5 already treats the route as status-free. The finding's reasoning is off in one way: F-5-5 needs the applicant personally to be the foreign investor (FIPA) who put in US$500K, not a founder who raised that money; such founders are served by F-5-24, already on D-8-4. That does not affect the fix. F-5-5 has a change list, and its `needs: {invest: 3}` gates it.",
+   "correctedFix": "In data/visamap.yaml under D-8-4 `next`, add `- F-5-5` (after `- F-5-24`).",
+   "source": "출입국관리법 시행령 별표 1의3 제3호 (고액투자자); 외국인체류 안내매뉴얼 › 영주(F-5) › 고액투자자(F-5-5) (restated at k-labor.co.kr 영주자격 제도); data/visadocs.yaml F-5-5 change (외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 4. 고액 투자자)",
+   "quote": "「외국인투자 촉진법」에 따라 미화 50만 달러를 투자한 외국인투자가로서 5명 이상의 국민을 고용하고 있는 사람; 50만 달러 이상 고액투자자 등은 국내 거주기간에 상관없이 영주자격을 신청할 수 있다"
+  },
+  {
+   "slice": "d8d9",
+   "index": 4,
+   "verdict": "confirmed",
+   "reason": "F-2-5 currently has only two in-edges, D-8-1 and D-8-3. Decree 별표 1의2 거주(F-2) 라목 case 1) asks for 3+ years on 기업투자(D-8) with no sub-code, and case 3) names no status. The only overarching condition is being a foreign investor under the Foreign Investment Promotion Act (FIPA), which a D-8-2 or D-8-4 holder can also be, and which this engine cannot express. Leaving out D-8-2 and D-8-4 has no basis in the rule. F-2-5 has a change document list, and its `needs: {invest: 2}` blocks readers who answered a lower investment. An optional move note saying the investment must be registered under FIPA would make the step clearer.",
+   "correctedFix": "Add `- F-2-5` to the `next` lists of D-8-2 and D-8-4 in data/visamap.yaml (plain in-Korea entries).",
+   "source": "출입국관리법 시행령 별표 1의2 24. 거주(F-2) 라목; KIS 비자 내비게이터 PART 02 › 유형2 1단계 p.16; data/visadocs.yaml F-2-5 change (외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 4. 고액투자자에 대한 거주자격 변경허가)",
+   "quote": "라. 「외국인투자 촉진법」에 따른 외국투자가 등으로 다음의 어느 하나에 해당하는 사람 1) 미화 50만 달러 이상을 투자한 외국인으로서 기업투자(D-8) 체류자격으로 3년 이상 계속 체류하고 있는 사람 … 3) 미화 30만 달러 이상을 투자한 외국인으로서 2명 이상의 국민을 고용하고 있는 사람"
+  },
+  {
+   "slice": "d8d9",
+   "index": 9,
+   "verdict": "confirmed",
+   "reason": "F-5-25 is currently reached from B-1, B-2, C-3-1, C-3-4, C-3-9, D-8-1 and D-8-3 only. 별표 1의3 제16호 and the Ministry of Justice public-interest investment-immigration page tie the status to the deposit and the 5-year hold alone, with no condition on the status held. Adding the edge to D-8-2 and D-8-4 is therefore legally sound and expressible: F-5-25 has a change list, and `needs: {invest: 6}` gates it. Severity is low. Whether the whole public-interest investment family, including the ₩1.5bn F-2-12 (missing from every D-8 code), should be offered from long-stay statuses in general is a separate map-wide decision.",
+   "correctedFix": "Add `- F-5-25` to the `next` lists of D-8-2 and D-8-4 in data/visamap.yaml (plain in-Korea entries).",
+   "source": "출입국관리법 시행령 별표 1의3 제16호 (조건부 고액투자자); 법무부 출입국·외국인정책본부 공익사업 투자이민제 https://www.immigration.go.kr/immigration/1523/subview.do; data/visadocs.yaml F-5-25 change (외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 16. 조건부 고액투자자)",
+   "quote": "5년 이상 투자 상태를 유지할 것을 조건으로 법무부장관이 정하여 고시하는 금액 이상을 투자한 사람과 그 배우자 및 자녀로서 법무부장관이 정하는 요건을 갖춘 사람; 투자금을 예치하면 투자자 본인, 배우자 및 미혼 자녀는 5년 이상 투자 상태를 유지할 것을 조건으로 영주(F-5) 자격을 받을 수 있습니다"
+  },
+  {
+   "slice": "none-study",
+   "index": 2,
+   "verdict": "partly",
+   "reason": "The structural claim is true: no `next` list in data/visamap.yaml contains D-4-2. But it is not dead data, because the current-visa search box lists every non-goal code (assets/js/visamap.js:251), so deleting the block would be wrong. The legal claim that it is a normal first visa from abroad has no support in the repo's 2026 ground truth: visadocs has only a K-Trainee (D-4-2K) extension list for D-4-2 ('D-4-2: extend'), with no change list and no abroad list. A NONE edge would then target a visa with no abroad documents, and D-2-x edges one with no change documents. I could not reach a primary 사증발급 source either way (KIS/law.go.kr hosts unreachable, search budget used up).",
+   "correctedFix": "Do not delete the D-4-2 block and do not add D-2-1..D-2-4 -> D-4-2. Add no edge for now; only once a D-4-2 사증발급인정서 (abroad) document list has been extracted into data/visadocs.yaml, add `- D-4-2` under NONE: next, after `- D-4-1`.",
+   "source": "data/visadocs.yaml:5273-5287 (외국인체류 안내매뉴얼 2026.9.18 › 12. 일반연수(D-4) › 체류기간 연장허가 › 2. 기업 맞춤형 인턴십(K-Trainee, D-4-2K)); visa-map-audit/tools/visadocs-targets.txt line 27; assets/js/visamap.js:248-252",
+   "quote": "기업 맞춤형 인턴십(K-Trainee, D-4-2K)의 체류기간연장 제출서류 (the only D-4-2 list in the 2026 manuals as extracted; the manual gives no list for other D-4-2 trainees)"
+  },
+  {
+   "slice": "none-study",
+   "index": 4,
+   "verdict": "partly",
+   "reason": "The rule is right: the manual's D-2-5 row requires a master's degree in principle, and the only undergraduate opening is for STEM students enrolled in a bachelor's programme abroad who are invited by a Korean university in the QS top 500 or THE top 200. But 'regardless of education' is wrong, and the fix does nothing. readDetails (visamap.js:237-241) forces stem=false unless edu>=1. I reproduced it: edu 0 + STEM is already 'no'; edu 1 + STEM is 'yes' both with and without `{stem: true, edu: 1}`; blank edu is 'maybe' both ways. The engine has no way to say 'currently enrolled' or 'invited by a ranked Korean university' (rank is the reader's own university). So keep the needs and put the real conditions in the text.",
+   "correctedFix": "Leave D-2-5 `needs` as is (`- {edu: 4}` / `- {stem: true}`). Change the D-2-5 `how` in data/visamap.yaml (line 452). en: 'Non-degree research at a Korean university. Master's degree or higher in principle; a STEM student still enrolled in a bachelor's programme abroad qualifies only when invited by a Korean university in the QS top 500 or THE top 200.' The ru, uz and uz-cyrl texts must be translated from this.",
+   "source": "외국인체류 안내매뉴얼 › 유학(D-2) › 체류자격 변경허가 › 다. 제출서류 › 특정 연구과정(D-2-5), p.29 (https://www.ajou.ac.kr/se_en/board/news.do?mode=download&articleNo=288573&attachNo=269217); 법무부 D-2-5 확대 (https://www.studykoreanews.com/news/articleView.html?idxno=448); assets/js/visamap.js:237-241, 104-160",
+   "quote": "특정 연구과정(D-2-5) ⑤ 최종학력 입증서류(석사학위이상 소지자를 원칙으로 함); QS 세계대학순위 500위 이내 또는 THE 평판도 랭킹 200대에 속하는 국내대학 … 이공계 분야 국외 학사과정 재학생을 연구유학생(D-2-5)으로 초청"
+  },
+  {
+   "slice": "none-study",
+   "index": 5,
+   "verdict": "unverifiable",
+   "reason": "The engine part is right: `age: [0, 19]` on D-4-3 is a hard gate (visamap.js:176-182). The D-4-3 change, abroad and extend document lists (visadocs.yaml:5288-5385) contain no age item; they gate on the school, the admission letter and a guardian bond (후견보증서), with a waiver for dormitory residents. But no source gives any other age limit, so 21 (or no limit) is as unsourced as 19. The guardian requirement and immigration guidance describe D-4-3 as a study visa for minors (미성년자; adulthood in Korea is 19). Dropping the gate would show a K-12 visa as open to adults. The claim that 19-20-year-olds commonly enrol is uncited, and the primary manuals could not be fetched here.",
+   "correctedFix": "",
+   "source": "data/visadocs.yaml:5288-5385 (사증발급 안내매뉴얼 2026.9.1 / 외국인체류 안내매뉴얼 2026.9.18 › 일반연수(D-4) › 3. 고등학교 이하 외국인유학생(D-4-3)); https://immikorea.com/d-4-3/; data/visamap.yaml:285-289; assets/js/visamap.js:176-182",
+   "quote": "후견보증서 … 후견인 면제 대상자(기숙사 입사확인서); 후견인 제도는 유학생이 미성년자이기 때문에 (no age ceiling stated in the 발급대상 or 첨부서류)"
+  }
+ ]
+}
