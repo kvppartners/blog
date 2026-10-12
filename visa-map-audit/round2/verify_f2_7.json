@@ -1,0 +1,67 @@
+{
+ "verdicts": [
+  {
+   "slice": "f2",
+   "index": 7,
+   "verdict": "partly",
+   "reason": "The claim about the repo holds. F-2-5 has `needs: {invest: 2}` and vm_invest_2 reads \"₩300M+ (about US$220K)\". I ran assets/js/visa/rules.js on D-8-1 with invest 2: F-2-5 is OPEN and tagged \"matches\", so a reader with ₩300–420M is told they match although the legal floor is US$300K (about ₩420M). The proposed fix is wrong. The ₩300M–₩700M answer band also holds the investors with ₩420–700M who qualify under case 3) (US$300K plus 2 Korean employees, which the 2026.9.18 manual lists as its own case). `invest: 3` would block them with a false \"need more investment\" while `how` still offers that route. Keep level 2 and state the won amount; an exact gate needs a new invest level. Network was blocked in this session; the decree quote comes from the earlier audit's law.go.kr read and agrees with the manual list in data/visadocs.yaml.",
+   "correctedFix": "# data/visamap.yaml: keep F-2-5 `needs: {invest: 2}` (the lowest answer band that can hold US$300K ≈ ₩420M; invest: 3 would hide case 3 from qualifying ₩420M–₩700M investors)\nF-2-5:\n  how:\n    en: 'US$500K+ (about ₩700M) invested and 3+ continuous years on D-8, or staff sent by a foreign company that invested US$500K+ after 3+ continuous years; or US$300K+ (about ₩420M) invested with 2+ Korean employees.'\n    # ru, uz, uz-cyrl: translate the same sentence\n# Optional exact gate (larger change): add an invest level for ₩420M (≈US$300K) between 2 and 3, renumber invest 3-6 -> 4-7 (F-5-5, F-2-8, F-2-12, F-5-25), update vm_invest_* in all four i18n files and the layout's option range (old share links with invest=N change meaning), then set F-2-5 needs: {invest: 3}.",
+   "source": "출입국관리법 시행령 별표 1의2 24. 거주(F-2) 라목 (https://www.law.go.kr/DRF/lawService.do?OC=test&target=law&MST=290501&type=HTML); 외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 4. 고액투자자에 대한 거주자격 변경허가 (data/visadocs.yaml targets.F-2-5.change)",
+   "quote": "라. 「외국인투자 촉진법」에 따른 외국투자가 등으로 다음의 어느 하나에 해당하는 사람 1) 미화 50만 달러 이상을 투자한 외국인으로서 기업투자(D-8) 체류자격으로 3년 이상 계속 체류하고 있는 사람 2) 미화 50만 달러 이상을 투자한 외국법인이 … 파견한 임직원으로서 3년 이상 계속 체류하고 있는 사람 3) 미화 30만 달러 이상을 투자한 외국인으로서 2명 이상의 국민을 고용하고 있는 사람"
+  },
+  {
+   "slice": "f2",
+   "index": 8,
+   "verdict": "partly",
+   "reason": "The repo part holds, with one overstatement: F-2-7 -> F-2-T exists, but no F-2 node lists F-2-R or F-2-7S. data/visadocs.yaml `within` has every F-2-*>F-2-R and F-2-*>F-2-7S pair as `use: change`, so these in-Korea moves pass tests/data.test.mjs. The F-2-R change case in the 2026.9.18 manual is \"lawful resident in Korea\". The regional-visa 제한 대상 that the earlier audit read in the manual (D-3, D-4, E-6-2, E-8, E-9, E-10, G-1, H-1) names no F-2 code, so the moves are legal. The conditional notAfter guard is wrong. That list concerns the status held when applying; the D-10-1 notAfter is a D-10-only look-through. Copied onto F-2-x -> F-2-R it would wrongly block, for example, E-9 > F-2-3 > F-2-R. The moves add no new route to permanent residence: F-2-R leads only to F-5-1, and F-2-7 already offers F-5-S1. They are completeness, not a fix to a dead end. The 2026-248 notice text itself was not readable this session.",
+   "correctedFix": "# data/visamap.yaml: plain in-Korea moves, no needs/notAfter on them\nF-2-3:  next: add '- F-2-R'\nF-2-7:  next: add '- F-2-R' and '- F-2-7S'\nF-2-7S: next: add '- F-2-R'\nF-2-99: next: add '- F-2-R'\nF-2-T:  next: add '- F-2-R'\n# Do NOT copy the D-10-1 -> F-2-R `needs: {notAfter: [D-3, D-4, E-6-2, E-8, E-9, E-10, G-1, H-1]}` onto these moves: that rule restricts the status held when applying, and no F-2 code is on it.",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 37. 지역특화형비자 › Ⅱ. 지역특화형 우수인재(F-2) › (1) 체류자격 변경 (data/visadocs.yaml targets.F-2-R.change and within F-2-*>F-2-R / F-2-*>F-2-7S); 법무부고시 제2026-248호 (https://www.law.go.kr/DRF/lawService.do?OC=test&target=admrul&ID=2100000283176&type=HTML)",
+   "quote": "visadocs within: 'F-2-7>F-2-R: {use: change, list: F-2-R}', 'F-2-99>F-2-R: {use: change, list: F-2-R}', 'F-2-7>F-2-7S: {use: change, list: F-2-7S}'; F-2-R change case 'Lawful resident in Korea applying for regional talent (F-2-R)'; 지역특화형 비자 제한 대상: D-3, D-4, E-6-2, E-8, E-9, E-10, G-1, H-1 (as read from the manual by the d-misc audit)"
+  },
+  {
+   "slice": "f2",
+   "index": 9,
+   "verdict": "confirmed",
+   "reason": "Repo: F-2-7S next = [F-5-S1, F-5-1, F-5-15] and F-2-T next = [F-5-T], so neither offers F-5-16. Yet F-5-16's own `needs.stay.in` already counts [F-2-7, F-2-7S, F-2-T] (commit 068176a, research R6), so the data contradicts itself and F-5-16's `how` still says \"3+ years on F-2-7\". Law: 별표 1의3 제13호 grants points-based PR on any 거주(F-2) 자목 status. F-2-7S and F-2-T are 자목: 2025-408 제2조⑤ and the Top-Tier notice title say so, F-2-7S family get the 자목 family code F-2-71, and the earlier audit mapped them from the decree. F-5-16 has a `change` list, so the in-Korea move is valid. I simulated it: NONE>D-2-3>F-2-7S and NONE>E-7-1>F-2-T both show F-5-16 at the 2× GNI income check. It is a real alternative to F-5-S1 and F-5-T. Quotes rely on the earlier audit's law.go.kr read; this session had no network.",
+   "correctedFix": "# data/visamap.yaml\nF-2-7S: next: add '- F-5-16'\nF-2-T:  next: add '- F-5-16'\nF-5-16:\n  how:\n    en: '3+ years on a points-based F-2 (F-2-7, F-2-7S or F-2-T; the years add up), income of 2× GNI (1× if you came via E-7-S2) or assets of 1.5× average, KIIP level 5.'\n    # ru, uz, uz-cyrl: translate the changed first clause; keep the rest as is\n# F-5-16.needs.stay.in already lists [F-2-7, F-2-7S, F-2-T]: no change.",
+   "source": "출입국관리법 시행령 별표 1의3 제13호 (https://www.law.go.kr/DRF/lawService.do?OC=test&target=law&MST=290501&type=HTML); 법무부고시 제2025-408호 제2조⑤ (https://www.law.go.kr/DRF/lawService.do?OC=test&target=admrul&ID=2100000266296&type=HTML); 법무부고시 제2026-160호 title",
+   "quote": "별표 1의2 중 24. 거주(F-2) 자목에 해당하는 체류자격으로 대한민국에서 3년 이상 체류하고 있는 사람 / ⑤ 잠재적 우수인재 - 이공계 특성화 대학 및 연구기관 [붙임 1]의 석·박사를 취득한 외국인"
+  },
+  {
+   "slice": "f2",
+   "index": 10,
+   "verdict": "partly",
+   "reason": "True: F-2-16 has no in-edges. False: \"the tool can never show\" it. The current-visa picker in visamap.js offers every non-goal code, F-2-16 included. Started on F-2-16, the engine lists F-5-28 and F-5-29 (reproduced). The fix is wrong. F-2-16 has no list in data/visadocs.yaml, so new edges from E-1/E-3/E-7-1/F-2-99 would fail the data test \"a move inside Korea goes to a visa the manual lets you change to there\", and an edge from NONE would fail the \"from abroad\" test. Offering a discretionary Ministry grant (카목) as a next step from ordinary work statuses would also mislead. Deleting the nodes would drop real holders' PR route. tests/data.test.mjs already reads a `startOnly` list for exactly this case. Seeding its reachability walk with the start-only codes clears F-2-16, F-5-28 and F-5-29 (checked with node).",
+   "correctedFix": "# data/visamap.yaml, top level (next to statusGroups):\nstartOnly: [F-2-16]   # granted by a Ministry of Justice decision; offered only as a current visa\n# keep the F-2-16, F-5-28 and F-5-29 nodes; add no edges to F-2-16\n# tests/data.test.mjs, reachability test: start the walk from NONE plus the start-only codes, so goals reached only from them count:\n#   const seeds = ['NONE', ...Object.keys(visas).filter((c) => START_ONLY.has(c) || START_ONLY.has(statusOf(c)))];\n#   const reached = new Set(seeds); const queue = [...seeds];",
+   "source": "출입국관리법 시행령 별표 1의2 24. 거주(F-2) 카목 and 별표 1의3 제19호 (https://www.law.go.kr/DRF/lawService.do?OC=test&target=law&MST=290501&type=HTML); data/visadocs.yaml (no F-2-16 target); tests/data.test.mjs 'every visa can be reached ... or is known not to be'",
+   "quote": "카. 법무부장관이 대한민국에 특별한 기여를 했거나 공익의 증진에 이바지했다고 인정하는 사람 / (별표 1의3 제19호) 별표 1의2 중 24. 거주(F-2) 카목에 해당하는 체류자격으로 2년 이상"
+  },
+  {
+   "slice": "f2",
+   "index": 11,
+   "verdict": "confirmed",
+   "reason": "Repo: F-5-10's only in-edges are E-1, E-2, E-3, E-5, E-7-1, E-7-2 and E-7-3. F-2-99 offers only F-5-1 and F-5-13; F-2-7 does not offer F-5-10. F-5-10's own `stay` already counts 3 years in any in-Korea status (inKorea), its income is 1× GNI own, against 2× for F-5-1 and F-5-16. Law: 별표 1의3 제8호 counts 국내 체류기간 3년 with no status condition. Two other findings (missing#4, f5#5) independently cite the MOJ Visa Navigator \"8. 거주(F-2) › 유형1\", which lists F-5-10 among the routes out of F-2. F-5-10 has a `change` list, so the move passes the data test. Simulated: E-7-1>F-2-99 with a STEM bachelor's shows F-5-10 open at ₩52M; F-2-7 without STEM shows it blocked by stem/koreanEdu, as intended.",
+   "correctedFix": "# data/visamap.yaml\nF-2-99: next: add '- F-5-10'\nF-2-7:  next: add '- F-5-10'\n# F-5-10 keeps its needs [{edu: 3, stem: true, stay: {years: 3, in: inKorea}}, {koreanEdu: 4, stay: {years: 3, in: inKorea}}]",
+   "source": "출입국관리법 시행령 별표 1의3 제8호 (https://www.law.go.kr/DRF/lawService.do?OC=test&target=law&MST=290501&type=HTML); 법무부 비자 내비게이터 Ver 2022.12, 8. 거주(F-2) › 유형1 (as cited in findings missing#4 and f5#5); 외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 7. 학사․석사 학위증 및 자격증 소지자〔F-5-10〕 (data/visadocs.yaml)",
+   "quote": "법무부장관이 정하는 분야의 학사 학위 이상의 학위증 또는 법무부장관이 정하는 기술자격증이 있는 사람으로서 국내 체류기간이 3년 이상이고, 영주자격(F-5) 신청 시 국내기업에 고용되어 법무부장관이 정하는 금액 이상의 임금을 받는 사람"
+  },
+  {
+   "slice": "f2",
+   "index": 12,
+   "verdict": "partly",
+   "reason": "Repo: F-2-12 next = [F-5-21] only. F-5-25 has `needs: {invest: 6}` and a `change` list, so an in-Korea move is valid. Simulated: blocked for invest 5, open for invest 6. Law: 별표 1의3 제16호 and 고시 제2023-319호 Ⅲ.1 name no prior status, so an F-2-12 holder who deposits ₩3bn can apply. The proposed note goes too far. \"Top the deposit up to ₩3bn\" assumes the existing ₩1.5bn F-2-12 deposit counts toward the ₩3bn. Nothing found says so. The cited Ⅱ.2 combines investment schemes for the F-2 residence status, not for F-5-25. The F-5-25 list also asks for a new KDB deposit confirmation and proof of foreign currency brought in.",
+   "correctedFix": "# data/visamap.yaml\nF-2-12:\n  next:\n  - F-5-21\n  - to: F-5-25\n    note:\n      en: 'With ₩3bn or more deposited in the principal-guaranteed public-interest fund and a pledge to keep it for 5 years: permanent residence straight away, cancelled if you withdraw it. Ask the immigration office whether your current deposit counts toward the ₩3bn.'\n      # ru, uz, uz-cyrl: translate",
+   "source": "법무부고시 제2023-319호 공익사업 투자이민제도 투자대상, 투자금액 등에 관한 기준 고시 Ⅲ.1 (https://www.law.go.kr/DRF/lawService.do?OC=test&target=admrul&ID=2100000225532&type=HTML); 출입국관리법 시행령 별표 1의3 제16호; 외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 16. 조건부 고액투자자〔F-5-25〕 › 다. 제출서류 (data/visadocs.yaml)",
+   "quote": "공익사업 투자이민제도 투자대상 중 원금보장ㆍ무이자형에 30억 원 이상을 투자하고 5년 이상 투자 상태를 유지하고자 하는 자와 그 배우자 및 미혼자녀 / 5년 이상 투자 상태를 유지할 것을 조건으로 법무부장관이 정하여 고시하는 금액 이상을 투자한 사람 / 제출서류: 투자금 예치확인서(한국산업은행 발행), 외화반입 관련 입증서류(외국환매입증명서 등), 투자유지 서약서"
+  },
+  {
+   "slice": "f2",
+   "index": 13,
+   "verdict": "refuted",
+   "reason": "The finding itself says the K-STAR chapter of the 2026.9.18 manual must be checked. Its transcription in data/visadocs.yaml settles it. The K-STAR 거주(F-2-7S) lists in chapter 41 (graduates, integrated MS-PhD students, PhD-coursework completers, postdocs; change and extension) ask for the university president's recommendation and a degree or enrolment certificate. They ask for no points table. The chapter 30 points-based list for 잠재적 우수인재 does require 점수표【붙임 2】 and its proofs【붙임 3】. So the K-STAR track that F-2-7S's `how` describes (\"K-STAR university … president's recommendation\") is granted without the 80-point test. The K-STAR universities are also wider than 2025-408's 붙임 1: the list names the Korea Univ. Sejong, Yonsei Mirae and Hanyang ERICA campuses, so F-2-7S is not just group ⑤. \"Points waived\" is accurate; the proposed rewording would be wrong.",
+   "correctedFix": "",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 41. K-STAR 비자트랙 제도 › Ⅱ. K-STAR 거주(F-2-7S) › 4. 제출서류, compared with › 30. 거주(F-2) › 체류자격 변경허가 › 5. 점수제 우수인재 및 동반가족의 거주자격 변경허가 › 다. 제출서류 (both transcribed in data/visadocs.yaml targets.F-2-7S)",
+   "quote": "K-STAR 거주(F-2-7S) 제출서류: 신청서, 여권, 외국인등록증, 사진, 수수료, 체류지 입증서류, 해외범죄경력증명서, 결핵진단서(해당자), 대학 총장 추천서, 학위취득(예정)증명서 또는 졸업(예정)증명서 (no points table) vs. 점수제 우수인재 (ch.30): 신청인이 해당하는 점수를 기재한 점수표【붙임 2】, 신청인이 기재한 평가 항목별 점수를 입증하는 서류【붙임 3】"
+  }
+ ]
+}

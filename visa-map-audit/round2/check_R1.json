@@ -1,0 +1,430 @@
+{
+ "verdicts": [
+  {
+   "index": 0,
+   "status": "confirmed",
+   "correction": "Correct as stated. BOK first release of 2026-03-10: 2025 per-capita GNI KRW 52,416,000 (USD 36,855), up 4.6% in won. The press coverage gives the 2024 USD figure as 36,745 (revised), which shows the BOK does revise the previous year.",
+   "source": "WebSearch extracts: newsis NISX20260310_0003541931 / 0003541647 (2026-03-10), dailian 1468399",
+   "quote": "원화 기준으로는 5241만6000원 ... 전년 대비 4.6% 증가"
+  },
+  {
+   "index": 1,
+   "status": "confirmed",
+   "correction": "Confirmed for every status except possibly E-7 (see rule 5). There is independent official corroboration: an immigration.go.kr document for the remote-work visa applies the 2025 GNI and gives 1.5x as 7,862만원 (=1.5 x 52,416,000). The window 2026-04-01 to 2027-03-31 comes from the HiKorea notice as reproduced by two migrant-worker centres and EKW.",
+   "source": "https://www.immigration.go.kr/bbs/immigration/214/496883/download.do (WebSearch extract); scfw.or.kr wr_id=11, gnscfw.org/1303 (per R1; the same quote was found independently by R3 and R4b)",
+   "quote": "신청일 기준 한국은행 고시 전년도 1인당 국민총소득(GNI)을 연령별·체류지역별로 차등 적용 ... (2025년 GNI 기준) 수도권 만 18~34세 GNI 1.5배(7,862만원) [extract]"
+  },
+  {
+   "index": 2,
+   "status": "confirmed",
+   "correction": "Confirmed in substance. The switch on the 1st of the month after the BOK's March release, and the fallback to the GNI of the year before last, are both supported. The fallback is also in the 자목 notice text ('전년도(발표되지 않은 경우 전전년도)'), as found by R4b. 'Later revisions are not adopted' is an inference from '최초 발표하는 3월 수치'. It is consistent with the 2026 notice fixing 5,241.6만원 for the whole window.",
+   "source": "HiKorea notice 2025-03-20 as reproduced at inkoreabiz.com wr_id=50 and EKW; 2026 HiKorea notice window; F-2 자목 notice (R4b rule 2)",
+   "quote": "최초 발표하는 3월 수치를 기준으로 발표되는 날의 다음달 첫째 날부터 적용하여 다음 연도 3월까지 적용 / 연간소득이 전년도(발표되지 않은 경우 전전년도)의 1인당 국민총소득의 1.5배 이상"
+  },
+  {
+   "index": 3,
+   "status": "confirmed",
+   "correction": "Confirmed: 2024 GNI KRW 49,955,000 (USD 36,624 as first released), applied 2025-04-01 to 2026-03-31.",
+   "source": "WebSearch extract: dailian.co.kr/news/view/1468399; 부산광역시 공고 제2025-1046호 (R1)",
+   "quote": "2024년 1인당 GNI는 3만6624 달러로 전년 대비 5.7% 늘었고, 원화 기준으로는 4995만5000원이다"
+  },
+  {
+   "index": 4,
+   "status": "unverifiable",
+   "correction": "I could not check the June 2026 revised figure of 52,570,000 (no search budget). Its effect on the engine is confirmed regardless: the HiKorea notice fixes 5,241.6만원 for the whole window from 2026-04-01 to 2027-03-31, so any figure other than 52,416,000 (e.g. 52.57M) is wrong for KIS purposes until 2027-03-31.",
+   "source": "R1 (BOK nttId=10098382, not re-checked); HiKorea 2026 notice window (rule 1)",
+   "quote": "(적용 GNI) 5,241.6만원 ○ (적용기간) '26.4.1.~'27.3.31."
+  },
+  {
+   "index": 5,
+   "status": "unverifiable",
+   "correction": "Three researchers (R1, R3, R4b) saw the same notice text in reproductions (scfw.or.kr, gnscfw.org, EKW), but I found no official copy. Two targeted searches found neither the exception nor any announced 'H2 2026 employment-visa wage system'. koreaworkexpert's counter-claim (a 2026-07-09 MOJ guide using 52.57M x 3) also remains unverified. The list of affected tests (E-7-S1 3x, 1.5x waiver, D-10-3 1x) is R1's inference: the notice only says '특정활동(E-7) 자격에 한해'. If the exception holds, the amount is most likely 49,955,000: '4,995만원' is a truncation of the 2024 figure of 4,995.5만원. R3 used 49,950,000. Recommendation: show E-7 GNI tests as a multiple, with both amounts or a range (₩149.9M-157.2M for 3x), and do not hard-code the exception as fact.",
+   "source": "scfw.or.kr wr_id=11, gnscfw.org/1303 (via R1); my searches: no primary hit",
+   "quote": "(적용특례) 특정활동(E-7) 자격에 한해 '24년 기준인 4,995만원 적용(~'27. 3.까지)"
+  },
+  {
+   "index": 6,
+   "status": "confirmed",
+   "correction": "The arithmetic is correct: 0.6x 31,449,600; 0.7x 36,691,200; 0.8x 41,932,800; 1.5x 78,624,000 (matches the official remote-visa figure of 7,862만원); 2x 104,832,000; 3x 157,248,000; 4x 209,664,000.",
+   "source": "Computed from 52,416,000; immigration.go.kr 496883 download (WebSearch extract)",
+   "quote": "수도권 만 18~34세는 GNI 1.5배(7,862만원) [extract]"
+  },
+  {
+   "index": 7,
+   "status": "confirmed",
+   "correction": "The arithmetic is correct (0.7x 34,968,500; 0.8x 39,964,000; 1.5x 74,932,500; 2x 99,910,000; 3x 149,865,000; 4x 199,820,000). The table is valid for all statuses for applications filed 2025-04-01 to 2026-03-31. Its use for E-7 after 2026-04-01 depends on rule 5, which is unverifiable.",
+   "source": "Computed; 부산광역시 공고 제2025-1046호 (R1); dailian 1468399",
+   "quote": "1인당 국민총소득(GNi) 70% = 49,955,000원 × 70% = 34,968,500원('24년 기준)"
+  },
+  {
+   "index": 8,
+   "status": "confirmed",
+   "correction": "Confirmed: E-7-1 KRW 31,120,000 a year from 2026-02-01 to 2026-12-31. It is a fixed amount, not a share of GNI. Independent guides agree, and their stated rise (+245만) on the 2025 floor of 2,867만 gives 3,112만. The MOJ board shows the 2025 notice 제2025-106호 (2025-03-20).",
+   "source": "WebSearch extracts: kowork.kr/blog/e7-visa-2026-salary-requirements; seoulstart.com korea-foreign-worker-minimum-wage-guide; moj.go.kr/bbs/moj/184/593147 (2025 notice)",
+   "quote": "전문인력(E-7-1)은 이전 대비 245만 원, 준전문인력(E-7-2)과 일반기능인력(E-7-3)은 74만 원 상승 / 2026년 E-7-1 기준 최저 연봉 요건은 31,120,000원 이상"
+  },
+  {
+   "index": 9,
+   "status": "confirmed",
+   "correction": "Confirmed: E-7-2 KRW 25,890,000 (2026-02-01 to 2026-12-31); 2025: 25,150,000 (2,515만 + 74만 = 2,589만).",
+   "source": "WebSearch extracts: kowork.kr e7-visa-2026-salary-requirements; seoulstart guide",
+   "quote": "E-7-2·3은 2,589만원, E-7-4는 2,600만원"
+  },
+  {
+   "index": 10,
+   "status": "confirmed",
+   "correction": "Confirmed: E-7-3 KRW 25,890,000 (same as E-7-2).",
+   "source": "WebSearch extracts: kowork.kr; seoulstart guide",
+   "quote": "E-7-2·3은 2,589만원"
+  },
+  {
+   "index": 11,
+   "status": "confirmed",
+   "correction": "Confirmed: E-7-4 KRW 26,000,000 a year, with an E-7-4 contract of at least 2 years. The manual's document list (visadocs) states it.",
+   "source": "data/visadocs.yaml line 8814 (외국인체류 안내매뉴얼 2026.9 › 25. 특정활동(E-7) › 숙련기능인력(E-7-4) › 붙임2); WebSearch extract",
+   "quote": "Submit the E-7-4 contract (≥ 2 yrs, ≥ KRW 26M/yr) / E-7-4는 2,600만원"
+  },
+  {
+   "index": 12,
+   "status": "confirmed",
+   "correction": "Confirmed: the 80% GNI floor and the 70% floor for SMEs and ventures were abolished from 2025-04-01 by 공고 제2025-106호, which set one fixed amount for every company. One blog still claims a 70% floor, against the other sources. The 2023 base (47,248,000 → 80% = 37,798,400; 70% = 33,073,600) is arithmetically right.",
+   "source": "WebSearch extract: kowork.kr/blog/e7-visa-2025-salary-requirements; moj.go.kr/bbs/moj/184/593147",
+   "quote": "기존에는 GNI(국민총소득)를 기준으로 80%를 적용하고, 중소기업 및 벤처기업의 경우 70%를 적용하는 방식이었습니다 ... 2025년 법무부공고 제2025-106호에서는 임금 조건이 통일되어, 모든 기업에 동일한 기준이 적용됩니다"
+  },
+  {
+   "index": 13,
+   "status": "unverifiable",
+   "correction": "This is R1's own derivation; no source states it. It is not exact either: the 2025 floor (25,150,000) is BELOW 10,030 x 209 x 12 = 25,155,240, while the 2026 floor (25,890,000) is above 25,882,560. So 'tracks the minimum wage approximately' is the most that can be said. Do not put it in user-facing text.",
+   "source": "Arithmetic only",
+   "quote": "준전문인력(E-7-2) 연 2,589만원 이상 / 일반기능인력(E-7-3) 연 2,589만원 이상"
+  },
+  {
+   "index": 14,
+   "status": "unverifiable",
+   "correction": "Only practitioner leads support this (and R6's summary of the manual's 특별요건, '부처추천+GNI 1.5배'). My targeted search found no primary text. The amount depends on rule 5: 74,932,500 (E-7 exception) or 78,624,000.",
+   "source": "Leads: visainfo-korea.com, yoonhjs.com uid=253 (via R1); R6 rule 82",
+   "quote": "연간보수가 GNI의 1.5배 이상이고 중앙행정기관장 및 지방자치단체장(특별시장, 광역시장 포함)의 추천을 받는 경우 학력, 경력 모두 면제"
+  },
+  {
+   "index": 15,
+   "status": "confirmed",
+   "correction": "Rule confirmed: 3x previous-year GNI, any occupation except simple labour, jobs against public morals and jobs closed to foreigners, no degree or experience requirement. The manual sentence was quoted verbatim in earlier research and R6 independently lists '고소득 GNI 3배'. The KRW amount is NOT settled: 157,248,000 on the 2025 GNI, or 149,865,000 only if the E-7 exception (rule 5) holds. Show the multiple or the range.",
+   "source": "사증발급 안내매뉴얼 E-7 우수인재(네거티브 방식) as quoted in visa-map-audit/findings.md line 873 (immikorea, hanvisa); R6 rule 82",
+   "quote": "소득이 전년도 1인당 국민총소득의 3배 이상이면서 단순노무, 선량한 풍속에 반하는 업종, 기타 외국인의 취업을 제한하는 직종에 취업하지 않으면"
+  },
+  {
+   "index": 16,
+   "status": "confirmed",
+   "correction": "Confirmed by the manual text: 1+ year of D-10-3, formal employment in the internship field, wage of at least previous-year GNI. The amount is 52,416,000, or 49,955,000 only if the E-7 exception applies (unverified, rule 5).",
+   "source": "외국인체류 안내매뉴얼 구직(D-10) › 첨단기술인턴 체류지원 특례 pp.158-159 (internationalcenter.inha.ac.kr download, quoted in findings.md line 215)",
+   "quote": "첨단기술인턴(D-10-3) 자격으로 국내 기업 등에서 1년 이상 인턴활동을 한 자로서, 인턴 활동 분야에 정식 취업하고, 임금이 전년도 1인당 국민총소득(GNI) 이상일 경우, 특정활동(E-7) 체류자격변경 시 학력, 경력 요건 면제"
+  },
+  {
+   "index": 17,
+   "status": "confirmed",
+   "correction": "2x GNI income or 1.5x average household net assets is confirmed (court quoting the MOJ criteria; the manual's F-5-1 document list has both the income and the 자산보유 기준 documents). Amounts: 104,832,000 (from 2026-04-01) and 99,910,000 (before). 'Whose' remains open: the manual's note 'one set per income earner counted' implies household income may be counted, but no 50% own-share rule for F-5-1 was found.",
+   "source": "서울행정법원 2022구단72871 (2024-07-12); data/visadocs.yaml F-5-1 (외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 1. 일반 영주자〔F-5-1〕 › 다. 제출서류)",
+   "quote": "전년도 1인당 국민총소득(GNI) 2배 이상 또는 전년도 가계 평균 순자산 1.5배 이상"
+  },
+  {
+   "index": 18,
+   "status": "confirmed",
+   "correction": "Confirmed. 1.5 x 471,440,000 = 707,160,000. The 2025 survey average is confirmed by press reports. The 6-month holding is not lead-only: the manual note says assets must be held 6+ months AND kept until the decision. Debts come from the credit report of the applicant and the household. Income and assets cannot be added together.",
+   "source": "newsis NISX20251204_0003428047 / daum (WebSearch extract); data/visadocs.yaml F-5-1/F-5-16/F-5-26 asset note (manual 2026.9.18 › 32. 영주 › 공통 서류)",
+   "quote": "가구당 순자산 4억7144만원으로 5.0% 증가 / Assets must have been held 6+ months and kept until the decision; debts are taken from the credit report (신용정보조회서) of the applicant and household. Income and assets cannot be added together."
+  },
+  {
+   "index": 19,
+   "status": "confirmed",
+   "correction": "Confirmed: average net assets per household, 2025 survey (as of 2025-03-31, published 2025-12-04) = 471,440,000. The 2024 figure of 448,940,000 is consistent with the reported +5.0%. When KIS switches survey years (December publication or January) is inferred from '전년도', not stated.",
+   "source": "WebSearch extract: newsis NISX20251204_0003428047; v.daum.net/v/1r2dchrNvp",
+   "quote": "[2025가계금융복지]①가구 순자산 4.7억원…전년비 5.0%↑ / 가구당 순자산 4억7144만원"
+  },
+  {
+   "index": 20,
+   "status": "corrected",
+   "correction": "The own-share rule (own income or assets at least 50% of the threshold when household amounts are combined) is manual-confirmed ONLY for F-5-6. The manual text transcribed for F-5-2 says just '본인 또는 생계를 같이하는 가족' with no 50% condition, and no source applies 50% to F-5-1. For F-5-16 and F-5-13 a lead says only the applicant counts, so no household combination at all. Engine: apply own>=50% only to F-5-6. For the other household routes, either combine without the 50% condition or treat it as unknown.",
+   "source": "data/visadocs.yaml line 12041 (manual 2026.9.18 › 36 › F-5-6); F-5-2 lines 11632-11708; R3 rule 5 (lead)",
+   "quote": "Income >= 1x GNI (combined household income: own share >= 50%) / 점수제 영주자(F-5-16) 또는 연금 수혜자 영주자(F-5-13) 자격을 신청한 경우는 신청인만 소득주체로 인정 (lead)"
+  },
+  {
+   "index": 21,
+   "status": "confirmed",
+   "correction": "Confirmed from the manual text: household income of at least 1x GNI, OR household assets at least at the median level. The median figure itself is unsettled: a private site gives about 2.6억 (55% of the average); there is no official extract.",
+   "source": "data/visadocs.yaml F-5-2 (외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 2. 결혼이민자(F-5-2) › 2) 제출 서류)",
+   "quote": "(일인당 국민총소득 이상의 소득금액) / (중위수준 이상의 가계 자산)"
+  },
+  {
+   "index": 22,
+   "status": "unverifiable",
+   "correction": "There is only one source, a case-summary extract of a 2024 judgment on a 2022 decision. R3 read the same case differently, as the ordinary test applying. The 2-year period, the 1x GNI / median-assets criteria and whether they still apply in 2026 are not confirmed. The data already models F-5-27 as {gni: 1, household: true}; keep it flagged as uncertain.",
+   "source": "서울행정법원 2022구단72871 (casenote.kr summary via R1); R3 rule 37",
+   "quote": "난민인정자에게는 국내 체류 2년 이상과 GNI 이상 또는 가계 자산 중위수준 이상을 요구"
+  },
+  {
+   "index": 23,
+   "status": "confirmed",
+   "correction": "Confirmed from the manual: F-5-6 income of at least 1x GNI, combined household income allowed with own share >= 50%. Amount 52,416,000 from 2026-04-01.",
+   "source": "data/visadocs.yaml line 12041 (외국인체류 안내매뉴얼 2026.9.18 › 36. 외국국적동포 관련 › 5 › F-5-6 대상별 제출서류)",
+   "quote": "Income >= 1x GNI (combined household income: own share >= 50%)"
+  },
+  {
+   "index": 24,
+   "status": "confirmed",
+   "correction": "Confirmed from the manual: 80% of GNI with a volunteer record: 1365 certificate, 100+ hours over 6+ months (R3 adds: at most 6 h counted per day). Amount 41,932,800. The stacking claim (a separate 60% tier, cuts not multiplied) rests on rule 26, which is unverifiable.",
+   "source": "data/visadocs.yaml lines 12056-12058 (manual 2026.9.18 › 36 › F-5-6); R3 rule 10",
+   "quote": "일정 기간의 자원봉사 실적*이 있는 경우 GNI 80% 이상인 경우 인정"
+  },
+  {
+   "index": 25,
+   "status": "unverifiable",
+   "correction": "Two targeted searches (MOJ press release, 2026-02-12 동포 integration) found no primary text. Support comes only from secondary sources: EKW, visatokorea, and an R3 extract with the same definition (KIIP 5 / all of Korean elementary-middle-high school / Korean bachelor's+). The data's koreanSkill cut matches that definition. Keep it, labelled as announced by MOJ but not in the manual text transcribed.",
+   "source": "Leads: EKW idxno=20200/20335, visatokorea (via R1); R3 rule 11",
+   "quote": "'한국어 우수자' 전년도 GNI의 70% 이상 충족 시 동포 영주자격(F-5) 소득요건 인정 (lead)"
+  },
+  {
+   "index": 26,
+   "status": "unverifiable",
+   "correction": "Same status as rule 25: only the EKW report of the MOJ briefing and the R3 extract. Not found in primary text. If kept, model 60% as its own cut requiring both conditions, not 0.8 x 0.7.",
+   "source": "EKW idxno=20200/20335 (via R1); R3 rule 12",
+   "quote": "'한국어 우수자'가 '우수 자원봉사자'에도 해당할 경우 전년도 GNI의 60% 이상으로 소득요건 완화 (lead)"
+  },
+  {
+   "index": 27,
+   "status": "confirmed",
+   "correction": "Confirmed from the manual: property tax paid last year >= KRW 500,000, OR the applicant's OWN net assets >= the average household net assets (471,440,000, 2025 survey).",
+   "source": "data/visadocs.yaml line 12065 (manual 2026.9.18 › 36 › F-5-6); newsis 2025-12-04 for the average",
+   "quote": "Property tax paid last year >= KRW 500k, or own net assets >= average household net assets"
+  },
+  {
+   "index": 28,
+   "status": "corrected",
+   "correction": "The pension (60+, at least 1x GNI from abroad), trade (>= KRW 2bn a year with Korean companies), investment (>= USD 500k) and mission-recommended community or company head (incl. within the past 3 years) routes are F-5-6 routes, per the manual. 'Meeting the general or simplified naturalization requirements' is NOT an F-5-6 route: the manual files it under its own code, 국적취득요건을 갖춘 사람 (F-5-7), which the data already has as a separate visa.",
+   "source": "data/visadocs.yaml lines 12059-12085 (F-5-6 cases) and 12090ff (F-5-7: 외국인체류 안내매뉴얼 2026.9.18 › 36 › 5 › 나. › 국적취득요건을 갖춘 사람(F-5-7))",
+   "quote": "국적취득요건을 갖춘 사람(F-5-7) › 공통 제출서류 + 추가서류 / case: General naturalization requirements (Nationality Act art. 5, except 1-2)"
+  },
+  {
+   "index": 29,
+   "status": "unverifiable",
+   "correction": "The 2x GNI foreign-pension figure and 'only the foreign pension counts' are lead-only (publicvisa, hanvisa; R3 also lead). 'No asset alternative' IS supported by the manual: the F-5-13 document list has pension certificate and pension bankbook copies but no '자산보유 기준' item, unlike F-5-1, F-5-16 and F-5-26. The decree text (via R6) says only '법무부장관이 정하는 금액 이상의 연금'.",
+   "source": "data/visadocs.yaml F-5-13 (외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 10. 연금 수혜자〔F-5-13〕 › 다. 제출서류); leads via R1",
+   "quote": "60세 이상으로서 법무부장관이 정하는 금액 이상의 연금을 국외로부터 받고 있는 사람 (decree) / 해외로부터 받은 연금액만을 소득으로 인정하고 연간소득요건은 전년도 1인당 GNI 2배 이상 (lead)"
+  },
+  {
+   "index": 30,
+   "status": "corrected",
+   "correction": "Keep 2x GNI income (104,832,000) or 1.5x average household net assets (707,160,000). The asset route is in the manual's F-5-16 document list. Change 'whose' from the assumed household/own-50% to the APPLICANT'S OWN income: a lead quoting the manual says only the applicant counts as income earner for F-5-16 and F-5-13. The data's F-5-16 income {gni: 2} (no household flag) already matches. The multiples themselves are lead-quoted.",
+   "source": "data/visadocs.yaml F-5-16 (manual 2026.9.18 › 32 › 11. 점수제 영주자〔F-5-16〕 › 다. 제출서류: '자산보유 기준'); R3 rule 5 (lead)",
+   "quote": "점수제 영주자(F-5-16) 또는 연금 수혜자 영주자(F-5-13) 자격을 신청한 경우는 신청인만 소득주체로 인정 (lead)"
+  },
+  {
+   "index": 31,
+   "status": "unverifiable",
+   "correction": "The asset route itself is manual-confirmed ('자산보유 기준' in the F-5-26 document list). The 2x GNI and 1.5x average figures are quoted only by practitioner sites (yoonhjs, publicvisa; R3 also lead), though they match F-5-1's court-confirmed criterion. 'Household with own share >= 50%' is an unsupported assumption.",
+   "source": "data/visadocs.yaml F-5-26 (manual 2026.9.18 › 32 › 17. 외국인투자기업의 연구개발 인력〔F-5-26〕 › 다. 제출서류); leads",
+   "quote": "소득 : 전년도 1인당 국민총소득(GNI) 2배 이상 / 자산 전년도 평균 순자산 1.5배 이상 (lead)"
+  },
+  {
+   "index": 32,
+   "status": "confirmed",
+   "correction": "Confirmed from the manual. Income = taxed income of the calendar year before the application. If that certificate is not yet issued: the F-5 common note uses the year before that, while the F-2-99 and F-5-6 lists require all three of withholding receipt + salary bank record + employer/applicant pledge. The decision may be held, and PR cancelled if later records do not match.",
+   "source": "data/visadocs.yaml lines 10513-10519 (F-2-99), 12048-12055 (F-5-6), F-5 common income note",
+   "quote": "신청일 당시 소득금액증명원 제출이 불가한 경우 (㉠~㉢ 모두 제출) / 영주자격 변경 신청일 당시 소득금액증명 등 공적 서류 발급이 불가능할 경우"
+  },
+  {
+   "index": 33,
+   "status": "unverifiable",
+   "correction": "The amounts (own income >= 40,000,000, spouse not added; own assets >= 20,000,000 held 6+ months, net of loans) are lead-only (yoonhjs uid=444, haniseoul; R4b found the same leads). The manual's F-2-99 change list confirms that both asset and income evidence are required, which fits 'both required', but gives no amounts. The data's {krw: 40} matches the leads.",
+   "source": "Leads via R1 and R4b rules 7-8; data/visadocs.yaml lines 10497-10531",
+   "quote": "배우자 소득 합산은 인정하지 않고 신청인 본인의 연간소득만 심사 / 전년도 연간소득 기준 4,000만원 이상 / 신청인 본인 명의 자산 2,000만 원 이상 (leads)"
+  },
+  {
+   "index": 34,
+   "status": "unverifiable",
+   "correction": "Lead-only (visainfo-korea, hanvisakorea; R3 and R6 cite the same kind of sources). Not found in the transcribed manual text. The data note '(waived with income of ₩40M+)' should stay flagged as unconfirmed.",
+   "source": "Leads via R1, R3 rule 30, R6 rule 29",
+   "quote": "연간 소득금액이 4천만 원 이상인 자(소득금액증명 제출자에 한함) (lead)"
+  },
+  {
+   "index": 35,
+   "status": "corrected",
+   "correction": "OUTDATED. The F-2-R (지역우수인재) income alternative is no longer 70% of GNI. It is now the applicant's own previous-year income of at least the 생활임금 (living wage) of the metropolitan or provincial government that recommends them, so the amount varies by region. A Gyeongbuk report of Oct 2025 already describes the 생활임금 test. Busan's 공고 제2025-1046호 predates the change. Example from R4b: 2026 Jeonnam living wage 12,305원/h, 2,571,745원/month, about KRW 30.9M a year. The alternative route remains a Korean associate degree or higher. The data's F-2-R income {gni: 0.7} should be removed or replaced: no single national amount exists.",
+   "source": "WebSearch extracts: kbmaeil.com/article/20251023500563; jobploy.kr/ko/content/writer/WR0000000001; R4b rule 14 (Jeonnam figure)",
+   "quote": "지역우수인재는 생활임금 이상 소득 또는 전문학사 이상 학력과 한국어능력 4급 이상을 갖춘 외국인이 대상이다 / 현행 고시는 전국에 동일한 GNI 비율을 적용하는 대신, 추천 지역을 관할하는 광역지방자치단체의 생활임금을 기준으로 사용합니다"
+  },
+  {
+   "index": 36,
+   "status": "corrected",
+   "correction": "Confirmed parts: 3x GNI for the full criteria, and the change route (1+ year in a high-tech field on D-7 to E-7 or F-2, all criteria except income, at least 2x GNI, ministry recommendation). Two corrections. (1) 법무부고시 제2026-160호 also has a 4x GNI tier for applicants missing either the degree leg or the career leg (4x = 209,664,000). (2) F-2-T is an F-2 requirement, so the standard 52,416,000 base applies (2x = 104,832,000; 3x = 157,248,000). The E-7 exception, limited to '특정활동(E-7) 자격에 한해', should not be applied to an F-2-T application even by an E-7-T holder.",
+   "source": "법무부고시 제2026-160호 (law.go.kr admrul ID=2100000279596) as quoted in visa-map-audit/findings.md lines 881 and 1133; Top-Tier manual (yoonhjs)",
+   "quote": "1인당 GNI 2배 이상 소득을 유지하고, 관계 중앙행정기관의 추천을 받은 자 / dropping the degree OR the career leg requires income >= 4x GNI (findings.md 1133 summary of the notice)"
+  },
+  {
+   "index": 37,
+   "status": "confirmed",
+   "correction": "Confirmed from the manual: if the F-2-7 holder's annual income is below the latest per-capita GNI, the spouse or minor child is handled as F-1. Amount 52,416,000 (sponsor's own income).",
+   "source": "data/visadocs.yaml line 9446 (외국인체류 안내매뉴얼 2026.9.18 › 29. 방문동거(F-1) › 체류기간 연장허가 › 11. 점수제 우수인재(F-2-7)의 배우자 또는 미성년자녀)",
+   "quote": "Spouse or minor child of a points-based talent (F-2-7) whose annual income is below the latest per-capita GNI"
+  },
+  {
+   "index": 38,
+   "status": "corrected",
+   "correction": "The amounts are right: 1x GNI = 52,416,000, or 70% = 36,691,200 when the livelihood-sharing household including the inviter has 3 or fewer members. Scope and 'whose' are wrong. (a) The test applies to SPOUSE (marriage-cohabitation) invitations only; no published income test was found for the minor child. (b) It counts the income of the F-5 inviter OR the combined income of household members living together and sharing a livelihood, over the 12 months before the application. Not mine: R4b reports the income test is waived on humanitarian grounds (a child of the couple, pregnancy), and an inviter who got F-5 as a Korean's spouse (F-5-2) must wait 3 years after PR. My own search found only the F-6 notice, not the F-5-spouse notice.",
+   "source": "R4b rules 29-32 (manual and notice text quoted there, primary); allvisakorea/immikorea leads via R1",
+   "quote": "과거 1년간의 본인 또는 생계를 같이 하는 동거가족의 소득 합계*가 한국은행고시 전년도 일인당 국민총소득GNI 이상 / 본인 포함 생계를 같이하는 동거가족의 수가 3인 이하인 경우에는 GNI 70% 이상이면 인정 (via R4b)"
+  }
+ ],
+ "discrepancyVerdicts": [
+  {
+   "index": 0,
+   "status": "corrected",
+   "correction": "R1's 'current' is out of date: data/visamap.yaml now has gni: {year: 2025, krw: 52.416}, and that value is confirmed for applications filed 2026-04-01 to 2027-03-31. Still missing: (a) the window. Before 2026-04-01 the base was 49.955. From about 2027-04-01 it will be the BOK's March 2027 first release of 2026 GNI. (b) The E-7 exception (49.955M) is UNVERIFIED: present E-7 GNI tests as a multiple with a range, not as fact. (c) The asset baseline: average household net assets 471.44M (2025 survey; 1.5x = 707.16M). The median used for F-5-2/F-5-27 is not settled. Never use the June revision (52.57M)."
+  },
+  {
+   "index": 1,
+   "status": "confirmed",
+   "correction": "Correct in substance: 3x GNI, any occupation except simple labour, jobs against public morals or jobs closed to foreigners; no degree or experience requirement. Lead with ₩157.2M (2025 GNI) or give the range ₩149.9M-157.2M: the 149.9M figure depends on the unverified E-7 exception. findings.md's 'roughly 140M' is wrong either way."
+  },
+  {
+   "index": 2,
+   "status": "confirmed",
+   "correction": "Correct: formal employment in the internship field and wage of at least 1x GNI (₩52.4M; ₩49.955M only if the unverified E-7 exception holds). The ₩31.12M floor is a fixed MOJ amount, not 80% of GNI. findings.md line 214 is wrong."
+  },
+  {
+   "index": 3,
+   "status": "confirmed",
+   "correction": "Add 'salary of at least ₩26M a year, E-7-4 contract of at least 2 years' (manual document list)."
+  },
+  {
+   "index": 4,
+   "status": "corrected",
+   "correction": "Add the '(2026)' tag only. Drop 'this floor follows the annual minimum wage': no source says so, and the 2025 floor (25.15M) is actually below the annual minimum wage (25,155,240)."
+  },
+  {
+   "index": 5,
+   "status": "corrected",
+   "correction": "Adding an asset alternative is supported: the manual's F-5-26 document list has '자산보유 기준'. The '1.5x national average (₩707M)' figure is lead-only. Word it as 'or net assets of 1.5× the national household average (about ₩707M; held 6+ months)' with the source flagged as secondary, or omit the number."
+  },
+  {
+   "index": 6,
+   "status": "corrected",
+   "correction": "Keep these, all manual-confirmed: 1x GNI (₩52.4M, household, own share ≥50%); 80% (₩41.9M) with 100+ h of volunteering over 6+ months (1365 certificate); own net assets ≥ the national household average (₩471.4M) or property tax ≥ ₩500k; trade ≥ ₩2bn; investment ≥ US$500k; foreign pension ≥1x GNI at 60+; head of a community organisation or company recommended by a Korean mission. Mark the 70% (Korean proficiency) and 60% (both) tiers as reported from the MOJ 동포-integration briefing and not found in primary text. Do not list naturalization requirements under F-5-6: they are F-5-7."
+  },
+  {
+   "index": 7,
+   "status": "unverifiable",
+   "correction": "The only basis is a case-summary extract of 2022구단72871, and R3 reads it differently. Do not state '1× GNI or median assets' as a firm rule. At most: 'income and asset requirements are assessed under a separate guideline (reported: 1× GNI or median household assets)'."
+  },
+  {
+   "index": 8,
+   "status": "refuted",
+   "correction": "The proposed fix is outdated. The F-2-R income alternative is now the applicant's previous-year income of at least the living wage (생활임금) of the recommending province or metropolitan city (e.g. Jeonnam 2026: ₩2,571,745/month, about ₩30.9M/yr), not 70% of GNI. The current wording 'regional-wage income' is right in substance and could be clarified as 'income of at least the province's living wage (생활임금)'. Also remove the data's income {gni: 0.7} for F-2-R."
+  },
+  {
+   "index": 9,
+   "status": "corrected",
+   "correction": "The amounts are arithmetically right (2× = ₩104.8M, 3× = ₩157.2M, 1.5× average net assets = ₩707.2M, household). Caveats. F-5-16 income is the applicant's own (lead), not household. For F-5-13, 'no asset alternative' is supported by the manual's document list, but the 2× foreign-pension amount is lead-only. For F-2-T, add the 2× change route and the 4× tier when the degree or career leg is missing. F-5-T's 3× is not verified."
+  }
+ ],
+ "missing": [
+  {
+   "code": "F-2-R",
+   "item": "income",
+   "rule": "The F-2-R income alternative (instead of a Korean associate degree) is the applicant's own previous-year income of at least the living wage (생활임금) of the metropolitan or provincial government that issues the recommendation. It replaced the former 70%-of-GNI test, so there is no national amount.",
+   "amount": "Varies by region; e.g. Jeonnam 2026 living wage 12,305원/h = 2,571,745원/month (about KRW 30.86M/yr)",
+   "whose": "own",
+   "conditions": "Local-government recommendation; job or business in the recommended depopulating area; KIIP 3 / TOPIK 3 (from 2026-08-03)",
+   "effect": "data/visamap.yaml F-2-R 'income: {gni: 0.7, cuts: [koreanCollege]}' gates on the wrong measure. Replace it with a non-numeric note, or a per-province amount of about ₩30M.",
+   "stacks": "Either the associate degree or the income test",
+   "source": "kbmaeil.com/article/20251023500563; jobploy.kr/ko/content/writer/WR0000000001 (WebSearch extracts); R4b rule 14",
+   "quote": "지역우수인재는 생활임금 이상 소득 또는 전문학사 이상 학력과 한국어능력 4급 이상을 갖춘 외국인이 대상이다 / 추천 지역을 관할하는 광역지방자치단체의 생활임금을 기준으로 사용합니다",
+   "primary": false,
+   "confidence": 0.65
+  },
+  {
+   "code": "ALL-F5",
+   "item": "other",
+   "rule": "Income and assets cannot be added together: one route must be met on its own. Assets count only if held 6+ months before the application and kept until the decision. Debts are deducted using the credit report of the applicant and the household.",
+   "amount": "n/a",
+   "whose": "household (asset debts checked for applicant and household)",
+   "conditions": "Every F-5 code with an asset route (F-5-1, F-5-4, F-5-9, F-5-15, F-5-16, F-5-18, F-5-26, F-5-28, F-5-29)",
+   "effect": "The engine must not sum income and assets toward one threshold",
+   "stacks": "Income and assets do not stack",
+   "source": "data/visadocs.yaml asset note in F-5-1/F-5-16/F-5-26 lists (외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 공통 서류)",
+   "quote": "Assets must have been held 6+ months and kept until the decision; debts are taken from the credit report (신용정보조회서) of the applicant and household. Income and assets cannot be added together.",
+   "primary": true,
+   "confidence": 0.8
+  },
+  {
+   "code": "F-5-13",
+   "item": "assets",
+   "rule": "F-5-13 (pensioner) has no asset alternative. Its manual document list has pension certificate and pension bankbook copies and no '자산보유 기준' item, unlike the general F-5 codes.",
+   "amount": "n/a",
+   "whose": "own",
+   "conditions": "Age 60+, foreign pension",
+   "effect": "Do not offer an asset route for F-5-13",
+   "stacks": "n/a",
+   "source": "data/visadocs.yaml F-5-13 (외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 10. 연금 수혜자〔F-5-13〕 › 다. 제출서류)",
+   "quote": "F-5-13 list: copyOfThePensionCertificate, bankbookShowingThePensionDeposits — no '자산보유 기준' entry (present for F-5-1, F-5-16, F-5-26)",
+   "primary": true,
+   "confidence": 0.7
+  },
+  {
+   "code": "F-2-T",
+   "item": "income",
+   "rule": "Top-Tier F-2-T has a third income tier. An applicant who meets only one of the degree leg (top-100 master's or doctorate) and the career leg needs income of at least 4x GNI. The full criteria need 3x, and the in-Korea change route needs 2x plus 1 year in a high-tech job.",
+   "amount": "4x GNI = KRW 209,664,000 (standard 2025 base; the E-7 exception does not apply to an F-2 requirement)",
+   "whose": "own",
+   "conditions": "Missing either the degree leg or the career leg; ministry recommendation",
+   "effect": "The data's F-2-T income {gni: 3} is right only for the full-criteria route",
+   "stacks": "Alternative tiers: 3x (all legs), 4x (one leg missing), 2x (change route)",
+   "source": "법무부고시 제2026-160호 (law.go.kr admrul ID=2100000279596), as summarised in visa-map-audit/findings.md line 1133 (not re-read by me)",
+   "quote": "dropping the degree OR the career leg requires income >= 4x GNI; dropping income requires 1+ year of advanced-field employment in Korea with income >= 2x GNI",
+   "primary": true,
+   "confidence": 0.6
+  },
+  {
+   "code": "F-5-7",
+   "item": "other",
+   "rule": "An ethnic Korean meeting the general or simplified naturalization requirements gets F-5-7, not F-5-6. Income is then judged under the Nationality Act art. 5 livelihood standard, not the F-5-6 GNI test.",
+   "amount": "n/a",
+   "whose": "n/a",
+   "conditions": "Ethnic Korean meeting 국적법 제5조 (except 1-2) or a simplified-naturalization ground",
+   "effect": "Remove 'meets naturalization requirements' from F-5-6 alternatives",
+   "stacks": "n/a",
+   "source": "data/visadocs.yaml F-5-7 (외국인체류 안내매뉴얼 2026.9.18 › 36. 외국국적동포 관련 › 5. › 나. › 국적취득요건을 갖춘 사람(F-5-7))",
+   "quote": "국적취득요건을 갖춘 사람(F-5-7) › 공통 제출서류 + 추가서류 / General naturalization requirements (Nationality Act art. 5, except 1-2)",
+   "primary": true,
+   "confidence": 0.8
+  },
+  {
+   "code": "F-2-3",
+   "item": "waiver",
+   "rule": "The F-5 holder's spouse-invitation income test is waived on humanitarian grounds (a child born to the couple, pregnancy). An inviter who got F-5 as the spouse of a Korean must have held F-5 for 3+ years. The inviter must not have invited another spouse in the last 5 years. No income test was found for the F-5 holder's minor child.",
+   "amount": "n/a",
+   "whose": "sponsor (F-5 inviter) or cohabiting household",
+   "conditions": "Spouse invitation by an F-5 holder",
+   "effect": "Drops the 1x/0.7x GNI test",
+   "stacks": "n/a",
+   "source": "R4b rules 31-32 (manual or notice text quoted there); not re-verified by me",
+   "quote": "초청인과 피초청인 사이에 출생한 자녀가 있거나 임신한 경우 등 인도적 사유가 있는 경우 / 초청인이 출입국관리법 시행령 별표1의3 제2호에 따라 영주자격을 취득한 경우 영주자격 취득 후 3년이 경과해야 함",
+   "primary": false,
+   "confidence": 0.5
+  },
+  {
+   "code": "ALL",
+   "item": "baseline",
+   "rule": "Independent official corroboration that KIS applies the 2025 GNI (52,416,000) in the current window: the immigration.go.kr remote-work visa guidance applies previous-year GNI by age and region, and gives 1.5x as 7,862만원.",
+   "amount": "1.5x = KRW 78,624,000 (7,862만원)",
+   "whose": "n/a",
+   "conditions": "Applications from 2026-04-01",
+   "effect": "Supports gni.krw = 52.416",
+   "stacks": "n/a",
+   "source": "https://www.immigration.go.kr/bbs/immigration/214/496883/download.do (WebSearch extract)",
+   "quote": "신청일 기준 한국은행 고시 전년도 1인당 국민총소득(GNI)을 연령별·체류지역별로 차등 적용 ... 수도권 만 18~34세는 GNI 1.5배(7,862만원) [extract]",
+   "primary": true,
+   "confidence": 0.7
+  }
+ ],
+ "notes": "Adversarial check of research_R1.json (39 rules, 10 discrepancies). I used exactly 12 WebSearch calls. data/visadocs.yaml served as the manual-derived primary, and research_R3/R4b/R6 were cross-read; I did not treat them as primaries unless they quoted manual or notice text.\n\nMain outcomes:\n(1) Baselines are solid. 2025 GNI 52,416,000 (BOK, press) and 2024 49,955,000 are confirmed. A separate official immigration.go.kr document (remote-work visa, 1.5x = 7,862만원) corroborates that KIS uses 52.416M now. All GNI-multiple arithmetic in R1 is correct.\n(2) The E-7 GNI exception (49.955M until 2027-03) is UNVERIFIED. It is reproduced by migrant centres but has no primary copy, and there is an unverified counter-claim. My two searches found nothing official either way. Do not hard-code it: show E-7 GNI tests as multiples or ranges (3x: ₩149.9M-157.2M). If it holds, the amount is almost surely 49,955,000 (the '4,995만원' label truncates 4,995.5만원).\n(3) The 2026 E-7 wage floors are confirmed: 31.12M / 25.89M / 25.89M / 26M from 2026-02-01, fixed amounts not GNI shares. R1's 'E-7-2/3 = minimum wage' derivation is not exact; do not publish it.\n(4) The most important correction is F-2-R. The income alternative is now the regional living wage (생활임금), not 70% of GNI. data/visamap.yaml line 1353 'income: {gni: 0.7, ...}' is likely wrong, and R1's discrepancy 8 is refuted (the existing 'regional-wage income' text is closer to correct).\n(5) The F-5-6 naturalization route belongs to F-5-7. F-5-13 has no asset route (manual document list). Income and assets never add together, and assets need 6+ months' holding (manual).\n(6) The own-share >= 50% rule is manual-confirmed only for F-5-6. A lead says F-5-16 and F-5-13 count only the applicant, which matches the data's F-5-16 {gni: 2} without a household flag.\n(7) Still open: median household net assets for F-5-2/F-5-27 (private estimate about 2.6억, 55% of the average; no official figure found); the F-5-6 70% and 60% tiers (secondary only); the F-5-27 criteria (single case-summary source); F-2-99 40M/20M and the F-2-7 40M waiver (leads only); the E-7 ministry-recommendation 1.5x waiver (leads only); the F-5-1 own-vs-household question.\n\nSources from my searches: newsis NISX20260310_0003541931/3541647; dailian 1468399; kowork.kr/blog/e7-visa-2026-salary-requirements and e7-visa-2025-salary-requirements; seoulstart.com korea-foreign-worker-minimum-wage-guide; moj.go.kr/bbs/moj/184/593147; kbmaeil.com/article/20251023500563; jobploy.kr/ko/content/writer/WR0000000001; immigration.go.kr/bbs/immigration/214/496883/download.do; newsis NISX20251204_0003428047; v.daum.net/v/1r2dchrNvp; moneynestlab.com/asset-ranking/2025-ranking; moj.go.kr/bbs/moj/156/423138 (F-6 notice, not F-2-3).\n\nNothing in /home/user/blog was modified. One scratch file was written to scratchpad/round2/xref_R1check.txt (a cross-reference extract)."
+}

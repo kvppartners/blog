@@ -1,0 +1,58 @@
+{
+ "verdicts": [
+  {
+   "slice": "missing",
+   "index": 14,
+   "verdict": "partly",
+   "reason": "The current YAML bears this out: F-2-13, F-2-81, F-2-T1 and F-2-16 have no in-edges, so F-5-19, F-5-22, F-5-T1, F-5-28 and F-5-29 can only be reached by a reader who starts on those statuses. The manual covers the three family codes: F-2-13 is changed in Korea together with F-2-12, F-2-81 together with F-2-8 (both lists cover the 'spouse and unmarried children'), and F-2-T1 has a single list for 'visa issuance, change of status and extension'. Parts of the proposed fix are wrong. NONE→F-2-13/F-2-81 abroad has no source: the investors themselves reach F-2-8/F-2-12 only by changing status from B-1/B-2/C-3, and visadocs has no abroad list for these codes. F-1→investor-family is unsourced, and an in-edge for F-2-16 would invent a route, because 카목 is a discretionary Ministry of Justice recognition with no application route; F-2-16 should stay start-only. Network was unavailable this round, so the quotes come from the 2026 manual as transcribed in data/visadocs.yaml and from the decree text quoted in earlier rounds.",
+   "correctedFix": "data/visamap.yaml:\n# 1) Investor families: mirror the in-edges of F-2-8 / F-2-12 (in-Korea change, not NONE)\n#    In B-1, B-2, C-3-1, C-3-4 and C-3-9 `next:`, right after `- F-2-12`, add:\n    - to: F-2-81\n      note: {en: 'As the spouse or unmarried child of a tourism/resort investor (F-2-8), together with or after the investor.'}\n    - to: F-2-13\n      note: {en: 'As the spouse or unmarried child of a public-interest investor (F-2-12), together with or after the investor.'}\n#    (ru, uz, uz-cyrl must be translated)\n#    Also give F-2-81 the same gate as F-2-13 (`needs: *id002`) and correct its how.en to 'Spouse or unmarried child of an F-2-8 investor.' (the manual's F-2-8/F-2-81 chapter and F-5-19's own how cover the spouse too).\n# 2) Top-Tier family\n#    F-3 `next:` add (like the existing F-3 -> F-2-71):\n    - to: F-2-T1\n      note: {en: 'Once your spouse or parent holds F-2-T (Top-Tier resident).'}\n#    NONE `next:` add:  - F-2-T1\n# 3) F-2-16: no in-edge (discretionary Ministry of Justice grant, 별표 1의2 24 카목); keep it as a start-only status. Do not add F-1/G-1-6 -> F-2-16.\n# 4) No NONE -> F-2-13 / F-2-81 and no F-1 -> F-2-13 / F-2-81.\ndata/visadocs.yaml (so these edges have document lists, as the manual headings document them):\n  F-2-13: {change: <same list as F-2-12.change>}   # 7. 공익사업투자 외국인에 대한 거주(F-2-12,13,14) 체류자격 변경허가\n  F-2-81: {change: <same list as F-2-8.change>, extend: *id019}   # 6. ...(F-2-8, F-2-81)자격 변경허가\n  F-2-T1: {change: <its current list>, abroad: <its current list>, extend: <its current list>}   # heading: 사증발급·체류자격 변경·체류기간 연장",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 6. (F-2-8, F-2-81) and 7. (F-2-12,13,14); › 39. 톱티어(Top-Tier) 비자 › Ⅳ. 동반 가족 등 › □ 톱티어 거주 동반가족(배우자·미성년자녀) (as transcribed in data/visadocs.yaml targets F-2-8, F-2-12, F-2-T1); 출입국관리법 시행령 별표 1의2 24. 거주(F-2) 카목 (law.go.kr)",
+   "quote": "「7. 공익사업투자 외국인에 대한 거주(F-2-12,13,14) 체류자격 변경허가」 - 가족관계증명서: 「배우자·미혼 자녀의 송금 또는 자격변경 신청에 한함」; 「6. 관광·휴양시설 투자 외국인에 대한 거주(F-2-8, F-2-81)자격 변경허가」 (미혼증명: 「성년자녀의 경우」); 「□ 톱티어 거주 동반가족(배우자·미성년자녀) › 사증발급·체류자격 변경·체류기간 연장」; 카목: 「법무부장관이 대한민국에 특별한 기여를 했거나 공익의 증진에 이바지했다고 인정하는 사람」"
+  },
+  {
+   "slice": "missing",
+   "index": 15,
+   "verdict": "partly",
+   "reason": "Right about the repo: no F-2-* node lists F-2-R or F-2-7S, F-2-71 has no F-3 move, and visadocs' within table records these as change moves. F-2-R's change rule is open to lawful residents (the excluded statuses are D-3, D-4, E-6-2, E-8, E-9, E-10, G-1, H-1), so F-2 holders may legally switch. As a map step, though, the blanket fix is wrong. F-2-R's only exit here is F-5-1, which the repo itself calls 'No dedicated route: F-2 years count toward F-5-1'. Adding it to F-2-99, F-2-3, F-2-5, F-2-7, F-2-8, F-2-12 and F-2-T would add a lateral option that is always open (unknown facts never block) and leads nowhere faster than those statuses' own PR routes, which worsens the 'wrong next options' complaint. F-2-R→F-2-7S adds nothing over the existing D-2-3/D-2-4→F-2-7S edges. Only the F-2-71 moves have a real use: a fallback when the sponsor's income drops, and a status of one's own.",
+   "correctedFix": "data/visamap.yaml - F-2-71 `next:` becomes:\n    next:\n    - F-5-18\n    - F-5-S2\n    - to: F-3\n      note: {en: 'If your F-2-7 family member no longer earns at least 1× GNI, your status changes to F-3 (F-3-18).'}\n    - to: F-2-R\n      note: {en: 'A residence status of your own, not tied to your family member''s income: a local-government recommendation and a job or business in a depopulating area.'}\n(ru, uz, uz-cyrl must be translated). Do NOT add F-2-R to F-2-99, F-2-3, F-2-5, F-2-7, F-2-8, F-2-12 or F-2-T, and do not add F-2-7S to F-2-R.",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 37. 지역특화형비자 › Ⅱ. 지역특화형 우수인재(F-2) › (1) 체류자격 변경 (data/visadocs.yaml targets['F-2-R'].change, `within` F-2-*>F-2-R, F-2-71>F-3); › 31. 동반(F-3) › 체류기간 연장 (F-3-18 case for F-2-7 family)",
+   "quote": "F-2-R 변경 제한 대상: 「기술연수(D-3), 일반연수(D-4), 호텔유흥(E-6-2), 계절근로(E-8), 비전문취업(E-9), 선원취업(E-10), 기타(G-1), 관광취업(H-1) ... 구직(D-10) 자격 소지자 중 직전 체류자격이 상기 제한 대상에 해당하는 자」; visadocs within: 「F-2-71>F-3: {use: change, list: F-3}」"
+  },
+  {
+   "slice": "missing",
+   "index": 16,
+   "verdict": "confirmed",
+   "reason": "In the current YAML, E-7-4R, E-7-T and E-7-Y lack F-2-99, while E-7-1/2/3/4/S1/S2 have it. The decree row behind F-2-99 counts any status other than A-1 to A-3. The manual's list of eligible statuses names 특정활동(E-7) as a whole, with no carve-out for any sub-code. F-2-99 has a change list, and its own `needs: {stay: {years: 5, in: longTerm}}` (longTerm includes E-7) still gates the 5 years, so no move-level needs is required. Note that E-7-Y currently has no in-edges, so its new edge only helps readers who start on E-7-Y.",
+   "correctedFix": "data/visamap.yaml:\nE-7-4R `next:` add (same note as E-7-4):\n    - to: F-2-99\n      note: {en: After 5 years on E-7 (E-9 years do not count)., ru: После 5 лет на E-7 (годы на E-9 не считаются)., uz: E-7 da 5 yildan keyin (E-9 dagi yillar hisoblanmaydi)., uz-cyrl: E-7 да 5 йилдан кейин (E-9 даги йиллар ҳисобланмайди).}\nE-7-T `next:` add:  - F-2-99\nE-7-Y `next:` add:  - F-2-99   (optional note en: 'After 5 years on E-7; time on D-4 or F-1 before E-7-Y does not count.' - needs ru/uz/uz-cyrl)\nDo not put `needs` on these moves, so F-2-99's own stay gate applies.",
+   "source": "출입국관리법 시행령 별표 1의2 24. 거주(F-2) 바목 (law.go.kr); 법무부 비자 내비게이터 (Ver 2022.12) p.35 ❹ 장기체류자(F-2-99) 자격 요건; 외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 9. 기타 장기체류자에 대한 거주 자격 변경허가",
+   "quote": "「외교(A-1)부터 협정(A-3)까지의 체류자격 외의 체류자격으로 대한민국에 5년 이상 계속 체류하여 생활 근거지가 국내에 있는 사람으로서 법무부장관이 인정하는 사람」 / 「신청 대상 체류자격 : 문화예술(D-1), 취재(D-5), 종교(D-6), 주재(D-7), 기업투자(D-8), 무역경영(D-9), 교수(E-1) ... 예술흥행(E-6-1, 3), 특정활동(E-7), 방문동거(F-1)」"
+  },
+  {
+   "slice": "missing",
+   "index": 17,
+   "verdict": "unverifiable",
+   "reason": "In the repo, E-7-4 has in-edges only from E-9, E-10 and H-2. The quoted S740 passage (② 뿌리산업 인력 양성대학 졸업자, change of status, 300 a year) is plausible, but I could not re-read it: the network was down, and the e7.txt it cites is not in this environment. More importantly, nothing shows that this track issues the E-7-4 sub-code that this repo models. The E-7-4 node's how, its `needs: {stay: {years: 4, in: [E-9, E-10, H-2]}}`, and its only document list ('E-9/E-10/H-2 worker converting to E-7-4') all describe the points conversion. The proposed gate `koreanEdu: 2` is supplied automatically by D-2-1/D-2-2's gives, so the move would be open to every student, while it is really limited to graduates of designated 뿌리 training colleges under a 300-place quota. Recommend no change until the S740 entry is read and its sub-code established.",
+   "correctedFix": "",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 25. 특정활동(E-7) › 숙련기능인력(E-7-4) 체류관리 안내 매뉴얼 › 붙임2 (data/visadocs.yaml targets['E-7-4'].change); S740 entry as quoted in the finding, not re-read",
+   "quote": "(finding's quote, unverified) 「② 뿌리산업 인력 양성대학 졸업자 : 체류자격변경(원칙) - (자격요건) 뿌리산업학과 전공 + 뿌리산업 분야 기능사 이상 자격증 취득 또는 기량검증단의 기량검증 통과 - (허가절차 등) 연간 300명 한도에서 체류자격 변경을 허용」; repo E-7-4 change list: 'E-9 / E-10 / H-2 worker (4+ yrs in 10 yrs) converting to skilled worker E-7-4'"
+  },
+  {
+   "slice": "missing",
+   "index": 18,
+   "verdict": "partly",
+   "reason": "True of the repo: no A-1/A-2/A-3 and no C-1 in `statuses` or `visas`. These statuses exist (별표 1의2 items 1-3; C-1 is in 별표 1). The manual documents change routes from them: C-1→D-5 (D-5 change list), C-1→D-10 (already confirmed in verified-by-review), and A-1/A-2/A-3→E-2 (an E-2 change case). The proposed A-* next list (D-2-2, D-4-1, F-6-1, F-2-3) has no source in the repo. A NONE edge to C-1 or A-* would target statuses with no visadocs abroad list, and diplomatic statuses are not something a reader plans toward. Impact is low for this site's audience, so the fix should be minimal and start-only.",
+   "correctedFix": "data/visamap.yaml (English given; ru, uz, uz-cyrl must be translated):\nstatuses:\n  C-1: {en: Short-term press coverage}\n  A-1: {en: Diplomat}\n  A-2: {en: Official}\n  A-3: {en: Agreement (e.g. SOFA)}\nvisas:\n  C-1:\n    name: {en: Short-term press coverage}\n    how: {en: 'A short reporting trip for a foreign news outlet; the visa is issued by a Korean consulate.'}\n    next:\n    - to: D-5\n      note: {en: 'If the need for long-term reporting in Korea is proven.'}\n    - to: D-10-1\n      note: <the same D-10-1 note used on B-1/B-2/C-3-* (60+ points, 80+ for the 21 notified countries)>\n  A-1 / A-2 / A-3 (each):\n    name: {en: Diplomat | Official | Agreement (SOFA etc.)}\n    how: {en: 'Member of a foreign diplomatic or consular mission | official on government business | person exempt from alien registration under an agreement with Korea, and their family. Time on this status does not count toward F-2-99 or F-5-1.'}\n    next: [E-2]\nDo not add C-1 or A-* to NONE (start-only). Add further A-* exits only once sourced.",
+   "source": "출입국관리법 시행령 별표 1의2 제1호~제3호, 별표 1 (law.go.kr); 외국인체류 안내매뉴얼 2026.9.18 › 취재(D-5) › 체류자격 변경허가 › 3. 제출서류; › 20. 회화지도(E-2) › 체류자격 변경허가 (data/visadocs.yaml targets D-5, E-2)",
+   "quote": "별표 1의2: 「1. 외교(A-1) ... 2. 공무(A-2) ... 3. 협정(A-3) 대한민국정부와의 협정에 따라 외국인등록이 면제되거나 면제할 필요가 있다고 인정되는 사람과 그 가족」; D-5 변경: 「일시취재(C-1) 자격 소지자에 대하여 국내 장기취재 필요성이 입증될 경우」; E-2 변경 case: 'Registered foreigner (incl. A-1/A-2/A-3) meeting E-2 requirements'"
+  },
+  {
+   "slice": "missing",
+   "index": 19,
+   "verdict": "confirmed",
+   "reason": "In the current YAML, D-2-3 and D-2-4 offer E-7-1 but not E-7-2 or E-7-3, while D-2-1, D-2-2 and D-2-7 offer all three. The manual's E-7 change list is defined by prior status (D-1, D-2, D-4~D-10, E-1~E-6 except E-6-2), not by degree level, and a master's or doctorate exceeds E-7-2/E-7-3's minimums. E-7-3's visa-level needs [{edu:3},{koreanEdu:2},{experience:1}] are met by D-2-3/D-2-4's gives. Both targets have change lists, so the fix can be expressed in this engine.",
+   "correctedFix": "data/visamap.yaml: in D-2-3 `next:` and in D-2-4 `next:` add, bare as on D-2-2:\n    - E-7-2\n    - E-7-3",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 25. 특정활동(E-7) › 체류자격 변경허가 (data/visadocs.yaml targets['E-7-2'].change / targets['E-7-3'].change)",
+   "quote": "「D-1, D-2, D-4~D-10, E-1~E-6(E-6-2 제외)」 등록외국인 및 그 동반(F-3) 배우자의 특정활동(E-7) 체류자격 변경 (visadocs case: 'Registered D-1, D-2, D-4~D-10, E-1~E-6 (not E-6-2) holders and their F-3 spouses changing to E-7')"
+  }
+ ]
+}

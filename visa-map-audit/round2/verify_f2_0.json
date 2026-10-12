@@ -1,0 +1,67 @@
+{
+ "verdicts": [
+  {
+   "slice": "f2",
+   "index": 0,
+   "verdict": "partly",
+   "reason": "The repo part is true: the engine shows F-2-13 has no in-edges and F-5-22's only in-edge is F-2-13, so both are dead. The manual chapter, as transcribed in visadocs.yaml, covers the change to F-2-13 for the investor's spouse and unmarried children. The proposed edge F-2-12 -> F-2-13 is wrong, though: it would have the investor change into their own family member's status. Everywhere else in the graph a family status is entered from the family member's own status (F-2-3 from B-1/D-*/E-*, F-2-71 from F-1/F-3), so F-2-13 should sit next to F-2-12 in the short-term statuses it is offered from. I could not re-fetch the decree (no network, search budget used up); the legal side rests on the repo's transcription of the 2026 manual.",
+   "correctedFix": "# data/visamap.yaml - do NOT add F-2-13 to F-2-12.next.\n# Put a bare in-Korea move after every existing `- F-2-12` (B-1, B-2, C-3-1, C-3-4, C-3-9):\n    - F-2-12\n    - F-2-13\n# (optional: also `- F-2-13` in F-3.next, as F-3 already does for F-2-71)\n# F-2-13 keeps `needs: *id002` ([{spouse: foreigner}, {parent: foreigner}]) and `next: [F-5-22]`.\n# Known limit: an adult unmarried child who answers 'not married' stays blocked (the engine forces parent:'none' at 19+).\n# data/visadocs.yaml - chapter 7 covers F-2-12,13,14, so reuse its lists:\n  F-2-12:\n    change: &pubInvChange   # existing list\n    extend: &pubInvExtend   # existing list\n  F-2-13:\n    change: *pubInvChange\n    extend: *pubInvExtend",
+   "source": "data/visadocs.yaml targets.F-2-12.change/extend, transcribed from 외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 7. 공익사업투자 외국인에 대한 거주(F-2-12,13,14) 체류자격 변경허가 › 자. 제출서류; 출입국관리법 시행령 별표 1의2 24. 거주(F-2) 타목 (law.go.kr, not re-fetched)",
+   "quote": "7. 공익사업투자 외국인에 대한 거주(F-2-12,13,14) 체류자격 변경허가 … 가족관계증명서: 배우자·미혼 자녀의 송금 또는 자격변경 신청에 한함 / 타. 자목부터 카목까지의 규정에 해당하는 사람의 배우자 및 자녀"
+  },
+  {
+   "slice": "f2",
+   "index": 1,
+   "verdict": "partly",
+   "reason": "The repo part is true: F-2-81 has no in-edges, F-5-19's only in-edge is F-2-81, and visadocs gives F-2-81 only an extend list. The chapter that covers the F-2-8 change is titled for both F-2-8 and F-2-81, and its documents include a family-relationship certificate for the status change of the spouse or unmarried children and proof of being unmarried for adult children. As with f2#0, an F-2-8 -> F-2-81 edge would have the investor become their own child. There is a second problem: F-2-81 has no `needs`, so once reachable it would show as open to every reader.",
+   "correctedFix": "# data/visamap.yaml - do NOT add F-2-81 to F-2-8.next.\n# After every existing `- F-2-8` (B-1, B-2, C-3-1, C-3-4, C-3-9) add:\n    - F-2-81\n# and gate it like F-2-13:\n  F-2-81:\n    needs: *id002   # [{spouse: foreigner}, {parent: foreigner}]\n    how: {en: Spouse or unmarried child of an F-2-8 investor., ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\n# data/visadocs.yaml - chapter 6 covers (F-2-8, F-2-81):\n  F-2-8:\n    change: &resortChange   # existing list\n  F-2-81:\n    change: *resortChange\n    extend: *id019",
+   "source": "data/visadocs.yaml targets.F-2-8.change, transcribed from 외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 6. 관광·휴양시설 투자 외국인에 대한 거주(F-2-8, F-2-81)자격 변경허가 › 사. 제출서류; 출입국관리법 시행령 별표 1의3 제14호 (not re-fetched)",
+   "quote": "6. 관광·휴양시설 투자 외국인에 대한 거주(F-2-8, F-2-81)자격 변경허가 … 배우자·미혼 자녀의 송금 또는 자격변경 신청에 한함 / 미혼 증명: 성년자녀의 경우"
+  },
+  {
+   "slice": "f2",
+   "index": 2,
+   "verdict": "partly",
+   "reason": "The repo part is true: F-2-T1 has no in-edges, so F-2-T1 and F-5-T1 are unreachable. The manual heading the repo transcribes covers visa issuance, change of status and extension for the Top-Tier resident's spouse and minor child, so NONE -> F-2-T1 is right. The F-2-T -> F-2-T1 half is wrong: the F-2-T holder is the principal, not a family member. The in-Korea route belongs on F-3 (family on F-3 while the principal moves up to F-2-T). Also, F-2-T1 has only an `extend` list today, so it needs `abroad` and `change` entries or the new edges break the edge/document cross-check.",
+   "correctedFix": "# data/visamap.yaml\n  NONE:\n    next:\n    - F-2-T\n    - F-2-T1        # from abroad\n  F-3:\n    next:\n    - F-2-T1        # in-Korea change once the spouse/parent holds F-2-T (F-2-T1 keeps needs *id002)\n# do NOT add F-2-T1 to F-2-T.next\n# data/visadocs.yaml - the single list covers 사증발급·체류자격 변경·체류기간 연장, so reuse it:\n  F-2-T1:\n    extend: &topTierFamily   # existing list\n    change: *topTierFamily\n    abroad:                  # same docs; route/source from 사증발급 안내매뉴얼 2026.9.1 › 39. 톱티어 비자 › 동반가족 (e-visa like F-2-T if so stated)",
+   "source": "data/visadocs.yaml targets.F-2-T1, transcribed from 외국인체류 안내매뉴얼 2026.9.18 › 39. 톱티어(Top-Tier) 비자 › Ⅳ. 동반 가족 등 › □ 톱티어 거주 동반가족(배우자·미성년자녀)",
+   "quote": "□ 톱티어 거주 동반가족(배우자·미성년자녀) › 사증발급·체류자격 변경·체류기간 연장"
+  },
+  {
+   "slice": "f2",
+   "index": 3,
+   "verdict": "partly",
+   "reason": "The repo part is true. F-2-2 has `age: [0, 18]` and `needs: {parent: korean}`, and rules.js profileFacts() sets parent='none' at 19+. A simulation shows a 25-year-old blocked by both, even with korean:true. Decree 나목 (the person born of a marriage with a Korean national) has no age limit, and the repo's manual extract has a separate case and a 5-year multiple-entry F-2-2 visa for it. Deleting `needs` outright is wrong: the simulation shows F-2-2 then opens even for a reader who answered 'no Korean descent'. Instead use korean:true, which the form defines as 'you, a parent or a grandparent held Korean citizenship', as the adult branch.",
+   "correctedFix": "# data/visamap.yaml\n  F-2-2:\n    how: {en: 'Foreign minor child of a Korean citizen, or a person of any age born of a marriage (incl. de facto) with a Korean citizen.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\n    # delete `age: [0, 18]`\n    needs:\n    - {parent: korean}   # 가목: minor child of a Korean citizen\n    - {korean: true}     # 나목: born of a marriage with a Korean citizen, any age\n    next:\n    - F-5-3              # keeps its own age [0, 18]\n    - to: F-5-1          # onward step for adult holders (see f2#4), shared 4-language note\n# F-1.next[to: F-2-2].note.en -> 'For a minor foreign child of a Korean citizen, or a person born of a marriage with a Korean citizen.' (translate ru/uz/uz-cyrl)\n# Simulated: age 25 blank -> open (koreansOnly tag); korean:true -> open; korean:false -> blocked; age 16 parent:korean -> open.",
+   "source": "출입국관리법 시행령 별표 1의2 24. 거주(F-2) 가목·나목 (law.go.kr, not re-fetched; text as quoted by earlier agents); data/visadocs.yaml targets.F-2-2 (외국인체류 안내매뉴얼 2026.9.18 › 30 › 1. 국민의 외국인자녀; 사증발급 안내매뉴얼 2026.9.1 › 30 › 공관장 재량 2·3)",
+   "quote": "가. 국민의 미성년 외국인 자녀 또는 별표 1의3 영주(F-5) 체류자격을 가지고 있는 사람의 배우자 및 그의 미성년 자녀 / 나. 국민과 혼인관계(사실상의 혼인관계를 포함한다)에서 출생한 사람으로서 법무부장관이 인정하는 사람"
+  },
+  {
+   "slice": "f2",
+   "index": 4,
+   "verdict": "confirmed",
+   "reason": "The repo part is true: among F-2 codes only F-2-5, F-2-7, F-2-7S, F-2-99 and F-2-R offer F-5-1. 별표 1의3 제1호 counts 거주(F-2) as a whole with no sub-code carve-out, and the data already encodes this: F-5-1 has `needs: {stay: {years: 5, in: permanentWork}}`, and permanentWork includes F-2. In a scratch copy, adding the edge to the 11 codes gives the expected result: open for adults, and a 'later age' tag for minors through F-5-1's age [19]. F-5-1 has a change list. I could not re-fetch the decree or the manual's F-5-1 scope (no network), but nothing in the transcribed F-5-1 list restricts F-2 sub-codes.",
+   "correctedFix": "# data/visamap.yaml - anchor the existing shared note once (e.g. on F-2-5's F-5-1 entry: `note: &f51 {...}`) and add to next of F-2-2, F-2-3, F-2-4, F-2-8, F-2-12, F-2-13, F-2-16, F-2-71, F-2-81, F-2-T, F-2-T1:\n    - to: F-5-1\n      note: *f51",
+   "source": "출입국관리법 시행령 별표 1의3 제1호 (https://www.law.go.kr/법령/출입국관리법시행령, not re-fetched); data/visamap.yaml statusGroups.permanentWork and F-5-1.needs",
+   "quote": "대한민국 「민법」에 따른 성년으로서 별표 1의2 중 10. 주재(D-7)부터 20. 특정활동(E-7)까지의 체류자격이나 별표 1의2 중 24. 거주(F-2) 체류자격으로 5년 이상 대한민국에 체류하고 있는 사람"
+  },
+  {
+   "slice": "f2",
+   "index": 5,
+   "verdict": "confirmed",
+   "reason": "F-2-R.how.en lists '5 years in a depopulating area' among the entry conditions. The notice (as read from the PDF by the earlier agent) makes it a commitment counted from the day the status is granted. The repo's own extract of the 2026 manual decides it independently: the change list asks only for current proof of residence. It also has a special rule for applicants who could not yet live in the area, who move in within 30 days after the change, which cannot coexist with a 5-year past-residence requirement. The same wrong phrase is in D-10-1 -> F-2-R's note (handled by d10#6), and F-2-R's `income: {gni: 0.7}` looks stale against the living-wage test, which I did not verify.",
+   "correctedFix": "F-2-R.how.en: 'Local-government recommendation, a Korean associate degree or income at the metropolitan living wage, KIIP 3 or TOPIK 3, and a commitment to live, work or run a business in the recommended depopulating area for 5 years after you get the status.' (ru, uz, uz-cyrl must be translated; apply the same wording to the D-10-1 -> F-2-R note per d10#6)",
+   "source": "법무부고시 제2026-248호 (거주(F-2) 파목에 관한 기준) 제4조제1항제3호, law.go.kr admrul ID=2100000283176 (not re-fetched); data/visadocs.yaml targets.F-2-R.change (외국인체류 안내매뉴얼 2026.9.18 › 37. 지역특화형비자 › Ⅱ › (1) 체류자격 변경 › 4. 제출서류)",
+   "quote": "지역특화형 우수인재(F-2-R) 체류자격을 받은 날로부터 5년 이상 추천지역에서 거주하거나 취업 또는 창업활동을 하고자 할 것 / 실거주 인정 특례(지자체에 추천서 발급 신청 시까지 부득이한 사정으로 실거주 요건을 충족하지 못한 경우)"
+  },
+  {
+   "slice": "f2",
+   "index": 6,
+   "verdict": "partly",
+   "reason": "The repo part is true: F-2-T needs [{edu:4,rank:3},{experience:5}], and the simulation shows each branch opens F-2-T on its own. But 'the criteria are conjunctive' is only the base rule. The finding's own evidence says that with income of 4× GNI either the degree or the career leg can be missing, and that the science track uses 5+ years in a PI/책임급 post. So {edu:4,rank:3} alone and {experience:5} alone each match a real route; the current gate is already the narrowest union the engine can express, since it has no income or position fact. The proposed conjunctive gate would wrongly hide F-2-T from 4×-GNI single-leg applicants and from science-track researchers, so only the `how` text should change.",
+   "correctedFix": "# data/visamap.yaml F-2-T: keep needs as is: [{edu: 4, rank: 3}, {experience: 5}]\n# Rewrite how.en (ru, uz, uz-cyrl must be translated):\n  how: {en: 'World-class talent with a ministry recommendation. High-tech track: a master''s or doctorate from a world top-100 university and 8+ years in the field (3+ at a global top-500 company) or 5+ years of post-doctoral research, plus income of at least 3× GNI; with 4× GNI, either the degree or the career may be missing. Science track (Ministry of Science and ICT): 5+ years in a senior research or professor post with a strong record.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}",
+   "source": "법무부고시 제2026-160호 (거주(F-2) 자목 중 Top-Tier 자격 기준과 대상), law.go.kr admrul ID=2100000279596 (not re-fetched; as read by the finding and earlier agents) › 가. 자격 기준, 나. 대상자; korea.kr policy news 148940244",
+   "quote": "세계순위 100위 이내 대학의 석박사 학위를 취득하고, 세계 500대 기업 3년 이상 근무를 포함한 8년 이상 경력자 / 소득이 GNI의 4배 이상일 경우 학력 또는 경력 요건 중 하나가 부족해도 발급 가능하다"
+  }
+ ]
+}
