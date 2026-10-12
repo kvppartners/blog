@@ -1,0 +1,67 @@
+{
+ "verdicts": [
+  {
+   "slice": "f5",
+   "index": 0,
+   "verdict": "partly",
+   "reason": "The repo claim holds: none of D-10-1, D-10-2, D-10-3 or D-10-T lists an F-5 target, while statusGroups.permanentWork already counts D-10 toward F-5-1, and the 2026.9.18 manual's F-5-1 change list has documents for applicants who currently hold D-10. The fix as written breaks in today's engine. A move's `needs` replaces F-5-1's own `needs: {stay: {years: 5, in: permanentWork}}`, and in a scratch simulation `needs: {edu: 3}` made F-5-1 open with 'yes' straight from NONE > D-10-1, with no years at all. The move has to repeat the stay rule, the same way the E-7-* > F-5-1 moves do. I could not reach the web this session (the search budget was used up and WebFetch has no DNS), so the decree quote is the one earlier agents copied from law.go.kr, and the manual quote is the in-repo transcription.",
+   "correctedFix": "# data/visamap.yaml, visas.D-10-1.next (add the same entry to D-10-2; D-10-T optional):\n    - to: F-5-1\n      note: {en: 'After 5+ years in work, business or job-seeker statuses (D-7–E-7 including D-10, F-2), with the income and KIIP 5 requirements; on D-10 you also need your degree certificate, a job contract and proof that you meet the requirements of the matching E-1–E-7 status.'}   # ru, uz, uz-cyrl must be translated\n      needs: {edu: 3, stay: {years: 5, in: permanentWork}}\n# Simulated: NONE > D-10-1 is blocked (stay); NONE > E-7-1 > D-10-1 is 'later'; with D-10-1 as the current visa it is 'maybe'.",
+   "source": "출입국관리법 시행령 별표 1의3 영주(F-5) 제1호 (+ 별표 1의2 제13호 구직(D-10)); 외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 체류자격 변경허가 › 1. 일반 영주자〔F-5-1〕 › 다. 제출서류 (transcribed in data/visadocs.yaml targets.F-5-1.change)",
+   "quote": "대한민국 「민법」에 따른 성년으로서 별표 1의2 중 10. 주재(D-7)부터 20. 특정활동(E-7)까지의 체류자격이나 별표 1의2 중 24. 거주(F-2) 체류자격으로 5년 이상 대한민국에 체류하고 있는 사람 / 제출서류: 해당 학위증 (D-10, E-7) · 고용계약서 등 (D-10, E-7) · E-1~E-7 해당 자격 입증서류 (D-10 경우)"
+  },
+  {
+   "slice": "f5",
+   "index": 1,
+   "verdict": "partly",
+   "reason": "The repo claim holds: F-4.next is [F-5-6, F-4-R, F-5-7, F-5-13] and only H-2 offers F-5-14. Meanwhile H-2.next now sends every H-2 holder to F-4 ('in Korea at any time since 2026.02.12'), and F-5-14's own needs already count `stay in [H-2, F-4]`, so the data itself treats F-4 time as counting. The KIS 동포 guide includes people who changed to F-4. I could not re-fetch that guide this session, but the quote matches the repo's own stay rule. The proposed note is narrower than the rule: it reads as if all 4 years had to be on H-2, when continuous service with the same employer counts across the change to F-4. As a bare entry, the edge also shows 'later' on NONE > F-4 (simulated), where someone who came straight to F-4 can never qualify. F-5-14 has no visadocs list, which is the existing, known exception the H-2 edge already has.",
+   "correctedFix": "# data/visamap.yaml, visas.F-4.next: add\n    - to: F-5-14\n      note: {en: 'If you changed from H-2 to F-4 and have worked 4+ years in total (H-2 and F-4 time together) for the same employer in manufacturing, farming or livestock, fishing, care or housekeeping, with a technical qualification or the required wage.'}   # ru, uz, uz-cyrl must be translated\n      needs: {korean: true, stay: {years: 4, in: [H-2]}}\n# The move-level needs is optional but recommended: it requires H-2 on the path, so NONE > F-4 is blocked, H-2 > F-4 is 'later' and F-4 as the current visa is 'maybe' (simulated). H-2 can only be the starting visa (in-degree 0), so the 4 does not shorten anything. Without it, the edge inherits F-5-14's {korean, stay 4 in [H-2, F-4]} and shows on every F-4 path.",
+   "source": "외국인체류 안내매뉴얼 / 동포 맞춤형 길라잡이, 5. 외국국적동포 영주자격(F-5) 부여 세부절차 › 나. › 방문취업(H-2) 4년 이상 근속자(F-5-14); 출입국관리법 시행령 별표 1의3 영주(F-5) 제12호 (quote as copied by earlier agents; not re-fetched this session)",
+   "quote": "방문취업(H-2) 자격으로 제조업, 농·축산업, 어업, 간병인, 가사보조인으로 취업활동을 하고 있는 사람으로서 … 동일업체에서 근무처를 변경하지 않고 4년 이상 계속 근무하고 있는 경우 (재외동포(F-4) 자격변경자 포함)"
+  },
+  {
+   "slice": "f5",
+   "index": 2,
+   "verdict": "partly",
+   "reason": "The claim holds. The decree makes the licence an alternative to the degree, and the 2026.9.18 manual section is titled '학사·석사 학위증 및 자격증 소지자〔F-5-10〕' and asks for a 'degree or licence certificate'. Today's needs, [{edu:3, stem:true, stay}, {koreanEdu:4, stay}], hard-block anyone who answered edu 1 or 2. Simulated: an E-4, E-7-4 or E-7-2 reader with edu 2 sees F-5-10 BLOCKED (edu, koreanEdu). The engine has no licence fact. The fix as written is out of date. The current needs also carries the decree's 3-year residence rule (`stay: {years: 3, in: inKorea}`). Deleting the block makes NONE > E-7-1 > F-5-10 a plain 'yes' with no years. The 'loosen to [{edu:3},{koreanEdu:4}]' option still blocks licence-only readers. Keep the stay rule and drop only the degree gating.",
+   "correctedFix": "# data/visamap.yaml, visas.F-5-10: replace the two-item needs list with\n    needs: {stay: {years: 3, in: inKorea}}\n# Keep how/lang/income as they are (how already names the degree-or-licence alternatives). Simulated: an edu-2 reader on E-4/E-7-4/E-7-2 is now 'later' instead of blocked, and NONE > E-7-1 > F-5-10 stays 'later' (3 years), not 'yes'.",
+   "source": "출입국관리법 시행령 별표 1의3 영주(F-5) 제8호; 외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 7. 학사·석사 학위증 및 자격증 소지자〔F-5-10〕 › 다. 제출서류 (data/visadocs.yaml targets.F-5-10.change: 'Copy of the degree or licence certificate')",
+   "quote": "법무부장관이 정하는 분야의 학사 학위 이상의 학위증 또는 법무부장관이 정하는 기술자격증이 있는 사람으로서 국내 체류기간이 3년 이상이고, 영주자격(F-5) 신청 시 국내기업에 고용되어 법무부장관이 정하는 금액 이상의 임금을 받는 사람"
+  },
+  {
+   "slice": "f5",
+   "index": 3,
+   "verdict": "confirmed",
+   "reason": "In all four languages, F-5-10's `how` still says '3+ years' work in Korea' ('3+ года работы', 'Koreyada 3+ yil ish'). The decree counts 국내 체류기간 (residence, on any status) plus employment at a Korean company when applying. The data's own needs already encodes residence as `stay: {years: 3, in: inKorea}`, so the text contradicts the gate. The MOJ Visa Navigator adds 1+ year of full-time regular employment, and the manual's F-5-10 list asks for proof of regular full-time employment (4대보험). This is a text-only change.",
+   "correctedFix": "# data/visamap.yaml, visas.F-5-10.how.en:\n    en: 'High-tech bachelor''s, Korean STEM bachelor''s, Korean master''s or engineer licence; 3+ years of residence in Korea and 1+ year of full-time regular work at a Korean company; own income of 1× GNI; KIIP level 5.'\n# ru, uz and uz-cyrl currently say '3+ years of work' too and must be retranslated from this English.",
+   "source": "출입국관리법 시행령 별표 1의3 영주(F-5) 제8호; 법무부 비자 내비게이터 Ver 2022.12, 3. 구직(D-10) 유형1 3단계 / 8. 거주(F-2) 유형1; 외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 7. 〔F-5-10〕 › 다. 제출서류 (data/visadocs.yaml: proof of regular full-time employment)",
+   "quote": "국내 체류기간이 3년 이상이고, 영주자격(F-5) 신청 시 국내기업에 고용되어 법무부장관이 정하는 금액 이상의 임금을 받는 사람 / 3년 이상 국내 체류하며 국내 기업에 1년 이상 전일제 상용근로 형태로 근무"
+  },
+  {
+   "slice": "f5",
+   "index": 4,
+   "verdict": "confirmed",
+   "reason": "F-2-7.next is [F-5-16, F-5-S1, F-2-T, F-5-1, F-5-15, F-5-11], and F-2-7S and F-2-99 have no F-5-9 either. F-5-9 and F-5-15 share one manual section, and the decree's item 7(a) puts no condition on the status held before. Simulated: a foreign-PhD reader on NONE > E-7-1 > F-2-7 today sees F-5-15 blocked and no F-5-9 at all; with the edge, F-5-9 opens as 'matches'. F-5-9 has a change list, and its existing four-language note can be reused. On F-2-7S, a Korean-PhD reader will also see F-5-9 because koreanEdu implies edu. E-1, E-3 and E-7-1 already show the same thing, so this follows the current convention.",
+   "correctedFix": "# data/visamap.yaml: add to visas.F-2-7.next, visas.F-2-7S.next and visas.F-2-99.next (copy of the note already on E-7-1/E-1/E-3):\n    - to: F-5-9\n      note: {en: 'If you hold a foreign doctorate in a high-tech field: after 1+ year at a Korean company in that field.', ru: 'При иностранной докторской степени в высокотехнологичной области: после 1+ года работы в этой области в корейской компании.', uz: 'Yuqori texnologiyalar sohasida xorijiy doktorlik darajasi bo‘lsa: shu sohada Koreya kompaniyasida 1+ yil ishlagandan keyin.', uz-cyrl: 'Юқори технологиялар соҳасида хорижий докторлик даражаси бўлса: шу соҳада Корея компаниясида 1+ йил ишлагандан кейин.'}",
+   "source": "출입국관리법 시행령 별표 1의3 영주(F-5) 제7호 가목; 법무부 비자 내비게이터 Ver 2022.12, 8. 거주(F-2) 유형1 1단계; 외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 6. 첨단분야 박사〔F-5-9〕 및 일반분야 박사〔F-5-15〕 (data/visadocs.yaml)",
+   "quote": "국외에서 일정 분야의 박사 학위를 취득한 사람으로서 영주자격(F-5) 신청 시 국내 기업 등에 고용된 사람"
+  },
+  {
+   "slice": "f5",
+   "index": 5,
+   "verdict": "partly",
+   "reason": "In the current repo, F-5-10 has incoming edges only from E-1, E-2, E-3, E-5, E-7-1, E-7-2 and E-7-3. Decree item 8 is status-agnostic, and the Navigator lets 전문인력 and 거주 holders go straight to F-5-10. Earlier verifiers confirmed the same gap for E-4 (e1-e5#8) and for E-7-S1/S2/T (e7-special#3). The fix leaves out E-7-4, although the claim names it and E-7-4 holders are exactly the technical-licence group. The edges into E-4 and E-7-4 also do nothing for licence holders who answered edu 1-2 until F-5-10's degree gate is removed (see f5#2); simulated, they stay BLOCKED on edu and koreanEdu.",
+   "correctedFix": "# data/visamap.yaml: add the bare entry\n    - F-5-10\n# to the next lists of F-2-99, F-2-7, F-2-7S, E-4, E-6-1, E-6-3, E-7-4, E-7-S1, E-7-S2 and E-7-T (E-7-4R optional, same legal basis),\n# together with the f5#2 change: visas.F-5-10.needs: {stay: {years: 3, in: inKorea}}\n# F-5-10 has a 'change' document list, so in-Korea edges are valid.",
+   "source": "출입국관리법 시행령 별표 1의3 영주(F-5) 제8호; 법무부 비자 내비게이터 Ver 2022.12, 전문인력 chapter note and 8. 거주(F-2) 유형1 1단계 (as quoted by earlier agents; not re-fetched this session)",
+   "quote": "법무부장관이 정하는 분야의 학사 학위 이상의 학위증 또는 법무부장관이 정하는 기술자격증이 있는 사람으로서 국내 체류기간이 3년 이상이고 … / 첨단분야 박사, 학·석사 학위증 및 자격증 소지자, 일반분야 박사의 경우 요건 충족 시 [전문인력]에서 [영주] 자격으로 바로가기 가능"
+  },
+  {
+   "slice": "f5",
+   "index": 6,
+   "verdict": "confirmed",
+   "reason": "F-5-19's `how` says, in all four languages, 'after 5 years on F-2-8 or F-2-81'. The decree attaches the 5 years to the investor's investment and grants the status to the investor 'and spouse and children', and the Navigator FAQ says the 5 years is investment time, not time in Korea. The 2026.9.18 manual's F-5-19 list (data/visadocs.yaml) has only the common papers plus proof of family relationship and of being unmarried: no tax or income papers and no Korean-ability proof. That supports 'no income or KIIP test'. F-5-19 has no needs, so this is a text-only edit.",
+   "correctedFix": "# data/visamap.yaml, visas.F-5-19.how.en:\n    en: 'Spouse or unmarried child of an F-5-17 holder, once the investor has kept the investment for 5 years; no income or KIIP test.'\n# ru, uz and uz-cyrl must be retranslated from this English.",
+   "source": "출입국관리법 시행령 별표 1의3 영주(F-5) 제14호; 법무부 비자 내비게이터 Ver 2022.12, PART 05 주요 상담 사례 질문 9; 외국인체류 안내매뉴얼 2026.9.18 › 32. 영주(F-5) › 12. 관광·휴양시설 투자자〔F-5-17〕 및 그 배우자와 미혼 자녀〔F-5-19〕 › 다. 제출서류 (data/visadocs.yaml)",
+   "quote": "… 5년 이상 계속 투자 상태를 유지하고 있는 사람으로서 대한민국에 계속 거주할 필요가 있다고 법무부장관이 인정하는 사람과 그 배우자 및 자녀 / 부동산 투자자 영주 자격의 경우 … '5년 이상'은 투자기간을 뜻하며, 국내 체류기간이 아닙니다"
+  }
+ ]
+}
