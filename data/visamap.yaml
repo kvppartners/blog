@@ -17,11 +17,37 @@
 #                experience (minimum years); invest (minimum level: 1 = ₩100M, 2 = ₩300M,
 #                3 = ₩700M ≈ US$500K, 4 = ₩1B, 5 = ₩1.5B, 6 = ₩3B); ageUnder (age below N);
 #                countries (a group name or list of ISO codes); notAfter (visas that may not come
-#                right before the visa this move leaves from, e.g. [D-4, E-9])
+#                right before the visa this move leaves from, e.g. [D-4, E-9]); stay ({years: N,
+#                in: <status group or list>}: N years on those visas along the path, e.g. 5 years
+#                on D-7 to E-7 or F-2 for F-5-1).
+#                Years of work ('experience') and years on visas ('stay') grow along the path: a
+#                reader who falls short of them sees the option as "not yet", not as closed.
 #   again:       on a move, the note to show instead when the reader held that visa before
 #   gives:       facts the visa implies for later steps (e.g. D-2-2 gives a Korean bachelor's)
-#   lang:        Korean level needed: {topik: N, kiip: N} (either is enough); a hint, never blocks
+#   lang:        Korean level needed: {topik: N, kiip: N, koreanEdu: N} (any one is enough;
+#                koreanEdu = a Korean school or university diploma); a lower level the reader
+#                gave marks the option "not yet", it never closes it
+#   years:       [shortest, longest] years the visa can be held before moving on; none = no
+#                fixed length (it can be extended). Used for the reader's age along the path and
+#                for 'stay'.  work: true = time on the visa counts as work experience.
+#   income:      yearly income the visa asks for: {gni: N} (N × GNI per person, see 'gni') or
+#                {krw: N} (₩N million); household: true = family living with the reader counts
+#                too (ownHalf: true = at least half must be the reader's own; ownShareWaived:
+#                conditions that lift that); sponsor: true = the inviting person's income, shown
+#                but never compared with the reader's; cuts: reductions from 'incomeCuts';
+#                floor: lowest share of the base; assets: the asset route instead of income
+#                ({average: N} × the average household net assets in 'netAssets', own: true =
+#                the reader's own; median: true; route: true = assets count, amount not set).
+#                A move's own 'income' replaces the visa's (e.g. 2× GNI for Top-Tier as a change).
 #   NONE:        the starting point for readers without a Korean visa; its moves are first visas
+# Top level: gni (the GNI per person immigration applies, ₩ million: the Bank of Korea's first
+# figure for the previous year, from April to the next March); netAssets (average household
+# net assets of the national household survey, ₩ million); incomeCuts (reductions of an income
+# requirement: factor = share of the base that remains, when = the conditions, as 'needs'
+# plus kiip, topik and ageFrom; no 'when' = the map can't tell, so it is shown as possible;
+# reductions don't add up, the smallest share that applies counts); statusGroups (visa lists
+# for 'stay'); startOnly (visas the map never offers as a next step on purpose: closed to new
+# applicants or granted only by a decision, so readers can only start from them).
 updated: 2026-10
 gni: {year: 2025, krw: 52.416}
 netAssets: {year: 2025, average: 471.44}

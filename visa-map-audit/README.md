@@ -4,6 +4,45 @@ An audit of `data/visamap.yaml` and `assets/js/visamap.js`, prompted by the repo
 "makes lots of mistakes, especially when recommending next possible visa types", then extended to
 cover the per-visa requirements and the F-2 / F-5 GNI income rules.
 
+## Round 2 (cloud session, 2026-10-12): done and applied
+
+Round 2 resumed this audit in a cloud session (the round-1 workflow journals stayed on the local
+machine, so the unfinished work was re-run rather than replayed). Everything below is in the
+data and the code; the raw agent results are in `round2/`.
+
+- **Verification.** All 178 findings that were UNVERIFIED or had split votes got a source check:
+  65 confirmed, 85 partly right (with a corrected fix), 13 refuted, 15 unverifiable
+  (`round2/all-verdicts.json`). The 163 confirmed or corrected ones, plus the round-1 survivors,
+  were turned into data edits with four-language notes (`round2/ops.json`) and applied. Refuted
+  and unverifiable findings were not applied.
+- **Requirements, GNI and reductions.** `round2/research_*.json` (R1 GNI and asset baselines,
+  R2b family/investor F-5, R3 reductions and edge cases, R4b F-2, R5 sponsor income, R6
+  residence periods, R7 Korean requirements), each source-checked (`round2/check_*.json`).
+  Key results: immigration applies the 2025 GNI of ₩52,416,000 from 2026-04-01 to 2027-03-31;
+  the "up to 70%" reductions are the F-5-6 rules for overseas Koreans since 2026-02-12 (80%
+  with volunteering, 70% with KIIP 5 / Korean school / Korean bachelor's, 60% with both); no
+  reduction applies to F-5-1 (a blog mixed them up); F-5-2 has an 80% relief (raising a child,
+  pregnancy, infertility treatment, the spouse's parents, 60+; practitioner sources); F-2-R's
+  income test is now the regional living wage, not 70% of GNI.
+- **Engine.** `assets/js/visa/rules.js` (see `tools/engine.md`): time along the path (age,
+  years of work, years on visas), "not yet" for what the reader can still gain, income amounts
+  with reductions, asset and sponsor rules, branch memory in the page.
+- **Gaps** (`round2/gap_*.json`): upward degree moves (D-2-2 > D-2-3) are changes in Korea, so
+  `data/visadocs.yaml`'s "leave Korea" rule was inverted and is fixed; H-2, F-2-16 and G-1-5 are
+  start-only on purpose.
+
+Still open, for a later round:
+- Three verified routes have no manual document list copied yet: E-7-Y (change in Korea, manual
+  ch. 38), F-1 and D-4-2 (from abroad). `tests/data.test.mjs` names them in `NOT_COPIED`.
+- Low-confidence items kept as text or left out: the F-5-2 80% grounds and the F-5-14 70%
+  (practitioner sources), the median net-assets figure for F-5-2/F-5-27, whether the E-7 GNI
+  exception (2024 GNI for E-7 tests until 2027-03) holds.
+- The 15 unverifiable findings in `round2/all-verdicts.json`.
+
+---
+
+# Round 1
+
 **Read `verified-by-review.md` first.** Everything in it was checked by hand against primary
 sources or proven by running the engine's own logic. `findings.md` holds the machine-generated
 research, most of which has not been verified yet.
@@ -99,11 +138,12 @@ All under `tools/`. They are analysis aids, not part of the site build.
 | `graph.txt` | the whole visa graph dumped compactly, English only: every node with its gating, notes and `next` list. |
 | `money.txt` | every money / income / GNI / asset / points / years statement in the data, 316 lines, each tagged with its exact location. The input for the GNI audit. |
 | `visadocs-targets.txt` | which official KIS document lists exist per visa, from `data/visadocs.yaml`. In-repo ground truth: a visa with no `change` list is one the manual does not document an in-Korea status change to. |
-| `sim.mjs` | a faithful port of the engine's option logic. Lets you ask "what would the page actually offer this reader?" without a browser. Needs `js-yaml`. Keep it in sync with `assets/js/visamap.js`. |
+| `sim.mjs` | runs the page's own rules (`assets/js/visa/rules.js`) on the data. Lets you ask "what would the page actually offer this reader?" without a browser. Needs `js-yaml`. |
 | `reach.mjs` | walks the open options for several personas to find starts that can never reach an F-5, and dead ends. |
 | `canon.mjs` | builds the minimal reader who legitimately holds each visa, then reports which of that visa's own `next` targets are blocked for them. Suspect edges surface here. |
 | `memory.mjs` | demonstrates what the engine does and does not carry forward from the reader's answers and the chosen path. |
 | `collect.rb` | regenerates `findings.json` and `findings.md` from the workflow journals. |
+| `dump.mjs` | regenerates `graph.txt` and `money.txt` from the current data (run it after data changes). |
 
 ```sh
 cd visa-map-audit/tools && npm install js-yaml && node reach.mjs

@@ -25,6 +25,19 @@ npx wrangler dev                                    # http://localhost:8787
 `--baseURL` makes links and photos point to your computer instead of the real
 domain. After changing content, run the `hugo` line again and restart `npx wrangler dev`.
 
+## Visa map tests
+
+The Visa map's rules (`assets/js/visa/rules.js`) and data (`data/visamap.yaml`) have tests:
+
+```bash
+cd tests && npm install && npm test
+```
+
+`rules.test.mjs` checks the engine on a small made-up map, `scenarios.test.mjs` walks real paths
+(path memory, the F-2/F-5 income rules and their reductions), and `data.test.mjs` checks the data
+itself (every move, fact, text and document list). They need only Node.js; the site build
+doesn't use them.
+
 ## Deploying to Cloudflare
 
 One-time setup:
