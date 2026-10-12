@@ -1,0 +1,188 @@
+[
+ {
+  "code": "F-5-26",
+  "ru": "3+ года ключевым сотрудником R&D компании с иностранными инвестициями (D-8-1) с дипломом бакалавра; доход семьи 2× ВНД или чистые активы семьи 1,5× от среднего по стране.",
+  "uz": "Bakalavr diplomi bilan xorijiy investitsiyali kompaniyada (D-8-1) asosiy R&D xodimi sifatida 3+ yil; oila daromadi 2× GNI yoki oilaning sof aktivlari mamlakat o‘rtachasidan 1,5×.",
+  "uz-cyrl": "Бакалавр дипломи билан хорижий инвестицияли компанияда (D-8-1) асосий R&D ходими сифатида 3+ йил; оила даромади 2× GNI ёки оиланинг соф активлари мамлакат ўртачасидан 1,5×."
+ },
+ {
+  "code": "F-5-27",
+  "ru": "2+ года в статусе признанного беженца (F-2-4); доход семьи 1× ВНД или активы семьи на уровне медианы по стране; KIIP 5 или интеграционный тест.",
+  "uz": "Tan olingan qochqin (F-2-4) sifatida 2+ yil; oila daromadi 1× GNI yoki oila aktivlari mamlakat medianasi darajasida; KIIP 5 yoki integratsiya testi.",
+  "uz-cyrl": "Тан олинган қочқин (F-2-4) сифатида 2+ йил; оила даромади 1× GNI ёки оила активлари мамлакат медианаси даражасида; KIIP 5 ёки интеграция тести."
+ },
+ {
+  "code": "F-5-28",
+  "ru": "2+ года на F-2-16; доход семьи 1× ВНД или активы; KIIP 5 или интеграционный тест.",
+  "uz": "F-2-16 da 2+ yil; oila daromadi 1× GNI yoki aktivlar; KIIP 5 yoki integratsiya testi.",
+  "uz-cyrl": "F-2-16 да 2+ йил; оила даромади 1× GNI ёки активлар; KIIP 5 ёки интеграция тести."
+ },
+ {
+  "code": "F-5-29",
+  "ru": "Супруг(а) или несовершеннолетний ребёнок обладателя F-5-28; доход семьи 1× ВНД или активы; KIIP 5 или интеграционный тест (не требуется для детей до 15 лет или учащихся корейской школы).",
+  "uz": "F-5-28 egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi; oila daromadi 1× GNI yoki aktivlar; KIIP 5 yoki integratsiya testi (15 yoshgacha yoki Koreya maktabida o‘qiyotgan bolalar uchun talab qilinmaydi).",
+  "uz-cyrl": "F-5-28 эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди; оила даромади 1× GNI ёки активлар; KIIP 5 ёки интеграция тести (15 ёшгача ёки Корея мактабида ўқиётган болалар учун талаб қилинмайди)."
+ },
+ {
+  "code": "F-5-S2",
+  "ru": "Супруг(а) или несовершеннолетний ребёнок обладателя F-5-S1 после 2+ лет на F-2-71; доход семьи 1× ВНД или активы; KIIP 5 или интеграционный тест (не требуется для детей до 15 лет или учащихся корейской школы).",
+  "uz": "F-2-71 da 2+ yildan keyin F-5-S1 egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi; oila daromadi 1× GNI yoki aktivlar; KIIP 5 yoki integratsiya testi (15 yoshgacha yoki Koreya maktabida o‘qiyotgan bolalar uchun talab qilinmaydi).",
+  "uz-cyrl": "F-2-71 да 2+ йилдан кейин F-5-S1 эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди; оила даромади 1× GNI ёки активлар; KIIP 5 ёки интеграция тести (15 ёшгача ёки Корея мактабида ўқиётган болалар учун талаб қилинмайди)."
+ },
+ {
+  "code": "F-5-T",
+  "ru": "3+ года на F-2-T в hi-tech или науке; собственный доход 3× ВНД; KIIP 3 или TOPIK 3.",
+  "uz": "Yuqori texnologiyalar yoki fan sohasida F-2-T da 3+ yil; shaxsiy daromad 3× GNI; KIIP 3 yoki TOPIK 3.",
+  "uz-cyrl": "Юқори технологиялар ёки фан соҳасида F-2-T да 3+ йил; шахсий даромад 3× GNI; KIIP 3 ёки TOPIK 3."
+ },
+ {
+  "code": "F-5-T1",
+  "ru": "Супруг(а) или несовершеннолетний ребёнок обладателя статуса Top-Tier: ПМЖ после 3 лет на F-2-T1; без требований к доходу и KIIP.",
+  "uz": "Top-Tier maqomi egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi: F-2-T1 da 3 yildan keyin doimiy yashash maqomi; daromad va KIIP talab qilinmaydi.",
+  "uz-cyrl": "Top-Tier мақоми эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди: F-2-T1 да 3 йилдан кейин доимий яшаш мақоми; даромад ва KIIP талаб қилинмайди."
+ },
+ {
+  "code": "F-2-99",
+  "ru": "5+ лет подряд в статусах D-1, с D-5 по D-9, с E-1 по E-5, E-6-1, E-6-3, E-7 или F-1 (годы на E-9 и годы учёбы не засчитываются); собственный доход от ₩40 млн за прошлый год и собственные финансовые активы от ₩20 млн, хранящиеся 6+ месяцев; KIIP 4 или диплом корейской школы или вуза.",
+  "uz": "D-1, D-5 dan D-9 gacha, E-1 dan E-5 gacha, E-6-1, E-6-3, E-7 yoki F-1 da ketma-ket 5+ yil (E-9 va o‘qish yillari hisobga olinmaydi); o‘tgan yilgi shaxsiy daromad ₩40 mln+ va 6+ oy davomida saqlangan ₩20 mln+ shaxsiy moliyaviy aktivlar; KIIP 4 yoki Koreya maktabi yoxud universiteti diplomi.",
+  "uz-cyrl": "D-1, D-5 дан D-9 гача, E-1 дан E-5 гача, E-6-1, E-6-3, E-7 ёки F-1 да кетма-кет 5+ йил (E-9 ва ўқиш йиллари ҳисобга олинмайди); ўтган йилги шахсий даромад ₩40 млн+ ва 6+ ой давомида сақланган ₩20 млн+ шахсий молиявий активлар; KIIP 4 ёки Корея мактаби ёхуд университети дипломи."
+ },
+ {
+  "code": "F-2-R",
+  "ru": "Рекомендация местных властей; корейский диплом колледжа или выше либо собственный доход не ниже прожиточного уровня оплаты труда в рекомендующем регионе; KIIP 3 или TOPIK 3; и обязательство жить, работать или вести бизнес в этом депопулирующем районе 5 лет.",
+  "uz": "Mahalliy hokimiyat tavsiyasi; Koreya kolleji diplomi yoki undan yuqori daraja yoxud tavsiya bergan hududdagi yashash uchun zarur ish haqi darajasidan kam bo‘lmagan shaxsiy daromad; KIIP 3 yoki TOPIK 3; va o‘sha aholisi kamayayotgan hududda 5 yil yashash, ishlash yoki biznes yuritish majburiyati.",
+  "uz-cyrl": "Маҳаллий ҳокимият тавсияси; Корея коллежи дипломи ёки ундан юқори даража ёхуд тавсия берган ҳудуддаги яшаш учун зарур иш ҳақи даражасидан кам бўлмаган шахсий даромад; KIIP 3 ёки TOPIK 3; ва ўша аҳолиси камаяётган ҳудудда 5 йил яшаш, ишлаш ёки бизнес юритиш мажбурияти."
+ },
+ {
+  "code": "F-2-T",
+  "ru": "Специалист мирового уровня: магистратура или PhD в вузе из мирового топ-100 и 8+ лет опыта (из них 3+ года в компании из мирового топ-500) или 5+ лет постдокторских исследований; доход 3× ВНД (4× ВНД, если не выполнен критерий по степени или по опыту работы); рекомендация министерства; KIIP 1 или TOPIK 1. При смене статуса в Корее после 1+ года работы в hi-tech: 2× ВНД.",
+  "uz": "Jahon darajasidagi mutaxassis: jahon top-100 universitetida magistr yoki PhD va 8+ yil tajriba (shundan 3+ yil jahon top-500 kompaniyasida) yoki 5+ yil postdoktorlik tadqiqoti; daromad 3× GNI (daraja yoki ish tajribasi mezoniga javob bermasangiz, 4× GNI); vazirlik tavsiyasi; KIIP 1 yoki TOPIK 1. Koreyada yuqori texnologiyalar sohasida 1+ yil ishlagandan keyin maqomni o‘zgartirganda: 2× GNI.",
+  "uz-cyrl": "Жаҳон даражасидаги мутахассис: жаҳон top-100 университетида магистр ёки PhD ва 8+ йил тажриба (шундан 3+ йил жаҳон top-500 компаниясида) ёки 5+ йил постдокторлик тадқиқоти; даромад 3× GNI (даража ёки иш тажрибаси мезонига жавоб бермасангиз, 4× GNI); вазирлик тавсияси; KIIP 1 ёки TOPIK 1. Кореяда юқори технологиялар соҳасида 1+ йил ишлагандан кейин мақомни ўзгартирганда: 2× GNI."
+ },
+ {
+  "code": "F-2-3",
+  "ru": "Супруг(а) или несовершеннолетний ребёнок обладателя ПМЖ (F-5). Для супруга(и) семье обладателя F-5 нужен доход 1× ВНД (70% для семьи из 3 человек и меньше; не нужен при общем ребёнке или беременности); для несовершеннолетнего ребёнка без требования к доходу.",
+  "uz": "Doimiy yashovchining (F-5) turmush o‘rtog‘i yoki voyaga yetmagan farzandi. Turmush o‘rtog‘i uchun F-5 egasining oila daromadi 1× GNI bo‘lishi kerak (3 kishi va undan kam oila uchun 70%; umumiy farzand yoki homiladorlik bo‘lsa, kerak emas); voyaga yetmagan farzand uchun daromad talab qilinmaydi.",
+  "uz-cyrl": "Доимий яшовчининг (F-5) турмуш ўртоғи ёки вояга етмаган фарзанди. Турмуш ўртоғи учун F-5 эгасининг оила даромади 1× GNI бўлиши керак (3 киши ва ундан кам оила учун 70%; умумий фарзанд ёки ҳомиладорлик бўлса, керак эмас); вояга етмаган фарзанд учун даромад талаб қилинмайди."
+ },
+ {
+  "code": "F-2-71",
+  "ru": "Супруг(а) или несовершеннолетний ребёнок обладателя F-2-7 с доходом от 1× ВНД (иначе семья получает F-1); для семьи обладателя F-2-7S без требования к доходу.",
+  "uz": "Kamida 1× GNI daromadga ega F-2-7 egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi (aks holda oila F-1 oladi); F-2-7S egasining oilasi uchun daromad talab qilinmaydi.",
+  "uz-cyrl": "Камида 1× GNI даромадга эга F-2-7 эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди (акс ҳолда оила F-1 олади); F-2-7S эгасининг оиласи учун даромад талаб қилинмайди."
+ },
+ {
+  "code": "F-2-7",
+  "ru": "80+ баллов (возраст, образование, корейский, доход) по одному из треков: 3+ года в статусе специалиста (не требуется при доходе от ₩40 млн), корейская магистратура или выше и работа, работа специалистом в компании на бирже или работа в перспективной отрасли с доходом 1,5× ВНД.",
+  "uz": "Yo‘nalishlardan biri bo‘yicha 80+ ball (yosh, ta’lim, koreys tili, daromad): mutaxassis maqomida 3+ yil (₩40 mln+ daromad bo‘lsa, talab qilinmaydi), Koreya magistraturasi yoki undan yuqori daraja va ish, birjadagi kompaniyada mutaxassis bo‘lib ishlash yoki istiqbolli sohada 1,5× GNI daromadli ish.",
+  "uz-cyrl": "Йўналишлардан бири бўйича 80+ балл (ёш, таълим, корейс тили, даромад): мутахассис мақомида 3+ йил (₩40 млн+ даромад бўлса, талаб қилинмайди), Корея магистратураси ёки ундан юқори даража ва иш, биржадаги компанияда мутахассис бўлиб ишлаш ёки истиқболли соҳада 1,5× GNI даромадли иш."
+ },
+ {
+  "code": "F-6-1",
+  "ru": "Законный брак с гражданином Кореи и настоящее совместное жильё. Семье супруга-корейца нужен доход 50% от медианного дохода по стране (около ₩25,2 млн в год на 2 человек в 2026 году, для большей семьи — больше; учитываются 5% сбережений и имущества); не нужен при общем ребёнке. Вам нужен базовый корейский (TOPIK 1) или общий язык.",
+  "uz": "Koreya fuqarosi bilan qonuniy nikoh va haqiqiy umumiy uy-joy. Koreyalik turmush o‘rtog‘ingiz oilasining daromadi mamlakat median daromadining 50% bo‘lishi kerak (2026-yilda 2 kishi uchun yiliga taxminan ₩25,2 mln, kattaroq oila uchun ko‘proq; jamg‘arma va mol-mulkning 5% hisobga olinadi); umumiy farzand bo‘lsa, kerak emas. Sizga boshlang‘ich koreys tili (TOPIK 1) yoki umumiy til kerak.",
+  "uz-cyrl": "Корея фуқароси билан қонуний никоҳ ва ҳақиқий умумий уй-жой. Кореялик турмуш ўртоғингиз оиласининг даромади мамлакат медиан даромадининг 50% бўлиши керак (2026 йилда 2 киши учун йилига тахминан ₩25,2 млн, каттароқ оила учун кўпроқ; жамғарма ва мол-мулкнинг 5% ҳисобга олинади); умумий фарзанд бўлса, керак эмас. Сизга бошланғич корейс тили (TOPIK 1) ёки умумий тил керак."
+ },
+ {
+  "code": "E-7-4",
+  "ru": "4+ года на E-9, E-10 или H-2 за последние 10 лет, TOPIK 2 или KIIP 2, рекомендация работодателя, 200/300 баллов и контракт на 2+ года с зарплатой от ₩26 млн в год; только внутри Кореи.",
+  "uz": "So‘nggi 10 yilda E-9, E-10 yoki H-2 da 4+ yil, TOPIK 2 yoki KIIP 2, ish beruvchi tavsiyasi, 200/300 ball va yiliga ₩26 mln+ ish haqi bilan 2+ yillik shartnoma; faqat Koreya ichida beriladi.",
+  "uz-cyrl": "Сўнгги 10 йилда E-9, E-10 ёки H-2 да 4+ йил, TOPIK 2 ёки KIIP 2, иш берувчи тавсияси, 200/300 балл ва йилига ₩26 млн+ иш ҳақи билан 2+ йиллик шартнома; фақат Корея ичида берилади."
+ },
+ {
+  "code": "F-5-1",
+  "ru": "5+ лет в Корее в статусах D-7–E-7 (включая D-10) или F-2, возраст 19+; доход семьи 2× ВНД или чистые активы 1,5× от среднего по стране на семью; KIIP 5 или интеграционный тест для ПМЖ (60+ баллов). Если вы подаёте заявление со статусом E-7 или D-10: диплом бакалавра и работа.",
+  "uz": "Koreyada D-7–E-7 (D-10 ham kiradi) yoki F-2 da 5+ yil, yosh 19+; oila daromadi 2× GNI yoki sof aktivlar mamlakatdagi oilalar o‘rtachasidan 1,5×; KIIP 5 yoki doimiy yashash uchun integratsiya testi (60+ ball). E-7 yoki D-10 da turib ariza bersangiz: bakalavr diplomi va ish.",
+  "uz-cyrl": "Кореяда D-7–E-7 (D-10 ҳам киради) ёки F-2 да 5+ йил, ёш 19+; оила даромади 2× GNI ёки соф активлар мамлакатдаги оилалар ўртачасидан 1,5×; KIIP 5 ёки доимий яшаш учун интеграция тести (60+ балл). E-7 ёки D-10 да туриб ариза берсангиз: бакалавр дипломи ва иш."
+ },
+ {
+  "code": "F-5-2",
+  "ru": "2+ года в Корее в статусе супруга(-и) гражданина Кореи (F-6): брак продолжается, вы воспитываете общего ребёнка или брак прекращён не по вашей вине. Доход семьи 1× ВНД или активы семьи на уровне медианы по стране (80% при воспитании ребёнка, беременности, лечении бесплодия, заботе о родителях супруга или в возрасте 60+); KIIP 5 или интеграционный тест для ПМЖ.",
+  "uz": "Koreya fuqarosining turmush o‘rtog‘i (F-6) sifatida Koreyada 2+ yil: nikoh davom etmoqda, umumiy farzandingizni tarbiyalayapsiz yoki nikoh sizning aybingizsiz tugagan. Oila daromadi 1× GNI yoki mamlakat medianasi darajasidagi oila aktivlari (farzand tarbiyalash, homiladorlik, bepushtlikni davolash, turmush o‘rtog‘ingizning ota-onasini boqish yoki 60+ yoshda — 80%); KIIP 5 yoki doimiy yashash uchun integratsiya testi.",
+  "uz-cyrl": "Корея фуқаросининг турмуш ўртоғи (F-6) сифатида Кореяда 2+ йил: никоҳ давом этмоқда, умумий фарзандингизни тарбиялаяпсиз ёки никоҳ сизнинг айбингизсиз тугаган. Оила даромади 1× GNI ёки мамлакат медианаси даражасидаги оила активлари (фарзанд тарбиялаш, ҳомиладорлик, бепуштликни даволаш, турмуш ўртоғингизнинг ота-онасини боқиш ёки 60+ ёшда — 80%); KIIP 5 ёки доимий яшаш учун интеграция тести."
+ },
+ {
+  "code": "F-5-3",
+  "ru": "Несовершеннолетний ребёнок гражданина Кореи после 2+ лет на F-2-2, при подаче заявления ещё младше 19 лет; без требования к доходу; KIIP 5 или интеграционный тест, если вы не учитесь в корейской общеобразовательной школе и не окончили её.",
+  "uz": "F-2-2 da 2+ yildan keyin Koreya fuqarosining voyaga yetmagan farzandi, ariza berishda hali 19 yoshga to‘lmagan; daromad talab qilinmaydi; KIIP 5 yoki integratsiya testi, Koreya umumta’lim maktabida o‘qiyotgan yoki uni tugatganlar bundan mustasno.",
+  "uz-cyrl": "F-2-2 да 2+ йилдан кейин Корея фуқаросининг вояга етмаган фарзанди, ариза беришда ҳали 19 ёшга тўлмаган; даромад талаб қилинмайди; KIIP 5 ёки интеграция тести, Корея умумтаълим мактабида ўқиётган ёки уни тугатганлар бундан мустасно."
+ },
+ {
+  "code": "F-5-4",
+  "ru": "Супруг(а) или несовершеннолетний ребёнок обладателя ПМЖ после 2+ лет в Корее на F-2-3 (для обладателя F-5 срок ожидания не требуется); доход семьи 1× ВНД или активы; KIIP 5 или интеграционный тест (не для детей до 15 лет и учащихся корейской школы).",
+  "uz": "Koreyada F-2-3 da 2+ yildan keyin doimiy yashovchining turmush o‘rtog‘i yoki voyaga yetmagan farzandi (F-5 egasi uchun kutish muddati yo‘q); oila daromadi 1× GNI yoki aktivlar; KIIP 5 yoki integratsiya testi (15 yoshgacha bo‘lgan bolalar va Koreya maktabida o‘qiyotganlar uchun emas).",
+  "uz-cyrl": "Кореяда F-2-3 да 2+ йилдан кейин доимий яшовчининг турмуш ўртоғи ёки вояга етмаган фарзанди (F-5 эгаси учун кутиш муддати йўқ); оила даромади 1× GNI ёки активлар; KIIP 5 ёки интеграция тести (15 ёшгача бўлган болалар ва Корея мактабида ўқиётганлар учун эмас)."
+ },
+ {
+  "code": "F-5-6",
+  "ru": "2+ года на F-4. Доход семьи 1× ВНД, из которого не менее половины — ваш собственный (ниже при KIIP 5, корейской школе или корейском дипломе либо 100+ часах волонтёрства), или другой путь: собственные чистые активы на уровне среднего по стране на семью, налог на имущество от ₩500 тыс. за прошлый год, пенсия из-за рубежа 1× ВНД с 60 лет, торговля с Кореей на ₩2 млрд, инвестиции US$500 тыс. или рекомендация как лидера общины. KIIP не нужен.",
+  "uz": "F-4 da 2+ yil. Oila daromadi 1× GNI, kamida yarmi o‘zingizniki (KIIP 5, Koreya maktabi yoki diplomi, yoxud 100+ soat ko‘ngillilik bilan pastroq), yoki boshqa yo‘l: mamlakatdagi oilalar o‘rtachasi darajasida shaxsiy sof aktivlar, o‘tgan yili ₩500 ming+ mol-mulk solig‘i, 60 yoshdan 1× GNI miqdorida xorijdan pensiya, Koreya bilan ₩2 mlrd savdo, US$500 ming investitsiya yoki jamoa yetakchisi sifatida tavsiya. KIIP talab qilinmaydi.",
+  "uz-cyrl": "F-4 да 2+ йил. Оила даромади 1× GNI, камида ярми ўзингизники (KIIP 5, Корея мактаби ёки дипломи, ёхуд 100+ соат кўнгиллилик билан пастроқ), ёки бошқа йўл: мамлакатдаги оилалар ўртачаси даражасида шахсий соф активлар, ўтган йили ₩500 минг+ мол-мулк солиғи, 60 ёшдан 1× GNI миқдорида хориждан пенсия, Корея билан ₩2 млрд савдо, US$500 минг инвестиция ёки жамоа етакчиси сифатида тавсия. KIIP талаб қилинмайди."
+ },
+ {
+  "code": "F-5-6R",
+  "ru": "Этнический кореец по региональной программе (F-4-R), проживший 4+ года в рекомендованном депопулирующем районе (2 года для тех, кто уже жил там): доход семьи 70% ВНД вместо полного порога F-5-6. Иммиграционная служба оформляет его как F-5-6.",
+  "uz": "Hududiy xorijdagi koreys (F-4-R), tavsiya etilgan aholisi kamayayotgan hududda 4+ yil yashagan (u yerda avvaldan yashaganlar uchun 2 yil): F-5-6 ning to‘liq chegarasi o‘rniga oila daromadi GNI ning 70%. Immigratsiya xizmati uni F-5-6 sifatida rasmiylashtiradi.",
+  "uz-cyrl": "Ҳудудий хориждаги корейс (F-4-R), тавсия этилган аҳолиси камаяётган ҳудудда 4+ йил яшаган (у ерда аввалдан яшаганлар учун 2 йил): F-5-6 нинг тўлиқ чегараси ўрнига оила даромади GNI нинг 70%. Иммиграция хизмати уни F-5-6 сифатида расмийлаштиради."
+ },
+ {
+  "code": "F-5-7",
+  "ru": "Этнический кореец, уже отвечающий требованиям натурализации или восстановления гражданства Кореи; для общей и упрощённой натурализации также KIIP 5 или интеграционный тест.",
+  "uz": "Koreya fuqaroligini olish yoki tiklash talablariga allaqachon javob beradigan etnik koreys; umumiy va soddalashtirilgan tartibda fuqarolikka qabul qilishda KIIP 5 yoki integratsiya testi ham kerak.",
+  "uz-cyrl": "Корея фуқаролигини олиш ёки тиклаш талабларига аллақачон жавоб берадиган этник корейс; умумий ва соддалаштирилган тартибда фуқароликка қабул қилишда KIIP 5 ёки интеграция тести ҳам керак."
+ },
+ {
+  "code": "F-5-9",
+  "ru": "Иностранная докторская степень в высокотехнологичной области и штатная работа в этой области в корейской компании на момент подачи заявления; доход 1× ВНД или активы; KIIP не нужен.",
+  "uz": "Yuqori texnologiyalar sohasida xorijiy doktorlik va ariza berish paytida Koreya kompaniyasida shu sohada shtat xodimi sifatida ishlash; daromad 1× GNI yoki aktivlar; KIIP talab qilinmaydi.",
+  "uz-cyrl": "Юқори технологиялар соҳасида хорижий докторлик ва ариза бериш пайтида Корея компаниясида шу соҳада штат ходими сифатида ишлаш; даромад 1× GNI ёки активлар; KIIP талаб қилинмайди."
+ },
+ {
+  "code": "F-5-10",
+  "ru": "Бакалавр в hi-tech, корейский бакалавр STEM, корейская магистратура или лицензия из списка; 3+ года проживания в Корее и 1+ год штатной работы в корейской компании; собственная зарплата 1× ВНД; KIIP 5 или интеграционный тест.",
+  "uz": "Yuqori texnologiyalar bakalavri, Koreya STEM bakalavri, Koreya magistraturasi yoki ro‘yxatdagi litsenziya; Koreyada 3+ yil yashash va Koreya kompaniyasida 1+ yil shtat xodimi sifatida ishlash; shaxsiy ish haqi 1× GNI; KIIP 5 yoki integratsiya testi.",
+  "uz-cyrl": "Юқори технологиялар бакалаври, Корея STEM бакалаври, Корея магистратураси ёки рўйхатдаги лицензия; Кореяда 3+ йил яшаш ва Корея компаниясида 1+ йил штат ходими сифатида ишлаш; шахсий иш ҳақи 1× GNI; KIIP 5 ёки интеграция тести."
+ },
+ {
+  "code": "F-5-13",
+  "ru": "Возраст 60+ и собственная пенсия из-за рубежа не менее 2× ВНД в год (без варианта с активами); KIIP не нужен.",
+  "uz": "Yosh 60+ va yiliga kamida 2× GNI miqdorida xorijdan shaxsiy pensiya (aktivlar varianti yo‘q); KIIP talab qilinmaydi.",
+  "uz-cyrl": "Ёш 60+ ва йилига камида 2× GNI миқдорида хориждан шахсий пенсия (активлар варианти йўқ); KIIP талаб қилинмайди."
+ },
+ {
+  "code": "F-5-14",
+  "ru": "4+ года на H-2 у одного работодателя в производстве, сельском хозяйстве, рыболовстве, уходе или домашнем труде (годы после перехода на F-4 засчитываются, а вынужденный переход к другому работодателю той же отрасли в течение 3 месяцев их не прерывает); квалификационный сертификат из списка или собственный доход 70% ВНД.",
+  "uz": "Ishlab chiqarish, qishloq xo‘jaligi, baliqchilik, parvarish yoki uy ishlari sohasida H-2 da bitta ish beruvchida 4+ yil (F-4 ga o‘tgandan keyingi yillar ham hisoblanadi, 3 oy ichida shu sohadagi boshqa ish joyiga majburiy o‘tilsa ham muddat uzilmaydi); ro‘yxatdagi malaka sertifikati yoki GNI ning 70% miqdorida shaxsiy daromad.",
+  "uz-cyrl": "Ишлаб чиқариш, қишлоқ хўжалиги, балиқчилик, парвариш ёки уй ишлари соҳасида H-2 да битта иш берувчида 4+ йил (F-4 га ўтгандан кейинги йиллар ҳам ҳисобланади, 3 ой ичида шу соҳадаги бошқа иш жойига мажбурий ўтилса ҳам муддат узилмайди); рўйхатдаги малака сертификати ёки GNI нинг 70% миқдорида шахсий даромад."
+ },
+ {
+  "code": "F-5-15",
+  "ru": "Докторская степень по очной программе корейского вуза и штатная работа в корейской компании на момент подачи заявления; доход 1× ВНД или активы; KIIP не нужен.",
+  "uz": "Koreya universitetining asosiy dasturida doktorlik va ariza berish paytida Koreya kompaniyasida shtat xodimi sifatida ishlash; daromad 1× GNI yoki aktivlar; KIIP talab qilinmaydi.",
+  "uz-cyrl": "Корея университетининг асосий дастурида докторлик ва ариза бериш пайтида Корея компаниясида штат ходими сифатида ишлаш; даромад 1× GNI ёки активлар; KIIP талаб қилинмайди."
+ },
+ {
+  "code": "F-5-16",
+  "ru": "3+ года на F-2 по баллам (F-2-7, F-2-7S или F-2-T); собственный доход 2× ВНД (доход семьи не учитывается) или чистые активы 1,5× от среднего по стране на семью; KIIP 5 или интеграционный тест для ПМЖ.",
+  "uz": "Ball tizimidagi F-2 da (F-2-7, F-2-7S yoki F-2-T) 3+ yil; shaxsiy daromad 2× GNI (oila daromadi hisobga olinmaydi) yoki sof aktivlar mamlakatdagi oilalar o‘rtachasidan 1,5×; KIIP 5 yoki doimiy yashash uchun integratsiya testi.",
+  "uz-cyrl": "Балл тизимидаги F-2 да (F-2-7, F-2-7S ёки F-2-T) 3+ йил; шахсий даромад 2× GNI (оила даромади ҳисобга олинмайди) ёки соф активлар мамлакатдаги оилалар ўртачасидан 1,5×; KIIP 5 ёки доимий яшаш учун интеграция тести."
+ },
+ {
+  "code": "F-5-18",
+  "ru": "Супруг(а) или несовершеннолетний ребёнок обладателя F-5-16 после 2+ лет на F-2-71; доход семьи 1× ВНД или активы; KIIP 5 или интеграционный тест (не для детей до 15 лет и учащихся корейской школы).",
+  "uz": "F-2-71 da 2+ yildan keyin F-5-16 egasining turmush o‘rtog‘i yoki voyaga yetmagan farzandi; oila daromadi 1× GNI yoki aktivlar; KIIP 5 yoki integratsiya testi (15 yoshgacha bo‘lgan bolalar va Koreya maktabida o‘qiyotganlar uchun emas).",
+  "uz-cyrl": "F-2-71 да 2+ йилдан кейин F-5-16 эгасининг турмуш ўртоғи ёки вояга етмаган фарзанди; оила даромади 1× GNI ёки активлар; KIIP 5 ёки интеграция тести (15 ёшгача бўлган болалар ва Корея мактабида ўқиётганлар учун эмас)."
+ },
+ {
+  "code": "F-5-19",
+  "ru": "Супруг(а) или не состоящий в браке ребёнок инвестора в туризм/курорты, получающие статус вместе с инвестором после 5 лет сохранения инвестиций; без требований к доходу и KIIP.",
+  "uz": "Turizm/kurort investorining turmush o‘rtog‘i yoki turmush qurmagan farzandi, investitsiya 5 yil saqlangach investor bilan birga beriladi; daromad yoki KIIP talab qilinmaydi.",
+  "uz-cyrl": "Туризм/курорт инвесторининг турмуш ўртоғи ёки турмуш қурмаган фарзанди, инвестиция 5 йил сақлангач инвестор билан бирга берилади; даромад ёки KIIP талаб қилинмайди."
+ },
+ {
+  "code": "F-5-25",
+  "ru": "₩3 млрд на счёте определённого общественного фонда с обязательством хранить 5 лет (при изъятии статус аннулируется); распространяется также на супруга(-у) и не состоящих в браке детей; без требований к доходу, KIIP и сроку проживания.",
+  "uz": "Belgilangan jamoat fondiga 5 yil saqlash majburiyati bilan ₩3 mlrd qo‘yilgan (pul qaytarib olinsa, maqom bekor qilinadi); turmush o‘rtog‘ingiz va turmush qurmagan farzandlaringizga ham beriladi; daromad, KIIP yoki yashash muddati talab qilinmaydi.",
+  "uz-cyrl": "Белгиланган жамоат фондига 5 йил сақлаш мажбурияти билан ₩3 млрд қўйилган (пул қайтариб олинса, мақом бекор қилинади); турмуш ўртоғингиз ва турмуш қурмаган фарзандларингизга ҳам берилади; даромад, KIIP ёки яшаш муддати талаб қилинмайди."
+ }
+]
