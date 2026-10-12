@@ -61,16 +61,16 @@ test('Korean below the required level is "not yet", with the level named', () =>
 
 // ---------- Income ----------
 
-test('F-5-1: household income of 2× GNI, at least half of it the reader\'s own', () => {
+test('F-5-1: household income of 2× GNI, or 1.5× the average household net assets', () => {
     const path = ['NONE', 'E-7-1'];
     const at = (amount) => income(uz({ edu: 3, income: amount }), path, 'F-5-1');
     near(at(0).amount, 2 * GNI);
     assert.equal(at(0).whose, 'household');
     assert.equal(at(2 * GNI).result, 'yes');
     assert.equal(at(GNI).result, 'maybe'); // family income may make up the rest
-    assert.equal(at(GNI - 0.1).result, 'later');
+    near(at(0).assets.amount, 1.5 * data.netAssets.average);
     // No reduction applies to F-5-1, whatever the reader's Korean or degree.
-    const strong = income(uz({ edu: 3, eduKorea: true, kiip: 5 }), path, 'F-5-1');
+    const strong = income(uz({ edu: 3, koreanEdu: 3, kiip: 5 }), path, 'F-5-1');
     assert.equal(strong.cut, null);
     assert.deepEqual(strong.maybe, []);
 });
@@ -85,7 +85,7 @@ test('F-5-16: the reader\'s own income of 2× GNI; family income doesn\'t count'
 const ethnicKorean = (details) => uz({ korean: true, ...details });
 
 test('F-5-6: 1× GNI household income for overseas Koreans, with no reduction by default', () => {
-    const r = income(ethnicKorean({ edu: 3, eduKorea: false, kiip: 0 }), ['NONE', 'F-4'], 'F-5-6');
+    const r = income(ethnicKorean({ edu: 3, koreanEdu: 0, kiip: 0 }), ['NONE', 'F-4'], 'F-5-6');
     near(r.amount, GNI);
     assert.equal(r.cut, null);
     // Volunteering is not asked, so the 80% reduction is listed as possible; the Korean ones are ruled out.
@@ -93,13 +93,13 @@ test('F-5-6: 1× GNI household income for overseas Koreans, with no reduction by
 });
 
 test('F-5-6: 70% with KIIP 5, or with a Korean bachelor\'s', () => {
-    const kiip = income(ethnicKorean({ kiip: 5, edu: 1, eduKorea: false }), ['NONE', 'F-4'], 'F-5-6');
+    const kiip = income(ethnicKorean({ kiip: 5, edu: 1, koreanEdu: 0 }), ['NONE', 'F-4'], 'F-5-6');
     near(kiip.amount, 0.7 * GNI);
     assert.equal(kiip.cut.id, 'koreanSkill');
-    const degree = income(ethnicKorean({ edu: 3, eduKorea: true }), ['NONE', 'F-4'], 'F-5-6');
+    const degree = income(ethnicKorean({ edu: 3, koreanEdu: 3 }), ['NONE', 'F-4'], 'F-5-6');
     near(degree.amount, 0.7 * GNI);
     // A Korean college diploma is not a bachelor's.
-    const college = income(ethnicKorean({ edu: 2, eduKorea: true, kiip: 3 }), ['NONE', 'F-4'], 'F-5-6');
+    const college = income(ethnicKorean({ edu: 2, koreanEdu: 2, kiip: 3 }), ['NONE', 'F-4'], 'F-5-6');
     near(college.amount, GNI);
 });
 
@@ -117,14 +117,47 @@ test('F-5-6: a Korean degree earned on the path counts for the reduction', () =>
     near(income(reader, [...path, 'F-4'], 'F-5-6').amount, 0.7 * GNI);
 });
 
-test('F-2-R: 70% of GNI, or no income test with a Korean college degree', () => {
-    const path = ['NONE', 'D-2-2', 'D-10-1'];
-    const graduate = income(uz({ edu: 1, income: 0 }), path, 'F-2-R');
-    assert.equal(graduate.amount, 0);
-    assert.equal(graduate.result, 'yes');
-    const worker = income(uz({ edu: 3, eduKorea: false, income: 30 }), ['NONE', 'E-7-1'], 'F-2-R');
-    near(worker.amount, 0.7 * GNI);
-    assert.equal(worker.result, 'later');
+test('F-2-R: the regional living wage is not a GNI rule, so no amount is computed', () => {
+    assert.equal(income(uz({ edu: 3 }), ['NONE', 'E-7-1'], 'F-2-R'), null);
+});
+
+test('F-5-6: at least half of the household income must be the reader\'s own', () => {
+    const at = (amount) => income(ethnicKorean({ kiip: 0, edu: 1, koreanEdu: 0, income: amount }), ['NONE', 'F-4'], 'F-5-6');
+    assert.equal(at(GNI / 2).result, 'maybe');
+    assert.equal(at(GNI / 2 - 0.1).result, 'later');
+    near(at(0).assets.amount, data.netAssets.average);
+    assert.equal(at(0).assets.own, true);
+});
+
+test('F-5-2: 80% when raising a child or from age 60, and other grounds the map doesn\'t ask', () => {
+    const path = ['NONE', 'F-6-1'];
+    near(income(uz({ koreanChild: true }), path, 'F-5-2').amount, 0.8 * GNI);
+    near(income(uz({ age: 61, koreanChild: false }), path, 'F-5-2').amount, 0.8 * GNI);
+    const r = income(uz({ age: 30, koreanChild: false }), path, 'F-5-2');
+    near(r.amount, GNI);
+    assert.deepEqual(r.maybe.map((c) => c.id), ['marriageRelief']); // pregnancy, infertility, the spouse's parents
+});
+
+test('a sponsor\'s income is shown, never compared with the reader\'s', () => {
+    const r = income(uz({ income: 0 }), ['NONE'], 'F-6-1');
+    assert.equal(r.whose, 'sponsor');
+    assert.equal(r.result, 'maybe');
+    assert.equal(r.amount, 25.195752);
+    assert.equal(income(uz({ koreanChild: true }), ['NONE'], 'F-6-1').amount, 0); // a child together
+    const f23 = income(uz({ income: 0 }), ['NONE'], 'F-2-3');
+    near(f23.amount, GNI);
+    assert.deepEqual(f23.maybe.map((c) => c.id), ['smallHousehold']);
+});
+
+test('Top-Tier: 3× GNI from abroad, 2× GNI as a change after work in Korea', () => {
+    near(income(uz({ edu: 4, rank: 3 }), ['NONE'], 'F-2-T').amount, 3 * GNI);
+    near(income(uz({ edu: 4, rank: 3 }), ['NONE', 'E-7-1'], 'F-2-T').amount, 2 * GNI);
+});
+
+test('a Korean diploma meets the Korean requirement of F-2-99', () => {
+    const r = option(uz({ edu: 3, koreanEdu: 3, kiip: 0 }), ['NONE', 'E-7-1'], 'F-2-99');
+    assert.equal(r.korean, 'yes');
+    assert.equal(option(uz({ edu: 3, koreanEdu: 0, kiip: 0 }), ['NONE', 'E-7-1'], 'F-2-99').korean, 'later');
 });
 
 test('F-2-99: the reader\'s own income of a fixed ₩40M', () => {
@@ -135,7 +168,7 @@ test('F-2-99: the reader\'s own income of a fixed ₩40M', () => {
 });
 
 test('an income below the requirement marks the option "not yet", never hides it', () => {
-    const r = option(uz({ edu: 3, income: 10 }), ['NONE', 'E-7-1'], 'F-5-1');
+    const r = option(uz({ edu: 3, income: 10 }), ['NONE', 'E-7-1', 'F-2-7'], 'F-5-16');
     assert.equal(r.blocked, false);
     assert.equal(r.later, true);
     assert.ok(r.tags.some((t) => t.key === 'laterIncome'));

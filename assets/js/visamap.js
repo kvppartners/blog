@@ -74,7 +74,9 @@ function visaMap(root) {
         notAfter: 'whyPrevious', stay: 'whyStay',
     };
 
-    const languageText = (want) => Object.entries(want).map(([key, level]) => `${key.toUpperCase()} ${level}`).join(' / ');
+    // { topik: 3, kiip: 3, koreanEdu: 1 } in words: "TOPIK 3 / KIIP 3 / a Korean school or university diploma".
+    const languageText = (want) => Object.entries(want)
+        .map(([key, level]) => (key === 'koreanEdu' ? T.langSchool : `${key.toUpperCase()} ${level}`)).join(' / ');
     // Money in ₩ million, as the page language writes it ("₩104.8M").
     const money = (amount) => T.money.replace('{n}', new Intl.NumberFormat(page.langTag, { maximumFractionDigits: 1 }).format(amount));
 
@@ -102,13 +104,19 @@ function visaMap(root) {
         const rule = income.rule.gni !== undefined
             ? T.incomeGni.replace('{n}', new Intl.NumberFormat(page.langTag).format(income.rule.gni)).replace('{year}', page.data.gni.year)
             : '';
-        const parts = [(income.whose === 'household' ? T.incomeHousehold : T.incomeOwn)
-            .replace('{amount}', money(income.base)).replace('{rule}', rule ? ` (${rule})` : '')];
+        const lead = income.whose === 'household' && income.rule.ownHalf ? T.incomeHouseholdHalf
+            : { own: T.incomeOwn, household: T.incomeHousehold, sponsor: T.incomeSponsor }[income.whose];
+        const parts = [lead.replace('{amount}', money(income.base)).replace('{rule}', rule ? ` (${rule})` : '')];
         if (income.cut) {
             parts.push((income.amount ? T.incomeCut : T.incomeNone)
                 .replace('{amount}', money(income.amount)).replace('{why}', text(income.cut.text)));
         }
         if (income.maybe.length) parts.push(T.incomeMaybe.replace('{why}', income.maybe.map((c) => text(c.text)).join('; ')));
+        const assets = income.assets;
+        if (assets) {
+            if (assets.amount !== undefined) parts.push((assets.own ? T.assetsOwn : T.assetsHousehold).replace('{amount}', money(assets.amount)));
+            else parts.push(assets.median ? T.assetsMedian : T.assetsAny);
+        }
         if (income.result === 'yes') parts.push(`✓ ${T.incomeOk}`);
         return parts.join(' ');
     }

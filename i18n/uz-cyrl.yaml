@@ -256,6 +256,8 @@
   translation: "Каттароқ инвестиция керак"
 - id: vm_lang_need
   translation: "Корейс тили керак: {req}"
+- id: vm_lang_school
+  translation: "Корея мактаби ёки университети дипломи"
 - id: vm_lang_ok
   translation: "Корейс тилингиз етарли: {req}"
 - id: vm_cat_study
@@ -301,6 +303,8 @@
 - id: vm_income_own
   translation: "Даромад: йилига {amount} ва ундан кўп{rule}."
 - id: vm_income_household
+  translation: "Оила даромади: йилига {amount} ва ундан кўп{rule}."
+- id: vm_income_household_half
   translation: "Оила даромади: йилига {amount} ва ундан кўп{rule}, камида ярми ўзингизники."
 - id: vm_income_gni
   translation: "{n}× GNI (аҳоли жон бошига, {year} йил)"
@@ -312,6 +316,16 @@
   translation: "Камроқ бўлиши мумкин: {why}."
 - id: vm_income_ok
   translation: "Даромадингиз етарли."
+- id: vm_income_sponsor
+  translation: "Таклиф қилувчининг даромади: йилига {amount} ва ундан кўп{rule}."
+- id: vm_assets_household
+  translation: "Ёки бунинг ўрнига оиланинг соф активлари {amount} ва ундан кўп."
+- id: vm_assets_own
+  translation: "Ёки бунинг ўрнига ўзингизнинг соф активларингиз {amount} ва ундан кўп."
+- id: vm_assets_median
+  translation: "Ёки бунинг ўрнига оиланинг соф активлари мамлакат медианасидан кам эмас."
+- id: vm_assets_any
+  translation: "Даромад ўрнига активлар ҳам ҳисобга олиниши мумкин."
 - id: vm_later_income
   translation: "Даромад {amount} дан"
 - id: vm_later_age

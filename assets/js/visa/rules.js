@@ -229,9 +229,10 @@ export function visaRules(data) {
     // rules allow is a reduction of its own), the smallest share that applies counts, and it
     // never goes below the rule's floor. A share of 0 means no income test at all.
     // Whose income: the reader's own; the household's (family living with the reader counts too,
-    // but the reader's own share must still be at least half, unless `ownShareWaived` holds), so
-    // the reader's own income alone settles it only when it covers everything or less than half;
-    // or a sponsor's (the person who invites the reader), which the map never knows.
+    // so the reader's own income alone only settles it when it covers everything; where the rules
+    // ask for at least half of it to be the reader's own ('ownHalf', unless 'ownShareWaived'
+    // holds), an own income below half settles it too); or a sponsor's (the person who invites
+    // the reader), which the map never knows.
     // Assets can stand in for income on many routes: `assets` names how much. Returns null
     // without an income requirement.
     function incomeFor(person, path, level, step) {
@@ -249,7 +250,7 @@ export function visaRules(data) {
         const amount = base * factor;
         const whose = rule.sponsor ? 'sponsor' : rule.household ? 'household' : 'own';
         const own = whose === 'sponsor' ? undefined : person.income;
-        const halfRule = whose === 'household' && holds(person, facts, rule.ownShareWaived) !== 'yes';
+        const halfRule = whose === 'household' && rule.ownHalf && holds(person, facts, rule.ownShareWaived) !== 'yes';
         let result = 'maybe';
         if (amount === 0 || (own !== undefined && own >= amount)) result = 'yes';
         else if (own !== undefined && (whose === 'own' || (halfRule && own < amount / 2))) result = 'later';

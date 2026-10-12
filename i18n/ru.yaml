@@ -230,6 +230,8 @@
   translation: "Нужна большая сумма инвестиций"
 - id: vm_lang_need
   translation: "Нужен корейский: {req}"
+- id: vm_lang_school
+  translation: "диплом корейской школы или вуза"
 - id: vm_lang_ok
   translation: "Вашего корейского достаточно: {req}"
 - id: vm_cat_study
@@ -275,6 +277,8 @@
 - id: vm_income_own
   translation: "Доход: от {amount} в год{rule}."
 - id: vm_income_household
+  translation: "Доход семьи: от {amount} в год{rule}."
+- id: vm_income_household_half
   translation: "Доход семьи: от {amount} в год{rule}, не меньше половины — ваш собственный."
 - id: vm_income_gni
   translation: "{n}× ВНД на душу населения за {year} г."
@@ -286,6 +290,16 @@
   translation: "Может быть ниже: {why}."
 - id: vm_income_ok
   translation: "Вашего дохода достаточно."
+- id: vm_income_sponsor
+  translation: "Доход приглашающего: от {amount} в год{rule}."
+- id: vm_assets_household
+  translation: "Или вместо этого чистые активы семьи от {amount}."
+- id: vm_assets_own
+  translation: "Или вместо этого ваши собственные чистые активы от {amount}."
+- id: vm_assets_median
+  translation: "Или вместо этого чистые активы семьи не ниже медианы по стране."
+- id: vm_assets_any
+  translation: "Вместо дохода могут учитываться активы."
 - id: vm_later_income
   translation: "Доход от {amount}"
 - id: vm_later_age

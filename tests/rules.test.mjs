@@ -28,7 +28,7 @@ const MAP = {
         },
         'E-7-4': { work: true, next: [] },
         'F-2-7': { work: true, income: { gni: 1 }, next: ['F-5-1', 'F-2-T', 'F-5-2', 'F-2-R'] },
-        'F-5-2': { income: { gni: 1, household: true } },
+        'F-5-2': { income: { gni: 1, household: true, ownHalf: true } },
         'F-2-T': { needs: { experience: 5 }, next: [] },
         'F-2-R': { needs: { notAfter: ['E-9', 'D-3'] }, income: { gni: 0.7, cuts: ['school'] }, next: [] },
         'F-6-1': { needs: { spouse: 'korean' }, next: [] },

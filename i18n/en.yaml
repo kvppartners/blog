@@ -230,6 +230,8 @@
   translation: "Needs a larger investment"
 - id: vm_lang_need
   translation: "Korean needed: {req}"
+- id: vm_lang_school
+  translation: "a Korean school or university diploma"
 - id: vm_lang_ok
   translation: "Your Korean is enough: {req}"
 - id: vm_cat_study
@@ -275,6 +277,8 @@
 - id: vm_income_own
   translation: "Income: {amount} a year or more{rule}."
 - id: vm_income_household
+  translation: "Household income: {amount} a year or more{rule}."
+- id: vm_income_household_half
   translation: "Household income: {amount} a year or more{rule}, at least half of it your own."
 - id: vm_income_gni
   translation: "{n}× GNI per person for {year}"
@@ -286,6 +290,16 @@
   translation: "May be lower: {why}."
 - id: vm_income_ok
   translation: "Your income is enough."
+- id: vm_income_sponsor
+  translation: "Your sponsor's income: {amount} a year or more{rule}."
+- id: vm_assets_household
+  translation: "Or household net assets of {amount} or more instead."
+- id: vm_assets_own
+  translation: "Or your own net assets of {amount} or more instead."
+- id: vm_assets_median
+  translation: "Or household net assets at least at the national median instead."
+- id: vm_assets_any
+  translation: "Assets can count instead of income."
 - id: vm_later_income
   translation: "Income {amount}+"
 - id: vm_later_age

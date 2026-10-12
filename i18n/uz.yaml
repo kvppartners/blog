@@ -230,6 +230,8 @@
   translation: "Kattaroq investitsiya kerak"
 - id: vm_lang_need
   translation: "Koreys tili kerak: {req}"
+- id: vm_lang_school
+  translation: "Koreya maktabi yoki universiteti diplomi"
 - id: vm_lang_ok
   translation: "Koreys tilingiz yetarli: {req}"
 - id: vm_cat_study
@@ -275,6 +277,8 @@
 - id: vm_income_own
   translation: "Daromad: yiliga {amount} va undan ko‘p{rule}."
 - id: vm_income_household
+  translation: "Oila daromadi: yiliga {amount} va undan ko‘p{rule}."
+- id: vm_income_household_half
   translation: "Oila daromadi: yiliga {amount} va undan ko‘p{rule}, kamida yarmi o‘zingizniki."
 - id: vm_income_gni
   translation: "{n}× GNI (aholi jon boshiga, {year}-yil)"
@@ -286,6 +290,16 @@
   translation: "Kamroq bo‘lishi mumkin: {why}."
 - id: vm_income_ok
   translation: "Daromadingiz yetarli."
+- id: vm_income_sponsor
+  translation: "Taklif qiluvchining daromadi: yiliga {amount} va undan ko‘p{rule}."
+- id: vm_assets_household
+  translation: "Yoki buning o‘rniga oilaning sof aktivlari {amount} va undan ko‘p."
+- id: vm_assets_own
+  translation: "Yoki buning o‘rniga o‘zingizning sof aktivlaringiz {amount} va undan ko‘p."
+- id: vm_assets_median
+  translation: "Yoki buning o‘rniga oilaning sof aktivlari mamlakat medianasidan kam emas."
+- id: vm_assets_any
+  translation: "Daromad o‘rniga aktivlar ham hisobga olinishi mumkin."
 - id: vm_later_income
   translation: "Daromad {amount} dan"
 - id: vm_later_age
