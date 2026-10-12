@@ -112,7 +112,7 @@
     "start" (i18n "vm_start") "choose" (i18n "vm_choose") "goal" (i18n "vm_goal")
     "abroad" (i18n "vm_abroad") "ageOnly" (i18n "vm_age_only") "how" (i18n "vm_how")
     "koreanRoots" (i18n "vm_korean_roots") "koreanChild" (i18n "vm_korean_child_short")
-    "education" (i18n "vm_education") "eduKorea" (i18n "vm_edu_korea") "stem" (i18n "vm_edu_stem") "whyAge" (i18n "vm_why_age")
+    "education" (i18n "vm_education") "koreanEdu" (i18n "vm_korean_edu_short") "stem" (i18n "vm_edu_stem") "whyAge" (i18n "vm_why_age")
     "experience" (i18n "vm_experience_short") "invest" (i18n "vm_invest_short")
     "matches" (i18n "vm_matches") "showClosed" (i18n "vm_show_closed") "hideClosed" (i18n "vm_hide_closed")
     "noneFit" (i18n "vm_none_fit") "whyFamily" (i18n "vm_why_family") "whyEducation" (i18n "vm_why_education")
@@ -225,8 +225,23 @@
                         </select>
                     </div>
                     <fieldset class="vm-checks" id="vm-edu-extras">
-                        <label><input type="checkbox" name="eduKorea"> {{ i18n "vm_edu_korea" }}</label>
-                        <label><input type="checkbox" name="stem"> {{ i18n "vm_edu_stem" }}</label>
+                        <div class="vm-field">
+                            <label class="vm-label" for="vm-korean-edu">{{ i18n "vm_korean_edu" }}</label>
+                            <select class="vm-input" id="vm-korean-edu" name="koreanEdu">
+                                <option value="">{{ i18n "vm_not_set" }}</option>
+                                <option value="0">{{ i18n "vm_korean_edu_none" }}</option>
+                                {{- range seq 1 5 }}
+                                <option value="{{ . }}">{{ i18n (printf "vm_edu_%d" .) }}</option>
+                                {{- end }}
+                            </select>
+                        </div>
+                        <fieldset class="vm-field">
+                            <legend class="vm-label">{{ i18n "vm_edu_stem" }}</legend>
+                            <div class="vm-segment">
+                                <label><input type="radio" name="stem" value="yes"><span>{{ i18n "vm_yes" }}</span></label>
+                                <label><input type="radio" name="stem" value="no"><span>{{ i18n "vm_no" }}</span></label>
+                            </div>
+                        </fieldset>
                         <div class="vm-field vm-field-rank">
                             <label class="vm-label" for="vm-rank">{{ i18n "vm_rank" }}</label>
                             <select class="vm-input" id="vm-rank" name="rank">

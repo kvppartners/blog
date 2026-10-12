@@ -18,6 +18,9 @@ export const isStatus = (code, list) => [].concat(list).some((s) => code === s |
 // of several alternatives the reader gets the best one, where an unknown beats a sure "not yet".
 const SEVERITY = ['yes', 'later', 'maybe', 'no'];
 const PREFER = ['yes', 'maybe', 'later', 'no'];
+// Facts the reader can never change: an alternative that fails on one of them only explains a
+// block when every alternative fails like that.
+const FIXED = ['countries', 'ageUnder', 'notAfter', 'korean'];
 const worst = (results) => results.reduce((a, b) => (SEVERITY.indexOf(b) > SEVERITY.indexOf(a) ? b : a), 'yes');
 
 // data: the visa map data (visas, groups, statusGroups, gni, incomeCuts), as embedded in the page.
@@ -26,6 +29,7 @@ export function visaRules(data) {
     const groups = data.groups || {};
     const statusGroups = data.statusGroups || {};
     const gni = data.gni || null;
+    const assetsBase = data.netAssets || null;
     const cuts = data.incomeCuts || {};
 
     // Nationality lists: a group name from data.groups, or a list of ISO codes.
@@ -73,10 +77,10 @@ export function visaRules(data) {
         FACTS.forEach((key) => {
             if (person[key] !== undefined) known[key] = person[key];
         });
-        if (person.edu !== undefined) {
-            known.koreanEdu = person.eduKorea ? person.edu : 0;
-            known.stem = person.stem;
-        }
+        // The highest level studied in Korea; old links only say whether the highest level was.
+        if (person.koreanEdu !== undefined) known.koreanEdu = person.koreanEdu;
+        else if (person.edu !== undefined && person.eduKorea !== undefined) known.koreanEdu = person.eduKorea ? person.edu : 0;
+        if (person.stem !== undefined) known.stem = person.stem;
         if (person.age >= 19) known.parent = 'none'; // parents' status matters for minors only
         return known;
     }
@@ -172,7 +176,9 @@ export function visaRules(data) {
             || { checks: [], result: 'yes' };
         const keysOf = (option, result) => option.checks.filter((c) => c.result === result).map((c) => c.key);
         if (best.result === 'no') {
-            return { result: 'no', keys: [...new Set(options.flatMap((o) => keysOf(o, 'no')))], later: [] };
+            const failing = options.map((o) => keysOf(o, 'no'));
+            const changeable = failing.filter((keys) => !keys.some((key) => FIXED.includes(key)));
+            return { result: 'no', keys: [...new Set((changeable.length ? changeable : failing).flat())], later: [] };
         }
         return {
             result: best.result,
@@ -181,42 +187,53 @@ export function visaRules(data) {
         };
     }
 
-    // Korean level: { topik: 3, kiip: 3 } means TOPIK 3 or KIIP level 3 is enough. A lower level
-    // the reader gave is 'later': Korean can be learned on the way.
-    function checkLanguage(person, want) {
+    // Korean level: { topik: 3, kiip: 3 } means TOPIK 3 or KIIP level 3 is enough; koreanEdu: N
+    // means a Korean school or university diploma of that level is enough too. A lower level the
+    // reader gave is 'later': Korean can be learned on the way.
+    function checkLanguage(person, want, facts) {
         if (!want) return null;
-        const results = Object.entries(want)
-            .map(([key, level]) => (person[key] === undefined ? 'maybe' : person[key] >= level ? 'yes' : 'no'));
+        const results = Object.entries(want).map(([key, level]) => {
+            if (key === 'koreanEdu') {
+                const result = checkFact(person, facts, key, level);
+                return result === 'later' ? 'no' : result;
+            }
+            return person[key] === undefined ? 'maybe' : person[key] >= level ? 'yes' : 'no';
+        });
         return results.includes('yes') ? 'yes' : results.includes('maybe') ? 'maybe' : 'later';
     }
 
     // ---------- Income ----------
 
-    // Whether a reduction of the income requirement applies to the reader: 'yes', 'no', or
-    // 'maybe' when it depends on something the map doesn't ask. `when` is { fact: value, ... }
-    // (all must hold) or a list of those (any one is enough); no `when` means the map can't tell.
-    function cutApplies(person, facts, cut) {
-        if (!cut.when) return 'maybe';
+    // Whether conditions hold for the reader: 'yes', 'no', or 'maybe' when they depend on
+    // something the map doesn't know. `when` is { fact: value, ... } (all must hold) or a list of
+    // those (any one is enough). Besides the usual facts it can name a Korean level (kiip, topik)
+    // or an age reached (ageFrom). No `when` at all means the map can't tell.
+    function holds(person, facts, when) {
+        if (!when) return 'maybe';
         const one = (group) => {
             const results = Object.entries(group).map(([key, want]) => {
                 if (key === 'kiip' || key === 'topik') return person[key] === undefined ? 'maybe' : person[key] >= want ? 'yes' : 'no';
+                if (key === 'ageFrom') return facts.age[0] >= want ? 'yes' : facts.age[1] >= want ? 'maybe' : 'no';
                 const result = checkFact(person, facts, key, want);
                 return result === 'later' ? 'maybe' : result;
             });
             return results.includes('no') ? 'no' : results.includes('maybe') ? 'maybe' : 'yes';
         };
-        const results = [].concat(cut.when).map(one);
+        const results = [].concat(when).map(one);
         return results.includes('yes') ? 'yes' : results.includes('maybe') ? 'maybe' : 'no';
     }
 
-    // The yearly income a step asks of the reader, in ₩ million: the base amount (a multiple of
-    // GNI per person, or a fixed amount), lowered by the reductions that apply to the reader.
+    // The yearly income a step asks for, in ₩ million: the base amount (a multiple of GNI per
+    // person, or a fixed amount), lowered by the reductions that apply to the reader.
     // Reductions don't add up: each names its own share of the base (a combination that the
     // rules allow is a reduction of its own), the smallest share that applies counts, and it
     // never goes below the rule's floor. A share of 0 means no income test at all.
-    // With household income (the reader's family living with them counts too), the reader's
-    // own share must still be at least half, so the reader's own income alone only settles it
-    // when it covers everything or less than half. Returns null without an income requirement.
+    // Whose income: the reader's own; the household's (family living with the reader counts too,
+    // but the reader's own share must still be at least half, unless `ownShareWaived` holds), so
+    // the reader's own income alone settles it only when it covers everything or less than half;
+    // or a sponsor's (the person who invites the reader), which the map never knows.
+    // Assets can stand in for income on many routes: `assets` names how much. Returns null
+    // without an income requirement.
     function incomeFor(person, path, level, step) {
         const visa = visas[step.to] || {};
         const rule = step.income || visa.income;
@@ -225,15 +242,19 @@ export function visaRules(data) {
         if (base === null) return null;
         const facts = factsAt(person, path, level);
         const applies = (rule.cuts || []).map((id) => ({ id, ...cuts[id] })).filter((c) => c.factor !== undefined)
-            .map((c) => ({ ...c, result: cutApplies(person, facts, c) }));
+            .map((c) => ({ ...c, result: holds(person, facts, c.when) }));
         const used = applies.filter((c) => c.result === 'yes').sort((a, b) => a.factor - b.factor)[0] || null;
         const floor = rule.floor !== undefined ? rule.floor : 0;
         const factor = used ? Math.max(used.factor, floor) : 1;
         const amount = base * factor;
-        const own = person.income;
+        const whose = rule.sponsor ? 'sponsor' : rule.household ? 'household' : 'own';
+        const own = whose === 'sponsor' ? undefined : person.income;
+        const halfRule = whose === 'household' && holds(person, facts, rule.ownShareWaived) !== 'yes';
         let result = 'maybe';
         if (amount === 0 || (own !== undefined && own >= amount)) result = 'yes';
-        else if (own !== undefined && (!rule.household || own < amount / 2)) result = 'later';
+        else if (own !== undefined && (whose === 'own' || (halfRule && own < amount / 2))) result = 'later';
+        const assets = rule.assets ? { ...rule.assets } : null;
+        if (assets && assets.average !== undefined && assetsBase) assets.amount = assets.average * assetsBase.average;
         return {
             rule,
             base,
@@ -241,7 +262,8 @@ export function visaRules(data) {
             cut: used,
             // Reductions that may apply but depend on things the map doesn't know.
             maybe: applies.filter((c) => c.result === 'maybe' && c.factor < factor),
-            whose: rule.household ? 'household' : 'own',
+            whose,
+            assets,
             result,
         };
     }
@@ -281,7 +303,7 @@ export function visaRules(data) {
             .forEach((c) => tags.push({ key: 'laterExperience', years: c.want, later: true }));
 
         const language = step.lang || visa.lang;
-        const korean = checkLanguage(person, language);
+        const korean = checkLanguage(person, language, facts);
         if (korean === 'later') tags.push({ key: 'langNeed', language, later: true });
 
         const income = incomeFor(person, path, level, step);

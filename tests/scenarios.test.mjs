@@ -140,3 +140,24 @@ test('an income below the requirement marks the option "not yet", never hides it
     assert.equal(r.later, true);
     assert.ok(r.tags.some((t) => t.key === 'laterIncome'));
 });
+
+test('a Korean bachelor\'s and a foreign doctorate is not a Korean doctorate', () => {
+    const reader = uz({ age: 35, edu: 5, koreanEdu: 3, stem: true, rank: 3 });
+    const r = option(reader, ['NONE', 'E-7-1'], 'F-5-15');
+    assert.equal(r.blocked, true);
+    assert.deepEqual(r.reasons, [{ key: 'why', fact: 'koreanEdu' }]);
+    // Leaving the Korean part unanswered keeps it open.
+    assert.equal(option(uz({ age: 35, edu: 5 }), ['NONE', 'E-7-1'], 'F-5-15').blocked, false);
+});
+
+test('a marriage migrant who left the spouse question blank can still plan F-6-2 and F-6-3', () => {
+    assert.equal(option(uz(), ['NONE', 'F-6-1'], 'F-6-3').blocked, false);
+    assert.equal(option(uz({ koreanChild: true }), ['NONE', 'F-6-1'], 'F-6-2').blocked, false);
+});
+
+test('a blocked option names what the reader can change, not a narrow alternative they can\'t', () => {
+    const r = option(uz({ age: 35, edu: 1, koreanEdu: 0, experience: 0 }), ['NONE'], 'E-7-1');
+    assert.equal(r.blocked, true);
+    const facts = r.reasons.map((x) => x.fact);
+    assert.ok(!facts.includes('countries') && !facts.includes('ageUnder'), facts.join(','));
+});

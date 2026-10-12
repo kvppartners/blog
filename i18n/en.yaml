@@ -160,8 +160,12 @@
   translation: "Master's degree"
 - id: vm_edu_5
   translation: "Doctorate (PhD)"
-- id: vm_edu_korea
-  translation: "From a Korean university"
+- id: vm_korean_edu
+  translation: "Highest level completed in Korea"
+- id: vm_korean_edu_none
+  translation: "None in Korea"
+- id: vm_korean_edu_short
+  translation: "In Korea"
 - id: vm_edu_stem
   translation: "Science, engineering or IT"
 - id: vm_language

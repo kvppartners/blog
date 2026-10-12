@@ -1406,7 +1406,6 @@ visas:
   F-6-1:
     name: {en: Spouse of a Korean citizen, ru: Супруг(а) гражданина Кореи, uz: Koreya fuqarosining turmush o‘rtog‘i, uz-cyrl: Корея фуқаросининг турмуш ўртоғи}
     how: {en: 'Legal marriage to a Korean citizen. The Korean spouse needs a yearly income of about ₩25.2M for a couple (2026; not needed if you have a child together), you need basic Korean (TOPIK 1) or a shared language, and a real home.', ru: 'Законный брак с гражданином Кореи. Супругу-корейцу нужен годовой доход около ₩25,2 млн на семью из двух человек (2026; не нужен при общем ребёнке), вам — базовый корейский (TOPIK 1) или общий язык, и нужно настоящее жильё.', uz: 'Koreya fuqarosi bilan qonuniy nikoh. Koreyalik turmush o‘rtog‘ingizning yillik daromadi ikki kishi uchun taxminan ₩25,2 mln bo‘lishi kerak (2026; umumiy farzand bo‘lsa, kerak emas), sizga boshlang‘ich koreys tili (TOPIK 1) yoki umumiy til va haqiqiy uy-joy kerak.', uz-cyrl: 'Корея фуқароси билан қонуний никоҳ. Кореялик турмуш ўртоғингизнинг йиллик даромади икки киши учун тахминан ₩25,2 млн бўлиши керак (2026; умумий фарзанд бўлса, керак эмас), сизга бошланғич корейс тили (TOPIK 1) ёки умумий тил ва ҳақиқий уй-жой керак.'}
-    gives: {spouse: korean}
     next:
     - to: F-5-2
       needs: {spouse: korean, stay: {years: 2, in: [F-6]}}

@@ -160,8 +160,12 @@
   translation: "Magistratura"
 - id: vm_edu_5
   translation: "Doktorlik (PhD)"
-- id: vm_edu_korea
-  translation: "Koreya universitetida"
+- id: vm_korean_edu
+  translation: "Koreyada tugatilgan eng yuqori daraja"
+- id: vm_korean_edu_none
+  translation: "Koreyada yo‘q"
+- id: vm_korean_edu_short
+  translation: "Koreyada"
 - id: vm_edu_stem
   translation: "Fan, muhandislik yoki IT"
 - id: vm_language

@@ -165,10 +165,11 @@ function visaMap(root) {
             invest: level('invest'),
             income: amount('income'),
         };
+        // Below high school, there is no school in Korea, field or ranking to ask about.
         if (details.edu !== undefined) {
             const extras = details.edu >= 1;
-            details.eduKorea = extras && f.eduKorea.checked;
-            details.stem = extras && f.stem.checked;
+            details.koreanEdu = extras ? level('koreanEdu') : 0;
+            details.stem = extras ? yes('stem') : false;
             details.rank = extras ? level('rank') : undefined;
         }
         return details;
@@ -236,7 +237,7 @@ function visaMap(root) {
         if (person.koreanChild) parts.push(T.koreanChild);
         if (person.parent && person.age < 19) parts.push(answer(f.parent));
         if (person.edu !== undefined) {
-            const extras = [person.eduKorea && T.eduKorea, person.stem && T.stem,
+            const extras = [person.koreanEdu > 0 && `${T.koreanEdu}: ${answer(f.koreanEdu)}`, person.stem && T.stem,
                 person.rank !== undefined && answer(f.rank)].filter(Boolean);
             parts.push(`${T.education}: ${answer(f.edu)}${extras.length ? ` (${extras.join(', ')})` : ''}`);
         }
@@ -252,16 +253,14 @@ function visaMap(root) {
 
     // The page address keeps the map: the answers and the path, so a shared or reported link
     // opens the same map.
-    const RADIOS = ['gender', 'korean', 'koreanChild'];
-    const SELECTS = ['spouse', 'parent', 'edu', 'rank', 'topik', 'kiip', 'experience', 'invest', 'income']; // and the income box
-    const CHECKS = ['eduKorea', 'stem'];
+    const RADIOS = ['gender', 'korean', 'koreanChild', 'stem'];
+    const SELECTS = ['spouse', 'parent', 'edu', 'koreanEdu', 'rank', 'topik', 'kiip', 'experience', 'invest', 'income']; // and the income box
 
     function mapParams(leaveOut = []) {
         const f = form.elements;
         const params = new URLSearchParams({ nationality: person.nationality, age: person.age });
         RADIOS.filter((name) => !leaveOut.includes(name)).forEach((name) => f[name].value && params.set(name, f[name].value));
         SELECTS.forEach((name) => f[name].value !== '' && params.set(name, f[name].value));
-        CHECKS.forEach((name) => f[name].checked && params.set(name, '1'));
         params.set('path', path.join('.'));
         return params;
     }
@@ -285,6 +284,9 @@ function visaMap(root) {
         revealed.clear();
         nationalityInput.value = params.get('nationality') || '';
         ageInput.value = params.get('age') || '';
+        // Older links had checkboxes: eduKorea=1 (the highest level was in Korea) and stem=1.
+        if (params.get('eduKorea') === '1' && !params.has('koreanEdu') && params.has('edu')) params.set('koreanEdu', params.get('edu'));
+        if (params.get('stem') === '1') params.set('stem', 'yes');
         RADIOS.forEach((name) => {
             const input = form.querySelector(`input[name="${name}"][value="${CSS.escape(params.get(name) || '')}"]`);
             if (input) {
@@ -295,10 +297,7 @@ function visaMap(root) {
         SELECTS.forEach((name) => {
             if (params.has(name)) form.elements[name].value = params.get(name);
         });
-        CHECKS.forEach((name) => {
-            form.elements[name].checked = params.get(name) === '1';
-        });
-        if ([...RADIOS, ...SELECTS, ...CHECKS].some((name) => params.has(name))) {
+        if ([...RADIOS, ...SELECTS].some((name) => params.has(name))) {
             document.getElementById('vm-details').open = true;
         }
         syncDetails();

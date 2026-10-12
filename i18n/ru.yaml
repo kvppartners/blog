@@ -160,8 +160,12 @@
   translation: "Магистратура"
 - id: vm_edu_5
   translation: "Докторская степень (PhD)"
-- id: vm_edu_korea
-  translation: "В корейском вузе"
+- id: vm_korean_edu
+  translation: "Наивысший уровень, полученный в Корее"
+- id: vm_korean_edu_none
+  translation: "Ничего в Корее"
+- id: vm_korean_edu_short
+  translation: "В Корее"
 - id: vm_edu_stem
   translation: "Наука, инженерия или IT"
 - id: vm_language

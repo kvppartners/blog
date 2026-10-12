@@ -186,8 +186,12 @@
   translation: "Магистратура"
 - id: vm_edu_5
   translation: "Докторлик (PhD)"
-- id: vm_edu_korea
-  translation: "Корея университетида"
+- id: vm_korean_edu
+  translation: "Кореяда тугатилган энг юқори даража"
+- id: vm_korean_edu_none
+  translation: "Кореяда йўқ"
+- id: vm_korean_edu_short
+  translation: "Кореяда"
 - id: vm_edu_stem
   translation: "Фан, муҳандислик ёки IT"
 - id: vm_language
