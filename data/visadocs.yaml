@@ -7706,7 +7706,7 @@ targets:
         - {doc: employmentOrPerformanceContract, by: employer}
         - {doc: businessRegistration, by: employer}
         - {doc: employmentPerformanceRecommendationMcstK}
-    abroad:
+    abroad: &artsAbroad
       source: 사증발급 안내매뉴얼 2026.9.1 › 24. 예술흥행(E-6) › 사증발급인정서 발급대상 › 1. 체류기간 2년 이하의 예술흥행(E-6) 사증발급인정서 발급
       ref: 사증발급 안내매뉴얼 2026.9 › 24. 예술흥행(E-6) › 사증발급인정서 발급대상 › 1. 체류기간 2년 이하의 예술흥행(E-6) 사증발급인정서 발급 (txt lines 7800-7897)
       route: ccvi
@@ -7842,6 +7842,7 @@ targets:
           note: {en: 'E.g. certificate of employment, foreign-employee status, earned-income withholding ledger', ru: 'Например, справка с места работы, сведения о занятости иностранных работников, книга учёта удержания налога с заработной платы', uz: 'Masalan, ish joyidan ma’lumotnoma, chet ellik xodimlarning bandlik holati haqida ma’lumot, ish haqidan manbada ushlab qolingan soliq hisobi daftari', uz-cyrl: 'Масалан, иш жойидан маълумотнома, чет эллик ходимларнинг бандлик ҳолати ҳақида маълумот, иш ҳақидан манбада ушлаб қолинган солиқ ҳисоби дафтари'}
   E-6-2:
     extend: *id014
+    abroad: *artsAbroad
   E-6-3:
     change:
       source: 외국인체류 안내매뉴얼 2026.9.18 › 24. 예술흥행(E-6) › 체류자격 변경허가
@@ -8032,7 +8033,7 @@ targets:
         - doc: proofOf7DaysOfRecruitingKoreansAnnex12Fo
           note: {en: 'Replaces the invitation letter / foreign-worker plan; Regional pilot visa, runs 2025-06-13 to 2026-12-31; needs the metropolitan mayor''s/governor''s recommendation', ru: 'Заменяет обоснование причины приглашения / план использования иностранной рабочей силы; региональная пилотная виза, срок действия проекта – с 2025-06-13 по 2026-12-31; требуется рекомендация мэра города-метрополии/губернатора провинции', uz: 'Taklif qilish sababi haqida bayonot / chet ellik ishchilardan foydalanish rejasi o‘rnini bosadi; hududiy tajriba vizasi, loyiha 2025-06-13 dan 2026-12-31 gacha amal qiladi; metropoliya shahri meri/viloyat gubernatorining tavsiyanomasi talab qilinadi', uz-cyrl: 'Таклиф қилиш сабаби ҳақида баёнот / чет эллик ишчилардан фойдаланиш режаси ўрнини босади; ҳудудий тажриба визаси, лойиҳа 2025-06-13 дан 2026-12-31 гача амал қилади; метрополия шаҳри мери/вилоят губернаторининг тавсияномаси талаб қилинади'}
           by: employer
-    abroad:
+    abroad: &e7Abroad
       source: 사증발급 안내매뉴얼 2026.9.1 › 25. 특정활동(E-7) › 공관장 재량으로 발급할 수 있는 사증; 사증발급인정서 발급대상
       ref: 사증발급 안내매뉴얼 2026.9 › 25. 특정활동(E-7) › 공관장 재량으로 발급할 수 있는 사증 (txt lines 8098-8144); › 사증발급인정서 발급대상 (lines 8146-8226); occupation add-ons › 직종별 세부관리기준 Ⅱ. 전문인력 (lines 8448-9201); regional › 외국인체류 안내매뉴얼 2026.9 › 40. 광역형 비자 시범사업 (lines 32088-32288)
       route: both
@@ -8945,8 +8946,10 @@ targets:
           by: employer
   E-7-S1:
     extend: *id015
+    abroad: *e7Abroad
   E-7-S2:
     extend: *id015
+    abroad: *e7Abroad
   E-7-T:
     change:
       source: 외국인체류 안내매뉴얼 2026.9.18 › 39. 톱티어(Top-Tier) 비자 › 유망톱티어 특정활동 (E-7-T) › 사증발급 및 체류자격 변경 › (제출서류)
@@ -9656,7 +9659,7 @@ targets:
           note: {en: 'E.g. employment contract, pay slips, bankbook copy', ru: 'Например, трудовой договор, расчётные листки, копия сберегательной книжки', uz: 'Masalan, mehnat shartnomasi, ish haqi varaqalari, bank daftarchasi nusxasi', uz-cyrl: 'Масалан, меҳнат шартномаси, иш ҳақи варақалари, банк дафтарчаси нусхаси'}
         - {doc: letterOfGuarantee}
   F-2-12:
-    change:
+    change: &publicInterestChange
       source: 외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 7. 공익사업투자 외국인에 대한 거주(F-2-12,13,14) 체류자격 변경허가 › 자. 제출서류
       ref: 외국인체류 안내매뉴얼 2026.9 › 30. 거주(F-2) › 체류자격 변경허가 › 7. 공익사업투자 외국인에 대한 거주(F-2-12,13,14) 체류자격 변경허가 › 자. 제출서류 (txt lines 15902–16153)
       variants:
@@ -9698,6 +9701,8 @@ targets:
           onlyKo: 법인의 임원, 주주의 경우
           note: {en: 'E.g. official letter from the corporation, certificate of employment, shareholding records', ru: 'Например, официальное письмо от юридического лица, справка с места работы, документы о доле в акциях', uz: 'Masalan, yuridik shaxs nomidan rasmiy xat, ish joyidan ma’lumotnoma, aksiyalardagi ulushni tasdiqlovchi hujjatlar', uz-cyrl: 'Масалан, юридик шахс номидан расмий хат, иш жойидан маълумотнома, акциялардаги улушни тасдиқловчи ҳужжатлар'}
         - {doc: proofOfAddressLeaseAccommodationProvisio}
+  F-2-13:
+    change: *publicInterestChange
   F-2-2:
     change:
       source: 외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 1. 국민의 외국인자녀에 대한 거주 자격으로 변경허가 › 나. 제출서류
@@ -10426,7 +10431,7 @@ targets:
           only: {en: Postdoctoral researchers, ru: Постдокторальные исследователи, uz: Doktorlikdan keyingi tadqiqotchilar, uz-cyrl: Докторликдан кейинги тадқиқотчилар}
           onlyKo: 박사후연구원
   F-2-8:
-    change:
+    change: &resortChange
       source: 외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 6. 관광·휴양시설 투자 외국인에 대한 거주(F-2-8, F-2-81)자격 변경허가 › 사. 제출서류
       ref: 외국인체류 안내매뉴얼 2026.9 › 30. 거주(F-2) › 체류자격 변경허가 › 6. 관광·휴양시설 투자 외국인에 대한 거주(F-2-8, F-2-81)자격 변경허가 › 사. 제출서류 (txt lines 15735–15843)
       variants:
@@ -10492,6 +10497,7 @@ targets:
         - {doc: proofOfAddressLeaseAccommodationProvisio}
   F-2-81:
     extend: *id019
+    change: *resortChange
   F-2-99:
     change:
       source: 외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 9. 기타 장기체류자에 대한 거주 자격 변경허가 › □ 체류자격 변경 심사
@@ -10806,7 +10812,7 @@ targets:
         - doc: businessRegistrationCertificateEtc
           note: {en: 'Not needed if the workplace is unchanged; if it changed, work in a science & technology field (start-ups count) is checked', ru: 'Не требуется, если место работы не менялось; если оно изменилось, проверяется работа в сфере науки и технологий (стартапы засчитываются)', uz: 'Ish joyi o‘zgarmagan bo‘lsa, talab qilinmaydi; o‘zgargan bo‘lsa, fan va texnologiyalar sohasida ishlash tekshiriladi (startaplar ham hisobga olinadi)', uz-cyrl: 'Иш жойи ўзгармаган бўлса, талаб қилинмайди; ўзгарган бўлса, фан ва технологиялар соҳасида ишлаш текширилади (стартаплар ҳам ҳисобга олинади)'}
   F-2-T1:
-    extend:
+    extend: &topTierFamily
       source: 외국인체류 안내매뉴얼 2026.9.18 › 39. 톱티어(Top-Tier) 비자 › Ⅳ. 동반 가족 등 › □ 톱티어 거주 동반가족(배우자·미성년자녀) › 사증발급·체류자격 변경·체류기간 연장
       ref: 외국인체류 안내매뉴얼 2026.9 › 39. 톱티어(Top-Tier) 비자 › Ⅳ. 동반 가족 등 › □ 톱티어 거주 동반가족(배우자·미성년자녀) › 사증발급·체류자격 변경·체류기간 연장 (txt lines 28505–28519)
       variants:
@@ -10822,6 +10828,8 @@ targets:
         - doc: proofOfFamilyRelationshipIssuedByTheHome2
           note: {en: Foreign documents need an apostille or Korean consular confirmation, ru: Иностранные документы должны иметь апостиль или консульскую легализацию в загранучреждении Кореи, uz: Xorijda berilgan hujjatlarga apostil qo‘yilgan yoki Koreya diplomatik vakolatxonasida konsullik tasdig‘idan o‘tgan bo‘lishi kerak, uz-cyrl: Хорижда берилган ҳужжатларга апостил қўйилган ёки Корея дипломатик ваколатхонасида консуллик тасдиғидан ўтган бўлиши керак}
         - {doc: overseasCriminalRecordCertificateSpouseO}
+    change: *topTierFamily
+    abroad: *topTierFamily
   F-3:
     change:
       source: 외국인체류 안내매뉴얼 2026.9.18 › 31. 동반(F-3) › 체류자격 변경허가
@@ -13782,17 +13790,20 @@ within:
   D-10-1>D-10-T: {use: change, list: D-10-T}
   D-10-2>D-10-1: {use: change, list: D-10-1}
   D-2-1>D-2-2:
-    use: abroad
-    notice: {en: 'A change of degree course inside Korea is restricted in principle: to go on to a higher course, you leave Korea and come back with a new student visa.', ru: 'Переход на другую ступень обучения внутри Кореи в принципе ограничен: чтобы перейти на более высокую ступень, нужно выехать из Кореи и вернуться по новой студенческой визе.', uz: 'Koreya ichida ta’lim bosqichini o‘zgartirish, qoida tariqasida, cheklangan: yuqoriroq bosqichga o‘tish uchun Koreyadan chiqib, yangi talaba vizasi bilan qaytib kelish kerak.', uz-cyrl: 'Корея ичида таълим босқичини ўзгартириш, қоида тариқасида, чекланган: юқорироқ босқичга ўтиш учун Кореядан чиқиб, янги талаба визаси билан қайтиб келиш керак.'}
+    use: change
+    list: D-2-2
+    notice: &upwardCourse {en: "Done in Korea: with the new university's standard admission letter, apply to switch to the new course code before your stay ends (ideally before the semester starts). Universities often file it for you.", ru: 'Оформляется в Корее: со стандартным письмом о зачислении нового вуза подайте заявление на смену подкода до окончания срока пребывания (лучше до начала семестра). Часто вуз подаёт его за вас.', uz: 'Koreyada rasmiylashtiriladi: yangi universitetning standart qabul xati bilan yashash muddatingiz tugashidan oldin (yaxshisi semestr boshlanishidan oldin) yangi kichik kodga o‘tish uchun ariza bering. Ko‘pincha universitet arizani siz uchun topshiradi.', uz-cyrl: 'Кореяда расмийлаштирилади: янги университетнинг стандарт қабул хати билан яшаш муддатингиз тугашидан олдин (яхшиси семестр бошланишидан олдин) янги кичик кодга ўтиш учун ариза беринг. Кўпинча университет аризани сиз учун топширади.'}
   D-2-2>D-2-1: {use: report, list: D-2-1}
   D-2-2>D-2-3:
-    use: abroad
-    notice: {en: 'A change of degree course inside Korea is restricted in principle: to go on to a higher course, you leave Korea and come back with a new student visa.', ru: 'Переход на другую ступень обучения внутри Кореи в принципе ограничен: чтобы перейти на более высокую ступень, нужно выехать из Кореи и вернуться по новой студенческой визе.', uz: 'Koreya ichida ta’lim bosqichini o‘zgartirish, qoida tariqasida, cheklangan: yuqoriroq bosqichga o‘tish uchun Koreyadan chiqib, yangi talaba vizasi bilan qaytib kelish kerak.', uz-cyrl: 'Корея ичида таълим босқичини ўзгартириш, қоида тариқасида, чекланган: юқорироқ босқичга ўтиш учун Кореядан чиқиб, янги талаба визаси билан қайтиб келиш керак.'}
+    use: change
+    list: D-2-3
+    notice: *upwardCourse
   D-2-3>D-2-1: {use: report, list: D-2-1}
   D-2-3>D-2-2: {use: report, list: D-2-2}
   D-2-3>D-2-4:
-    use: abroad
-    notice: {en: 'A change of degree course inside Korea is restricted in principle: to go on to a higher course, you leave Korea and come back with a new student visa.', ru: 'Переход на другую ступень обучения внутри Кореи в принципе ограничен: чтобы перейти на более высокую ступень, нужно выехать из Кореи и вернуться по новой студенческой визе.', uz: 'Koreya ichida ta’lim bosqichini o‘zgartirish, qoida tariqasida, cheklangan: yuqoriroq bosqichga o‘tish uchun Koreyadan chiqib, yangi talaba vizasi bilan qaytib kelish kerak.', uz-cyrl: 'Корея ичида таълим босқичини ўзгартириш, қоида тариқасида, чекланган: юқорироқ босқичга ўтиш учун Кореядан чиқиб, янги талаба визаси билан қайтиб келиш керак.'}
+    use: change
+    list: D-2-4
+    notice: *upwardCourse
   D-2-4>D-2-2: {use: report, list: D-2-2}
   D-2-4>D-2-3: {use: report, list: D-2-3}
   D-4-1>D-4-3: {use: change, list: D-4-3}
@@ -13836,6 +13847,16 @@ within:
   F-4>F-4-R: {use: change, list: F-4-R}
   F-6-1>F-6-2: {use: extend, list: F-6-2}
   F-6-1>F-6-3: {use: extend, list: F-6-3}
+  D-2-6>D-2-1: {use: change, list: D-2-1}
+  D-2-6>D-2-2: {use: change, list: D-2-2}
+  D-2-6>D-2-3: {use: change, list: D-2-3}
+  D-2-6>D-2-4: {use: change, list: D-2-4}
+  D-2-8>D-2-1: {use: change, list: D-2-1}
+  D-2-8>D-2-2: {use: change, list: D-2-2}
+  D-2-8>D-2-3: {use: change, list: D-2-3}
+  D-2-8>D-2-4: {use: change, list: D-2-4}
+  F-6-1>F-1: {use: extend, list: F-1}
+  G-1-5>G-1-6: {use: extend, list: G-1-6}
 fees:
   change: ₩100,000
   pr: ₩200,000
@@ -14103,10 +14124,10 @@ exceptions:
   - who: *id027
     use: change
     own: *id028
-  - who: &id037 {en: 'Anyone legally staying in Korea, whatever visa they hold, who is being hired as a teacher at a foreign school', ru: 'Любой, кто законно находится в Корее, с любой визой, если его нанимают учителем в иностранную школу', uz: 'Koreyada qonuniy yashayotgan, qaysi vizada bo‘lishidan qat’i nazar, xorijiy maktabga o‘qituvchi sifatida ishga olinayotgan har qanday shaxs', uz-cyrl: 'Кореяда қонуний яшаётган, қайси визада бўлишидан қатъи назар, хорижий мактабга ўқитувчи сифатида ишга олинаётган ҳар қандай шахс'}
+  - who: &id036 {en: 'Anyone legally staying in Korea, whatever visa they hold, who is being hired as a teacher at a foreign school', ru: 'Любой, кто законно находится в Корее, с любой визой, если его нанимают учителем в иностранную школу', uz: 'Koreyada qonuniy yashayotgan, qaysi vizada bo‘lishidan qat’i nazar, xorijiy maktabga o‘qituvchi sifatida ishga olinayotgan har qanday shaxs', uz-cyrl: 'Кореяда қонуний яшаётган, қайси визада бўлишидан қатъи назар, хорижий мактабга ўқитувчи сифатида ишга олинаётган ҳар қандай шахс'}
     use: change
-    notice: &id038 {en: 'Anyone legally staying in Korea, whatever visa they hold, who is being hired as a teacher at a foreign school. Only this teaching job; it must meet the 2699 requirements (e.g. bachelor + 2 years, or a home-country teaching licence). First grant: up to 1 year.', ru: 'Любой, кто законно находится в Корее, с любой визой, если его нанимают учителем в иностранную школу. Только для этой работы; должны выполняться требования профессии 2699 (например, бакалавр + 2 года опыта или учительская лицензия своей страны). Первый срок — до 1 года.', uz: 'Koreyada qonuniy yashayotgan, qaysi vizada bo‘lishidan qat’i nazar, xorijiy maktabga o‘qituvchi sifatida ishga olinayotgan har qanday shaxs. Faqat shu ish uchun; 2699 kasbi talablariga javob berishi kerak (masalan, bakalavr + 2 yil tajriba yoki o‘z mamlakatining o‘qituvchilik litsenziyasi). Birinchi muddat — 1 yilgacha.', uz-cyrl: 'Кореяда қонуний яшаётган, қайси визада бўлишидан қатъи назар, хорижий мактабга ўқитувчи сифатида ишга олинаётган ҳар қандай шахс. Фақат шу иш учун; 2699 касби талабларига жавоб бериши керак (масалан, бакалавр + 2 йил тажриба ёки ўз мамлакатининг ўқитувчилик лицензияси). Биринчи муддат — 1 йилгача.'}
-    own: &id039
+    notice: &id037 {en: 'Anyone legally staying in Korea, whatever visa they hold, who is being hired as a teacher at a foreign school. Only this teaching job; it must meet the 2699 requirements (e.g. bachelor + 2 years, or a home-country teaching licence). First grant: up to 1 year.', ru: 'Любой, кто законно находится в Корее, с любой визой, если его нанимают учителем в иностранную школу. Только для этой работы; должны выполняться требования профессии 2699 (например, бакалавр + 2 года опыта или учительская лицензия своей страны). Первый срок — до 1 года.', uz: 'Koreyada qonuniy yashayotgan, qaysi vizada bo‘lishidan qat’i nazar, xorijiy maktabga o‘qituvchi sifatida ishga olinayotgan har qanday shaxs. Faqat shu ish uchun; 2699 kasbi talablariga javob berishi kerak (masalan, bakalavr + 2 yil tajriba yoki o‘z mamlakatining o‘qituvchilik litsenziyasi). Birinchi muddat — 1 yilgacha.', uz-cyrl: 'Кореяда қонуний яшаётган, қайси визада бўлишидан қатъи назар, хорижий мактабга ўқитувчи сифатида ишга олинаётган ҳар қандай шахс. Фақат шу иш учун; 2699 касби талабларига жавоб бериши керак (масалан, бакалавр + 2 йил тажриба ёки ўз мамлакатининг ўқитувчилик лицензияси). Биринчи муддат — 1 йилгача.'}
+    own: &id038
       source: 외국인체류 안내매뉴얼 2026.9.18
       ref: 외국인체류 안내매뉴얼 2026.9 (txt lines 9028–9042 (E-7 chapter › 체류자격 변경허가, item 4; docs 9034–9042; period 9031–9033))
       variants:
@@ -14170,30 +14191,18 @@ exceptions:
     fee: exempt
     notice: *id031
     own: *id032
-  D-2-1>D-2-2:
-  - who: &id036 {en: Students going on to a higher course at the same university, ru: 'Студенты, переходящие на следующую ступень обучения в том же университете', uz: O‘sha universitetning o‘zida keyingi bosqichga o‘tayotgan talabalar, uz-cyrl: Ўша университетнинг ўзида кейинги босқичга ўтаётган талабалар}
-    use: change
-    list: D-2-2
   D-2-1>E-8:
   - who: *id030
     use: permit
     fee: exempt
     notice: *id031
     own: *id032
-  D-2-2>D-2-3:
-  - who: *id036
-    use: change
-    list: D-2-3
   D-2-2>E-8:
   - who: *id030
     use: permit
     fee: exempt
     notice: *id031
     own: *id032
-  D-2-3>D-2-4:
-  - who: *id036
-    use: change
-    list: D-2-4
   D-2-3>E-8:
   - who: *id030
     use: permit
@@ -14231,10 +14240,10 @@ exceptions:
     notice: *id031
     own: *id032
   D-3>E-7-1:
-  - who: *id037
+  - who: *id036
     use: change
-    notice: *id038
-    own: *id039
+    notice: *id037
+    own: *id038
   D-3>E-8:
   - who: *id030
     use: permit
@@ -14332,10 +14341,10 @@ exceptions:
     notice: *id031
     own: *id032
   E-10>E-7-1:
-  - who: *id037
+  - who: *id036
     use: change
-    notice: *id038
-    own: *id039
+    notice: *id037
+    own: *id038
   E-10>E-8:
   - who: *id030
     use: permit
@@ -14445,10 +14454,10 @@ exceptions:
     notice: *id031
     own: *id032
   E-9>E-7-1:
-  - who: *id037
+  - who: *id036
     use: change
-    notice: *id038
-    own: *id039
+    notice: *id037
+    own: *id038
   E-9>E-8:
   - who: *id030
     use: permit

@@ -97,7 +97,7 @@
 {{- $countries := index hugo.Data.countries $lang | default hugo.Data.countries.en }}
 {{- $cuts := dict }}
 {{- range $id, $c := $vm.incomeCuts }}{{ $cuts = merge $cuts (dict $id (merge $c (dict "text" (index $c.text $lang | default $c.text.en)))) }}{{ end }}
-{{- $pageData := dict "updated" $vm.updated "groups" $vm.groups "statusGroups" $vm.statusGroups "gni" $vm.gni "incomeCuts" $cuts "statuses" $statuses "visas" $visas "countries" $countries }}
+{{- $pageData := dict "updated" $vm.updated "groups" $vm.groups "statusGroups" $vm.statusGroups "gni" $vm.gni "netAssets" $vm.netAssets "incomeCuts" $cuts "statuses" $statuses "visas" $visas "countries" $countries }}
 {{- $logo := "" }}
 {{- with site.Params.label.icon }}{{ with resources.Get . }}{{ $logo = (.Resize "256x").RelPermalink }}{{ end }}{{ end }}
 {{- $contact := site.Params.contact | default dict }}

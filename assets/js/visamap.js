@@ -117,7 +117,7 @@ function visaMap(root) {
             if (assets.amount !== undefined) parts.push((assets.own ? T.assetsOwn : T.assetsHousehold).replace('{amount}', money(assets.amount)));
             else parts.push(assets.median ? T.assetsMedian : T.assetsAny);
         }
-        if (income.result === 'yes') parts.push(`✓ ${T.incomeOk}`);
+        if (income.result === 'yes' && income.amount > 0 && income.whose !== 'sponsor') parts.push(`✓ ${T.incomeOk}`);
         return parts.join(' ');
     }
 
