@@ -302,6 +302,10 @@
   translation: "Daromad o‘rniga aktivlar ham hisobga olinishi mumkin."
 - id: vm_later_income
   translation: "Daromad {amount} dan"
+- id: vm_later_own_income
+  translation: "O‘z daromadingiz {amount} dan"
+- id: vm_err_income
+  translation: "Yillik daromadni million vonda kiriting, masalan 45."
 - id: vm_later_age
   translation: "{n} yoshdan"
 - id: vm_later_experience

@@ -77,8 +77,14 @@ function visaMap(root) {
     // { topik: 3, kiip: 3, koreanEdu: 1 } in words: "TOPIK 3 / KIIP 3 / a Korean school or university diploma".
     const languageText = (want) => Object.entries(want)
         .map(([key, level]) => (key === 'koreanEdu' ? T.langSchool : `${key.toUpperCase()} ${level}`)).join(' / ');
-    // Money in ₩ million, as the page language writes it ("₩104.8M").
-    const money = (amount) => T.money.replace('{n}', new Intl.NumberFormat(page.langTag, { maximumFractionDigits: 1 }).format(amount));
+    // Numbers as the page language writes them. Browsers' Uzbek (Latin) data writes a decimal
+    // point; the texts write a comma, as Uzbek (Cyrillic) does.
+    const numberTag = page.lang === 'uz' ? 'uz-Cyrl' : page.langTag;
+    const number = (n, digits) => new Intl.NumberFormat(numberTag, { maximumFractionDigits: digits }).format(n);
+    // Money in ₩ million ("₩104.8M"). A requirement is rounded up, so that an income equal to
+    // the amount shown is always enough.
+    const money = (amount) => T.money.replace('{n}', number(amount, 1));
+    const need = (amount) => money(Math.ceil(amount * 10 - 1e-9) / 10);
 
     function reasonText(reason) {
         if (reason.key === 'ageOnly') return T.ageOnly.replace('{range}', reason.range);
@@ -92,7 +98,8 @@ function visaMap(root) {
             case 'langNeed': return `⏳ ${T.langNeed.replace('{req}', languageText(tag.language))}`;
             case 'laterAge': return `⏳ ${T.laterAge.replace('{n}', tag.age)}`;
             case 'laterExperience': return `⏳ ${T.laterExperience.replace('{n}', tag.years)}`;
-            case 'laterIncome': return `⏳ ${T.laterIncome.replace('{amount}', money(tag.amount))}`;
+            case 'laterIncome': return `⏳ ${T.laterIncome.replace('{amount}', need(tag.amount))}`;
+            case 'laterOwnIncome': return `⏳ ${T.laterOwnIncome.replace('{amount}', need(tag.amount))}`;
             default: return T[tag.key];
         }
     }
@@ -102,19 +109,19 @@ function visaMap(root) {
     function incomeLine(income) {
         if (!income) return '';
         const rule = income.rule.gni !== undefined
-            ? T.incomeGni.replace('{n}', new Intl.NumberFormat(page.langTag).format(income.rule.gni)).replace('{year}', page.data.gni.year)
+            ? T.incomeGni.replace('{n}', number(income.multiple, 2)).replace('{year}', page.data.gni.year)
             : '';
         const lead = income.whose === 'household' && income.rule.ownHalf ? T.incomeHouseholdHalf
             : { own: T.incomeOwn, household: T.incomeHousehold, sponsor: T.incomeSponsor }[income.whose];
-        const parts = [lead.replace('{amount}', money(income.base)).replace('{rule}', rule ? ` (${rule})` : '')];
+        const parts = [lead.replace('{amount}', need(income.base)).replace('{rule}', rule ? ` (${rule})` : '')];
         if (income.cut) {
             parts.push((income.amount ? T.incomeCut : T.incomeNone)
-                .replace('{amount}', money(income.amount)).replace('{why}', text(income.cut.text)));
+                .replace('{amount}', need(income.amount)).replace('{why}', text(income.cut.text)));
         }
         if (income.maybe.length) parts.push(T.incomeMaybe.replace('{why}', income.maybe.map((c) => text(c.text)).join('; ')));
         const assets = income.assets;
         if (assets) {
-            if (assets.amount !== undefined) parts.push((assets.own ? T.assetsOwn : T.assetsHousehold).replace('{amount}', money(assets.amount)));
+            if (assets.amount !== undefined) parts.push((assets.own ? T.assetsOwn : T.assetsHousehold).replace('{amount}', need(assets.amount)));
             else parts.push(assets.median ? T.assetsMedian : T.assetsAny);
         }
         if (income.result === 'yes' && income.amount > 0 && income.whose !== 'sponsor') parts.push(`✓ ${T.incomeOk}`);
@@ -155,10 +162,11 @@ function visaMap(root) {
         const choice = (name) => f[name].value || undefined;
         const level = (name) => (f[name].value === '' ? undefined : Number(f[name].value));
         const yes = (name) => (f[name].value === '' ? undefined : f[name].value === 'yes');
-        // A number box: empty or not a sensible amount is unknown.
+        // A number box: empty or outside the box's range is unknown (start() says so).
         const amount = (name) => {
             const value = Number.parseFloat(f[name].value);
-            return Number.isFinite(value) && value >= 0 ? value : undefined;
+            const max = Number(f[name].max) || Infinity;
+            return Number.isFinite(value) && value >= 0 && value <= max ? value : undefined;
         };
         const details = {
             gender: choice('gender'),
@@ -176,8 +184,9 @@ function visaMap(root) {
         // Below high school, there is no school in Korea, field or ranking to ask about.
         if (details.edu !== undefined) {
             const extras = details.edu >= 1;
-            details.koreanEdu = extras ? level('koreanEdu') : 0;
-            details.stem = extras ? yes('stem') : false;
+            const korean = level('koreanEdu');
+            details.koreanEdu = extras ? (korean === undefined ? undefined : Math.min(korean, details.edu)) : 0;
+            details.stem = extras ? yes('stem') : undefined;
             details.rank = extras ? level('rank') : undefined;
         }
         return details;
@@ -202,8 +211,11 @@ function visaMap(root) {
         const age = Number.parseInt(ageInput.value, 10);
         // An empty visa field means no Korean visa yet.
         const code = search.value();
+        const incomeBox = form.elements.income;
+        const income = Number.parseFloat(incomeBox.value);
+        const badIncome = incomeBox.value !== '' && !(income >= 0 && income <= Number(incomeBox.max));
         const error = !nationality ? T.errNationality : !(age >= 14 && age <= 99) ? T.errAge
-            : !code || !visas[code] ? T.errVisa : '';
+            : !code || !visas[code] ? T.errVisa : badIncome ? T.errIncome : '';
         if (error) {
             errorBox.textContent = error;
             errorBox.hidden = false;
@@ -463,7 +475,9 @@ function visaMap(root) {
         // brings back the steps last chosen after that one. Either way the steps cut off are kept.
         const reopen = path[level] === code;
         const cut = reopen ? level + 1 : level;
-        if (path.length > cut + 1) tails.set(path.slice(0, cut + 1).join('.'), path.slice(cut + 1));
+        const key = path.slice(0, cut + 1).join('.');
+        if (path.length > cut + 1) tails.set(key, path.slice(cut + 1));
+        else if (path.length === cut + 1) tails.delete(key); // nothing was chosen after it
         path = reopen ? path.slice(0, level + 1) : path.slice(0, level).concat(code);
         if (!reopen) follow(tails.get(path.join('.')) || []);
         revealed.forEach((l) => l > level && revealed.delete(l));

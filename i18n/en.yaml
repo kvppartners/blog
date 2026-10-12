@@ -302,6 +302,10 @@
   translation: "Assets can count instead of income."
 - id: vm_later_income
   translation: "Income {amount}+"
+- id: vm_later_own_income
+  translation: "Your own income {amount}+"
+- id: vm_err_income
+  translation: "Enter your yearly income in millions of won, for example 45."
 - id: vm_later_age
   translation: "From age {n}"
 - id: vm_later_experience

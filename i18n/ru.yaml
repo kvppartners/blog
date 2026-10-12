@@ -302,6 +302,10 @@
   translation: "Вместо дохода могут учитываться активы."
 - id: vm_later_income
   translation: "Доход от {amount}"
+- id: vm_later_own_income
+  translation: "Ваш собственный доход от {amount}"
+- id: vm_err_income
+  translation: "Укажите годовой доход в миллионах вон, например 45."
 - id: vm_later_age
   translation: "С {n} лет"
 - id: vm_later_experience

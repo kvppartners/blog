@@ -117,7 +117,13 @@ export function visaRules(data) {
         const known = profileFacts(person);
         const min = {};
         path.slice(0, level).forEach((code) => {
-            Object.entries((visas[code] && visas[code].gives) || {}).forEach(([key, value]) => {
+            const gives = (visas[code] && visas[code].gives) || {};
+            // A degree earned on the path is a new one: its field and ranking are unknown.
+            if (gives.edu !== undefined && known.edu !== undefined && gives.edu > known.edu) {
+                delete known.stem;
+                delete known.rank;
+            }
+            Object.entries(gives).forEach(([key, value]) => {
                 if (!LEVELS.includes(key)) {
                     if (known[key] === undefined) known[key] = value;
                 } else if (known[key] !== undefined) known[key] = Math.max(known[key], value);
@@ -131,6 +137,7 @@ export function visaRules(data) {
         while (i >= 0 && statusOf(path[i]) === statusOf(from)) i--;
         const time = timeAt(path, level);
         const age = [person.age + time.age[0], person.age + time.age[1]];
+        if (age[0] >= 19) known.parent = 'none'; // an adult by the time of this step
         return { known, min, previous: i >= 0 ? path[i] : undefined, time, age, path, level };
     }
 
@@ -157,7 +164,10 @@ export function visaRules(data) {
         }
         if (LEVELS.includes(key)) {
             if (have !== undefined) return have >= want ? 'yes' : 'no';
-            return facts.min[key] >= want ? 'yes' : 'maybe';
+            if (facts.min[key] >= want) return 'yes';
+            // What was studied in Korea can't be more than the reader's whole education.
+            if (key === 'koreanEdu' && facts.known.edu !== undefined && facts.known.edu < want) return 'no';
+            return 'maybe';
         }
         if (have === undefined) return 'maybe';
         return [].concat(want).includes(have) ? 'yes' : 'no';
@@ -239,9 +249,19 @@ export function visaRules(data) {
         const visa = visas[step.to] || {};
         const rule = step.income || visa.income;
         if (!rule || (rule.gni === undefined && rule.krw === undefined)) return null;
-        const base = rule.gni !== undefined ? (gni ? rule.gni * gni.krw : null) : rule.krw;
-        if (base === null) return null;
         const facts = factsAt(person, path, level);
+        // Some routes ask for more from a reader who doesn't meet all their criteria ('full', as
+        // in needs): Top-Tier asks 4× GNI ('otherwise') when the degree or the career is missing.
+        // While that is unknown, the lower amount is shown but never confirmed as enough.
+        let multiple = rule.gni;
+        let unsure = false;
+        if (rule.full && rule.otherwise !== undefined) {
+            const full = checkNeeds(person, rule.full, facts).result;
+            if (full === 'no') multiple = rule.otherwise;
+            else if (full !== 'yes') unsure = true;
+        }
+        const base = rule.gni !== undefined ? (gni ? multiple * gni.krw : null) : rule.krw;
+        if (base === null) return null;
         const applies = (rule.cuts || []).map((id) => ({ id, ...cuts[id] })).filter((c) => c.factor !== undefined)
             .map((c) => ({ ...c, result: holds(person, facts, c.when) }));
         const used = applies.filter((c) => c.result === 'yes').sort((a, b) => a.factor - b.factor)[0] || null;
@@ -252,8 +272,14 @@ export function visaRules(data) {
         const own = whose === 'sponsor' ? undefined : person.income;
         const halfRule = whose === 'household' && rule.ownHalf && holds(person, facts, rule.ownShareWaived) !== 'yes';
         let result = 'maybe';
-        if (amount === 0 || (own !== undefined && own >= amount)) result = 'yes';
-        else if (own !== undefined && (whose === 'own' || (halfRule && own < amount / 2))) result = 'later';
+        // The amount the reader's own income falls short of: all of it, or the own half.
+        let need = amount;
+        if (amount === 0 || (own !== undefined && own >= amount)) result = unsure && amount > 0 ? 'maybe' : 'yes';
+        else if (own !== undefined && whose === 'own') result = 'later';
+        else if (own !== undefined && halfRule && own < amount / 2) {
+            result = 'later';
+            need = amount / 2;
+        }
         const assets = rule.assets ? { ...rule.assets } : null;
         if (assets && assets.average !== undefined && assetsBase) assets.amount = assets.average * assetsBase.average;
         return {
@@ -266,6 +292,9 @@ export function visaRules(data) {
             whose,
             assets,
             result,
+            multiple,
+            need,
+            ownShare: need !== amount,
         };
     }
 
@@ -308,7 +337,9 @@ export function visaRules(data) {
         if (korean === 'later') tags.push({ key: 'langNeed', language, later: true });
 
         const income = incomeFor(person, path, level, step);
-        if (income && income.result === 'later') tags.push({ key: 'laterIncome', amount: income.amount, later: true });
+        if (income && income.result === 'later') {
+            tags.push({ key: income.ownShare ? 'laterOwnIncome' : 'laterIncome', amount: income.need, later: true });
+        }
 
         return {
             blocked: reasons.length > 0,

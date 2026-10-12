@@ -119,7 +119,7 @@
     "whyExperience" (i18n "vm_why_experience") "whyInvest" (i18n "vm_why_invest") "whyPrevious" (i18n "vm_why_previous")
     "langNeed" (i18n "vm_lang_need") "langOk" (i18n "vm_lang_ok") "langSchool" (i18n "vm_lang_school") "categories" $categories
     "whyStay" (i18n "vm_why_stay") "laterAge" (i18n "vm_later_age") "laterExperience" (i18n "vm_later_experience")
-    "laterIncome" (i18n "vm_later_income") "income" (i18n "vm_income_short") "money" (i18n "vm_money")
+    "laterIncome" (i18n "vm_later_income") "laterOwnIncome" (i18n "vm_later_own_income") "errIncome" (i18n "vm_err_income") "income" (i18n "vm_income_short") "money" (i18n "vm_money")
     "incomeOwn" (i18n "vm_income_own") "incomeHousehold" (i18n "vm_income_household") "incomeHouseholdHalf" (i18n "vm_income_household_half") "incomeGni" (i18n "vm_income_gni")
     "incomeCut" (i18n "vm_income_cut") "incomeNone" (i18n "vm_income_none") "incomeMaybe" (i18n "vm_income_maybe") "incomeOk" (i18n "vm_income_ok") "incomeSponsor" (i18n "vm_income_sponsor")
     "assetsHousehold" (i18n "vm_assets_household") "assetsOwn" (i18n "vm_assets_own") "assetsMedian" (i18n "vm_assets_median") "assetsAny" (i18n "vm_assets_any")
@@ -294,12 +294,6 @@
                             </select>
                         </div>
                         <div class="vm-field">
-                            <label class="vm-label" for="vm-income">{{ i18n "vm_income" }}, {{ i18n "vm_income_unit" }}</label>
-                            <input class="vm-input" id="vm-income" name="income" type="number" inputmode="decimal" min="0" max="10000" step="0.1"
-                                placeholder="45" aria-describedby="vm-income-hint">
-                            <p class="vm-hint" id="vm-income-hint">{{ i18n "vm_income_hint" }}</p>
-                        </div>
-                        <div class="vm-field">
                             <label class="vm-label" for="vm-invest">{{ i18n "vm_invest" }}</label>
                             <select class="vm-input" id="vm-invest" name="invest">
                                 <option value="">{{ i18n "vm_not_set" }}</option>
@@ -308,6 +302,12 @@
                                 {{- end }}
                             </select>
                         </div>
+                    </div>
+                    <div class="vm-field">
+                        <label class="vm-label" for="vm-income">{{ i18n "vm_income" }}, {{ i18n "vm_income_unit" }}</label>
+                        <input class="vm-input" id="vm-income" name="income" type="number" inputmode="decimal" min="0" max="10000" step="0.1"
+                            placeholder="45" aria-describedby="vm-income-hint">
+                        <p class="vm-hint" id="vm-income-hint">{{ i18n "vm_income_hint" }}</p>
                     </div>
                 </fieldset>
             </div>

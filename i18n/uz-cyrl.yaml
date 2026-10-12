@@ -328,6 +328,10 @@
   translation: "Даромад ўрнига активлар ҳам ҳисобга олиниши мумкин."
 - id: vm_later_income
   translation: "Даромад {amount} дан"
+- id: vm_later_own_income
+  translation: "Ўз даромадингиз {amount} дан"
+- id: vm_err_income
+  translation: "Йиллик даромадни миллион вонда киритинг, масалан 45."
 - id: vm_later_age
   translation: "{n} ёшдан"
 - id: vm_later_experience

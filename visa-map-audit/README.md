@@ -38,6 +38,14 @@ Still open, for a later round:
   (practitioner sources), the median net-assets figure for F-5-2/F-5-27, whether the E-7 GNI
   exception (2024 GNI for E-7 tests until 2027-03) holds.
 - The 15 unverifiable findings in `round2/all-verdicts.json`.
+- From the final review (`round2/review.json`; engine and page items are fixed), data items still to do:
+  F-2-T income should use the new `full`/`otherwise` rule (4× GNI when the degree or the career
+  is missing) on the visa and on its 2× in-Korea moves, whose notes need a complete how text, and
+  E-7-S2 -> F-2-T needs `income: {gni: 2}`; F-2-3 needs a 0-factor cut for a minor child
+  (`when: [{parent: f5}]`) and its NONE -> F-2-3 note rewritten; the B-1/B-2/C-3-1/C-3-9 -> F-3
+  notes still carry the old F-3 sponsor sentence; D-10-3 -> E-7-1 needs `needs: {}`; F-2-2 needs
+  back to `{parent: korean}`; the E-7-2/3/4/4R/Y -> F-5-1 notes should state the 5-year rule;
+  F-2-71 -> F-3 note should drop its income clause (the rule sends the family to F-1).
 
 ---
 
