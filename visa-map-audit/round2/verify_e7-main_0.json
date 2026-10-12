@@ -1,0 +1,67 @@
+{
+ "verdicts": [
+  {
+   "slice": "e7-main",
+   "index": 0,
+   "verdict": "confirmed",
+   "reason": "The repo still has `{edu: 3, stem: true, ageUnder: 30, countries: asiaPilot}` in E-7-1 needs, and I ran the engine to check it: a 25-year-old Indian STEM bachelor with 0 years of experience who answered 'not QS top 500' gets E-7-1 OPEN and tagged as a match, while the same Uzbek reader is blocked. The quoted E-7 general and special requirements have no route limited by nationality or age. The asiaPilot list matches the D-10 points bonus word for word (9 countries, 29 or under, QS-1000 STEM, 20 points, pilot until '27.10). The repo's own 2026 E-7-1 change and abroad document lists have no case for such a route. Caveat: I could not reopen the manual itself because the search budget was used up and WebFetch could not resolve hosts, so this rests on the auditor's verbatim manual quotes plus the in-repo transcription.",
+   "correctedFix": "In data/visamap.yaml, E-7-1 `needs:`, delete the line\n    - {edu: 3, stem: true, ageUnder: 30, countries: asiaPilot}\nKeep the other five options. The `asiaPilot` group in `groups:` then becomes unused and can be deleted; no test depends on it. D-10-1 needs no change, because its `{edu: 3}` option already admits these graduates.",
+   "source": "사증발급 안내매뉴얼 2026.9.1 › 25. 특정활동(E-7) › 자격요건 (일반요건/특별요건) and › 구직(D-10) › 점수제 가점 (verbatim quotes from the earlier audit's local copy); data/visadocs.yaml targets['E-7-1'].change/abroad case lists; engine run with assets/js/visa/rules.js",
+   "quote": "(아시아권 QS 1,000위 이내 현지 대학 이공계 졸업생) ①29세 이하, ②한국어능력시험(TOPIK) 2급이상 소지자로 ③베트남, 중국, 태국, 일본, 인도, 인도네시아, 말레이시아, 싱가포르, 필리핀(총 9개국) 국적만 허용(20점) - '27.10.까지 시범운영 [D-10 chapter] vs. (일반요건) 도입직종과 연관성이 있는 분야의 석사 이상 학위 소지 / 학사학위 소지 + 1년 이상의 해당분야 경력 / 5년 이상의 근무경력 [E-7 chapter]"
+  },
+  {
+   "slice": "e7-main",
+   "index": 1,
+   "verdict": "confirmed",
+   "reason": "E-7-4R's `next` in the current YAML is [F-2-R, F-6-1, F-2-3, D-2-2, D-2-3, D-2-4, D-10-1], with no F-2-99, while E-7-4 has F-2-99 with the note '5 years on E-7 (E-9 years do not count)'. The F-2-99 list of eligible statuses names 특정활동(E-7) as a whole, with no sub-code carve-out, and E-7-4R is an E-7 sub-code. The same list was quoted verbatim from the MOJ Visa Navigator by two earlier verifiers. F-2-99 has a `change` document list, so an in-Korea edge is valid. The fix copies an entry that already exists, so the translations exist too.",
+   "correctedFix": "In data/visamap.yaml under `E-7-4R:` add to `next` (e.g. after `- F-2-R`):\n    - to: F-2-99\n      note: {en: After 5 years on E-7 (E-9 years do not count)., ru: После 5 лет на E-7 (годы на E-9 не считаются)., uz: E-7 da 5 yildan keyin (E-9 dagi yillar hisoblanmaydi)., uz-cyrl: E-7 да 5 йилдан кейин (E-9 даги йиллар ҳисобланмайди).}",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 9. 기타 장기체류자에 대한 거주 자격 변경허가; 법무부 비자 내비게이터 PART 02 ❹ 장기체류자(F-2-99) 자격 요건 p.35; 출입국관리법 시행령 별표 1의2 제24호 바목",
+   "quote": "신청 대상 체류자격 : 문화예술(D-1), 취재(D-5), 종교(D-6), 주재(D-7), 기업투자(D-8)*, 무역경영(D-9), 교수(E-1), 회화지도(E-2), 연구(E-3), 기술지도(E-4), 전문직업(E-5), 예술흥행(E-6-1, 3), 특정활동(E-7), 방문동거(F-1)"
+  },
+  {
+   "slice": "e7-main",
+   "index": 2,
+   "verdict": "confirmed",
+   "reason": "In the current YAML, E-7-1, E-7-2, E-7-3 and E-7-4 all offer F-5-1 with `needs: {edu: 3}`, but E-7-4R does not. 별표 1의3 제1호 counts every status from 10. D-7 to 20. 특정활동(E-7), sub-codes included, toward the 5 years, so E-7-4R time qualifies exactly as E-7-4 time does. F-5-1 has a `change` list. The fix copies E-7-4's existing entry with all four languages. Apply it together with e7-main#1, because the note points the reader to F-2-99.",
+   "correctedFix": "In data/visamap.yaml under `E-7-4R:` add to `next`:\n    - to: F-5-1\n      note: {en: E-7 holders need a bachelor's degree for this; the usual route is via F-2-99., ru: Обладателям E-7 для этого нужен диплом бакалавра; обычно путь лежит через F-2-99., uz: E-7 egalariga buning uchun bakalavr diplomi kerak; odatda F-2-99 orqali o‘tiladi., uz-cyrl: E-7 эгаларига бунинг учун бакалавр дипломи керак; одатда F-2-99 орқали ўтилади.}\n      needs: {edu: 3}",
+   "source": "출입국관리법 시행령 별표 1의3 영주(F-5) 제1호 (law.go.kr text quoted verbatim in visa-map-audit/findings.md and round2/research_R6.json)",
+   "quote": "대한민국 「민법」에 따른 성년으로서 별표 1의2 중 10. 주재(D-7)부터 20. 특정활동(E-7)까지의 체류자격이나 별표 1의2 중 24. 거주(F-2) 체류자격으로 5년 이상 대한민국에 체류하고 있는 사람"
+  },
+  {
+   "slice": "e7-main",
+   "index": 3,
+   "verdict": "partly",
+   "reason": "The legal core holds: 별표 1의3 제8호 has a licence branch ('또는 법무부장관이 정하는 기술자격증'), needs only 3 years' residence in Korea, and names no prior status. E-7-4 and E-7-4R lack the edge, and F-5-10's visa-level needs `[{edu:3,stem:true},{koreanEdu:4}]` would hide a licence holder, so `needs: {}` on the move is the only way to express it. But the claim that E-7-4 points-table licences make holders 'the normal case' is not shown. The points table rewards 기능사/산업기사/기사, and which level the MOJ-listed licence must be is unconfirmed; the repo itself says 'engineer licence'. The route also needs a wage of 1× GNI (about ₩52.4M) against E-7-4's ₩26M floor, so the note should name the MOJ list, full-time work and the wage rather than imply any licence suffices.",
+   "correctedFix": "In data/visamap.yaml add to `E-7-4:` next and to `E-7-4R:` next:\n    - to: F-5-10\n      needs: {}\n      note: {en: 'Only with a technical licence on the Ministry of Justice list (or a degree in a designated field): after 3+ years in Korea, employed full-time by a Korean company at a wage of at least 1× GNI. Ask immigration (1345) whether your licence level counts.'}\n(ru, uz and uz-cyrl must be translated from the English. F-5-10 already has a `change` list and `income: {gni: 1}`, so the engine shows the wage check.)",
+   "source": "출입국관리법 시행령 별표 1의3 제8호; 법무부 비자 내비게이터 Ver 2022.12 (3년 이상 국내 체류하며 국내 기업에 1년 이상 전일제 상용근로); data/visadocs.yaml targets['F-5-10'].change ('학위증 또는 자격증 사본')",
+   "quote": "법무부장관이 정하는 분야의 학사 학위 이상의 학위증 또는 법무부장관이 정하는 기술자격증이 있는 사람으로서 국내 체류기간이 3년 이상이고, 영주자격(F-5) 신청 시 국내기업에 고용되어 법무부장관이 정하는 금액 이상의 임금을 받는 사람"
+  },
+  {
+   "slice": "e7-main",
+   "index": 4,
+   "verdict": "partly",
+   "reason": "The claim holds: E-7-3 needs `[{edu:3},{koreanEdu:2},{experience:1}]`, and the engine leaves E-7-3 OPEN for a high-school reader with 1 year of experience. The quoted occupation rules have no route on 1 year of experience alone. But raising it to 5 years is wrong. The finding's own source makes the main E-7-3 trade, 조선용접공, open with a licence plus 2 years and a skills test, and the engine has no licence fact, so `{experience: 5}` would block those welders. The in-repo 2026 document lists also show regional welder and painter pilots (Ulsan and Gyeongnam, until 2026-12-31) that ask for a certificate or skills test and no experience certificate. The right floor is the shortest experience leg in the chapter (2 years), plus the 전문학사 + experience leg for 양식기술자.",
+   "correctedFix": "In data/visamap.yaml change E-7-3 `needs:` to:\n    needs:\n    - {edu: 3}\n    - {koreanEdu: 2}\n    - {edu: 2, experience: 1}\n    - {experience: 2}\nOptionally append to E-7-3 how.en: ' Most trades also need a trade certificate and a skills test; routes on experience alone need 5–10 years.' (ru, uz and uz-cyrl must be translated.)",
+   "source": "사증발급 안내매뉴얼 2026.9.1 › 25. 특정활동(E-7) › Ⅳ. 기능인력에 대한 세부기준 (quotes from the earlier audit's local copy); data/visadocs.yaml targets['E-7-3'].abroad (조선용접공: 국제선급회사 등 발급 자격증 + 기량검증확인서; 울산/경남 지역 시범 2025-06-13~2026-12-31); engine run with assets/js/visa/rules.js",
+   "quote": "조선용접기능공 (자격요건) 중급이상 조선용접공 자격증 취득 후 2년 이상 경력 + 현지 기량검증; 양식기술자 (자격요건) 수산분야 학사이상 학위, 수산분야 전문학사학위 + 해당 양식기술 분야 경력; 할랄도축원 고등학교 이상 졸업 + 5년 이상 할랄 도축 경력"
+  },
+  {
+   "slice": "e7-main",
+   "index": 5,
+   "verdict": "refuted",
+   "reason": "The level-4 rule comes from the 2025-02-20 MOJ plan and is out of date. 법무부고시 제2026-248호 (amended, in force since 2026-08-03) put the F-2-R requirement back to KIIP 3 or TOPIK 3. Its 제4조제1항 was read in full by an earlier agent: 'KIIP stage 3+ (incl. pre-test placement 4+) or TOPIK 3+'. The repo's transcription of the 2026.9.18 sojourn manual's F-2-R change list agrees: '기본소양 요건 입증서류' = KIIP level-3 completion or pre-test placement at level 4+, or TOPIK 3+. The repo's `lang: {topik: 3, kiip: 3}` and 'KIIP 3 or TOPIK 3' are therefore correct for 2026, and the finding's practitioner blogs reflect the superseded 2025 rule.",
+   "correctedFix": "",
+   "source": "법무부고시 제2026-248호 (출입국관리법 시행령 별표 1의2 중 24. 거주(F-2) 파목에 관한 기준 고시, 시행 2026-08-03) 제4조제1항; 외국인체류 안내매뉴얼 2026.9.18 › 37. 지역특화형비자 › Ⅱ. 지역특화형 우수인재(F-2) › (1) 체류자격 변경 › 4. 제출서류 (data/visadocs.yaml targets['F-2-R'].change, doc proofOfBasicKoreanAbility); see also visa-map-audit/round2/research_R4b.json and verify_d2_9.json",
+   "quote": "기본소양 요건 입증서류 — 사회통합프로그램 3단계 이수(사전평가 4단계 이상 배정 포함) 또는 한국어능력시험(TOPIK) 3급 이상 (2026 manual, as transcribed); superseded 2025 text: 한국어 능력 기준은 기존 사회통합프로그램 3단계[또는 TOPIK 3급] 이상에서 4단계[또는 TOPIK 4급] 이상으로 상향"
+  },
+  {
+   "slice": "e7-main",
+   "index": 6,
+   "verdict": "confirmed",
+   "reason": "E-7-1's current `next` has no E-x target, while D-10-1 offers E-1/E-3/E-5 and E-1 ↔ E-3 is modelled both ways. The repo's transcription of the 2026.9.18 manual's E-3 change chapter has a separate case for researchers joining special-law, defence or national/public research institutes 'from any status', so an in-Korea change E-7-1 → E-3 is documented for that group. E-3 has a `change` list, and its visa-level `needs: {edu: 4}` (master's+) matches that case's master's-degree document. Leaving E-1, E-4 and E-5 out is right, because their change lists name only D-2/D-10 holders, F-3 spouses and visa-free high-level talent.",
+   "correctedFix": "In data/visamap.yaml add to `E-7-1:` next:\n    - to: E-3\n      note: {en: 'For a research post at a special-law, defence or national/public research institute; a master''s degree or higher is needed.'}\n(ru, uz and uz-cyrl must be translated from the English.)",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 21. 연구(E-3) › 체류자격 변경허가 (in-repo transcription: data/visadocs.yaml targets['E-3'].change variants, manual txt lines 8353-8432)",
+   "quote": "「특정연구기관 육성법」 등에 의한 연구기관, 방위사업 연구기관, 국공립연구기관에 연구원으로 취업하려는 자 – 체류자격 불문 (transcribed case: 'Researchers joining special-law, defence or national/public research institutes, from any status')"
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "verdicts": [
+  {
+   "slice": "e7-special",
+   "index": 5,
+   "verdict": "partly",
+   "reason": "The repo part is true: E-7-T's next list has F-2-T, F-2-7 and F-5-1 but no F-2-99. But 'every other E-7 sub-code offers it' is false, because E-7-4R and E-7-Y lack it too. F-2-99 counts years on 특정활동(E-7) as a whole, and the data already uses that rule for E-7-1..4, E-7-S1 and E-7-S2 (the E-7-4 note says 'After 5 years on E-7'); I know of no carve-out for E-7-T. I could not re-read the manual this session (WebFetch failed on every host and the shared search budget was used up). A scratch-copy simulation shows the bare edge works: F-2-99 opens from E-7-T, and F-2-99 has a 'change' document list.",
+   "correctedFix": "# data/visamap.yaml, visas.E-7-T.next: add a bare entry, the same as E-7-S1/E-7-S2 (e.g. right after the F-2-7 entry):\n    - F-2-99",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 9. 기타 장기체류자에 대한 거주 자격 변경허가 (as recorded in data/visadocs.yaml targets['F-2-99'].change; not re-fetched this session)",
+   "quote": "신청 대상 체류자격으로 대한민국에 5년 이상 계속 체류 (the eligible-status list names 특정활동(E-7) as a whole, carving out only E-6-2 among the E-6/E-7 codes; reproduced from earlier research, not re-fetched)"
+  },
+  {
+   "slice": "e7-special",
+   "index": 6,
+   "verdict": "partly",
+   "reason": "The repo claim is true: E-7-Y's next is F-2-R, D-10-1, F-6-1, F-2-3 and D-2-2/3/4, with no F-2-99 and no F-5. E-7-Y is a 특정활동(E-7) sub-code, and the decree's F-5-1 item covers D-7 to E-7 with no sub-code carve-out, so its years count toward F-2-99 and F-5-1 like any other E-7 years. The fix should reuse the F-5-1 note that the non-degree E-7 codes (E-7-2/3/4) already carry, translated into all four languages, not the generic 5-year note: these youths are mostly school-leavers. Simulated in a scratch copy: a reader aged 22 who answered edu 1 sees F-5-1 blocked on edu and F-2-99 open. E-7-Y still has no in-edges, so today this only matters when the reader picks E-7-Y as their current visa. The primary text was not re-fetched this session.",
+   "correctedFix": "# data/visamap.yaml, visas.E-7-Y.next: right after `- F-2-R`, add:\n    - F-2-99\n    - to: F-5-1\n      note: {en: E-7 holders need a bachelor's degree for this; the usual route is via F-2-99., ru: Обладателям E-7 для этого нужен диплом бакалавра; обычно путь лежит через F-2-99., uz: E-7 egalariga buning uchun bakalavr diplomi kerak; odatda F-2-99 orqali o‘tiladi., uz-cyrl: E-7 эгаларига бунинг учун бакалавр дипломи керак; одатда F-2-99 орқали ўтилади.}\n      needs: {edu: 3}",
+   "source": "출입국관리법 시행령 [별표 1의3] 영주(F-5) 제1호 (law.go.kr); 외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 9. 기타 장기체류자에 대한 거주 자격 변경허가 (not re-fetched this session)",
+   "quote": "대한민국 「민법」에 따른 성년으로서 별표 1의2 중 10. 주재(D-7)부터 20. 특정활동(E-7)까지의 체류자격이나 별표 1의2 중 24. 거주(F-2) 체류자격으로 5년 이상 대한민국에 체류하고 있는 사람 (별표 1의3 제1호, quoted from memory of the decree)"
+  },
+  {
+   "slice": "e7-special",
+   "index": 7,
+   "verdict": "partly",
+   "reason": "The repo claim is true. E-7-S1's how.en reads 'A job with a very high income, regardless of degree, experience or occupation.': it gives no income threshold and wrongly implies no occupation is excluded. E-7-S1 is the negative-list high-income route: 3× the previous year's per-capita GNI, any job except simple labour, jobs against public morals and other jobs closed to foreigners, with no degree or experience requirement. That matches what I know and the other research files; the manual text could not be re-fetched this session. The fix's 'about 140M KRW in 2026' is wrong: 3× the 2025 GNI that KIS uses from 2026-04-01 (₩52.416M, the YAML's gni:) is about ₩157.2M, or about ₩149.9M if the reported E-7 exception (2024 GNI until 2027-03) holds. So drop the KRW figure. rules.js now accepts a visa-level `income` rule (shown as a 'later' tag, never blocking), so `income: {gni: 3}` can also be added.",
+   "correctedFix": "# data/visamap.yaml, visas.E-7-S1.how: replace en (the ru, uz and uz-cyrl strings must be re-translated to match):\n    how: {en: 'A job paying at least 3× Korea''s per-capita GNI, in any occupation except simple labour, jobs against public morals and other jobs closed to foreigners; no degree or experience requirement.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\n# Do NOT write 'about 140M KRW'. 3× GNI is ≈₩157.2M on the 2025 GNI (₩52.416M) and ≈₩149.9M if E-7 keeps the 2024 GNI (₩49.955M) until 2027-03.\n# Optional, with the new income schema: add `income: {gni: 3}` to visas.E-7-S1. The engine will show ≈₩157.2M, which may be ≈₩7.4M too high if the E-7 GNI exception applies.",
+   "source": "사증발급/외국인체류 안내매뉴얼 2026 › 특정활동(E-7) › 우수인재(네거티브 방식 전문인력, E-7-S1); text as reproduced in visa-map-audit/findings.md line 873 (not re-fetched); HiKorea notice '2025년 1인당 국민총소득(GNI) 적용 기준 안내' (March 2026) for the base figure",
+   "quote": "소득이 전년도 1인당 국민총소득의 3배 이상이면서 단순노무, 선량한 풍속에 반하는 업종, 기타 외국인의 취업을 제한하는 직종에 취업하지 않으면"
+  },
+  {
+   "slice": "e7-special",
+   "index": 8,
+   "verdict": "unverifiable",
+   "reason": "The repo part is true: E-7-S1 and E-7-S2 carry the same F-2-7 note, 'After 1+ year of work: points waived, KIIP level 3 needed.' (with lang kiip 3). The legal point, that an E-7-S2 holder must still score 60+ on the E-7-S2 test at the F-2-7 change, rests only on a manual sentence reproduced by a blog. I could not reach the manual or any primary source this session (WebFetch DNS failure on every host, shared WebSearch budget used up), and my own knowledge of this detail is weak. The current note is not plainly wrong, since what is waived is the 80-point F-2-7 table. If a primary source confirms the quote, a low-risk wording would be: 'After 1+ year on E-7-S2, still meeting its 60-point test: the F-2-7 80-point test is waived; KIIP level 3 needed.'",
+   "correctedFix": "",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 30. 거주(F-2) › 체류자격 변경허가 › 5. 점수제 우수인재 및 동반가족의 거주자격 변경허가 (cited but not retrievable this session)",
+   "quote": "국내에 1년 이상 네거티브 방식의 전문인력 자격으로 체류하면서 E-7-S1은 소득요건이 유지되고 E-7-S2는 점수요건 60점 이상을 충족하고 사회통합프로그램 3단계 이상 이수 (blog reproduction only; not verified against the manual)"
+  },
+  {
+   "slice": "e7-special",
+   "index": 9,
+   "verdict": "partly",
+   "reason": "The repo claim is true: E-7-Y's F-2-R entry is bare, so the step shows F-2-R's general how ('… KIIP 3 or TOPIK 3, and 5 years in a depopulating area'). The repo's own manual-derived data confirms that chapter 38 has a separate 지역특화 우수인재(F-2-R) section for Korea-raised youth, and that extensions on that track check only the residence requirement. The '4 years', 'on E-7-Y or D-10' and 'shorter qualifying period' parts have no source (the finding says so itself), so they must go. A move's note replaces the visa's how on screen (visamap.js howTo: step.note || visa.how), so the note must stand on its own.",
+   "correctedFix": "# data/visamap.yaml, visas.E-7-Y.next: replace the bare `- F-2-R` with (the ru, uz and uz-cyrl strings must be translated):\n    - to: F-2-R\n      note: {en: 'Youth raised in Korea have their own F-2-R track (KIS stay manual, chapter 38), whose conditions may differ from the general regional-talent rules; once on it, extensions check only that you still live in the area. Ask immigration (1345) for the current conditions.', ru: <translate>, uz: <translate>, uz-cyrl: <translate>}\n# Do not state a year count or 'E-7-Y or D-10'; neither is sourced.",
+   "source": "외국인체류 안내매뉴얼 2026.9.18 › 38. 국내 성장 기반 외국인 청소년 취업‧정주 체류제도 › Ⅲ. 체류자격별 요건 및 제출서류 › 3. 지역특화 우수인재(F-2-R) › □ 체류기간 연장 (data/visadocs.yaml targets['F-2-R'].extend, 2nd variant)",
+   "quote": "38. 국내 성장 기반 외국인 청소년 취업‧정주 체류제도 › Ⅲ. 체류자격별 요건 및 제출서류 › 3. 지역특화 우수인재(F-2-R) — case: 'Regional talent (F-2-R) who got the status through the special track for foreign youth raised in Korea – only the residence requirement applies'"
+  }
+ ]
+}
