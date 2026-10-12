@@ -13,10 +13,12 @@ const PERSONAL = ['korean', 'spouse', 'koreanChild', 'parent', 'invest', 'rank',
 // A visa code matches a listed status or sub-status: 'D-4' matches D-4-1, 'E-1' doesn't match E-10.
 export const isStatus = (code, list) => [].concat(list).some((s) => code === s || code.startsWith(`${s}-`));
 
-// Each check is 'yes', 'maybe' (not enough known), 'later' (not yet, but the reader can get
-// there on this path) or 'no'. For an option with several checks the worst one counts.
-const ORDER = ['yes', 'maybe', 'later', 'no'];
-const worst = (results) => results.reduce((a, b) => (ORDER.indexOf(b) > ORDER.indexOf(a) ? b : a), 'yes');
+// Each check is 'yes', 'later' (not yet, but the reader can get there on this path), 'maybe'
+// (not enough known) or 'no'. Several checks that must all hold count as the worst of them;
+// of several alternatives the reader gets the best one, where an unknown beats a sure "not yet".
+const SEVERITY = ['yes', 'later', 'maybe', 'no'];
+const PREFER = ['yes', 'maybe', 'later', 'no'];
+const worst = (results) => results.reduce((a, b) => (SEVERITY.indexOf(b) > SEVERITY.indexOf(a) ? b : a), 'yes');
 
 // data: the visa map data (visas, groups, statusGroups, gni, incomeCuts), as embedded in the page.
 export function visaRules(data) {
@@ -166,7 +168,7 @@ export function visaRules(data) {
             const checks = Object.entries(group).map(([key, want]) => ({ key, want, result: checkFact(person, facts, key, want) }));
             return { checks, result: worst(checks.map((c) => c.result)) };
         });
-        const best = ORDER.map((r) => options.find((o) => o.result === r)).find(Boolean)
+        const best = PREFER.map((r) => options.find((o) => o.result === r)).find(Boolean)
             || { checks: [], result: 'yes' };
         const keysOf = (option, result) => option.checks.filter((c) => c.result === result).map((c) => c.key);
         if (best.result === 'no') {

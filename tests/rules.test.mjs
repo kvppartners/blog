@@ -39,6 +39,8 @@ const MAP = {
             income: { gni: 2, cuts: ['kiip', 'degree', 'young', 'region'], floor: 0.6 },
         },
         'F-5-13': { age: [60] },
+        'F-5-6': { needs: { korean: true, stay: { years: 2, in: ['F-4'] } } },
+        'F-4': { needs: { korean: true }, next: ['F-5-6'] },
     },
 };
 
@@ -206,4 +208,12 @@ test('income: a reduction can waive the test, on any one of its conditions', () 
     assert.equal(older.result, 'later');
     // Not knowing the education leaves the waiver open.
     assert.deepEqual(rules.incomeFor(reader({ age: 40 }), path, 3, to).maybe.map((c) => c.id), ['school']);
+});
+
+test('an unknown fact next to a "not yet" still reads as unknown', () => {
+    // Korean descent not answered, and the two years on F-4 still ahead.
+    const r = check(reader(), ['NONE', 'F-4'], 'F-5-6');
+    assert.equal(r.blocked, false);
+    assert.deepEqual(r.tags, [{ key: 'koreansOnly' }]);
+    assert.equal(check(reader({ korean: false }), ['NONE', 'F-4'], 'F-5-6').blocked, true);
 });
