@@ -1,0 +1,316 @@
+# Every money / income / GNI / asset / points / years statement in data/visamap.yaml (English text only).
+# Format: location | text
+
+VISA B-1 how | Visa-free stay of 30–90 days under a visa-waiver agreement; most visitors need a K-ETA. Long-term statuses usually need a new visa from abroad.
+EDGE B-1->D-2-1 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE B-1->D-2-2 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE B-1->D-2-3 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE B-1->D-2-4 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE B-1->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+VISA B-2 how | Visa-free entry for tourism or transit, 30–90 days (6 months for Canadians); most visitors need a K-ETA. Changing status inside Korea is generally not possible.
+EDGE B-2->D-2-1 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE B-2->D-2-2 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE B-2->D-2-3 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE B-2->D-2-4 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE B-2->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+EDGE C-3-1->D-2-1 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE C-3-1->D-2-2 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE C-3-1->D-2-3 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE C-3-1->D-2-4 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE C-3-1->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+EDGE C-3-4->D-2-1 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE C-3-4->D-2-2 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE C-3-4->D-2-3 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE C-3-4->D-2-4 note | In Korea only for citizens of some countries and if the course starts before your stay ends; otherwise apply from abroad.
+EDGE C-3-4->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+VISA C-3-8 needs | {"korean":true}
+EDGE C-3-8->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+EDGE C-3-9->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+EDGE C-4->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+VISA D-10-1 how | Job search after graduating in Korea (first year points-exempt), or bachelor's degree and 60+ points.
+VISA D-10-1 needs | [{"edu":3},{"koreanEdu":2},{"koreanEdu":1,"ageUnder":25}]
+EDGE D-10-1->F-2-7 note | With a Korean master's or higher (within 5 years) and a job offer, or a job at a listed company or in a promising industry; 80+ points.
+EDGE D-10-1->F-2-R note | Local-government recommendation, a Korean associate degree or regional-wage income, KIIP 3 or TOPIK 3 and 5 years in a depopulating area. Not possible if your visa before D-10 was D-3, D-4, E-6-2, E-8, E-9, E-10, G-1 or H-1.
+EDGE D-10-1->F-2-R needs | {"notAfter":["D-3","D-4","E-6-2","E-8","E-9","E-10","G-1","H-1"]}
+EDGE D-10-1->F-2-7S note | Within 1 year of your STEM master's or PhD at a K-STAR or science-specialised university, with the president's recommendation.
+VISA D-10-2 needs | [{"edu":3},{"koreanEdu":2}]
+VISA D-10-3 needs | {"stem":true,"rank":1}
+EDGE D-10-3->E-7-1 note | After 1+ year of internship: education and experience requirements are waived.
+VISA D-10-T how | Master's or doctorate from a world top-100 university within 5 years, still looking for a job.
+VISA D-10-T needs | {"edu":4,"rank":3}
+VISA D-2-1 how | Admission to a 2–3-year associate degree program at a Korean college.
+VISA D-2-1 needs | {"edu":1}
+EDGE D-2-1->D-10-1 note | After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.
+EDGE D-2-1->D-10-1 again | You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it's used up, apply for a new D-10 visa from abroad, which restarts the count.
+EDGE D-2-1->E-7-1 note | Korean graduates are exempt from the work-experience rule; salary floor applies.
+EDGE D-2-1->F-2-7 note | With a job at a listed company or in a promising industry (income of 1.5× GNI or more); 80+ points.
+VISA D-2-2 how | Admission to a bachelor's program at a Korean university.
+VISA D-2-2 needs | {"edu":1}
+EDGE D-2-2->D-10-1 note | After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.
+EDGE D-2-2->D-10-1 again | You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it's used up, apply for a new D-10 visa from abroad, which restarts the count.
+EDGE D-2-2->E-7-1 note | Korean graduates are exempt from the work-experience rule; salary floor applies.
+EDGE D-2-2->F-2-7 note | With a job at a listed company or in a promising industry (income of 1.5× GNI or more); 80+ points.
+VISA D-2-3 how | Admission to a master's program at a Korean university.
+VISA D-2-3 needs | {"edu":3}
+EDGE D-2-3->D-10-1 note | After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.
+EDGE D-2-3->D-10-1 again | You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it's used up, apply for a new D-10 visa from abroad, which restarts the count.
+EDGE D-2-3->E-7-1 note | Korean graduates are exempt from the work-experience rule; salary floor applies.
+EDGE D-2-3->F-2-7 note | Korean master's degree or higher within 5 years and a confirmed job; 80+ points.
+EDGE D-2-3->F-2-7S note | STEM master's or PhD at a K-STAR or science-specialised university, with the president's recommendation.
+EDGE D-2-3->D-10-T note | Only if your master's or doctorate is from a world top-100 university.
+EDGE D-2-3->D-2-2 note | After graduating, this is a new admission, so the lower-level rule for students doesn't apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program's time limit.
+VISA D-2-4 how | Admission to a doctoral program at a Korean university.
+VISA D-2-4 needs | {"edu":4}
+EDGE D-2-4->E-7-1 note | Korean graduates are exempt from the work-experience rule; salary floor applies.
+EDGE D-2-4->D-10-1 note | After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.
+EDGE D-2-4->D-10-1 again | You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it's used up, apply for a new D-10 visa from abroad, which restarts the count.
+EDGE D-2-4->F-2-7 note | Korean master's degree or higher within 5 years and a confirmed job; 80+ points.
+EDGE D-2-4->F-2-7S note | STEM master's or PhD at a K-STAR or science-specialised university, with the president's recommendation.
+EDGE D-2-4->D-10-T note | Only if your master's or doctorate is from a world top-100 university.
+EDGE D-2-4->D-2-3 note | After graduating, this is a new admission, so the lower-level rule for students doesn't apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program's time limit.
+EDGE D-2-4->D-2-2 note | After graduating, this is a new admission, so the lower-level rule for students doesn't apply. Before graduating, moving down is an exception: only some majors (such as STEM), TOPIK 3+, and finishing within your current program's time limit.
+VISA D-2-5 needs | [{"edu":4},{"stem":true}]
+EDGE D-2-5->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+VISA D-2-6 needs | {"edu":1}
+EDGE D-2-6->D-2-2 note | Usually after the exchange ends: apply anew for a degree program.
+EDGE D-2-6->D-2-3 note | Usually after the exchange ends: apply anew for a degree program.
+VISA D-2-7 how | Degree program linked with work in Korea, including government scholarship (GKS) students.
+EDGE D-2-7->E-7-1 note | Korean graduates are exempt from the work-experience rule; salary floor applies.
+EDGE D-2-7->D-10-1 note | After graduating from a Korean college or university: the first year is points-exempt; extensions go by points, up to 3 years in total.
+EDGE D-2-7->D-10-1 again | You held D-10 before: points now apply (60+; waived with a Korean degree from the last 3 years and TOPIK 4 or KIIP 4). D-10 time adds up while you stay in Korea (up to 3 years); if it's used up, apply for a new D-10 visa from abroad, which restarts the count.
+VISA D-2-8 how | Courses of under 1 year in Korea while enrolled at a foreign university.
+VISA D-2-8 needs | {"edu":1}
+EDGE D-2-8->D-2-2 note | Usually after the exchange ends: apply anew for a degree program.
+EDGE D-2-8->D-2-3 note | Usually after the exchange ends: apply anew for a degree program.
+EDGE D-3->D-10-1 note | Rare exception: degree holders only, with 60+ points (80+ for notified countries).
+VISA D-4-1 needs | {"edu":1}
+EDGE D-4-1->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+EDGE D-4-2->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+VISA D-4-6 needs | {"edu":1}
+VISA D-4-6 lang | {"topik":2,"kiip":2}
+EDGE D-4-6->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+EDGE D-4-7->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+EDGE D-5->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE D-6->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+VISA D-7 how | 1+ year with a company abroad, then sent to its branch, affiliate or head office in Korea.
+EDGE D-7->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE D-7->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+VISA D-8-1 how | ₩100M+ investment with a 10%+ stake in a Korean corporation, or essential staff of such a company.
+VISA D-8-1 needs | {"invest":1}
+EDGE D-8-1->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE D-8-1->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE D-8-2->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE D-8-2->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+VISA D-8-3 needs | {"invest":1}
+EDGE D-8-3->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE D-8-3->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+VISA D-8-4 how | Degree plus intellectual property or technology, 60+ start-up points and your own Korean corporation.
+VISA D-8-4 needs | [{"edu":3},{"koreanEdu":2}]
+EDGE D-8-4->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE D-8-4->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+VISA D-9-1 how | Trade business with a KITA trade number (points-based).
+EDGE D-9-1->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE D-9-1->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+VISA D-9-4 how | Running a business in Korea with ₩300M+ of imported foreign capital.
+VISA D-9-4 needs | {"invest":2}
+EDGE D-9-4->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE D-9-4->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+VISA D-9-5 how | Korean master's degree or higher and ₩100M+ invested in your own business.
+VISA D-9-5 needs | {"koreanEdu":3,"invest":1}
+EDGE D-9-5->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE D-9-5->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+VISA E-1 needs | [{"edu":3,"experience":2},{"edu":2,"experience":3},{"edu":5,"stem":true},{"edu":4,"stem":true,"experience":3}]
+EDGE E-1->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE E-1->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-1->F-5-9 note | If you hold a foreign doctorate in a high-tech field: after 1+ year at a Korean company in that field.
+EDGE E-1->F-5-15 note | If you earned a doctorate at a Korean university: after 1+ year of full-time work at a Korean company.
+EDGE E-1->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-1->D-10-1 needs | {}
+EDGE E-10->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+VISA E-2 how | Native-speaker conversation teacher at an institute, school or public program (EPIK, TaLK). English teachers: citizens of the US, UK, Canada, South Africa, New Zealand, Australia or Ireland.
+VISA E-2 needs | {"edu":3}
+EDGE E-2->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE E-2->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-2->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-2->D-10-1 needs | {}
+VISA E-3 how | Research post at a Korean institute or company; doctorate, or master's plus 3 years' experience.
+VISA E-3 needs | {"edu":4}
+EDGE E-3->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE E-3->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-3->F-5-9 note | If you hold a foreign doctorate in a high-tech field: after 1+ year at a Korean company in that field.
+EDGE E-3->F-5-15 note | If you earned a doctorate at a Korean university: after 1+ year of full-time work at a Korean company.
+EDGE E-3->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-3->D-10-1 needs | {}
+EDGE E-4->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE E-4->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-4->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-4->D-10-1 needs | {}
+EDGE E-5->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE E-5->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-5->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-5->D-10-1 needs | {}
+EDGE E-6-1->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE E-6-1->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-6-1->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-6-1->D-10-1 needs | {}
+EDGE E-6-3->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE E-6-3->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-6-3->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-6-3->D-10-1 needs | {}
+VISA E-7-1 how | Job offer in one of about 67 professional occupations, usually with a related degree; salary of at least ₩31.1M (2026).
+VISA E-7-1 needs | [{"edu":4},{"edu":3,"experience":1},{"experience":5},{"koreanEdu":2},{"edu":3,"rank":1},{"edu":3,"stem":true,"ageUnder":30,"countries":"asiaPilot"}]
+EDGE E-7-1->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE E-7-1->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-7-1->F-5-1 needs | {"edu":3}
+EDGE E-7-1->F-5-9 note | If you hold a foreign doctorate in a high-tech field: after 1+ year at a Korean company in that field.
+EDGE E-7-1->F-5-15 note | If you earned a doctorate at a Korean university: after 1+ year of full-time work at a Korean company.
+EDGE E-7-1->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-7-1->D-10-1 needs | {}
+VISA E-7-2 how | Job offer in a designated clerical or service occupation; salary of at least ₩25.9M (2026).
+EDGE E-7-2->F-5-1 needs | {"edu":3}
+EDGE E-7-2->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-7-2->D-10-1 needs | {}
+VISA E-7-3 how | Job offer in a designated skilled trade (for example welder or aquaculture technician); salary of at least ₩25.9M.
+VISA E-7-3 needs | [{"edu":3},{"koreanEdu":2},{"experience":1}]
+EDGE E-7-3->F-5-1 needs | {"edu":3}
+EDGE E-7-3->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-7-3->D-10-1 needs | {}
+VISA E-7-4 how | 4+ years on E-9, E-10 or H-2 in the last 10 years, employer recommendation and 200/300 points; granted inside Korea only.
+VISA E-7-4 lang | {"topik":2,"kiip":2}
+EDGE E-7-4->F-2-R note | After 2+ years on E-7-4, with a regional recommendation.
+EDGE E-7-4->F-2-99 note | After 5 years on E-7 (E-9 years do not count).
+EDGE E-7-4->F-5-1 needs | {"edu":3}
+EDGE E-7-4->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-7-4->D-10-1 needs | {}
+VISA E-7-4R how | 2+ years on E-9, E-10 or H-2, a local-government recommendation and a 3-year commitment to a depopulating area; 200/300 points.
+VISA E-7-4R lang | {"topik":2,"kiip":2}
+EDGE E-7-4R->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-7-4R->D-10-1 needs | {}
+VISA E-7-S1 how | A job with a very high income, regardless of degree, experience or occupation.
+EDGE E-7-S1->F-2-7 note | After 1+ year of work: points waived, KIIP level 3 needed.
+EDGE E-7-S1->F-2-7 lang | {"kiip":3}
+EDGE E-7-S1->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-7-S1->F-5-1 needs | {"edu":3}
+EDGE E-7-S1->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-7-S1->D-10-1 needs | {}
+VISA E-7-S2 how | Work in a high-tech industry, even outside the listed E-7 occupations; 60+ points.
+EDGE E-7-S2->F-2-7 note | After 1+ year of work: points waived, KIIP level 3 needed.
+EDGE E-7-S2->F-2-7 lang | {"kiip":3}
+EDGE E-7-S2->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-7-S2->F-5-1 needs | {"edu":3}
+EDGE E-7-S2->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-7-S2->D-10-1 needs | {}
+VISA E-7-T needs | [{"edu":4,"rank":3,"experience":8},{"edu":5,"rank":3,"experience":5}]
+EDGE E-7-T->F-2-T note | After 1+ year in a high-tech field with income of at least 2× GNI.
+EDGE E-7-T->F-2-7 note | After 3+ years in this status (waived with income of ₩40M+); 80+ points.
+EDGE E-7-T->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE E-7-T->F-5-1 needs | {"edu":3}
+EDGE E-7-T->D-10-1 note | After your job ends: up to 1 year to look for a new one, without the points test.
+EDGE E-7-T->D-10-1 needs | {}
+VISA E-7-Y needs | {"koreanEdu":1}
+VISA E-8 how | Seasonal farm or fishery work of up to 8 months, arranged through a Korean local government.
+VISA E-9 how | Pass EPS-TOPIK and get hired through the Employment Permit System; age 18–39, citizens of 17 partner countries.
+VISA E-9 note["KZ"] | Kazakhstan was named an EPS partner in August 2026; workers are expected from about 2028.
+EDGE E-9->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+EDGE F-1->F-2-71 note | Once the F-2-7 family member earns at least 1× GNI.
+VISA F-2-12 how | ₩1.5bn+ in a designated public-interest fund or development project.
+VISA F-2-12 needs | {"invest":5}
+VISA F-2-13 needs | [{"spouse":"foreigner"},{"parent":"foreigner"}]
+VISA F-2-16 how | Recognised by the Ministry of Justice for a special contribution to Korea or the public interest; family included.
+VISA F-2-2 needs | {"parent":"korean"}
+VISA F-2-3 how | Spouse or minor child of an F-5 holder, whose household earns at least 1× GNI (70% for up to 3 people).
+VISA F-2-3 needs | [{"spouse":"f5"},{"parent":"f5"}]
+VISA F-2-5 how | US$500K+ invested and 3+ years on D-8, or US$300K and 2 Korean employees.
+VISA F-2-5 needs | {"invest":2}
+EDGE F-2-5->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+VISA F-2-7 how | 80+ points (age, education, Korean, income) on an eligible track, for example 3 years of professional work or a Korean master's plus a job.
+EDGE F-2-7->F-5-S1 note | If you graduated from a K-STAR university.
+EDGE F-2-7->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE F-2-7->F-5-15 note | If you earned a doctorate at a Korean university: after 1+ year of full-time work at a Korean company.
+VISA F-2-71 how | Spouse or minor child of an F-2-7 or F-2-7S holder who earns at least 1× GNI.
+VISA F-2-71 needs | [{"spouse":"foreigner"},{"parent":"foreigner"}]
+VISA F-2-7S how | Science or technology master's or PhD from a K-STAR university, with the president's recommendation; points waived.
+VISA F-2-7S needs | {"koreanEdu":4,"stem":true}
+EDGE F-2-7S->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+EDGE F-2-7S->F-5-15 note | If you earned a doctorate at a Korean university: after 1+ year of full-time work at a Korean company.
+VISA F-2-8 how | ₩1bn+ invested in designated tourism or resort property in specified regions.
+VISA F-2-8 needs | {"invest":4}
+VISA F-2-99 how | 5+ years on eligible work or business statuses, own income of ₩40M+, assets of ₩20M+ and KIIP level 4.
+VISA F-2-99 lang | {"kiip":4}
+EDGE F-2-99->F-5-1 note | After 5+ years in work or business statuses (D-7–E-7, F-2), with the income and KIIP 5 requirements.
+VISA F-2-R how | Local-government recommendation, a Korean associate degree or regional-wage income, KIIP 3 or TOPIK 3, and 5 years in a depopulating area.
+VISA F-2-R lang | {"topik":3,"kiip":3}
+EDGE F-2-R->F-5-1 note | No dedicated route: F-2 years count toward F-5-1 (5 years, income, KIIP 5). Confirm with immigration (1345).
+VISA F-2-T how | World-class high-tech or science talent: top-100 university degree, long experience, income of at least 3× GNI and a ministry recommendation.
+VISA F-2-T needs | [{"edu":4,"rank":3},{"experience":5}]
+VISA F-2-T1 needs | [{"spouse":"foreigner"},{"parent":"foreigner"}]
+VISA F-3 needs | [{"spouse":"foreigner"},{"parent":"foreigner"}]
+EDGE F-3->D-10-1 note | Bachelor's degree and 60+ points (80+ for citizens of the 21 notified countries, including Uzbekistan); 1 year in total, 3 years with 80+ points.
+EDGE F-3->F-2-71 note | Once the F-2-7 family member earns at least 1× GNI.
+VISA F-4 how | Ethnic Korean of any nationality: former Korean citizen or descendant. Men who gave up Korean nationality without military service: only from the year they turn 41.
+VISA F-4 needs | {"korean":true}
+VISA F-4-R needs | {"korean":true}
+VISA F-5-1 how | 5+ years on D-7–E-7 or F-2, age 19+, income of 2× GNI (or assets of 1.5× average) and KIIP level 5; E-7 holders need a bachelor's degree.
+VISA F-5-1 lang | {"kiip":5}
+VISA F-5-10 how | High-tech bachelor's, Korean STEM bachelor's, Korean master's or engineer licence; 3+ years' work in Korea; own income of 1× GNI; KIIP level 5.
+VISA F-5-10 needs | [{"edu":3,"stem":true},{"koreanEdu":4}]
+VISA F-5-10 lang | {"kiip":5}
+VISA F-5-11 how | Outstanding ability in science, business, education, arts or sport, proven by a points test.
+VISA F-5-13 how | Age 60+ with a foreign pension of at least 2× GNI a year.
+VISA F-5-14 how | 4+ years on H-2 with the same employer in manufacturing, farming, fishing or care work, plus a qualification or income of 70% of GNI.
+VISA F-5-14 needs | {"korean":true}
+VISA F-5-15 how | Doctorate from a Korean university's regular program and 1+ year full-time at a Korean company; income of 1× GNI.
+VISA F-5-15 needs | {"koreanEdu":5}
+VISA F-5-16 how | 3+ years on F-2-7, income of 2× GNI (1× if you came via E-7-S2) or assets of 1.5× average, KIIP level 5.
+VISA F-5-16 lang | {"kiip":5}
+VISA F-5-17 how | F-2-8 investment kept for 5 years.
+VISA F-5-18 how | 2+ years on F-2-71 after the family member has held F-5-16 for 2+ years; income of 1× GNI; KIIP level 5.
+VISA F-5-18 lang | {"kiip":5}
+VISA F-5-19 how | Spouse or unmarried child of an F-5-17 holder after 5 years on F-2-8 or F-2-81.
+VISA F-5-2 how | 2+ years on F-6; household income of 1× GNI or median assets; KIIP or the integration test.
+VISA F-5-2 lang | {"kiip":5}
+VISA F-5-21 how | F-2-12 investment kept for 5 years.
+VISA F-5-24 how | 3+ years on D-8-4, ₩300M+ of investment raised and 2+ Korean full-time employees.
+VISA F-5-25 how | ₩3bn deposited in a designated public fund with a pledge to keep it for 5 years; withdrawing it cancels the status.
+VISA F-5-25 needs | {"invest":6}
+VISA F-5-26 how | 3+ years as essential R&D staff of a foreign-invested company (D-8-1); bachelor's degree; income of 2× GNI.
+VISA F-5-27 how | 2+ years as a recognised refugee (F-2-4), under a separate guideline with income and KIIP requirements.
+VISA F-5-28 how | 2+ years on F-2-16; income of 1× GNI or average assets; KIIP level 5.
+VISA F-5-28 lang | {"kiip":5}
+VISA F-5-29 how | Spouse or minor child, 2+ years after the family member got F-5-28; income of 1× GNI.
+VISA F-5-3 how | 2+ years on F-2-2 while still a minor; no income test.
+VISA F-5-4 how | 2+ years on F-2-3 after the family member has held F-5 for 2+ years; income of 1× GNI; KIIP level 5.
+VISA F-5-4 lang | {"kiip":5}
+VISA F-5-5 how | US$500K+ investment and 5+ Korean full-time employees for 6+ months; no minimum stay.
+VISA F-5-5 needs | {"invest":3}
+VISA F-5-6 how | 2+ years on F-4 plus income of 1× GNI or another option (assets, trade, investment, pension at 60+); KIIP not required.
+VISA F-5-6 needs | {"korean":true}
+VISA F-5-6R how | 4+ years on F-4-R in the region (2 years for existing residents); income of 70% of GNI; KIIP level 5.
+VISA F-5-6R needs | {"korean":true}
+VISA F-5-6R lang | {"kiip":5}
+VISA F-5-7 needs | {"korean":true}
+VISA F-5-9 how | Foreign doctorate in a high-tech field and 1+ year full-time at a Korean company; income of 1× GNI.
+VISA F-5-9 needs | {"edu":5,"stem":true}
+VISA F-5-S1 how | 3+ years on F-2-7S or F-2-7 as a K-STAR graduate and 90/200 K-STAR points.
+VISA F-5-S2 how | Spouse or minor child of an F-5-S1 holder after 2+ years on F-2-71.
+VISA F-5-T how | 3+ years on F-2-T in a high-tech or science field, income of 3× GNI, KIIP level 3 or TOPIK 3.
+VISA F-5-T lang | {"topik":3,"kiip":3}
+VISA F-5-T1 how | Spouse or minor child: 3 years on F-2-T1 (2 years if joining after the family member got F-5-T).
+VISA F-6-1 how | Legal marriage to a Korean citizen. The Korean spouse needs a yearly income of about ₩25.2M for a couple (2026; not needed if you have a child together), you need basic Korean (TOPIK 1) or a shared language, and a real home.
+VISA F-6-1 needs | {"spouse":"korean"}
+VISA F-6-1 lang | {"topik":1,"kiip":2}
+EDGE F-6-1->F-5-2 needs | {"spouse":"korean"}
+VISA F-6-2 needs | {"koreanChild":true,"spouse":["exKorean","none"]}
+VISA F-6-3 needs | {"spouse":"exKorean"}
+VISA H-1 how | Citizens of partner countries, usually aged 18–30; up to 1 year of travel with permitted work.
+EDGE H-1->E-1 note | In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.
+EDGE H-1->E-2 note | In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.
+EDGE H-1->E-3 note | In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.
+EDGE H-1->E-4 note | In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.
+EDGE H-1->E-5 note | In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.
+EDGE H-1->E-7-1 note | In Korea, unless you are a citizen of the UK, France, Ireland, Denmark, Chile, Italy, Israel or Belgium.
+VISA H-2 how | Former work visa for ethnic Koreans from China and CIS countries. No new H-2 visas since 2026.02.12; holders can switch to F-4.
+VISA H-2 needs | {"korean":true}
+VISA NONE note"tb" | For your nationality, a long-term visa needs a tuberculosis test certificate from a hospital approved by the Korean embassy.
+EDGE NONE->F-2-3 needs | {"spouse":"f5"}
+EDGE NONE->F-2-7 note | From abroad only on two tracks, with a job at a listed company or in a promising industry and a visa confirmation (CCVI); 80+ points.
