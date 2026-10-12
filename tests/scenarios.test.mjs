@@ -154,6 +154,80 @@ test('Top-Tier: 3× GNI from abroad, 2× GNI as a change after work in Korea', (
     near(income(uz({ edu: 4, rank: 3 }), ['NONE', 'E-7-1'], 'F-2-T').amount, 2 * GNI);
 });
 
+// Both the degree and the career criterion, or the amount is 4× GNI (고시 2025-86 art. 4). The
+// visa's `needs` is a union, so one of them is enough to be offered it at all.
+const topTier = { edu: 4, rank: 3, experience: 8 };
+
+test('Top-Tier: 4× GNI for a reader who meets only the degree or only the career criterion', () => {
+    // A degree the reader does not have cannot be gained by waiting, so the amount is 4× on
+    // every route.
+    const noDegree = uz({ edu: 3, rank: 0, experience: 8 });
+    near(income(noDegree, ['NONE'], 'F-2-T').amount, 4 * GNI);
+    near(income(noDegree, ['NONE', 'E-7-1'], 'F-2-T').amount, 4 * GNI);
+    // From abroad there is no Korean status to earn the missing years on either.
+    near(income(uz({ ...topTier, experience: 0 }), ['NONE'], 'F-2-T').amount, 4 * GNI);
+    near(income(uz(topTier), ['NONE', 'E-7-1'], 'F-2-T').amount, 2 * GNI);
+});
+
+test('Top-Tier: income is never called enough while a criterion is missing or unknown', () => {
+    // ₩160M clears 3× but not the 4× the missing career criterion brings.
+    assert.equal(income(uz({ ...topTier, experience: 0, income: 160 }), ['NONE'], 'F-2-T').result, 'later');
+    // Experience left blank: the lower amount is shown, but never confirmed as enough.
+    assert.equal(income(uz({ edu: 4, rank: 3, income: 160 }), ['NONE'], 'F-2-T').result, 'maybe');
+    assert.equal(income(uz({ ...topTier, income: 160 }), ['NONE'], 'F-2-T').result, 'yes');
+    // On a work visa the career criterion is still reachable by staying, so the 2× amount shows
+    // but is never ticked as met.
+    const working = income(uz({ ...topTier, experience: 0, income: 160 }), ['NONE', 'E-7-1'], 'F-2-T');
+    near(working.amount, 2 * GNI);
+    assert.equal(working.result, 'maybe');
+});
+
+test('Top-Tier: the high-income and high-tech E-7 routes ask the 2× change amount, as their note says', () => {
+    for (const from of ['E-7-S1', 'E-7-S2', 'E-7-T']) {
+        near(income(uz(topTier), [from], 'F-2-T').amount, 2 * GNI);
+    }
+    // From a job-seeker status there is no year of high-tech work yet, so the full amount stands.
+    near(income(uz(topTier), ['D-10-T'], 'F-2-T').amount, 3 * GNI);
+});
+
+test('F-2-3: the sponsor\'s income is asked for a spouse, never for a minor child', () => {
+    const child = income(uz({ age: 16, parent: 'f5', edu: 1 }), ['D-4-1'], 'F-2-3');
+    assert.equal(child.amount, 0);
+    assert.equal(child.cut.id, 'f5Child');
+    const spouse = income(uz({ spouse: 'f5', edu: 1 }), ['D-4-1'], 'F-2-3');
+    near(spouse.amount, GNI);
+    assert.equal(spouse.whose, 'sponsor');
+});
+
+test('a high-tech internship waives the education and experience rules of E-7-1, as its note says', () => {
+    const intern = { nationality: 'VN', age: 22, edu: 1, eduKorea: false, stem: true, rank: 1, experience: 0 };
+    assert.equal(option(intern, ['NONE', 'D-10-3'], 'E-7-1').blocked, false);
+});
+
+test('Korean descent alone is not a Korean-citizen parent: F-4, not "child of a Korean citizen"', () => {
+    const koryoSaram = uz({ age: 35, korean: true, edu: 1 });
+    assert.equal(option(koryoSaram, ['NONE'], 'F-2-2').blocked, true);
+    const f4 = option(koryoSaram, ['NONE'], 'F-4');
+    assert.equal(f4.blocked, false);
+    assert.ok(f4.tags.some((t) => t.key === 'matches'));
+});
+
+test('a move note that replaces a how text is a how text, not a clause', () => {
+    // Both notes used to be one clause, which hid the rule the reader has to meet.
+    for (const from of ['E-7-2', 'E-7-4R', 'E-7-Y']) {
+        const note = option(uz({ edu: 3 }), [from], 'F-5-1').step.note.en;
+        assert.match(note, /5\+ years/, `${from} -> F-5-1 does not state the residence rule`);
+        assert.match(note, /E-9 years do not count/, `${from} -> F-5-1 does not say E-9 years are excluded`);
+    }
+    for (const from of ['B-1', 'C-3-1']) {
+        const note = option(uz({ spouse: 'foreigner' }), [from], 'F-3').step.note.en;
+        assert.match(note, /D-1, D-2, D-4 to D-10, E-1 to E-7, F-2, F-4 or H-2/, `${from} -> F-3 lists the old sponsors`);
+        assert.match(note, /D-3, E-8, E-9 and E-10 holders cannot get F-3/, `${from} -> F-3 omits the excluded sponsors`);
+    }
+    const none = option(uz({ parent: 'f5', age: 16 }), ['NONE'], 'F-2-3').step.note.en;
+    assert.match(none, /no income test for a minor child/, 'NONE -> F-2-3 still puts an income test on the child');
+});
+
 test('a Korean diploma meets the Korean requirement of F-2-99', () => {
     const r = option(uz({ edu: 3, koreanEdu: 3, kiip: 0 }), ['NONE', 'E-7-1'], 'F-2-99');
     assert.equal(r.korean, 'yes');

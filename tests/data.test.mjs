@@ -118,7 +118,8 @@ const within = docs.within || {};
 // Statuses whose rules the manuals describe without a document list of their own.
 const UNLISTED = ['F-5-14', 'F-5-27', 'F-5-6R'];
 // Routes the manuals document but whose list hasn't been copied into data/visadocs.yaml yet:
-// the moves stay (they are verified in visa-map-audit/round2), the docs page shows no list.
+// the moves stay (the October 2026 audit verified them against the manuals; see "What the data
+// still needs" in README.md), and the Visa docs page shows no list for them.
 const NOT_COPIED = {
     change: ['E-7-Y'], // 외국인체류 안내매뉴얼 2026.9.18 › 38 › Ⅲ.2 국내성장인력(E-7-Y) › 체류자격 변경
     abroad: ['F-1', 'D-4-2'], // 사증발급 안내매뉴얼 2026.9.1 › 방문동거(F-1); › 일반연수(D-4) D-4-2 section

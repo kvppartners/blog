@@ -282,7 +282,44 @@ and only hide options that clearly don't fit. It runs entirely in the browser.
 - **Report a problem** sends the reader's message to you through a Telegram bot; see
   [Problem reports](#problem-reports-telegram-bot). Remove
   `telegramAdmin` from `hugo.toml` to hide the button.
-- Page layout: `layouts/visa-map.html`; logic and PNG drawing: `assets/js/visamap.js`.
+- Page layout: `layouts/visa-map.html`; the rules that decide the options, the income
+  amounts and what the path implies: `assets/js/visa/rules.js`; the page and the PNG
+  drawing: `assets/js/visamap.js`.
+
+### What the data still needs
+
+The map was audited against the Korea Immigration Service manuals, the decree tables and
+MOJ notices in October 2026, in three rounds. Every finding that a source check confirmed
+is applied. The working files of that audit (the raw findings, the source checks behind
+each number, and the per-slice verdicts) are not kept in the repository; they are in the
+history, in the commit before "remove unnecessary files", under `visa-map-audit/`:
+
+```bash
+git show d4c5674^:visa-map-audit/README.md          # what each round did
+git show d4c5674^:visa-map-audit/round2/review.json # the final review
+git log --oneline --diff-filter=D -- visa-map-audit  # the commit that removed them
+```
+
+Left open on purpose, for whoever picks this up:
+
+- Three routes the audit confirmed have no document list in `data/visadocs.yaml` yet:
+  E-7-Y (change of status, sojourn manual ch. 38), F-1 and D-4-2 (visa from abroad).
+  `tests/data.test.mjs` names them in `NOT_COPIED` so its checks still pass. Copy them
+  from the official manual only, as the Visa docs rules require, or leave them.
+- `F-2-71 -> F-3` would be better pointed at F-1: when the F-2-7 sponsor's income falls
+  below 1x GNI the family is handled as F-1, not F-3. It needs F-1's document list first.
+- F-2-3 and F-6-1 say "your sponsor's income" where the test is the inviter's household.
+  Fixing it needs `household: true` beside `sponsor: true`, a `vm_income_sponsor_household`
+  string in all four `i18n/` files and a branch in `incomeLine`; F-6-1 also wants "for 2
+  people" in its rule text, which a `krw` income rule has no field for.
+- Thresholds that only practitioner sources back, so they are text and not a rule: the
+  F-5-2 80% grounds, the F-5-14 70%, the median net-assets figure for F-5-2 and F-5-27,
+  and whether the E-7 income tests keep using the 2024 GNI until March 2027. The F-2-3
+  income waiver for a child together or a pregnancy is marked as reported for the same
+  reason.
+- A reader whose answers contradict the visa they start on (spouse "none" on F-6-1, no
+  Korean descent on F-4-R) reaches a dead end, because their own answer beats what the
+  visa implies. Whether to treat the starting visa as evidence is a product decision.
 - Add more pages to the menu by putting this in their front matter:
   ```yaml
   menus:
