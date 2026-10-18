@@ -62,7 +62,7 @@ Ma’lumotlaringizni hech kimga sotmaymiz va bermaymiz, reklama uchun ham ishlat
 
 ## Brauzeringizda
 
-Sayt o‘zining cookie fayllarini o‘rnatmaydi. U reaksiyalar uchun tasodifiy identifikatorni va yorug‘ yoki qorong‘i rejim tanlovingizni brauzer xotirasida saqlaydi; brauzerda shu sayt ma’lumotlarini tozalasangiz, ular o‘chadi.
+Sayt o‘zining cookie fayllarini o‘rnatmaydi. U reaksiyalar uchun tasodifiy identifikatorni, yorug‘ yoki qorong‘i rejim tanlovingizni va siz tanlagan tilni brauzer xotirasida saqlaydi; brauzerda shu sayt ma’lumotlarini tozalasangiz, ular o‘chadi.
 
 ## Huquqlaringiz
 

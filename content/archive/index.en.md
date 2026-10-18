@@ -2,7 +2,7 @@
 title: "Archive"
 description: "Official blank forms for visa and immigration applications in Korea, to download as PDF, HWP or Word."
 layout: archive
-draft: true
+draft: false
 hideBackLink: true
 menus:
   main:

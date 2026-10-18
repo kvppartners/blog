@@ -62,7 +62,7 @@ We don't sell or give your information to anyone else, and we don't use it for a
 
 ## In your browser
 
-The site sets no cookies of its own. It keeps the random reaction id and your light or dark mode choice in your browser's storage; clearing this site's data in your browser removes them.
+The site sets no cookies of its own. It keeps the random reaction id, your light or dark mode choice and the language you pick in your browser's storage; clearing this site's data in your browser removes them.
 
 ## Your rights
 

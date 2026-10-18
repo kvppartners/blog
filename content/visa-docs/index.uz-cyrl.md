@@ -2,7 +2,7 @@
 title: "Виза ҳужжатлари"
 description: "Кейинги Корея визангиз учун тайёрлаш керак бўлган ҳужжатлар: расмий рўйхатлар бўйича, корейсча номлари билан."
 layout: visa-docs
-draft: true
+draft: false
 hideBackLink: true
 menus:
   main:

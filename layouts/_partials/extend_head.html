@@ -2,3 +2,23 @@
 {{- with (site.Params.contact | default dict).telegram }}
 <meta name="telegram:channel" content="@{{ . }}">
 {{- end }}
+{{- /* The home page at / is Uzbek (the URL language), but opening kvppartners.com shows
+   English: a visitor arriving from outside the site goes to the language they last picked
+   in the header's language switch (remembered by blog.js), or to English. Moving between
+   pages of the site, including to / with the switch or the logo, never redirects. */}}
+{{- if and .IsHome (eq .RelPermalink "/") }}
+{{- $homes := dict }}
+{{- range .AllTranslations }}{{ $homes = merge $homes (dict .Lang .RelPermalink) }}{{ end }}
+<script>
+    (function () {
+        if (document.referrer.indexOf(location.origin + '/') === 0) return;
+        var lang = null;
+        try {
+            lang = localStorage.getItem('pref-lang');
+        } catch (e) {}
+        var homes = {{ $homes }};
+        var home = homes[lang] || homes.en;
+        if (home && home !== location.pathname) location.replace(home + location.search + location.hash);
+    })();
+</script>
+{{- end }}

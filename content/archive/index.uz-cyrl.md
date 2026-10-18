@@ -2,7 +2,7 @@
 title: "Архив"
 description: "Кореяда виза ва иммиграция аризалари учун расмий бўш шакллар: PDF, HWP ёки Word форматида юклаб олинг."
 layout: archive
-draft: true
+draft: false
 hideBackLink: true
 menus:
   main:

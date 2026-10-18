@@ -2,7 +2,7 @@
 title: "Visa docs"
 description: "The documents to prepare for your next Korean visa, from the official lists, with Korean names."
 layout: visa-docs
-draft: true
+draft: false
 hideBackLink: true
 menus:
   main:

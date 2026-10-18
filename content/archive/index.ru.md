@@ -2,7 +2,7 @@
 title: "Архив"
 description: "Официальные бланки для визовых и иммиграционных заявлений в Корее: скачайте в PDF, HWP или Word."
 layout: archive
-draft: true
+draft: false
 hideBackLink: true
 menus:
   main:

@@ -3,6 +3,8 @@ title = "Korean Visa Planner"
 # Copyright owner, shown in the footer ("© <year> · KVP Partners") and the RSS feed.
 copyright = "KVP Partners"
 theme = "PaperMod"
+# Uzbek pages live at /, the others under /en/, /ru/ and /uz-cyrl/. Opening the site
+# (kvppartners.com) still shows English to new visitors: layouts/_partials/extend_head.html.
 defaultContentLanguage = "uz"
 # Show category names exactly as written ("Mening hikoyam", not "Mening Hikoyam").
 capitalizeListTitles = false

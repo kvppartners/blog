@@ -2,7 +2,7 @@
 title: "Документы на визу"
 description: "Какие документы готовить для следующей корейской визы: по официальным спискам, с корейскими названиями."
 layout: visa-docs
-draft: true
+draft: false
 hideBackLink: true
 menus:
   main:

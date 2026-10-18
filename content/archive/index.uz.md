@@ -2,7 +2,7 @@
 title: "Arxiv"
 description: "Koreyada viza va immigratsiya arizalari uchun rasmiy bo‘sh shakllar: PDF, HWP yoki Word formatida yuklab oling."
 layout: archive
-draft: true
+draft: false
 hideBackLink: true
 menus:
   main:

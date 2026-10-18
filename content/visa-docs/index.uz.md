@@ -2,7 +2,7 @@
 title: "Viza hujjatlari"
 description: "Keyingi Koreya vizangiz uchun tayyorlash kerak bo‘lgan hujjatlar: rasmiy ro‘yxatlar bo‘yicha, koreyscha nomlari bilan."
 layout: visa-docs
-draft: true
+draft: false
 hideBackLink: true
 menus:
   main:

@@ -20,6 +20,7 @@
         initSearchDropdown();
     }
     initBackLinks();
+    initLanguageChoice();
     initInstantViewLink();
     initReactions();
     initTelegramComments();
@@ -209,6 +210,20 @@
                 if (from.origin === home.origin && from.pathname === home.pathname) {
                     e.preventDefault();
                     history.back();
+                }
+            });
+        });
+    }
+
+    // Remember the language picked in the header, so kvppartners.com opens in it
+    // next time instead of English (layouts/_partials/extend_head.html).
+    function initLanguageChoice() {
+        document.querySelectorAll('.lang-switch a[hreflang]').forEach((link) => {
+            link.addEventListener('click', () => {
+                try {
+                    localStorage.setItem('pref-lang', link.hreflang);
+                } catch {
+                    // Storage blocked: the home page just opens in English.
                 }
             });
         });
