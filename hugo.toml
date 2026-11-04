@@ -37,9 +37,11 @@ capitalizeListTitles = false
   # (see README.md). While it's empty, the "Copy link for Telegram" button under
   # articles stays hidden.
   instantViewRhash = "00199acecabf40"
-  # Logo next to the site title in the header (file in assets/).
+  # Logo next to the site title in the header and on Visa map / Visa docs pictures
+  # (file in assets/). logo-round.png is logo.JPEG cut to a circle with see-through
+  # corners; the favicons in static/ are made from it too.
   [params.label]
-    icon = "images/logo.png"
+    icon = "images/logo-round.png"
     iconHeight = 44
   # Shown by the "Contact us" button in the bottom-right corner.
   # Remove a line to hide that option.
