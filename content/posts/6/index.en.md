@@ -1,6 +1,6 @@
 ---
 title: "A careless consulting agency cost me my university admission"
-date: 2026-11-08T18:11:25+09:00
+date: 2026-11-07T00:00:00+09:00
 draft: false
 categories: ["Experience", "D-2", "Consulting"]
 description: "We picture a consulting agency as the bridge to our dream of studying abroad. But the agency we trust doesn't always live up to that trust. For them it meant refunding one client; for me it meant six months of my life..."

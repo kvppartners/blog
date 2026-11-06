@@ -1,6 +1,6 @@
 ---
 title: "Consulting firma beparvoligi sabab o'qishga kira olmadim"
-date: 2026-11-08T18:11:25+09:00
+date: 2026-11-07T00:00:00+09:00
 draft: false
 categories: ["Tajriba", "D-2", "Consulting"]
 description: "Consulting firma deganda chet el orzusi bilan ko'prikni tasavvur qilamiz. Lekin doim ham biz ishongan firma ishonchni oqlay olmaydi. Ular uchun bu shunchaki bir klient pulini qaytarish, men uchun esa 6 oylik umrim edi..."
