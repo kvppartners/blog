@@ -47,7 +47,7 @@ capitalizeListTitles = false
   # Remove a line to hide that option.
   [params.contact]
     telegram = "kvp_partners"     # t.me/kvp_partners
-    instagram = "kvp_partners"    # instagram.com/kvp_partners
+    instagram = "visatillo"       # instagram.com/visatillo
     email = "help@kvppartners.com"
     website = "kvppartners.com"   # shown on Visa map images
     telegramAdmin = "kvp_partners_admin"   # Visa map problem reports go to t.me/kvp_partners_admin
